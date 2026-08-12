@@ -5,21 +5,32 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-      - name: Kodu indir
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Buildozer ile APK oluştur
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
+      - uses: actions/setup-python@v5
         with:
-          workdir: .
-          buildozer_version: stable
+          python-version: "3.11"
 
-      - name: APK'yi yükle
+      - name: Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Paketleri kur
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Buildozer
+        run: |
+          pip install --upgrade pip
+          pip install buildozer cython
+          cp aura_app.py main.py
+          buildozer android debug
+
+      - name: APK
         uses: actions/upload-artifact@v4
         with:
           name: AURA-APK
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
