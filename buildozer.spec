@@ -9,6 +9,12 @@ requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 
+android.api = 35
+android.minapi = 21
+android.sdk = 35
+android.ndk = 26b
+android.accept_sdk_license = True
+
 [buildozer]
 log_level = 2
 warn_on_root = 0
