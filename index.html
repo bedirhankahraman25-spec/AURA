@@ -126,6 +126,16 @@
     const input = document.getElementById("input");
 
     function addMessage(text, type) {
+        function speak(text) {
+    if ("speechSynthesis" in window) {
+        const voice = new SpeechSynthesisUtterance(text);
+        voice.lang = "tr-TR";
+        voice.rate = 1;
+        voice.pitch = 1;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(voice);
+    }
+        }
         const message = document.createElement("div");
         message.className = "message " + type;
         message.textContent = text;
