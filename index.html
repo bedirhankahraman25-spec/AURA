@@ -202,11 +202,48 @@ body {
 /* ALT PANEL */
 #bottom {
     width: 100%;
+    min-height: 65px;
     display: flex;
+    align-items: center;
     gap: 8px;
+    padding: 10px;
+    background: rgba(0,10,15,.95);
+    border-top: 1px solid rgba(0,234,255,.45);
+    position: relative;
+    z-index: 10;
+}
+
+#input {
+    flex: 1;
+    min-width: 0;
+    height: 45px;
     padding: 12px;
-    background: rgba(0,10,15,.9);
-    border-top: 1px solid rgba(0,234,255,.35);
+    border-radius: 8px;
+    border: 1px solid rgba(0,234,255,.5);
+    outline: none;
+    background: rgba(0,25,32,.95);
+    color: #00eaff;
+    font-size: 14px;
+}
+
+#input::placeholder {
+    color: #548995;
+}
+
+button {
+    height: 45px;
+    border: 1px solid #00eaff;
+    border-radius: 8px;
+    padding: 0 14px;
+    background: rgba(0,60,75,.8);
+    color: #00eaff;
+    font-size: 14px;
+}
+
+.mic-button {
+    width: 45px;
+    padding: 0;
+    font-size: 20px;
 }
 
 #input {
