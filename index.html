@@ -201,7 +201,9 @@
         input.value = "";
 
         setTimeout(() => {
-            addMessage(auraReply(text), "aura");
+            const reply = auraReply(text);
+addMessage(reply, "aura");
+speak(reply);
         }, 300);
     }
 
