@@ -416,10 +416,15 @@ function auraReply(text) {
 
     // NASILSIN
     if (
-        command.includes("nasılsın") ||
-        command.includes("nasilsin") ||
-        command.includes("iyi misin")
-    ) {
+    command.includes("nasılsın") ||
+    command.includes("nasilsin") ||
+    command.includes("nasıl sen") ||
+    command.includes("nasil sen") ||
+    command.includes("iyi misin") ||
+    command.includes("iyisin")
+) {
+    return "İyiyim. Sistemlerim çalışıyor ve seni dinliyorum.";
+    } {
         return "İyiyim. Sistemlerim çalışıyor ve seni dinliyorum.";
     }
 
