@@ -149,7 +149,21 @@ function speak(text) {
         const kullaniciAdi = "Bedirhan Kahraman";
 const sevgiliAdi = "Edanur Kahraman";
         const command = text.toLowerCase().trim();
+if (
+    text.includes("ben kimim") ||
+    text.includes("beni tanıyor musun") ||
+    text.includes("benim adım ne")
+) {
+    return "Sen Bedirhan'sın.";
+}
 
+if (
+    text.includes("sevgilimin adı") ||
+    text.includes("sevgilim kim") ||
+    text.includes("sevgilimin ismi")
+) {
+    return "Sevgilinin adı " + sevgiliAdi + ".";
+}
         if (
             command === "merhaba" ||
             command === "selam" ||
