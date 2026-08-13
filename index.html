@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color"
-      content="#02060a">
+content="#02060a">
 
 <title>AURA AI</title>
 
@@ -39,9 +39,6 @@ body {
             #000000 100%
         );
 }
-
-
-/* ÜST BAR */
 
 .top-bar {
     height: 60px;
@@ -95,9 +92,6 @@ body {
         0 0 15px #55ffcc;
 }
 
-
-/* ANA ALAN */
-
 .main {
     height: calc(100vh - 60px);
     height: calc(100dvh - 60px);
@@ -108,9 +102,6 @@ body {
 
     min-height: 0;
 }
-
-
-/* AURA ÇEKİRDEĞİ */
 
 .aura-core {
     width: 210px;
@@ -126,9 +117,6 @@ body {
 
     flex-shrink: 0;
 }
-
-
-/* HALKALAR */
 
 .aura-ring {
     position: absolute;
@@ -175,9 +163,6 @@ body {
         rotate1 14s linear infinite;
 }
 
-
-/* MERKEZ */
-
 .aura-center {
     width: 100px;
     height: 100px;
@@ -217,9 +202,6 @@ body {
     z-index: 5;
 }
 
-
-/* ANİMASYONLAR */
-
 @keyframes rotate1 {
 
     from {
@@ -254,9 +236,6 @@ body {
     }
 }
 
-
-/* DURUM */
-
 .aura-status {
     margin-top: -8px;
     margin-bottom: 5px;
@@ -266,9 +245,6 @@ body {
 
     color: #8defff;
 }
-
-
-/* SOHBET */
 
 #chat {
     width: min(92%, 600px);
@@ -319,9 +295,6 @@ body {
     color: white;
 }
 
-
-/* ALT PANEL */
-
 #bottom {
     width: 100%;
 
@@ -343,9 +316,6 @@ body {
 
     z-index: 10;
 }
-
-
-/* YAZI KUTUSU */
 
 #input {
     flex: 1;
@@ -375,9 +345,6 @@ body {
 #input::placeholder {
     color: #548995;
 }
-
-
-/* BUTONLAR */
 
 button {
     height: 45px;
@@ -410,14 +377,9 @@ button:disabled {
 
 .mic-button {
     width: 45px;
-
     padding: 0;
-
     font-size: 20px;
 }
-
-
-/* TELEFON */
 
 @media (max-width: 500px) {
 
@@ -444,7 +406,6 @@ button:disabled {
 
 <body>
 
-
 <div class="top-bar">
 
     <div class="logo">
@@ -457,16 +418,12 @@ button:disabled {
 
 </div>
 
-
 <div class="main">
-
 
     <div class="aura-core">
 
         <div class="aura-ring ring1"></div>
-
         <div class="aura-ring ring2"></div>
-
         <div class="aura-ring ring3"></div>
 
         <div class="aura-center">
@@ -475,14 +432,11 @@ button:disabled {
 
     </div>
 
-
     <div class="aura-status">
         AI SYSTEM READY
     </div>
 
-
     <div id="chat"></div>
-
 
     <div id="bottom">
 
@@ -509,15 +463,11 @@ button:disabled {
     </div>
 
 </div>
+
 <script src="https://js.puter.com/v2/"></script>
 
 <script>
-
-/* =========================
-   AURA ELEMENTLERİ
-========================= */
-
-const chat =
+      const chat =
     document.getElementById("chat");
 
 const input =
@@ -531,7 +481,7 @@ const micButton =
 
 
 /* =========================
-   MESAJ EKLEME
+   MESAJ
 ========================= */
 
 function addMessage(text, type) {
@@ -553,138 +503,64 @@ function addMessage(text, type) {
 
 
 /* =========================
-   SES TEMİZLEME
+   AURA KİMLİĞİ
 ========================= */
 
-function cleanTextForSpeech(text) {
+const systemPrompt = `
 
-    return text
-
-        .replace(
-            /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
-            ""
-        )
-
-        .replace(
-            /https?:\/\/\S+/gi,
-            ""
-        )
-
-        .replace(
-            /[.,!?;:"'“”‘’()[\]{}<>…\/\\|@#$%^&*_+=~`-]/g,
-            " "
-        )
-
-        .replace(
-            /\s+/g,
-            " "
-        )
-
-        .trim();
-}
-
-
-/* =========================
-   SESLİ CEVAP
-========================= */
-
-function speak(text) {
-
-    if (
-        !("speechSynthesis" in window)
-    ) {
-        return;
-    }
-
-    const cleanText =
-        cleanTextForSpeech(text);
-
-    if (!cleanText) {
-        return;
-    }
-
-    const message =
-        new SpeechSynthesisUtterance(
-            cleanText
-        );
-
-    message.lang =
-        "tr-TR";
-
-    message.rate =
-        0.9;
-
-    message.pitch =
-        1;
-
-    message.volume =
-        1;
-
-    window.speechSynthesis.cancel();
-
-    window.speechSynthesis.speak(
-        message
-    );
-}
-
-
-/* =========================
-   AURA SİSTEM MESAJI
-========================= */
-
-const auraSystemPrompt = `
-
-Sen AURA adında kişisel bir yapay zekâ asistanısın.
+Sen AURA adında kişisel yapay zeka asistanısın.
 
 Türkçe konuş.
 
-Kullanıcıyla doğal ve samimi şekilde konuş.
+Kullanıcının adı Bedirhan Kahraman.
 
-Çok kısa cevap vermek zorunda değilsin ancak gereksiz uzatma.
+Fakat kullanıcıya cevap verirken
+asla gereksiz şekilde Bedirhan deme.
 
-Kullanıcının adını biliyorsun fakat cevapların içinde
-kullanıcının adını gereksiz yere kullanma.
-
-ÖNEMLİ:
-
-Kullanıcı sana adını sormadığı sürece
+Özellikle cevapların başında
 "Bedirhan",
 "Bedirhan Kahraman"
-veya başka bir isimle hitap ETME.
+veya benzeri bir hitap kullanma.
 
-Kullanıcı "ben kimim" diye sorarsa
-"Bedirhan Kahraman" olduğunu söyle.
+Kullanıcı adını yalnızca
+kullanıcı açıkça adını sorarsa söyle.
+
+Kullanıcı "ben kimim" derse
+Bedirhan Kahraman olduğunu söyle.
+
+Kullanıcının sevgilisinin adı
+Edanur Kahraman.
 
 Kullanıcı sevgilisinin adını sorarsa
-"Edanur Kahraman" olduğunu söyle.
+Edanur Kahraman olduğunu söyle.
 
-Her cevabın başına kullanıcı adını ekleme.
+Doğal konuş.
 
-Kullanıcıyla konuşurken doğal bir insan gibi cevap ver.
+Gereksiz tekrar yapma.
 
 Bilmediğin bilgileri uydurma.
 
-Senin adın AURA.
+Sen AURA'sın.
 
 `;
 
 
 /* =========================
-   KONUŞMA GEÇMİŞİ
+   KONUŞMA
 ========================= */
 
 const conversation = [
 
     {
         role: "system",
-        content: auraSystemPrompt
+        content: systemPrompt
     }
 
 ];
 
 
 /* =========================
-   AI CEVABI
+   AI
 ========================= */
 
 async function askAI(text) {
@@ -692,7 +568,6 @@ async function askAI(text) {
     conversation.push({
 
         role: "user",
-
         content: text
 
     });
@@ -753,7 +628,6 @@ async function askAI(text) {
         conversation.push({
 
             role: "assistant",
-
             content: answer
 
         });
@@ -761,16 +635,14 @@ async function askAI(text) {
 
         return answer;
 
-
     }
 
     catch (error) {
 
         console.error(
-            "AURA AI HATASI:",
+            "AI HATASI:",
             error
         );
-
 
         return "AI bağlantısında bir sorun oluştu.";
     }
@@ -778,36 +650,18 @@ async function askAI(text) {
 
 
 /* =========================
-   MESAJ GÖNDER
+   TEMEL MESAJ GÖNDERME
 ========================= */
 
-async function sendMessage(
-    voiceMode = false
+async function processMessage(
+    text,
+    voiceMode
 ) {
-
-    const text =
-        input.value.trim();
-
-
-    if (!text) {
-        return;
-    }
-
 
     addMessage(
         text,
         "user"
     );
-
-
-    input.value = "";
-
-
-    sendButton.disabled =
-        true;
-
-    micButton.disabled =
-        true;
 
 
     addMessage(
@@ -818,6 +672,13 @@ async function sendMessage(
 
     const loading =
         chat.lastElementChild;
+
+
+    sendButton.disabled =
+        true;
+
+    micButton.disabled =
+        true;
 
 
     try {
@@ -837,14 +698,6 @@ async function sendMessage(
         );
 
 
-        /*
-
-        SADECE MİKROFONLA
-        KONUŞULDUĞUNDA
-        SESLİ CEVAP VER
-
-        */
-
         if (voiceMode) {
 
             speak(reply);
@@ -855,13 +708,16 @@ async function sendMessage(
 
     catch (error) {
 
+        console.error(error);
+
+
         if (loading) {
             loading.remove();
         }
 
 
         addMessage(
-            "Bir hata oluştu.",
+            "Bir hata oluştu. Tekrar deneyelim.",
             "aura"
         );
     }
@@ -878,17 +734,28 @@ async function sendMessage(
 
 
 /* =========================
-   GÖNDER BUTONU
+   YAZILI MESAJ
 ========================= */
 
-sendButton.addEventListener(
-    "click",
-    function() {
+async function sendTextMessage() {
 
-        sendMessage(false);
+    const text =
+        input.value.trim();
 
+
+    if (!text) {
+        return;
     }
-);
+
+
+    input.value = "";
+
+
+    await processMessage(
+        text,
+        false
+    );
+}
 
 
 /* =========================
@@ -905,34 +772,122 @@ input.addEventListener(
 
             event.preventDefault();
 
-            sendMessage(false);
+            sendTextMessage();
         }
 
     }
 );
-     /* =========================
-   SESLİ KOMUT SİSTEMİ
+
+
+/* =========================
+   GÖNDER BUTONU
 ========================= */
 
-let recognition = null;
-let isListening = false;
+sendButton.addEventListener(
+    "click",
+    sendTextMessage
+);
+      /* =========================
+   SES TEMİZLEME
+========================= */
+
+function cleanTextForSpeech(text) {
+
+    return text
+
+        .replace(
+            /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
+            ""
+        )
+
+        .replace(
+            /https?:\/\/\S+/gi,
+            ""
+        )
+
+        .replace(
+            /[.,!?;:"'“”‘’()[\]{}<>…\/\\|@#$%^&*_+=~`-]/g,
+            " "
+        )
+
+        .replace(
+            /\s+/g,
+            " "
+        )
+
+        .trim();
+}
 
 
-/* TARAYICI DESTEĞİ */
+/* =========================
+   SESLİ CEVAP
+========================= */
+
+function speak(text) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        return;
+    }
+
+
+    const cleanText =
+        cleanTextForSpeech(text);
+
+
+    if (!cleanText) {
+        return;
+    }
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(
+            cleanText
+        );
+
+
+    utterance.lang =
+        "tr-TR";
+
+    utterance.rate =
+        0.9;
+
+    utterance.pitch =
+        1;
+
+    utterance.volume =
+        1;
+
+
+    window.speechSynthesis.cancel();
+
+    window.speechSynthesis.speak(
+        utterance
+    );
+}
+
+
+/* =========================
+   SESLİ KOMUT
+========================= */
 
 const SpeechRecognition =
     window.SpeechRecognition ||
     window.webkitSpeechRecognition;
 
 
-/* =========================
-   SES TANIMA
-========================= */
+let recognition = null;
+
+let isListening = false;
+
 
 if (SpeechRecognition) {
 
     recognition =
         new SpeechRecognition();
+
 
     recognition.lang =
         "tr-TR";
@@ -949,9 +904,8 @@ if (SpeechRecognition) {
 
             isListening = true;
 
-            micButton.disabled = false;
-
-            micButton.textContent = "🔴";
+            micButton.textContent =
+                "🔴";
         };
 
 
@@ -960,7 +914,8 @@ if (SpeechRecognition) {
 
             isListening = false;
 
-            micButton.textContent = "🎤";
+            micButton.textContent =
+                "🎤";
         };
 
 
@@ -968,69 +923,43 @@ if (SpeechRecognition) {
         function(error) {
 
             console.error(
-                "Ses tanıma hatası:",
+                "SES HATASI:",
                 error
             );
 
             isListening = false;
 
-            micButton.textContent = "🎤";
+            micButton.textContent =
+                "🎤";
         };
 
 
     recognition.onresult =
-        function(event) {
+        async function(event) {
 
-            const result =
-                event.results[
-                    event.results.length - 1
-                ][0].transcript.trim();
+            const text =
+                event
+                .results[0][0]
+                .transcript
+                .trim();
 
 
-            if (!result) {
+            if (!text) {
                 return;
             }
 
-
-            /*
-              AURA UYANDIRMA
-
-              Kullanıcı sadece
-              "AURA" diyorsa
-              cevap vermesin.
-            */
-
-            const lower =
-                result.toLowerCase();
-
-
-            if (
-                lower === "aura" ||
-                lower === "aura."
-            ) {
-
-                addMessage(
-                    "Dinliyorum.",
-                    "aura"
-                );
-
-                speak(
-                    "Dinliyorum"
-                );
-
-                return;
-            }
-
-
-            /*
-              NORMAL SESLİ KOMUT
-            */
 
             input.value =
-                result;
+                text;
 
 
-            sendMessage(true);
+            input.value = "";
+
+
+            await processMessage(
+                text,
+                true
+            );
         };
 }
 
@@ -1081,27 +1010,7 @@ micButton.addEventListener(
 
 
 /* =========================
-   AURA UYANMA KONTROLÜ
-========================= */
-
-function containsAuraWakeWord(text) {
-
-    const command =
-        text
-        .toLowerCase()
-        .trim();
-
-
-    return (
-        command === "aura" ||
-        command.startsWith("aura ") ||
-        command.includes(" aura ")
-    );
-}
-
-
-/* =========================
-   BAŞLANGIÇ MESAJI
+   BAŞLANGIÇ
 ========================= */
 
 addMessage(
@@ -1109,9 +1018,54 @@ addMessage(
     "Sistem hazır. Seni dinliyorum.",
     "aura"
 );
-    }
+      /* =========================
+   WEB ARAMA
+========================= */
+
+function needsWebSearch(text) {
+
+    const command =
+        text.toLowerCase();
+
+
+    const words = [
+
+        "internette ara",
+        "internetten ara",
+        "internette araştır",
+        "internetten araştır",
+        "webde ara",
+        "web'de ara",
+        "internetten bak",
+        "internete bak",
+        "güncel bilgi",
+        "guncel bilgi",
+        "hava durumu",
+        "hava nasıl",
+        "hava nasil",
+        "son dakika",
+        "haberler",
+        "güncel haber",
+        "guncel haber",
+        "şimdi",
+        "simdi",
+        "şu an",
+        "su an"
+
+    ];
+
+
+    return words.some(
+        function(word) {
+
+            return command.includes(word);
+        }
+    );
+}
+
+
 /* =========================
-   WEB ARAMALI AI
+   WEB DESTEKLİ AI
 ========================= */
 
 async function askAIWithWeb(text) {
@@ -1120,7 +1074,12 @@ async function askAIWithWeb(text) {
 
         role: "user",
 
-        content: text
+        content:
+            text +
+            "\n\n" +
+            "Bu soruyu güncel internet bilgileri " +
+            "gerekiyorsa web araması yaparak cevapla. " +
+            "Kullanıcıya gereksiz şekilde adıyla hitap etme."
 
     });
 
@@ -1132,7 +1091,7 @@ async function askAIWithWeb(text) {
                 conversation,
                 {
                     model:
-                        "openai/gpt-5.3-chat",
+                        "gpt-5.4-nano",
 
                     tools: [
                         {
@@ -1199,111 +1158,21 @@ async function askAIWithWeb(text) {
     catch (error) {
 
         console.error(
-            "WEB AI HATASI:",
+            "WEB HATASI:",
             error
         );
 
 
-        return "İnternet üzerinden bilgi alınırken bir sorun oluştu.";
+        return await askAI(text);
     }
 }
 
 
 /* =========================
-   WEB ARAMASI GEREKLİ Mİ
+   WEB MESAJ SİSTEMİ
 ========================= */
 
-function needsWebSearch(text) {
-
-    const command =
-        text.toLowerCase().trim();
-
-
-    const webWords = [
-
-        "internette ara",
-
-        "internetten ara",
-
-        "internette araştır",
-
-        "internetten araştır",
-
-        "webde ara",
-
-        "web'de ara",
-
-        "internetten bak",
-
-        "internete bak",
-
-        "güncel bilgi",
-
-        "guncel bilgi",
-
-        "son dakika",
-
-        "bugün",
-
-        "bugun",
-
-        "şu an",
-
-        "su an",
-
-        "şimdi",
-
-        "simdi",
-
-        "hava durumu",
-
-        "hava nasıl",
-
-        "hava nasil",
-
-        "haber",
-
-        "haberler",
-
-        "bugünkü",
-
-        "bugunku",
-
-        "en son",
-
-        "güncel",
-
-        "guncel",
-
-        "araştır",
-
-        "arastir"
-
-    ];
-
-
-    for (
-        const word of webWords
-    ) {
-
-        if (
-            command.includes(word)
-        ) {
-
-            return true;
-        }
-    }
-
-
-    return false;
-}
-
-
-/* =========================
-   GÜNCELLENMİŞ MESAJ SİSTEMİ
-========================= */
-
-sendMessage = async function(
+async function sendMessage(
     voiceMode = false
 ) {
 
@@ -1312,25 +1181,17 @@ sendMessage = async function(
 
 
     if (!text) {
-
         return;
     }
+
+
+    input.value = "";
 
 
     addMessage(
         text,
         "user"
     );
-
-
-    input.value = "";
-
-
-    sendButton.disabled =
-        true;
-
-    micButton.disabled =
-        true;
 
 
     addMessage(
@@ -1343,15 +1204,17 @@ sendMessage = async function(
         chat.lastElementChild;
 
 
+    sendButton.disabled =
+        true;
+
+    micButton.disabled =
+        true;
+
+
     try {
 
         let reply;
 
-
-        /*
-          GÜNCEL BİLGİ GEREKİYORSA
-          WEB ARAMALI AI KULLAN
-        */
 
         if (
             needsWebSearch(text)
@@ -1367,9 +1230,7 @@ sendMessage = async function(
         else {
 
             reply =
-                await askAI(
-                    text
-                );
+                await askAI(text);
         }
 
 
@@ -1385,11 +1246,6 @@ sendMessage = async function(
         );
 
 
-        /*
-          SADECE SESLİ KOMUTTA
-          AURA SESLİ CEVAP VERİR
-        */
-
         if (voiceMode) {
 
             speak(reply);
@@ -1400,14 +1256,10 @@ sendMessage = async function(
 
     catch (error) {
 
-        console.error(
-            "AURA GENEL HATASI:",
-            error
-        );
+        console.error(error);
 
 
         if (loading) {
-
             loading.remove();
         }
 
@@ -1426,22 +1278,37 @@ sendMessage = async function(
         false;
 
     input.focus();
-};
+}
 
 
 /* =========================
-   BAŞLANGIÇ MESAJI
+   YAZILI GÖNDERMEYİ
+   WEB SİSTEMİNE BAĞLA
 ========================= */
 
-addMessage(
-    "Merhaba. Ben AURA AI.\n\n" +
-    "Sistem hazır. Seni dinliyorum.",
-    "aura"
-);
+sendButton.onclick =
+    function() {
+
+        sendMessage(false);
+    };
+
+
+input.onkeydown =
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            sendMessage(false);
+        }
+    };
 
 
 /* =========================
-   HTML KAPANIŞI
+   DOSYA SONU
 ========================= */
 
 </script>
