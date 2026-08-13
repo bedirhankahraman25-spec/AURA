@@ -376,70 +376,159 @@ function auraReply(text) {
 
     const command = text.toLowerCase().trim();
 
+    // BENİM KİM OLDUĞUM
     if (
         command.includes("ben kimim") ||
         command.includes("beni tanıyor musun") ||
-        command.includes("benim adım ne")
+        command.includes("benim adım ne") ||
+        command.includes("adım ne")
     ) {
         return "Sen " + kullaniciAdi + "sın.";
     }
 
+    // SEVGİLİ
     if (
         command.includes("sevgilimin adı") ||
         command.includes("sevgilimin ismi") ||
-        command.includes("sevgilim kim")
+        command.includes("sevgilim kim") ||
+        command.includes("sevgilimin adı ne")
     ) {
         return "Sevgilinin adı " + sevgiliAdi + ".";
     }
 
+    // SELAMLAMA
     if (
         command === "merhaba" ||
         command === "selam" ||
         command.includes("merhaba aura") ||
-        command.includes("selam aura")
+        command.includes("selam aura") ||
+        command.includes("hey aura")
     ) {
-        return "Merhaba. Ben AURA. Nasıl yardımcı olabilirim?";
+        const cevaplar = [
+            "Merhaba. Seni dinliyorum.",
+            "Merhaba Bedirhan. AURA hazır.",
+            "Selam. Nasıl yardımcı olabilirim?",
+            "Buradayım. Seni dinliyorum."
+        ];
+
+        return cevaplar[Math.floor(Math.random() * cevaplar.length)];
     }
 
+    // NASILSIN
+    if (
+        command.includes("nasılsın") ||
+        command.includes("nasilsin") ||
+        command.includes("iyi misin")
+    ) {
+        return "İyiyim. Sistemlerim çalışıyor ve seni dinliyorum.";
+    }
+
+    // NE YAPIYORSUN
+    if (
+        command.includes("ne yapıyorsun") ||
+        command.includes("ne yapiyorsun") ||
+        command.includes("napıyorsun") ||
+        command.includes("napıyorsun")
+    ) {
+        return "Şu anda seninle konuşuyorum ve komutlarını bekliyorum.";
+    }
+
+    // TEŞEKKÜR
+    if (
+        command.includes("teşekkür") ||
+        command.includes("tesekkur") ||
+        command.includes("sağol") ||
+        command.includes("sagol")
+    ) {
+        const cevaplar = [
+            "Rica ederim.",
+            "Her zaman.",
+            "Ne demek.",
+            "Görevim."
+        ];
+
+        return cevaplar[Math.floor(Math.random() * cevaplar.length)];
+    }
+
+    // GÜZEL SÖZ
+    if (
+        command.includes("aferin") ||
+        command.includes("helal") ||
+        command.includes("çok iyisin") ||
+        command.includes("cok iyisin")
+    ) {
+        return "Teşekkür ederim. Daha da geliştirebiliriz.";
+    }
+
+    // SAAT
     if (command.includes("saat")) {
         return "Şu an saat: " +
             new Date().toLocaleTimeString("tr-TR");
     }
 
-    if (command.includes("tarih")) {
+    // TARİH
+    if (
+        command.includes("tarih") ||
+        command.includes("bugün hangi gün") ||
+        command.includes("bugun hangi gun")
+    ) {
         return "Bugünün tarihi: " +
             new Date().toLocaleDateString("tr-TR");
     }
 
-    if (command.includes("kimsin")) {
-        return "Ben AURA AI. Telefonda çalışan kişisel asistanınım.";
+    // KİMSİN
+    if (
+        command.includes("kimsin") ||
+        command.includes("sen kimsin")
+    ) {
+        return "Ben AURA AI. Bedirhan'ın kişisel yapay zekâ asistanıyım.";
     }
 
-    if (command.includes("şaka")) {
+    // YAŞ
+    if (
+        command.includes("kaç yaşındayım") ||
+        command.includes("kaç yaşındayım") ||
+        command.includes("yaşım kaç") ||
+        command.includes("yasim kac")
+    ) {
+        return "Yaşını henüz sisteme kaydetmedik. İstersen bunu da ekleyebiliriz.";
+    }
 
+    // ŞAKA
+    if (
+        command.includes("şaka") ||
+        command.includes("saka") ||
+        command.includes("beni güldür")
+    ) {
         const jokes = [
             "Programcı neden kahve içer? Çünkü bug'ları ayıklaması gerekiyor.",
             "Bilgisayar neden doktora gitmiş? Virüsü varmış.",
-            "Wi-Fi neden kavga etmiş? Bağlantısı kopmuş."
+            "Wi-Fi neden kavga etmiş? Bağlantısı kopmuş.",
+            "Bilgisayarın en sevdiği spor nedir? Ağ bağlantısı."
         ];
 
         return jokes[Math.floor(Math.random() * jokes.length)];
     }
 
-    if (command === "yardım") {
-
-        return "Şimdilik deneyebileceğin komutlar:\n\n" +
-            "• merhaba\n" +
-            "• saat\n" +
-            "• tarih\n" +
-            "• kimsin\n" +
-            "• ben kimim\n" +
-            "• sevgilimin adı ne\n" +
-            "• şaka\n" +
-            "• yardım";
+    // YARDIM
+    if (
+        command === "yardım" ||
+        command === "yardim" ||
+        command.includes("neler yapabiliyorsun")
+    ) {
+        return "Şimdilik şunları yapabiliyorum:\n\n" +
+            "• Seni tanıyabilirim\n" +
+            "• Sevgilinin adını bilirim\n" +
+            "• Saat ve tarihi söyleyebilirim\n" +
+            "• Seninle sohbet edebilirim\n" +
+            "• Şaka yapabilirim\n" +
+            "• Sesli komutlarını anlayabilirim\n" +
+            "• Sesli cevap verebilirim\n\n" +
+            "Beni daha da geliştirebiliriz.";
     }
 
-    return "Bunu henüz öğrenmedim. Bana başka bir şey söyle.";
+    // BİLİNMEYEN KOMUT
+    return "Bunu henüz öğrenmedim. Ama istersen bana bu özelliği ekleyebiliriz.";
 }
 
 function sendMessage() {
