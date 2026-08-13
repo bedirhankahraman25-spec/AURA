@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#02060a">
 <link rel="manifest" href="manifest.json">
+
 <title>AURA AI</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -19,25 +21,33 @@ body {
     font-family: Arial, sans-serif;
     color: #00eaff;
     background:
-        radial-gradient(circle at center, #06232d 0%, #02070b 45%, #000 100%);
+        radial-gradient(circle at center,
+        #06232d 0%,
+        #02070b 45%,
+        #000000 100%);
 }
 
-/* ÜST PANEL */
+/* ÜST BAR */
+
 .top-bar {
     height: 65px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+
+    background: rgba(0,10,15,.75);
     border-bottom: 1px solid rgba(0,234,255,.35);
-    background: rgba(0,10,15,.65);
 }
 
 .logo {
     font-size: 21px;
     font-weight: bold;
     letter-spacing: 4px;
-    text-shadow: 0 0 12px #00eaff;
+
+    text-shadow:
+        0 0 10px #00eaff,
+        0 0 25px #00eaff;
 }
 
 .status {
@@ -49,586 +59,67 @@ body {
 .status::before {
     content: "";
     display: inline-block;
+
     width: 7px;
     height: 7px;
+
     margin-right: 7px;
+
     border-radius: 50%;
+
     background: #55ffcc;
-    box-shadow: 0 0 10px #55ffcc;
+
+    box-shadow:
+        0 0 8px #55ffcc,
+        0 0 15px #55ffcc;
 }
 
 /* ANA ALAN */
-    .main {
+
+.main {
     height: calc(100dvh - 65px);
+
     min-height: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    }
+}
 
 /* AURA ÇEKİRDEĞİ */
+
 .aura-core {
     width: 220px;
     height: 220px;
-    margin-top: 35px;
+
+    margin-top: 25px;
+
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    flex-shrink: 0;
 }
+
+/* MERKEZ */
 
 .aura-center {
     width: 105px;
     height: 105px;
+
     border-radius: 50%;
+
     border: 2px solid #00eaff;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 21px;
     font-weight: bold;
+
     letter-spacing: 3px;
-    color: #00eaff;
-    background: radial-gradient(circle, #063b4b, #020a0e);
-    box-shadow:
-        0 0 15px #00eaff,
-        0 0 45px rgba(0,234,255,.7),
-        inset 0 0 25px rgba(0,234,255,.5);
-    animation: pulse 2.2s infinite ease-in-out;
-    z-index: 3;
-}
 
-.aura-ring {
-    position: absolute;
-    border: 1px solid #00eaff;
-    border-radius: 50%;
-    opacity: .7;
-}
-
-.ring1 {
-    width: 145px;
-    height: 145px;
-    animation: rotate 7s linear infinite;
-    border-left-color: transparent;
-    border-right-color: transparent;
-}
-
-.ring2 {
-    width: 185px;
-    height: 185px;
-    animation: rotateReverse 11s linear infinite;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-}
-
-.ring3 {
-    width: 220px;
-    height: 220px;
-    animation: rotate 15s linear infinite;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes rotateReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-}
-
-@keyframes pulse {
-    0%,100% {
-        transform: scale(1);
-        box-shadow:
-            0 0 15px #00eaff,
-            0 0 45px rgba(0,234,255,.6),
-            inset 0 0 25px rgba(0,234,255,.5);
-    }
-
-    50% {
-        transform: scale(1.06);
-        box-shadow:
-            0 0 25px #00eaff,
-            0 0 70px rgba(0,234,255,.9),
-            inset 0 0 35px rgba(0,234,255,.7);
-    }
-}
-
-/* DURUM YAZISI */
-.aura-status {
-    margin-top: -15px;
-    margin-bottom: 12px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #8defff;
-    text-shadow: 0 0 10px #00eaff;
-}
-
-/* MESAJ ALANI */
-#chat {
-    width: min(92%, 600px);
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    padding: 10px 5px 15px;
-    scrollbar-width: thin;
-    scrollbar-color: #00eaff transparent;
-}
-
-.message {
-    max-width: 85%;
-    padding: 10px 13px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    line-height: 1.4;
-    white-space: pre-wrap;
-    font-size: 14px;
-    border: 1px solid rgba(0,234,255,.25);
-}
-
-.aura {
-    background: rgba(0,35,45,.65);
-    margin-right: auto;
-    box-shadow: 0 0 12px rgba(0,234,255,.08);
-}
-
-.user {
-    background: rgba(0,100,130,.55);
-    margin-left: auto;
-    color: white;
-}
-
-/* ALT PANEL */
-#bottom {
-    width: 100%;
-    min-height: 65px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px;
-    background: rgba(0,10,15,.95);
-    border-top: 1px solid rgba(0,234,255,.45);
-    position: relative;
-    z-index: 10;
-}
-
-#input {
-    flex: 1;
-    min-width: 0;
-    height: 45px;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(0,234,255,.5);
-    outline: none;
-    background: rgba(0,25,32,.95);
-    color: #00eaff;
-    font-size: 14px;
-}
-
-#input::placeholder {
-    color: #548995;
-}
-
-button {
-    height: 45px;
-    border: 1px solid #00eaff;
-    border-radius: 8px;
-    padding: 0 14px;
-    background: rgba(0,60,75,.8);
-    color: #00eaff;
-    font-size: 14px;
-}
-
-.mic-button {
-    width: 45px;
-    padding: 0;
-    font-size: 20px;
-}
-
-#input {
-    flex: 1;
-    min-width: 0;
-    padding: 13px;
-    border-radius: 8px;
-    border: 1px solid rgba(0,234,255,.4);
-    outline: none;
-    background: rgba(0,25,32,.9);
-    color: #00eaff;
-    font-size: 14px;
-}
-
-#input::placeholder {
-    color: #548995;
-}
-
-button {
-    border: 1px solid #00eaff;
-    border-radius: 8px;
-    padding: 0 15px;
-    background: rgba(0,60,75,.7);
-    color: #00eaff;
-    font-size: 14px;
-    box-shadow: 0 0 10px rgba(0,234,255,.15);
-}
-
-button:active {
-    transform: scale(.94);
-    box-shadow: 0 0 20px #00eaff;
-}
-
-.mic-button {
-    width: 48px;
-    padding: 0;
-    font-size: 20px;
-}
-
-/* TELEFON */
-@media (max-width: 500px) {
-    .aura-core {
-        margin-top: 22px;
-        transform: scale(.82);
-        margin-bottom: -10px;
-    }
-
-    .aura-status {
-        margin-top: -5px;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="top-bar">
-    <div class="logo">AURA</div>
-    <div class="status">ONLINE</div>
-</div>
-
-<div class="main">
-
-    <div class="aura-core">
-        <div class="aura-ring ring1"></div>
-        <div class="aura-ring ring2"></div>
-        <div class="aura-ring ring3"></div>
-        <div class="aura-center">AURA</div>
-    </div>
-
-    <div class="aura-status">SYSTEM READY</div>
-
-    <div id="chat"></div>
-
-    <div id="bottom">
-        <input
-            id="input"
-            type="text"
-            placeholder="AURA'ya bir şey sor..."
-            autocomplete="off"
-        >
-
-        <button class="mic-button" onclick="startListening()">🎤</button>
-
-        <button onclick="sendMessage()">Gönder</button>
-    </div>
-
-</div>
-
-<script>
-
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-
-function speak(text) {
-    const msg = new SpeechSynthesisUtterance(text);
-
-    msg.lang = "tr-TR";
-    msg.rate = 0.9;
-    msg.pitch = 1;
-    msg.volume = 1;
-
-    window.speechSynthesis.cancel();
-
-    setTimeout(() => {
-        window.speechSynthesis.speak(msg);
-    }, 100);
-}
-
-function addMessage(text, type) {
-    const message = document.createElement("div");
-
-    message.className = "message " + type;
-    message.textContent = text;
-
-    chat.appendChild(message);
-    chat.scrollTop = chat.scrollHeight;
-}
-
-function auraReply(text) {
-
-    const kullaniciAdi = "Bedirhan Kahraman";
-    const sevgiliAdi = "Edanur Kahraman";
-
-    const command = text.toLowerCase().trim();
-
-    // BENİM KİM OLDUĞUM
-    if (
-        command.includes("ben kimim") ||
-        command.includes("beni tanıyor musun") ||
-        command.includes("benim adım ne") ||
-        command.includes("adım ne")
-    ) {
-        return "Sen " + kullaniciAdi + "sın.";
-    }
-
-    // SEVGİLİ
-    if (
-        command.includes("sevgilimin adı") ||
-        command.includes("sevgilimin ismi") ||
-        command.includes("sevgilim kim") ||
-        command.includes("sevgilimin adı ne")
-    ) {
-        return "Sevgilinin adı " + sevgiliAdi + ".";
-    }
-
-    // SELAMLAMA
-    if (
-        command === "merhaba" ||
-        command === "selam" ||
-        command.includes("merhaba aura") ||
-        command.includes("selam aura") ||
-        command.includes("hey aura")
-    ) {
-        const cevaplar = [
-            "Merhaba. Seni dinliyorum.",
-            "Merhaba Bedirhan. AURA hazır.",
-            "Selam. Nasıl yardımcı olabilirim?",
-            "Buradayım. Seni dinliyorum."
-        ];
-
-        return cevaplar[Math.floor(Math.random() * cevaplar.length)];
-    }
-
-    // NASILSIN
-    if (
-    command.includes("nasılsın") ||
-    command.includes("nasilsin") ||
-    command.includes("nasıl sen") ||
-    command.includes("nasil sen") ||
-    command.includes("iyi misin") ||
-    command.includes("iyisin")
-) {
-    return "İyiyim. Sistemlerim çalışıyor ve seni dinliyorum.";
-    } {
-        return "İyiyim. Sistemlerim çalışıyor ve seni dinliyorum.";
-    }
-
-    // NE YAPIYORSUN
-    if (
-        command.includes("ne yapıyorsun") ||
-        command.includes("ne yapiyorsun") ||
-        command.includes("napıyorsun") ||
-        command.includes("napıyorsun")
-    ) {
-        return "Şu anda seninle konuşuyorum ve komutlarını bekliyorum.";
-    }
-
-    // TEŞEKKÜR
-    if (
-        command.includes("teşekkür") ||
-        command.includes("tesekkur") ||
-        command.includes("sağol") ||
-        command.includes("sagol")
-    ) {
-        const cevaplar = [
-            "Rica ederim.",
-            "Her zaman.",
-            "Ne demek.",
-            "Görevim."
-        ];
-
-        return cevaplar[Math.floor(Math.random() * cevaplar.length)];
-    }
-
-    // GÜZEL SÖZ
-    if (
-        command.includes("aferin") ||
-        command.includes("helal") ||
-        command.includes("çok iyisin") ||
-        command.includes("cok iyisin")
-    ) {
-        return "Teşekkür ederim. Daha da geliştirebiliriz.";
-    }
-
-    // SAAT
-    if (command.includes("saat")) {
-        return "Şu an saat: " +
-            new Date().toLocaleTimeString("tr-TR");
-    }
-
-    // TARİH
-    if (
-        command.includes("tarih") ||
-        command.includes("bugün hangi gün") ||
-        command.includes("bugun hangi gun")
-    ) {
-        return "Bugünün tarihi: " +
-            new Date().toLocaleDateString("tr-TR");
-    }
-
-    // KİMSİN
-    if (
-        command.includes("kimsin") ||
-        command.includes("sen kimsin")
-    ) {
-        return "Ben AURA AI. Bedirhan'ın kişisel yapay zekâ asistanıyım.";
-    }
-
-    // YAŞ
-    if (
-        command.includes("kaç yaşındayım") ||
-        command.includes("kaç yaşındayım") ||
-        command.includes("yaşım kaç") ||
-        command.includes("yasim kac")
-    ) {
-        return "Yaşını henüz sisteme kaydetmedik. İstersen bunu da ekleyebiliriz.";
-    }
-
-    // ŞAKA
-    if (
-    command.includes("şaka") ||
-    command.includes("saka") ||
-    command.includes("güldür") ||
-    command.includes("guldur") ||
-    command.includes("beni güldür") ||
-    command.includes("beni guldur")
-) {
-        const jokes = [
-            "Programcı neden kahve içer? Çünkü bug'ları ayıklaması gerekiyor.",
-            "Bilgisayar neden doktora gitmiş? Virüsü varmış.",
-            "Wi-Fi neden kavga etmiş? Bağlantısı kopmuş.",
-            "Bilgisayarın en sevdiği spor nedir? Ağ bağlantısı."
-        ];
-
-        return jokes[Math.floor(Math.random() * jokes.length)];
-    }
-
-    // YARDIM
-    if (
-        command === "yardım" ||
-        command === "yardim" ||
-        command.includes("neler yapabiliyorsun")
-    ) {
-        return "Şimdilik şunları yapabiliyorum:\n\n" +
-            "• Seni tanıyabilirim\n" +
-            "• Sevgilinin adını bilirim\n" +
-            "• Saat ve tarihi söyleyebilirim\n" +
-            "• Seninle sohbet edebilirim\n" +
-            "• Şaka yapabilirim\n" +
-            "• Sesli komutlarını anlayabilirim\n" +
-            "• Sesli cevap verebilirim\n\n" +
-            "Beni daha da geliştirebiliriz.";
-    }
-
-    // BİLİNMEYEN KOMUT
-    return "Bunu henüz öğrenmedim. Ama istersen bana bu özelliği ekleyebiliriz.";
-}
-
-function sendMessage() {
-
-    const text = input.value.trim();
-
-    if (!text) return;
-
-    addMessage(text, "user");
-
-    input.value = "";
-
-    setTimeout(() => {
-
-        const reply = auraReply(text);
-
-        addMessage(reply, "aura");
-
-        speak(reply);
-
-    }, 300);
-}
-
-function startListening() {
-
-    const SpeechRecognition =
-        window.SpeechRecognition ||
-        window.webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-
-        addMessage(
-            "Telefonunun tarayıcısı sesli konuşmayı desteklemiyor.",
-            "aura"
-        );
-
-        return;
-    }
-
-    const recognition = new SpeechRecognition();
-
-    recognition.lang = "tr-TR";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-
-    recognition.onstart = function() {
-
-        addMessage("Dinliyorum...", "aura");
-    };
-
-    recognition.onresult = function(event) {
-
-        const text =
-            event.results[0][0].transcript;
-
-        input.value = text;
-
-        sendMessage();
-    };
-
-    recognition.onerror = function() {
-
-        addMessage(
-            "Sesini anlayamadım. Tekrar deneyebilirsin.",
-            "aura"
-        );
-    };
-
-    recognition.start();
-}
-
-addMessage(
-    "Merhaba. Ben AURA AI.\n\n" +
-    "Sistem hazır. Seni dinliyorum.",
-    "aura"
-);
-
-</script>
-
-<script>
-if ("serviceWorker" in navigator) {
-
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker.register(
-            "./service-worker.js"
-        );
-
-    });
-
-}
-</script>
-
-</body>
-</html>
+   
