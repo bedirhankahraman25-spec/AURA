@@ -1109,201 +1109,199 @@ addMessage(
     "Sistem hazır. Seni dinliyorum.",
     "aura"
 );
-      /* =========================
-   WEB ARAMA
-========================= */
-
-async function webSearch(query) {
-
-    try {
-
-        const searchQuery =
-            encodeURIComponent(query);
-
-        /*
-          DuckDuckGo'nun anlık cevap
-          API'sini kullanıyoruz.
-        */
-
-        const url =
-            "https://api.duckduckgo.com/?q=" +
-            searchQuery +
-            "&format=json&no_html=1&skip_disambig=1";
-
-
-        const response =
-            await fetch(url);
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Web araması başarısız"
-            );
-        }
-
-
-        const data =
-            await response.json();
-
-
-        let result = "";
-
-
-        if (
-            data.AbstractText
-        ) {
-
-            result =
-                data.AbstractText;
-
-        }
-
-        else if (
-            data.Answer
-        ) {
-
-            result =
-                data.Answer;
-
-        }
-
-        else if (
-            data.RelatedTopics &&
-            data.RelatedTopics.length > 0
-        ) {
-
-            const first =
-                data.RelatedTopics[0];
-
-
-            if (
-                first &&
-                first.Text
-            ) {
-
-                result =
-                    first.Text;
-            }
-        }
-
-
-        if (!result) {
-
-            return null;
-        }
-
-
-        return result;
-
     }
-
-    catch (error) {
-
-        console.error(
-            "WEB ARAMA HATASI:",
-            error
-        );
-
-        return null;
-    }
-}
-
-
-/* =========================
-   WEB ARAMA KOMUTU
-========================= */
-
-function isWebSearchCommand(text) {
-
-    const command =
-        text.toLowerCase();
-
-
-    return (
-
-        command.includes("internette ara") ||
-
-        command.includes("internetten ara") ||
-
-        command.includes("webde ara") ||
-
-        command.includes("web'de ara") ||
-
-        command.includes("internette araştır") ||
-
-        command.includes("internetten araştır") ||
-
-        command.includes("güncel bilgi") ||
-
-        command.includes("guncel bilgi") ||
-
-        command.startsWith("ara ")
-
-    );
-}
-
-
 /* =========================
    WEB ARAMALI AI
 ========================= */
 
 async function askAIWithWeb(text) {
 
-    const webResult =
-        await webSearch(text);
+    conversation.push({
+
+        role: "user",
+
+        content: text
+
+    });
 
 
-    if (!webResult) {
+    try {
 
-        return await askAI(
-            text +
-            "\n\nWeb araması yapılamadı. " +
-            "Elindeki bilgilerle cevap ver."
-        );
+        const response =
+            await puter.ai.chat(
+                conversation,
+                {
+                    model:
+                        "openai/gpt-5.3-chat",
+
+                    tools: [
+                        {
+                            type: "web_search"
+                        }
+                    ]
+                }
+            );
+
+
+        let answer = "";
+
+
+        if (
+            response &&
+            response.message &&
+            response.message.content
+        ) {
+
+            answer =
+                response.message.content;
+
+        }
+
+        else if (
+            response &&
+            response.text
+        ) {
+
+            answer =
+                response.text;
+
+        }
+
+        else if (
+            typeof response === "string"
+        ) {
+
+            answer =
+                response;
+
+        }
+
+        else {
+
+            answer =
+                "Web aramasından cevap alınamadı.";
+        }
+
+
+        conversation.push({
+
+            role: "assistant",
+
+            content: answer
+
+        });
+
+
+        return answer;
+
     }
 
+    catch (error) {
 
-    const webPrompt = `
-
-Kullanıcı şu soruyu sordu:
-
-${text}
-
-Web aramasından alınan bilgi:
-
-${webResult}
-
-Bu bilgiyi kullanarak kullanıcıya
-Türkçe ve doğal bir cevap ver.
-
-Web sonucunu aynen kopyalama.
-
-Gereksiz şekilde kullanıcıya adıyla
-hitap etme.
-
-Cevabı mümkün olduğunca anlaşılır tut.
-
-`;
+        console.error(
+            "WEB AI HATASI:",
+            error
+        );
 
 
-    return await askAI(
-        webPrompt
-    );
+        return "İnternet üzerinden bilgi alınırken bir sorun oluştu.";
+    }
 }
 
 
 /* =========================
-   SENDMESSAGE'İ GÜNCELLE
+   WEB ARAMASI GEREKLİ Mİ
 ========================= */
 
-const originalSendMessage =
-    sendMessage;
+function needsWebSearch(text) {
+
+    const command =
+        text.toLowerCase().trim();
 
 
-/*
-  Yeni gönderme sistemi.
-*/
+    const webWords = [
+
+        "internette ara",
+
+        "internetten ara",
+
+        "internette araştır",
+
+        "internetten araştır",
+
+        "webde ara",
+
+        "web'de ara",
+
+        "internetten bak",
+
+        "internete bak",
+
+        "güncel bilgi",
+
+        "guncel bilgi",
+
+        "son dakika",
+
+        "bugün",
+
+        "bugun",
+
+        "şu an",
+
+        "su an",
+
+        "şimdi",
+
+        "simdi",
+
+        "hava durumu",
+
+        "hava nasıl",
+
+        "hava nasil",
+
+        "haber",
+
+        "haberler",
+
+        "bugünkü",
+
+        "bugunku",
+
+        "en son",
+
+        "güncel",
+
+        "guncel",
+
+        "araştır",
+
+        "arastir"
+
+    ];
+
+
+    for (
+        const word of webWords
+    ) {
+
+        if (
+            command.includes(word)
+        ) {
+
+            return true;
+        }
+    }
+
+
+    return false;
+}
+
+
+/* =========================
+   GÜNCELLENMİŞ MESAJ SİSTEMİ
+========================= */
 
 sendMessage = async function(
     voiceMode = false
@@ -1314,6 +1312,7 @@ sendMessage = async function(
 
 
     if (!text) {
+
         return;
     }
 
@@ -1350,11 +1349,12 @@ sendMessage = async function(
 
 
         /*
-          WEB ARAMASI GEREKİYORSA
+          GÜNCEL BİLGİ GEREKİYORSA
+          WEB ARAMALI AI KULLAN
         */
 
         if (
-            isWebSearchCommand(text)
+            needsWebSearch(text)
         ) {
 
             reply =
@@ -1367,11 +1367,14 @@ sendMessage = async function(
         else {
 
             reply =
-                await askAI(text);
+                await askAI(
+                    text
+                );
         }
 
 
         if (loading) {
+
             loading.remove();
         }
 
@@ -1384,7 +1387,7 @@ sendMessage = async function(
 
         /*
           SADECE SESLİ KOMUTTA
-          SESLİ CEVAP
+          AURA SESLİ CEVAP VERİR
         */
 
         if (voiceMode) {
@@ -1392,17 +1395,19 @@ sendMessage = async function(
             speak(reply);
         }
 
+
     }
 
     catch (error) {
 
         console.error(
-            "AURA HATASI:",
+            "AURA GENEL HATASI:",
             error
         );
 
 
         if (loading) {
+
             loading.remove();
         }
 
@@ -1425,7 +1430,18 @@ sendMessage = async function(
 
 
 /* =========================
-   DOSYA KAPANIŞI
+   BAŞLANGIÇ MESAJI
+========================= */
+
+addMessage(
+    "Merhaba. Ben AURA AI.\n\n" +
+    "Sistem hazır. Seni dinliyorum.",
+    "aura"
+);
+
+
+/* =========================
+   HTML KAPANIŞI
 ========================= */
 
 </script>
