@@ -126,33 +126,11 @@
     const input = document.getElementById("input");
 
     function addMessage(text, type) {
-        function speak(text) {
-    const msg = new SpeechSynthesisUtterance(text);
-    msg.lang = "tr-TR";
-    msg.rate = 0.9;
-    msg.pitch = 1;
-    msg.volume = 1;
-
-    window.speechSynthesis.cancel();
-
-    setTimeout(() => {
-        window.speechSynthesis.speak(msg);
-    }, 100);
-        }
-    if ("speechSynthesis" in window) {
-        const voice = new SpeechSynthesisUtterance(text);
-        voice.lang = "tr-TR";
-        voice.rate = 1;
-        voice.pitch = 1;
-        speechSynthesis.cancel();
-        speechSynthesis.speak(voice);
-    }
-        }
-        const message = document.createElement("div");
-        message.className = "message " + type;
-        message.textContent = text;
-        chat.appendChild(message);
-        chat.scrollTop = chat.scrollHeight;
+    const message = document.createElement("div");
+    message.className = "message " + type;
+    message.textContent = text;
+    chat.appendChild(message);
+    chat.scrollTop = chat.scrollHeight;
     }
 
     function auraReply(text) {
