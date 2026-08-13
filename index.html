@@ -58,12 +58,13 @@ body {
 }
 
 /* ANA ALAN */
-.main {
-    height: calc(100vh - 65px);
+    .main {
+    height: calc(100dvh - 65px);
+    min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    }
 
 /* AURA ÇEKİRDEĞİ */
 .aura-core {
@@ -170,6 +171,7 @@ body {
 #chat {
     width: min(92%, 600px);
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
     padding: 10px 5px 15px;
     scrollbar-width: thin;
