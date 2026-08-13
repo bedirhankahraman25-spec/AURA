@@ -35,10 +35,9 @@ body {
         );
 }
 
-/* ÜST BAR */
-
 .top-bar {
     height: 60px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,7 +45,10 @@ body {
     padding: 0 18px;
 
     background: rgba(0,10,15,0.9);
-    border-bottom: 1px solid rgba(0,234,255,0.4);
+
+    border-bottom:
+        1px solid
+        rgba(0,234,255,0.4);
 }
 
 .logo {
@@ -67,6 +69,7 @@ body {
 
 .status::before {
     content: "";
+
     display: inline-block;
 
     width: 7px;
@@ -83,8 +86,6 @@ body {
         0 0 15px #55ffcc;
 }
 
-/* ANA ALAN */
-
 .main {
     height: calc(100vh - 60px);
     height: calc(100dvh - 60px);
@@ -95,8 +96,6 @@ body {
 
     min-height: 0;
 }
-
-/* AURA ÇEKİRDEĞİ */
 
 .aura-core {
     width: 210px;
@@ -113,14 +112,14 @@ body {
     flex-shrink: 0;
 }
 
-/* HALKALAR */
-
 .aura-ring {
     position: absolute;
 
     border-radius: 50%;
 
-    border: 1px solid #00eaff;
+    border:
+        1px solid
+        #00eaff;
 
     opacity: 0.7;
 }
@@ -132,7 +131,8 @@ body {
     border-left-color: transparent;
     border-right-color: transparent;
 
-    animation: rotate1 7s linear infinite;
+    animation:
+        rotate1 7s linear infinite;
 }
 
 .ring2 {
@@ -142,7 +142,8 @@ body {
     border-top-color: transparent;
     border-bottom-color: transparent;
 
-    animation: rotate2 10s linear infinite;
+    animation:
+        rotate2 10s linear infinite;
 }
 
 .ring3 {
@@ -152,10 +153,9 @@ body {
     border-left-color: transparent;
     border-bottom-color: transparent;
 
-    animation: rotate1 14s linear infinite;
+    animation:
+        rotate1 14s linear infinite;
 }
-
-/* MERKEZ */
 
 .aura-center {
     width: 100px;
@@ -163,7 +163,9 @@ body {
 
     border-radius: 50%;
 
-    border: 2px solid #00eaff;
+    border:
+        2px solid
+        #00eaff;
 
     display: flex;
     align-items: center;
@@ -188,12 +190,11 @@ body {
         0 0 45px rgba(0,234,255,0.7),
         inset 0 0 25px rgba(0,234,255,0.5);
 
-    animation: pulse 2.2s infinite ease-in-out;
+    animation:
+        pulse 2.2s infinite ease-in-out;
 
     z-index: 5;
 }
-
-/* ANİMASYONLAR */
 
 @keyframes rotate1 {
 
@@ -229,8 +230,6 @@ body {
     }
 }
 
-/* DURUM */
-
 .aura-status {
     margin-top: -8px;
     margin-bottom: 5px;
@@ -241,8 +240,6 @@ body {
     color: #8defff;
 }
 
-/* SOHBET */
-
 #chat {
     width: min(92%, 600px);
 
@@ -251,13 +248,15 @@ body {
 
     overflow-y: auto;
 
-    padding: 5px 5px 10px;
+    padding:
+        5px 5px 10px;
 }
 
 .message {
     max-width: 85%;
 
-    padding: 10px 13px;
+    padding:
+        10px 13px;
 
     margin-bottom: 10px;
 
@@ -271,22 +270,24 @@ body {
 }
 
 .aura {
-    background: rgba(0,35,45,0.8);
+    background:
+        rgba(0,35,45,0.8);
 
     margin-right: auto;
 
-    border: 1px solid rgba(0,234,255,0.25);
+    border:
+        1px solid
+        rgba(0,234,255,0.25);
 }
 
 .user {
-    background: rgba(0,90,120,0.8);
+    background:
+        rgba(0,90,120,0.8);
 
     margin-left: auto;
 
     color: white;
 }
-
-/* ALT PANEL */
 
 #bottom {
     width: 100%;
@@ -300,14 +301,15 @@ body {
 
     padding: 10px;
 
-    background: rgba(0,10,15,0.97);
+    background:
+        rgba(0,10,15,0.97);
 
-    border-top: 1px solid rgba(0,234,255,0.45);
+    border-top:
+        1px solid
+        rgba(0,234,255,0.45);
 
     z-index: 10;
 }
-
-/* YAZI KUTUSU */
 
 #input {
     flex: 1;
@@ -320,11 +322,14 @@ body {
 
     border-radius: 8px;
 
-    border: 1px solid rgba(0,234,255,0.5);
+    border:
+        1px solid
+        rgba(0,234,255,0.5);
 
     outline: none;
 
-    background: rgba(0,25,32,0.95);
+    background:
+        rgba(0,25,32,0.95);
 
     color: #00eaff;
 
@@ -335,18 +340,19 @@ body {
     color: #548995;
 }
 
-/* BUTONLAR */
-
 button {
     height: 45px;
 
-    border: 1px solid #00eaff;
+    border:
+        1px solid
+        #00eaff;
 
     border-radius: 8px;
 
     padding: 0 14px;
 
-    background: rgba(0,60,75,0.9);
+    background:
+        rgba(0,60,75,0.9);
 
     color: #00eaff;
 
@@ -365,15 +371,16 @@ button:disabled {
 
 .mic-button {
     width: 45px;
+
     padding: 0;
+
     font-size: 20px;
 }
-
-/* TELEFON */
 
 @media (max-width: 500px) {
 
     .aura-core {
+
         transform: scale(0.82);
 
         margin-top: 0;
@@ -426,7 +433,7 @@ button:disabled {
 
 
     <div class="aura-status">
-        AI SYSTEM READY
+        AI MEMORY SYSTEM READY
     </div>
 
 
@@ -465,6 +472,12 @@ button:disabled {
 
 <script>
 
+/* =====================================================
+   AURA SÜRÜM 3
+   KALICI HAFIZA SİSTEMİ
+===================================================== */
+
+
 /* ELEMENTLER */
 
 const chat =
@@ -480,7 +493,473 @@ const micButton =
     document.getElementById("micButton");
 
 
-/* KONUŞMA HAFIZASI */
+/* =====================================================
+   HAFIZA
+===================================================== */
+
+const MEMORY_KEY =
+    "AURA_MEMORY_V3";
+
+
+function loadMemory() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(MEMORY_KEY);
+
+        if (!saved) {
+
+            return {
+                notes: [],
+                facts: [],
+                preferences: []
+            };
+        }
+
+        const memory =
+            JSON.parse(saved);
+
+        return {
+
+            notes:
+                Array.isArray(memory.notes)
+                    ? memory.notes
+                    : [],
+
+            facts:
+                Array.isArray(memory.facts)
+                    ? memory.facts
+                    : [],
+
+            preferences:
+                Array.isArray(memory.preferences)
+                    ? memory.preferences
+                    : []
+        };
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Hafıza okunamadı:",
+            error
+        );
+
+        return {
+            notes: [],
+            facts: [],
+            preferences: []
+        };
+    }
+}
+
+
+let auraMemory =
+    loadMemory();
+
+
+function saveMemory() {
+
+    try {
+
+        localStorage.setItem(
+            MEMORY_KEY,
+            JSON.stringify(auraMemory)
+        );
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Hafıza kaydedilemedi:",
+            error
+        );
+
+        return false;
+    }
+}
+
+
+/* =====================================================
+   HAFIZA YARDIMCILARI
+===================================================== */
+
+function addNote(note) {
+
+    auraMemory.notes.push({
+        id: Date.now(),
+        text: note,
+        date:
+            new Date().toLocaleString("tr-TR")
+    });
+
+    saveMemory();
+}
+
+
+function addFact(fact) {
+
+    auraMemory.facts.push({
+        id: Date.now(),
+        text: fact,
+        date:
+            new Date().toLocaleString("tr-TR")
+    });
+
+    saveMemory();
+}
+
+
+function addPreference(preference) {
+
+    auraMemory.preferences.push({
+        id: Date.now(),
+        text: preference,
+        date:
+            new Date().toLocaleString("tr-TR")
+    });
+
+    saveMemory();
+}
+
+
+function clearMemory() {
+
+    auraMemory = {
+        notes: [],
+        facts: [],
+        preferences: []
+    };
+
+    saveMemory();
+}
+
+
+function memoryText() {
+
+    let result =
+        "AURA hafızasındaki bilgiler:\n\n";
+
+
+    if (
+        auraMemory.facts.length === 0 &&
+        auraMemory.preferences.length === 0 &&
+        auraMemory.notes.length === 0
+    ) {
+
+        return result +
+            "Henüz kayıtlı bilgi yok.";
+    }
+
+
+    if (auraMemory.facts.length > 0) {
+
+        result +=
+            "KAYITLI BİLGİLER:\n";
+
+        auraMemory.facts.forEach(
+            function(item, index) {
+
+                result +=
+                    (index + 1) +
+                    ". " +
+                    item.text +
+                    "\n";
+            }
+        );
+
+        result += "\n";
+    }
+
+
+    if (auraMemory.preferences.length > 0) {
+
+        result +=
+            "TERCİHLER:\n";
+
+        auraMemory.preferences.forEach(
+            function(item, index) {
+
+                result +=
+                    (index + 1) +
+                    ". " +
+                    item.text +
+                    "\n";
+            }
+        );
+
+        result += "\n";
+    }
+
+
+    if (auraMemory.notes.length > 0) {
+
+        result +=
+            "NOTLAR:\n";
+
+        auraMemory.notes.forEach(
+            function(item, index) {
+
+                result +=
+                    (index + 1) +
+                    ". " +
+                    item.text +
+                    "\n";
+            }
+        );
+    }
+
+
+    return result.trim();
+}
+
+
+/* =====================================================
+   HAFIZA KOMUTLARI
+===================================================== */
+
+function handleMemoryCommand(text) {
+
+    const command =
+        text.toLowerCase().trim();
+
+
+    /* NOT KAYDET */
+
+    const notePatterns = [
+        "not al",
+        "not kaydet",
+        "bunu not al",
+        "bunu kaydet",
+        "hafızana kaydet",
+        "hafizana kaydet"
+    ];
+
+
+    for (
+        const pattern of notePatterns
+    ) {
+
+        if (
+            command.startsWith(pattern)
+        ) {
+
+            let note =
+                text.substring(
+                    pattern.length
+                ).trim();
+
+            if (
+                note.startsWith(":")
+            ) {
+
+                note =
+                    note.substring(1).trim();
+            }
+
+
+            if (!note) {
+
+                return {
+                    handled: true,
+                    response:
+                        "Ne not almamı istediğini söyle."
+                };
+            }
+
+
+            addNote(note);
+
+            return {
+                handled: true,
+                response:
+                    "Tamam. Bunu hafızama kaydettim."
+            };
+        }
+    }
+
+
+    /* BİLGİ ÖĞRET */
+
+    const learnPatterns = [
+        "bunu hatırla",
+        "bunu hafızana al",
+        "bunu hafızanda tut",
+        "bunu unutma"
+    ];
+
+
+    for (
+        const pattern of learnPatterns
+    ) {
+
+        if (
+            command.startsWith(pattern)
+        ) {
+
+            let fact =
+                text.substring(
+                    pattern.length
+                ).trim();
+
+            if (
+                fact.startsWith(":")
+            ) {
+
+                fact =
+                    fact.substring(1).trim();
+            }
+
+
+            if (!fact) {
+
+                return {
+                    handled: true,
+                    response:
+                        "Hatırlamamı istediğin bilgiyi söyle."
+                };
+            }
+
+
+            addFact(fact);
+
+            return {
+                handled: true,
+                response:
+                    "Tamam. Bunu hatırlayacağım."
+            };
+        }
+    }
+
+
+    /* TERCİH KAYDET */
+
+    const preferencePatterns = [
+        "tercihim",
+        "tercihimi hatırla",
+        "şunu seviyorum",
+        "sunu seviyorum",
+        "şunu sevmiyorum",
+        "sunu sevmiyorum"
+    ];
+
+
+    for (
+        const pattern of preferencePatterns
+    ) {
+
+        if (
+            command.startsWith(pattern)
+        ) {
+
+            let preference =
+                text.substring(
+                    pattern.length
+                ).trim();
+
+            if (
+                preference.startsWith(":")
+            ) {
+
+                preference =
+                    preference.substring(1).trim();
+            }
+
+
+            if (!preference) {
+
+                return {
+                    handled: true,
+                    response:
+                        "Hangi tercihini hatırlamamı istediğini söyle."
+                };
+            }
+
+
+            addPreference(preference);
+
+            return {
+                handled: true,
+                response:
+                    "Tamam. Bu tercihini hafızama ekledim."
+            };
+        }
+    }
+
+
+    /* HAFIZAYI GÖSTER */
+
+    if (
+        command === "hafızamda ne var" ||
+        command === "hafizamda ne var" ||
+        command === "neyi hatırlıyorsun" ||
+        command === "neyi hatirliyorsun" ||
+        command === "hafızanı göster" ||
+        command === "hafizani goster"
+    ) {
+
+        return {
+            handled: true,
+            response:
+                memoryText()
+        };
+    }
+
+
+    /* HAFIZAYI TEMİZLE */
+
+    if (
+        command === "hafızanı temizle" ||
+        command === "hafizani temizle" ||
+        command === "tüm hafızanı sil" ||
+        command === "tum hafizani sil"
+    ) {
+
+        clearMemory();
+
+        return {
+            handled: true,
+            response:
+                "Tamam. Kayıtlı hafızam temizlendi."
+        };
+    }
+
+
+    /* NOTLARI SİL */
+
+    if (
+        command === "notlarımı sil" ||
+        command === "notlarimi sil" ||
+        command === "tüm notları sil" ||
+        command === "tum notlari sil"
+    ) {
+
+        auraMemory.notes = [];
+
+        saveMemory();
+
+        return {
+            handled: true,
+            response:
+                "Kayıtlı notlarımı sildim."
+        };
+    }
+
+
+    return {
+        handled: false
+    };
+}
+
+
+/* =====================================================
+   AI KONUŞMA HAFIZASI
+===================================================== */
 
 const conversation = [
 
@@ -496,13 +975,13 @@ Kullanıcının adı Bedirhan Kahraman.
 
 Kullanıcının sevgilisinin adı Edanur Kahraman.
 
-İlk karşılamada kullanıcıya yalnızca Bedirhan diye hitap edebilirsin.
+İlk karşılamada kullanıcıya Bedirhan diye hitap edebilirsin.
 
-Sonraki cevaplarda kullanıcıya ismiyle hitap etmek zorunda değilsin.
+Sonraki cevaplarda kullanıcının adını gereksiz yere tekrar etme.
 
 Her cevapta Bedirhan veya Bedirhan Kahraman diye hitap etme.
 
-Kullanıcı özellikle ismini sormadıkça ismini gereksiz yere tekrar etme.
+Kullanıcı özellikle ismini sormadıkça ismini tekrar etme.
 
 Doğal, kısa ve anlaşılır cevaplar ver.
 
@@ -514,60 +993,77 @@ Kendini AURA olarak tanıt.
 
 Kullanıcı "ben kimim" diye sorarsa Bedirhan Kahraman olduğunu söyle.
 
-Kullanıcı "sevgilimin adı ne" diye sorarsa Edanur Kahraman olduğunu söyle.`
+Kullanıcı "sevgilimin adı ne" diye sorarsa Edanur Kahraman olduğunu söyle.
+
+Kullanıcının aşağıdaki hafızasını gerektiğinde kullan:
+
+${memoryText()}`
     }
 
 ];
 
 
-/* MESAJ EKLE */
+/* =====================================================
+   HAFIZAYI AI'YA GÜNCELLE
+===================================================== */
 
-function addMessage(text, type) {
+function updateAISystemMemory() {
 
-    const message =
-        document.createElement("div");
+    conversation[0].content =
+        `Sen AURA adında kişisel bir yapay zekâ asistanısın.
 
-    message.className =
-        "message " + type;
+Kullanıcı Türkçe konuşuyor.
 
-    message.textContent =
-        text;
+Kullanıcının adı Bedirhan Kahraman.
 
-    chat.appendChild(message);
+Kullanıcının sevgilisinin adı Edanur Kahraman.
 
-    chat.scrollTop =
-        chat.scrollHeight;
+İlk karşılamada kullanıcıya Bedirhan diye hitap edebilirsin.
+
+Sonraki cevaplarda kullanıcının adını gereksiz yere tekrar etme.
+
+Her cevapta Bedirhan veya Bedirhan Kahraman diye hitap etme.
+
+Doğal, kısa ve anlaşılır cevaplar ver.
+
+Gereksiz tekrar yapma.
+
+Bilmediğin bir şeyi biliyormuş gibi uydurma.
+
+Kendini AURA olarak tanıt.
+
+Kullanıcı "ben kimim" diye sorarsa Bedirhan Kahraman olduğunu söyle.
+
+Kullanıcı "sevgilimin adı ne" diye sorarsa Edanur Kahraman olduğunu söyle.
+
+Kullanıcının kalıcı hafızası:
+
+${memoryText()}`;
 }
 
 
-/* SES İÇİN TEMİZLEME */
+/* =====================================================
+   SES İÇİN TEMİZLE
+===================================================== */
 
 function cleanTextForSpeech(text) {
 
     return text
-
-        /* Emojileri temizle */
 
         .replace(
             /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
             ""
         )
 
-        /* URL'leri temizle */
-
         .replace(
             /https?:\/\/\S+/gi,
             ""
         )
 
-        /* Noktalama işaretlerini temizle */
-
         .replace(
             /[.,!?;:"'“”‘’()[\]{}<>…:;\/\\|@#$%^&*_+=~`-]/g,
             " "
         )
-
-        /* Fazla boşlukları temizle */
 
         .replace(
             /\s+/g,
@@ -578,23 +1074,33 @@ function cleanTextForSpeech(text) {
 }
 
 
-/* SESLİ CEVAP */
+/* =====================================================
+   SES
+===================================================== */
 
 function speak(text) {
 
-    if (!("speechSynthesis" in window)) {
+    if (
+        !("speechSynthesis" in window)
+    ) {
         return;
     }
 
+
     const cleanText =
         cleanTextForSpeech(text);
+
 
     if (!cleanText) {
         return;
     }
 
+
     const message =
-        new SpeechSynthesisUtterance(cleanText);
+        new SpeechSynthesisUtterance(
+            cleanText
+        );
+
 
     message.lang =
         "tr-TR";
@@ -608,24 +1114,39 @@ function speak(text) {
     message.volume =
         1;
 
+
     window.speechSynthesis.cancel();
 
-    setTimeout(function() {
 
-        window.speechSynthesis.speak(message);
+    setTimeout(
+        function() {
 
-    }, 100);
+            window.speechSynthesis.speak(
+                message
+            );
+
+        },
+        100
+    );
 }
 
 
-/* GERÇEK AI */
+/* =====================================================
+   GERÇEK AI
+===================================================== */
 
 async function askAI(text) {
 
+    updateAISystemMemory();
+
+
     conversation.push({
+
         role: "user",
+
         content: text
     });
+
 
     try {
 
@@ -633,11 +1154,14 @@ async function askAI(text) {
             await puter.ai.chat(
                 conversation,
                 {
-                    model: "gpt-5.4-nano"
+                    model:
+                        "gpt-5.4-nano"
                 }
             );
 
+
         let answer = "";
+
 
         if (
             response &&
@@ -648,7 +1172,9 @@ async function askAI(text) {
             answer =
                 response.message.content;
 
-        } else if (
+        }
+
+        else if (
             response &&
             response.text
         ) {
@@ -656,23 +1182,31 @@ async function askAI(text) {
             answer =
                 response.text;
 
-        } else if (
+        }
+
+        else if (
             typeof response === "string"
         ) {
 
             answer =
                 response;
 
-        } else {
+        }
+
+        else {
 
             answer =
                 String(response);
         }
 
+
         conversation.push({
+
             role: "assistant",
+
             content: answer
         });
+
 
         return answer;
 
@@ -685,237 +1219,46 @@ async function askAI(text) {
             error
         );
 
-        return "AI bağlantısında bir sorun oluştu. Biraz sonra tekrar deneyelim.";
+
+        return:
+        "AI bağlantısında bir sorun oluştu. Biraz sonra tekrar deneyelim.";
     }
 }
 
 
-/* MESAJ GÖNDER */
+/* =====================================================
+   MESAJ GÖNDER
+===================================================== */
 
-async function sendMessage(voiceMode = false) {
+async function sendMessage(
+    voiceMode = false
+) {
 
     const text =
         input.value.trim();
 
+
     if (!text) {
         return;
     }
+
 
     addMessage(
         text,
         "user"
     );
 
+
     input.value = "";
 
-    sendButton.disabled =
-        true;
 
-    micButton.disabled =
-        true;
+    /*
+     * ÖNCE HAFIZA KOMUTLARINI KONTROL ET
+     */
 
-    addMessage(
-        "Düşünüyorum...",
-        "aura"
-    );
+    const memoryResult =
+        handleMemoryCommand(text);
 
-    const loadingMessage =
-        chat.lastElementChild;
 
-    try {
-
-        const reply =
-            await askAI(text);
-
-        if (loadingMessage) {
-            loadingMessage.remove();
-        }
-
-        addMessage(
-            reply,
-            "aura"
-        );
-
-        /*
-         * SADECE SESLİ KOMUTTA
-         * AURA KONUŞUR
-         */
-
-        if (voiceMode) {
-            speak(reply);
-        }
-
-    }
-
-    catch (error) {
-
-        if (loadingMessage) {
-            loadingMessage.remove();
-        }
-
-        addMessage(
-            "Bir hata oluştu. Tekrar deneyebiliriz.",
-            "aura"
-        );
-    }
-
-    sendButton.disabled =
-        false;
-
-    micButton.disabled =
-        false;
-
-    input.focus();
-}
-
-
-/* GÖNDER BUTONU */
-
-sendButton.addEventListener(
-    "click",
-    function() {
-
-        sendMessage(false);
-
-    }
-);
-
-
-/* ENTER */
-
-input.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Enter") {
-
-            event.preventDefault();
-
-            sendMessage(false);
-        }
-    }
-);
-
-
-/* SESLİ KOMUT */
-
-function startListening() {
-
-    const SpeechRecognition =
-        window.SpeechRecognition ||
-        window.webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-
-        addMessage(
-            "Bu tarayıcı sesli komutu desteklemiyor.",
-            "aura"
-        );
-
-        return;
-    }
-
-    const recognition =
-        new SpeechRecognition();
-
-    recognition.lang =
-        "tr-TR";
-
-    recognition.continuous =
-        false;
-
-    recognition.interimResults =
-        false;
-
-    recognition.onstart =
-        function() {
-
-            micButton.disabled =
-                true;
-
-            addMessage(
-                "Dinliyorum...",
-                "aura"
-            );
-        };
-
-    recognition.onresult =
-        function(event) {
-
-            const text =
-                event.results[0][0].transcript;
-
-            input.value =
-                text;
-
-            /*
-             * SESLİ KOMUTTAN GELDİĞİ İÇİN
-             * voiceMode = true
-             */
-
-            sendMessage(true);
-        };
-
-    recognition.onerror =
-        function(event) {
-
-            console.error(
-                "Mikrofon hatası:",
-                event.error
-            );
-
-            addMessage(
-                "Sesli komut alınamadı.",
-                "aura"
-            );
-
-            micButton.disabled =
-                false;
-        };
-
-    recognition.onend =
-        function() {
-
-            micButton.disabled =
-                false;
-        };
-
-    try {
-
-        recognition.start();
-
-    }
-
-    catch (error) {
-
-        micButton.disabled =
-            false;
-
-        addMessage(
-            "Mikrofon başlatılamadı.",
-            "aura"
-        );
-    }
-}
-
-
-/* MİKROFON BUTONU */
-
-micButton.addEventListener(
-    "click",
-    startListening
-);
-
-
-/* BAŞLANGIÇ */
-
-addMessage(
-    "Merhaba Bedirhan. Ben AURA AI.\n\n" +
-    "Sistem hazır. Seni dinliyorum.",
-    "aura"
-);
-
-</script>
-
-</body>
-</html>
+    if (
+        memoryResult.h
