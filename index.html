@@ -314,11 +314,9 @@ const sendButton=document.getElementById("sendButton");
 const micButton=document.getElementById("micButton");
 
 
-/* =========================
-   HAFIZA
-========================= */
+/* HAFIZA */
 
-const MEMORY_KEY="AURA_MEMORY_V4";
+const MEMORY_KEY="AURA_MEMORY_V5";
 
 function emptyMemory(){
     return {
@@ -458,27 +456,7 @@ function memoryText(){
 }
 
 
-/* =========================
-   MESAJ
-========================= */
-
-function addMessage(text,type){
-
-    const message=document.createElement("div");
-
-    message.className="message "+type;
-
-    message.textContent=text;
-
-    chat.appendChild(message);
-
-    chat.scrollTop=chat.scrollHeight;
-}
-
-
-/* =========================
-   HAFIZA KOMUTLARI
-========================= */
+/* HAFIZA KOMUTLARI */
 
 function handleMemoryCommand(text){
 
@@ -559,6 +537,44 @@ function handleMemoryCommand(text){
     }
 
 
+    const preferencePatterns=[
+        "tercihim ",
+        "tercihimi hatırla ",
+        "şunu seviyorum ",
+        "sunu seviyorum ",
+        "şunu sevmiyorum ",
+        "sunu sevmiyorum "
+    ];
+
+
+    for(const pattern of preferencePatterns){
+
+        if(command.startsWith(pattern)){
+
+            let value=text.substring(pattern.length).trim();
+
+            if(value.startsWith(":")){
+                value=value.substring(1).trim();
+            }
+
+            if(!value){
+
+                return{
+                    handled:true,
+                    response:"Hangi tercihini hatırlamamı istediğini söyle."
+                };
+            }
+
+            addPreference(value);
+
+            return{
+                handled:true,
+                response:"Tamam. Bu tercihini hafızama ekledim."
+            };
+        }
+    }
+
+
     if(
         command==="hafızamda ne var" ||
         command==="hafizamda ne var" ||
@@ -594,9 +610,7 @@ function handleMemoryCommand(text){
     return{
         handled:false
     };
-    }/* =========================
-   AI SİSTEMİ
-========================= */
+}/* AI SİSTEMİ */
 
 const conversation=[
     {
@@ -615,11 +629,22 @@ Türkçe konuş.
 
 Kullanıcının adı Bedirhan Kahraman.
 
-İlk karşılamada Bedirhan diyebilirsin.
+ÇOK ÖNEMLİ:
+Kullanıcıya normal konuşmalarda ismiyle hitap etme.
 
-Her mesajda kullanıcının adını tekrar etme.
+"Bedirhan" veya "Bedirhan Kahraman" ifadelerini kendiliğinden kullanma.
 
-Kısa ve doğal cevaplar ver.
+Her cevabın başında kullanıcıya ismiyle seslenme.
+
+Kullanıcının adını yalnızca kullanıcı özellikle adını sorarsa kullan.
+
+Kullanıcı "ben kimim" derse "Sen Bedirhan Kahraman'sın." diyebilirsin.
+
+Kullanıcı "adım ne" veya "benim adım ne" derse adının Bedirhan Kahraman olduğunu söyle.
+
+Bunun dışındaki konuşmalarda kullanıcıya isimle hitap etme.
+
+Kısa, doğal ve anlaşılır cevaplar ver.
 
 Gereksiz tekrar yapma.
 
@@ -627,17 +652,13 @@ Bilmediğin bilgiyi uydurma.
 
 Kendini AURA olarak tanıt.
 
-Kullanıcı "ben kimim" diye sorarsa Bedirhan Kahraman olduğunu söyle.
-
 Kalıcı hafıza:
 
 ${memoryText()}`;
 }
 
 
-/* =========================
-   SES METNİ TEMİZLEME
-========================= */
+/* SES METNİ TEMİZLEME */
 
 function cleanTextForSpeech(text){
 
@@ -667,9 +688,7 @@ function cleanTextForSpeech(text){
 }
 
 
-/* =========================
-   KONUŞ
-========================= */
+/* SESLİ CEVAP */
 
 function speak(text){
 
@@ -697,9 +716,7 @@ function speak(text){
 }
 
 
-/* =========================
-   AI CEVABI
-========================= */
+/* AI */
 
 async function askAI(text){
 
@@ -773,9 +790,7 @@ async function askAI(text){
 }
 
 
-/* =========================
-   MESAJ GÖNDER
-========================= */
+/* MESAJ GÖNDER */
 
 async function sendMessage(voiceMode=false){
 
@@ -790,8 +805,6 @@ async function sendMessage(voiceMode=false){
 
     input.value="";
 
-
-    /* HAFIZA KOMUTU */
 
     const memoryResult=
         handleMemoryCommand(text);
@@ -843,8 +856,6 @@ async function sendMessage(voiceMode=false){
         );
 
 
-        /* SADECE SESLİ KOMUTTA */
-
         if(voiceMode){
             speak(reply);
         }
@@ -869,23 +880,17 @@ async function sendMessage(voiceMode=false){
 
         input.focus();
     }
-}/* =========================
-   GÖNDER BUTONU
-========================= */
+}/* GÖNDER BUTONU */
 
 sendButton.addEventListener(
     "click",
     function(){
-
         sendMessage(false);
-
     }
 );
 
 
-/* =========================
-   ENTER
-========================= */
+/* ENTER */
 
 input.addEventListener(
     "keydown",
@@ -897,14 +902,11 @@ input.addEventListener(
 
             sendMessage(false);
         }
-
     }
 );
 
 
-/* =========================
-   SESLİ KOMUT
-========================= */
+/* SESLİ KOMUT */
 
 function startListening(){
 
@@ -929,9 +931,7 @@ function startListening(){
 
 
     recognition.lang="tr-TR";
-
     recognition.continuous=false;
-
     recognition.interimResults=false;
 
 
@@ -952,11 +952,7 @@ function startListening(){
         const text=
             event.results[0][0].transcript;
 
-
         input.value=text;
-
-
-        /* SESLİ MOD TRUE */
 
         sendMessage(true);
     };
@@ -969,9 +965,7 @@ function startListening(){
             event
         );
 
-
         micButton.disabled=false;
-
 
         addMessage(
             "Sesli komut alınamadı.",
@@ -1002,23 +996,37 @@ function startListening(){
 }
 
 
-/* =========================
-   MİKROFON
-========================= */
+/* MİKROFON BUTONU */
 
 micButton.addEventListener(
     "click",
     function(){
-
         startListening();
-
     }
 );
 
 
-/* =========================
-   BAŞLANGIÇ
-========================= */
+/* MESAJ EKLEME */
+
+function addMessage(text,type){
+
+    const message=
+        document.createElement("div");
+
+    message.className=
+        "message "+type;
+
+    message.textContent=
+        text;
+
+    chat.appendChild(message);
+
+    chat.scrollTop=
+        chat.scrollHeight;
+}
+
+
+/* BAŞLANGIÇ MESAJI */
 
 addMessage(
     "Merhaba Bedirhan. Ben AURA AI.\n\nSistem hazır. Seni dinliyorum.",
