@@ -745,7 +745,172 @@ async function askAI(text) {
 
         else {
 
-        /* =========================
+            answer =
+                "AURA cevap oluşturamadı.";
+        }
+
+
+        conversation.push({
+
+            role: "assistant",
+
+            content: answer
+
+        });
+
+
+        return answer;
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "AURA AI HATASI:",
+            error
+        );
+
+
+        return "AI bağlantısında bir sorun oluştu.";
+    }
+}
+
+
+/* =========================
+   MESAJ GÖNDER
+========================= */
+
+async function sendMessage(
+    voiceMode = false
+) {
+
+    const text =
+        input.value.trim();
+
+
+    if (!text) {
+        return;
+    }
+
+
+    addMessage(
+        text,
+        "user"
+    );
+
+
+    input.value = "";
+
+
+    sendButton.disabled =
+        true;
+
+    micButton.disabled =
+        true;
+
+
+    addMessage(
+        "Düşünüyorum...",
+        "aura"
+    );
+
+
+    const loading =
+        chat.lastElementChild;
+
+
+    try {
+
+        const reply =
+            await askAI(text);
+
+
+        if (loading) {
+            loading.remove();
+        }
+
+
+        addMessage(
+            reply,
+            "aura"
+        );
+
+
+        /*
+
+        SADECE MİKROFONLA
+        KONUŞULDUĞUNDA
+        SESLİ CEVAP VER
+
+        */
+
+        if (voiceMode) {
+
+            speak(reply);
+        }
+
+
+    }
+
+    catch (error) {
+
+        if (loading) {
+            loading.remove();
+        }
+
+
+        addMessage(
+            "Bir hata oluştu.",
+            "aura"
+        );
+    }
+
+
+    sendButton.disabled =
+        false;
+
+    micButton.disabled =
+        false;
+
+    input.focus();
+}
+
+
+/* =========================
+   GÖNDER BUTONU
+========================= */
+
+sendButton.addEventListener(
+    "click",
+    function() {
+
+        sendMessage(false);
+
+    }
+);
+
+
+/* =========================
+   ENTER
+========================= */
+
+input.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            sendMessage(false);
+        }
+
+    }
+);
+     /* =========================
    SESLİ KOMUT SİSTEMİ
 ========================= */
 
@@ -905,8 +1070,46 @@ micButton.addEventListener(
 
         catch (error) {
 
-            console
-            /* =========================
+            console.error(
+                "Mikrofon başlatılamadı:",
+                error
+            );
+        }
+
+    }
+);
+
+
+/* =========================
+   AURA UYANMA KONTROLÜ
+========================= */
+
+function containsAuraWakeWord(text) {
+
+    const command =
+        text
+        .toLowerCase()
+        .trim();
+
+
+    return (
+        command === "aura" ||
+        command.startsWith("aura ") ||
+        command.includes(" aura ")
+    );
+}
+
+
+/* =========================
+   BAŞLANGIÇ MESAJI
+========================= */
+
+addMessage(
+    "Merhaba. Ben AURA AI.\n\n" +
+    "Sistem hazır. Seni dinliyorum.",
+    "aura"
+);
+      /* =========================
    WEB ARAMA
 ========================= */
 
