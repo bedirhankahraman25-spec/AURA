@@ -109,8 +109,16 @@
 <div id="chat"></div>
 
 <div id="bottom">
-    <input id="input" type="text" placeholder="AURA'ya bir şey sor..." autocomplete="off">
-    <button onclick="sendMessage()">Gönder</button>
+    <div style="display:flex; gap:8px; flex:1;">
+    <input id="input" type="text"
+           placeholder="AURA'ya bir şey sor..."
+           autocomplete="off"
+           style="flex:1;">
+
+    <button onclick="startListening()">🎤</button>
+</div>
+
+<button onclick="sendMessage()">Gönder</button>
 </div>
 
 <script>
