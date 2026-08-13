@@ -501,10 +501,13 @@ function auraReply(text) {
 
     // ŞAKA
     if (
-        command.includes("şaka") ||
-        command.includes("saka") ||
-        command.includes("beni güldür")
-    ) {
+    command.includes("şaka") ||
+    command.includes("saka") ||
+    command.includes("güldür") ||
+    command.includes("guldur") ||
+    command.includes("beni güldür") ||
+    command.includes("beni guldur")
+) {
         const jokes = [
             "Programcı neden kahve içer? Çünkü bug'ları ayıklaması gerekiyor.",
             "Bilgisayar neden doktora gitmiş? Virüsü varmış.",
