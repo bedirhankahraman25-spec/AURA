@@ -39,7 +39,6 @@ body {
 
 .top-bar {
     height: 60px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -47,16 +46,12 @@ body {
     padding: 0 18px;
 
     background: rgba(0,10,15,0.9);
-
-    border-bottom:
-        1px solid
-        rgba(0,234,255,0.4);
+    border-bottom: 1px solid rgba(0,234,255,0.4);
 }
 
 .logo {
     font-size: 21px;
     font-weight: bold;
-
     letter-spacing: 4px;
 
     text-shadow:
@@ -66,15 +61,12 @@ body {
 
 .status {
     font-size: 11px;
-
     letter-spacing: 2px;
-
     color: #55ffcc;
 }
 
 .status::before {
     content: "";
-
     display: inline-block;
 
     width: 7px;
@@ -140,8 +132,7 @@ body {
     border-left-color: transparent;
     border-right-color: transparent;
 
-    animation:
-        rotate1 7s linear infinite;
+    animation: rotate1 7s linear infinite;
 }
 
 .ring2 {
@@ -151,8 +142,7 @@ body {
     border-top-color: transparent;
     border-bottom-color: transparent;
 
-    animation:
-        rotate2 10s linear infinite;
+    animation: rotate2 10s linear infinite;
 }
 
 .ring3 {
@@ -162,8 +152,7 @@ body {
     border-left-color: transparent;
     border-bottom-color: transparent;
 
-    animation:
-        rotate1 14s linear infinite;
+    animation: rotate1 14s linear infinite;
 }
 
 /* MERKEZ */
@@ -174,9 +163,7 @@ body {
 
     border-radius: 50%;
 
-    border:
-        2px solid
-        #00eaff;
+    border: 2px solid #00eaff;
 
     display: flex;
     align-items: center;
@@ -201,8 +188,7 @@ body {
         0 0 45px rgba(0,234,255,0.7),
         inset 0 0 25px rgba(0,234,255,0.5);
 
-    animation:
-        pulse 2.2s infinite ease-in-out;
+    animation: pulse 2.2s infinite ease-in-out;
 
     z-index: 5;
 }
@@ -250,7 +236,6 @@ body {
     margin-bottom: 5px;
 
     font-size: 10px;
-
     letter-spacing: 3px;
 
     color: #8defff;
@@ -286,19 +271,15 @@ body {
 }
 
 .aura {
-    background:
-        rgba(0,35,45,0.8);
+    background: rgba(0,35,45,0.8);
 
     margin-right: auto;
 
-    border:
-        1px solid
-        rgba(0,234,255,0.25);
+    border: 1px solid rgba(0,234,255,0.25);
 }
 
 .user {
-    background:
-        rgba(0,90,120,0.8);
+    background: rgba(0,90,120,0.8);
 
     margin-left: auto;
 
@@ -313,19 +294,15 @@ body {
     min-height: 65px;
 
     display: flex;
-
     align-items: center;
 
     gap: 8px;
 
     padding: 10px;
 
-    background:
-        rgba(0,10,15,0.97);
+    background: rgba(0,10,15,0.97);
 
-    border-top:
-        1px solid
-        rgba(0,234,255,0.45);
+    border-top: 1px solid rgba(0,234,255,0.45);
 
     z-index: 10;
 }
@@ -343,14 +320,11 @@ body {
 
     border-radius: 8px;
 
-    border:
-        1px solid
-        rgba(0,234,255,0.5);
+    border: 1px solid rgba(0,234,255,0.5);
 
     outline: none;
 
-    background:
-        rgba(0,25,32,0.95);
+    background: rgba(0,25,32,0.95);
 
     color: #00eaff;
 
@@ -366,16 +340,13 @@ body {
 button {
     height: 45px;
 
-    border:
-        1px solid
-        #00eaff;
+    border: 1px solid #00eaff;
 
     border-radius: 8px;
 
     padding: 0 14px;
 
-    background:
-        rgba(0,60,75,0.9);
+    background: rgba(0,60,75,0.9);
 
     color: #00eaff;
 
@@ -394,9 +365,7 @@ button:disabled {
 
 .mic-button {
     width: 45px;
-
     padding: 0;
-
     font-size: 20px;
 }
 
@@ -426,8 +395,6 @@ button:disabled {
 
 <body>
 
-<!-- ÜST BAR -->
-
 <div class="top-bar">
 
     <div class="logo">
@@ -441,11 +408,7 @@ button:disabled {
 </div>
 
 
-<!-- ANA ALAN -->
-
 <div class="main">
-
-    <!-- AURA ÇEKİRDEĞİ -->
 
     <div class="aura-core">
 
@@ -467,12 +430,8 @@ button:disabled {
     </div>
 
 
-    <!-- SOHBET -->
-
     <div id="chat"></div>
 
-
-    <!-- MESAJ GİRİŞİ -->
 
     <div id="bottom">
 
@@ -501,8 +460,6 @@ button:disabled {
 </div>
 
 
-<!-- PUTER AI -->
-
 <script src="https://js.puter.com/v2/"></script>
 
 
@@ -523,7 +480,7 @@ const micButton =
     document.getElementById("micButton");
 
 
-/* AURA'NIN HAFIZASI */
+/* KONUŞMA HAFIZASI */
 
 const conversation = [
 
@@ -535,31 +492,35 @@ const conversation = [
 
 Kullanıcı Türkçe konuşuyor.
 
-Kullanıcıya doğal, anlaşılır ve kısa cevaplar ver.
-
 Kullanıcının adı Bedirhan Kahraman.
 
 Kullanıcının sevgilisinin adı Edanur Kahraman.
 
-Bu bilgileri yalnızca kullanıcı bunlarla ilgili soru sorduğunda kullan.
+İlk karşılamada kullanıcıya yalnızca Bedirhan diye hitap edebilirsin.
+
+Sonraki cevaplarda kullanıcıya ismiyle hitap etmek zorunda değilsin.
+
+Her cevapta Bedirhan veya Bedirhan Kahraman diye hitap etme.
+
+Kullanıcı özellikle ismini sormadıkça ismini gereksiz yere tekrar etme.
+
+Doğal, kısa ve anlaşılır cevaplar ver.
+
+Gereksiz tekrar yapma.
+
+Bilmediğin bir şeyi biliyormuş gibi uydurma.
 
 Kendini AURA olarak tanıt.
 
 Kullanıcı "ben kimim" diye sorarsa Bedirhan Kahraman olduğunu söyle.
 
-Kullanıcı "sevgilimin adı ne" diye sorarsa Edanur Kahraman olduğunu söyle.
-
-Kullanıcı özel olarak istemedikçe gereksiz uzun cevaplar verme.
-
-Bilmediğin bir şeyi biliyormuş gibi uydurma.
-
-Sorunun cevabını doğrudan ver.`
+Kullanıcı "sevgilimin adı ne" diye sorarsa Edanur Kahraman olduğunu söyle.`
     }
 
 ];
 
 
-/* MESAJ EKLEME */
+/* MESAJ EKLE */
 
 function addMessage(text, type) {
 
@@ -579,6 +540,44 @@ function addMessage(text, type) {
 }
 
 
+/* SES İÇİN TEMİZLEME */
+
+function cleanTextForSpeech(text) {
+
+    return text
+
+        /* Emojileri temizle */
+
+        .replace(
+            /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
+            ""
+        )
+
+        /* URL'leri temizle */
+
+        .replace(
+            /https?:\/\/\S+/gi,
+            ""
+        )
+
+        /* Noktalama işaretlerini temizle */
+
+        .replace(
+            /[.,!?;:"'“”‘’()[\]{}<>…:;\/\\|@#$%^&*_+=~`-]/g,
+            " "
+        )
+
+        /* Fazla boşlukları temizle */
+
+        .replace(
+            /\s+/g,
+            " "
+        )
+
+        .trim();
+}
+
+
 /* SESLİ CEVAP */
 
 function speak(text) {
@@ -587,8 +586,15 @@ function speak(text) {
         return;
     }
 
+    const cleanText =
+        cleanTextForSpeech(text);
+
+    if (!cleanText) {
+        return;
+    }
+
     const message =
-        new SpeechSynthesisUtterance(text);
+        new SpeechSynthesisUtterance(cleanText);
 
     message.lang =
         "tr-TR";
@@ -612,7 +618,7 @@ function speak(text) {
 }
 
 
-/* AI CEVABI */
+/* GERÇEK AI */
 
 async function askAI(text) {
 
@@ -620,7 +626,6 @@ async function askAI(text) {
         role: "user",
         content: text
     });
-
 
     try {
 
@@ -632,9 +637,7 @@ async function askAI(text) {
                 }
             );
 
-
         let answer = "";
-
 
         if (
             response &&
@@ -666,12 +669,10 @@ async function askAI(text) {
                 String(response);
         }
 
-
         conversation.push({
             role: "assistant",
             content: answer
         });
-
 
         return answer;
 
@@ -684,7 +685,6 @@ async function askAI(text) {
             error
         );
 
-
         return "AI bağlantısında bir sorun oluştu. Biraz sonra tekrar deneyelim.";
     }
 }
@@ -692,25 +692,21 @@ async function askAI(text) {
 
 /* MESAJ GÖNDER */
 
-async function sendMessage() {
+async function sendMessage(voiceMode = false) {
 
     const text =
         input.value.trim();
 
-
     if (!text) {
         return;
     }
-
 
     addMessage(
         text,
         "user"
     );
 
-
     input.value = "";
-
 
     sendButton.disabled =
         true;
@@ -718,53 +714,50 @@ async function sendMessage() {
     micButton.disabled =
         true;
 
-
     addMessage(
         "Düşünüyorum...",
         "aura"
     );
 
-
     const loadingMessage =
         chat.lastElementChild;
-
 
     try {
 
         const reply =
             await askAI(text);
 
-
         if (loadingMessage) {
-
             loadingMessage.remove();
         }
-
 
         addMessage(
             reply,
             "aura"
         );
 
+        /*
+         * SADECE SESLİ KOMUTTA
+         * AURA KONUŞUR
+         */
 
-        speak(reply);
+        if (voiceMode) {
+            speak(reply);
+        }
 
     }
 
     catch (error) {
 
         if (loadingMessage) {
-
             loadingMessage.remove();
         }
-
 
         addMessage(
             "Bir hata oluştu. Tekrar deneyebiliriz.",
             "aura"
         );
     }
-
 
     sendButton.disabled =
         false;
@@ -780,7 +773,11 @@ async function sendMessage() {
 
 sendButton.addEventListener(
     "click",
-    sendMessage
+    function() {
+
+        sendMessage(false);
+
+    }
 );
 
 
@@ -790,13 +787,11 @@ input.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key === "Enter"
-        ) {
+        if (event.key === "Enter") {
 
             event.preventDefault();
 
-            sendMessage();
+            sendMessage(false);
         }
     }
 );
@@ -810,7 +805,6 @@ function startListening() {
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
 
-
     if (!SpeechRecognition) {
 
         addMessage(
@@ -821,10 +815,8 @@ function startListening() {
         return;
     }
 
-
     const recognition =
         new SpeechRecognition();
-
 
     recognition.lang =
         "tr-TR";
@@ -834,7 +826,6 @@ function startListening() {
 
     recognition.interimResults =
         false;
-
 
     recognition.onstart =
         function() {
@@ -848,21 +839,22 @@ function startListening() {
             );
         };
 
-
     recognition.onresult =
         function(event) {
 
             const text =
                 event.results[0][0].transcript;
 
-
             input.value =
                 text;
 
+            /*
+             * SESLİ KOMUTTAN GELDİĞİ İÇİN
+             * voiceMode = true
+             */
 
-            sendMessage();
+            sendMessage(true);
         };
-
 
     recognition.onerror =
         function(event) {
@@ -872,17 +864,14 @@ function startListening() {
                 event.error
             );
 
-
             addMessage(
                 "Sesli komut alınamadı.",
                 "aura"
             );
 
-
             micButton.disabled =
                 false;
         };
-
 
     recognition.onend =
         function() {
@@ -890,7 +879,6 @@ function startListening() {
             micButton.disabled =
                 false;
         };
-
 
     try {
 
@@ -919,11 +907,11 @@ micButton.addEventListener(
 );
 
 
-/* BAŞLANGIÇ MESAJI */
+/* BAŞLANGIÇ */
 
 addMessage(
-    "Merhaba. Ben AURA AI.\n\n" +
-    "Gerçek yapay zekâ bağlantım hazır. Seni dinliyorum.",
+    "Merhaba Bedirhan. Ben AURA AI.\n\n" +
+    "Sistem hazır. Seni dinliyorum.",
     "aura"
 );
 
