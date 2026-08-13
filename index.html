@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+      content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color"
-content="#02060a">
+      content="#02060a">
 
 <title>AURA AI</title>
 
@@ -40,6 +40,7 @@ body {
         );
 }
 
+
 /* ÜST BAR */
 
 .top-bar {
@@ -51,11 +52,12 @@ body {
 
     padding: 0 18px;
 
-    background: rgba(0,10,15,.9);
+    background:
+        rgba(0,10,15,0.9);
 
     border-bottom:
         1px solid
-        rgba(0,234,255,.4);
+        rgba(0,234,255,0.4);
 }
 
 .logo {
@@ -93,6 +95,7 @@ body {
         0 0 15px #55ffcc;
 }
 
+
 /* ANA ALAN */
 
 .main {
@@ -105,6 +108,7 @@ body {
 
     min-height: 0;
 }
+
 
 /* AURA ÇEKİRDEĞİ */
 
@@ -123,6 +127,9 @@ body {
     flex-shrink: 0;
 }
 
+
+/* HALKALAR */
+
 .aura-ring {
     position: absolute;
 
@@ -132,7 +139,7 @@ body {
         1px solid
         #00eaff;
 
-    opacity: .7;
+    opacity: 0.7;
 }
 
 .ring1 {
@@ -168,6 +175,9 @@ body {
         rotate1 14s linear infinite;
 }
 
+
+/* MERKEZ */
+
 .aura-center {
     width: 100px;
     height: 100px;
@@ -198,14 +208,17 @@ body {
 
     box-shadow:
         0 0 15px #00eaff,
-        0 0 45px rgba(0,234,255,.7),
-        inset 0 0 25px rgba(0,234,255,.5);
+        0 0 45px rgba(0,234,255,0.7),
+        inset 0 0 25px rgba(0,234,255,0.5);
 
     animation:
         pulse 2.2s infinite ease-in-out;
 
     z-index: 5;
 }
+
+
+/* ANİMASYONLAR */
 
 @keyframes rotate1 {
 
@@ -241,6 +254,7 @@ body {
     }
 }
 
+
 /* DURUM */
 
 .aura-status {
@@ -252,6 +266,7 @@ body {
 
     color: #8defff;
 }
+
 
 /* SOHBET */
 
@@ -286,25 +301,26 @@ body {
 
 .aura {
     background:
-        rgba(0,35,45,.8);
+        rgba(0,35,45,0.8);
 
     margin-right: auto;
 
     border:
         1px solid
-        rgba(0,234,255,.25);
+        rgba(0,234,255,0.25);
 }
 
 .user {
     background:
-        rgba(0,90,120,.8);
+        rgba(0,90,120,0.8);
 
     margin-left: auto;
 
     color: white;
 }
 
-/* ALT */
+
+/* ALT PANEL */
 
 #bottom {
     width: 100%;
@@ -319,14 +335,17 @@ body {
     padding: 10px;
 
     background:
-        rgba(0,10,15,.97);
+        rgba(0,10,15,0.97);
 
     border-top:
         1px solid
-        rgba(0,234,255,.45);
+        rgba(0,234,255,0.45);
 
     z-index: 10;
 }
+
+
+/* YAZI KUTUSU */
 
 #input {
     flex: 1;
@@ -341,12 +360,12 @@ body {
 
     border:
         1px solid
-        rgba(0,234,255,.5);
+        rgba(0,234,255,0.5);
 
     outline: none;
 
     background:
-        rgba(0,25,32,.95);
+        rgba(0,25,32,0.95);
 
     color: #00eaff;
 
@@ -356,6 +375,9 @@ body {
 #input::placeholder {
     color: #548995;
 }
+
+
+/* BUTONLAR */
 
 button {
     height: 45px;
@@ -369,7 +391,7 @@ button {
     padding: 0 14px;
 
     background:
-        rgba(0,60,75,.9);
+        rgba(0,60,75,0.9);
 
     color: #00eaff;
 
@@ -379,23 +401,29 @@ button {
 }
 
 button:active {
-    transform: scale(.94);
+    transform: scale(0.94);
 }
 
 button:disabled {
-    opacity: .5;
+    opacity: 0.5;
 }
 
 .mic-button {
     width: 45px;
+
     padding: 0;
+
     font-size: 20px;
 }
 
-@media (max-width:500px) {
+
+/* TELEFON */
+
+@media (max-width: 500px) {
 
     .aura-core {
-        transform: scale(.82);
+
+        transform: scale(0.82);
 
         margin-top: 0;
         margin-bottom: -15px;
@@ -416,24 +444,29 @@ button:disabled {
 
 <body>
 
+
 <div class="top-bar">
 
     <div class="logo">
         AURA
     </div>
 
-    <div class="status" id="status">
+    <div class="status">
         ONLINE
     </div>
 
 </div>
 
+
 <div class="main">
+
 
     <div class="aura-core">
 
         <div class="aura-ring ring1"></div>
+
         <div class="aura-ring ring2"></div>
+
         <div class="aura-ring ring3"></div>
 
         <div class="aura-center">
@@ -442,15 +475,14 @@ button:disabled {
 
     </div>
 
-    <div
-        class="aura-status"
-        id="auraStatus">
 
-        AI READY
-
+    <div class="aura-status">
+        AI SYSTEM READY
     </div>
 
+
     <div id="chat"></div>
+
 
     <div id="bottom">
 
@@ -465,27 +497,25 @@ button:disabled {
             class="mic-button"
             id="micButton"
             type="button">
-
             🎤
-
         </button>
 
         <button
             id="sendButton"
             type="button">
-
             Gönder
-
         </button>
 
     </div>
 
 </div>
-
 <script src="https://js.puter.com/v2/"></script>
 
 <script>
-    /* ELEMENTLER */
+
+/* =========================
+   AURA ELEMENTLERİ
+========================= */
 
 const chat =
     document.getElementById("chat");
@@ -499,14 +529,10 @@ const sendButton =
 const micButton =
     document.getElementById("micButton");
 
-const status =
-    document.getElementById("status");
 
-const auraStatus =
-    document.getElementById("auraStatus");
-
-
-/* MESAJ */
+/* =========================
+   MESAJ EKLEME
+========================= */
 
 function addMessage(text, type) {
 
@@ -526,11 +552,13 @@ function addMessage(text, type) {
 }
 
 
-/* SES TEMİZLE */
+/* =========================
+   SES TEMİZLEME
+========================= */
 
 function cleanTextForSpeech(text) {
 
-    return String(text)
+    return text
 
         .replace(
             /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
@@ -543,7 +571,7 @@ function cleanTextForSpeech(text) {
         )
 
         .replace(
-            /[.,!?;:"'“”‘’()[\]{}<>…:;\/\\|@#$%^&*_+=~`-]/g,
+            /[.,!?;:"'“”‘’()[\]{}<>…\/\\|@#$%^&*_+=~`-]/g,
             " "
         )
 
@@ -556,7 +584,9 @@ function cleanTextForSpeech(text) {
 }
 
 
-/* SES */
+/* =========================
+   SESLİ CEVAP
+========================= */
 
 function speak(text) {
 
@@ -566,146 +596,96 @@ function speak(text) {
         return;
     }
 
-    const clean =
+    const cleanText =
         cleanTextForSpeech(text);
 
-    if (!clean) {
+    if (!cleanText) {
         return;
     }
 
-    const voice =
+    const message =
         new SpeechSynthesisUtterance(
-            clean
+            cleanText
         );
 
-    voice.lang =
+    message.lang =
         "tr-TR";
 
-    voice.rate =
-        0.92;
+    message.rate =
+        0.9;
 
-    voice.pitch =
+    message.pitch =
         1;
 
-    voice.volume =
+    message.volume =
         1;
 
     window.speechSynthesis.cancel();
 
-    setTimeout(function() {
-
-        window.speechSynthesis.speak(
-            voice
-        );
-
-    }, 100);
+    window.speechSynthesis.speak(
+        message
+    );
 }
 
 
-/* DOĞAL AURA */
+/* =========================
+   AURA SİSTEM MESAJI
+========================= */
 
-const systemPrompt = {
+const auraSystemPrompt = `
 
-    role: "system",
-
-    content: `
 Sen AURA adında kişisel bir yapay zekâ asistanısın.
 
 Türkçe konuş.
 
-Kullanıcının adı Bedirhan Kahraman.
+Kullanıcıyla doğal ve samimi şekilde konuş.
 
-Kullanıcıya her cevapta adıyla hitap etme.
+Çok kısa cevap vermek zorunda değilsin ancak gereksiz uzatma.
 
-"Bedirhan Kahraman" ifadesini gereksiz yere kullanma.
+Kullanıcının adını biliyorsun fakat cevapların içinde
+kullanıcının adını gereksiz yere kullanma.
 
-Sadece konuşmanın doğal olduğu durumlarda Bedirhan diyebilirsin.
+ÖNEMLİ:
 
-Kısa doğal ve anlaşılır cevaplar ver.
+Kullanıcı sana adını sormadığı sürece
+"Bedirhan",
+"Bedirhan Kahraman"
+veya başka bir isimle hitap ETME.
 
-Robot gibi konuşma.
+Kullanıcı "ben kimim" diye sorarsa
+"Bedirhan Kahraman" olduğunu söyle.
 
-Kullanıcı günlük konuşuyorsa doğal Türkçe kullan.
+Kullanıcı sevgilisinin adını sorarsa
+"Edanur Kahraman" olduğunu söyle.
 
-Gereksiz tekrar yapma.
+Her cevabın başına kullanıcı adını ekleme.
 
-Soruyu doğrudan cevapla.
+Kullanıcıyla konuşurken doğal bir insan gibi cevap ver.
 
-Bilmediğin bilgiyi uydurma.
+Bilmediğin bilgileri uydurma.
 
-Güncel bilgi sorulursa web aramasını kullan.
+Senin adın AURA.
 
-Kullanıcı "ben kimim" derse Bedirhan Kahraman olduğunu söyle.
-
-Kullanıcı "sevgilimin adı ne" derse Edanur Kahraman olduğunu söyle.
-
-Kendini AURA olarak tanıt.
-`
-};
+`;
 
 
-/* KONUŞMA GEÇMİŞİ */
+/* =========================
+   KONUŞMA GEÇMİŞİ
+========================= */
 
-let conversation = [
-    systemPrompt
+const conversation = [
+
+    {
+        role: "system",
+        content: auraSystemPrompt
+    }
+
 ];
 
 
-/* AI CEVABI */
-
-function getAIText(response) {
-
-    if (!response) {
-        return "";
-    }
-
-    if (
-        response.message &&
-        typeof response.message.content === "string"
-    ) {
-
-        return response.message.content;
-    }
-
-    if (
-        response.message &&
-        Array.isArray(response.message.content)
-    ) {
-
-        return response.message.content
-            .map(function(item) {
-
-                if (
-                    typeof item === "string"
-                ) {
-                    return item;
-                }
-
-                return item.text || "";
-
-            })
-            .join("");
-    }
-
-    if (
-        response.text
-    ) {
-
-        return response.text;
-    }
-
-    if (
-        typeof response === "string"
-    ) {
-
-        return response;
-    }
-
-    return "";
-}
-
-
-/* NORMAL AI */
+/* =========================
+   AI CEVABI
+========================= */
 
 async function askAI(text) {
 
@@ -714,6 +694,7 @@ async function askAI(text) {
         role: "user",
 
         content: text
+
     });
 
 
@@ -724,210 +705,404 @@ async function askAI(text) {
                 conversation,
                 {
                     model:
-                        "gpt-5.4-nano",
-
-                    temperature:
-                        0.7
+                        "gpt-5.4-nano"
                 }
             );
 
 
-        const answer =
-            getAIText(response);
+        let answer = "";
 
 
-        if (!answer) {
+        if (
+            response &&
+            response.message &&
+            response.message.content
+        ) {
+
+            answer =
+                response.message.content;
+
+        }
+
+        else if (
+            response &&
+            response.text
+        ) {
+
+            answer =
+                response.text;
+
+        }
+
+        else if (
+            typeof response === "string"
+        ) {
+
+            answer =
+                response;
+
+        }
+
+        else {
+
+        /* =========================
+   SESLİ KOMUT SİSTEMİ
+========================= */
+
+let recognition = null;
+let isListening = false;
+
+
+/* TARAYICI DESTEĞİ */
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+/* =========================
+   SES TANIMA
+========================= */
+
+if (SpeechRecognition) {
+
+    recognition =
+        new SpeechRecognition();
+
+    recognition.lang =
+        "tr-TR";
+
+    recognition.continuous =
+        false;
+
+    recognition.interimResults =
+        false;
+
+
+    recognition.onstart =
+        function() {
+
+            isListening = true;
+
+            micButton.disabled = false;
+
+            micButton.textContent = "🔴";
+        };
+
+
+    recognition.onend =
+        function() {
+
+            isListening = false;
+
+            micButton.textContent = "🎤";
+        };
+
+
+    recognition.onerror =
+        function(error) {
+
+            console.error(
+                "Ses tanıma hatası:",
+                error
+            );
+
+            isListening = false;
+
+            micButton.textContent = "🎤";
+        };
+
+
+    recognition.onresult =
+        function(event) {
+
+            const result =
+                event.results[
+                    event.results.length - 1
+                ][0].transcript.trim();
+
+
+            if (!result) {
+                return;
+            }
+
+
+            /*
+              AURA UYANDIRMA
+
+              Kullanıcı sadece
+              "AURA" diyorsa
+              cevap vermesin.
+            */
+
+            const lower =
+                result.toLowerCase();
+
+
+            if (
+                lower === "aura" ||
+                lower === "aura."
+            ) {
+
+                addMessage(
+                    "Dinliyorum.",
+                    "aura"
+                );
+
+                speak(
+                    "Dinliyorum"
+                );
+
+                return;
+            }
+
+
+            /*
+              NORMAL SESLİ KOMUT
+            */
+
+            input.value =
+                result;
+
+
+            sendMessage(true);
+        };
+}
+
+
+/* =========================
+   MİKROFON BUTONU
+========================= */
+
+micButton.addEventListener(
+    "click",
+    function() {
+
+        if (!recognition) {
+
+            addMessage(
+                "Bu tarayıcı sesli komutu desteklemiyor.",
+                "aura"
+            );
+
+            return;
+        }
+
+
+        if (isListening) {
+
+            recognition.stop();
+
+            return;
+        }
+
+
+        try {
+
+            recognition.start();
+
+        }
+
+        catch (error) {
+
+            console
+            /* =========================
+   WEB ARAMA
+========================= */
+
+async function webSearch(query) {
+
+    try {
+
+        const searchQuery =
+            encodeURIComponent(query);
+
+        /*
+          DuckDuckGo'nun anlık cevap
+          API'sini kullanıyoruz.
+        */
+
+        const url =
+            "https://api.duckduckgo.com/?q=" +
+            searchQuery +
+            "&format=json&no_html=1&skip_disambig=1";
+
+
+        const response =
+            await fetch(url);
+
+
+        if (!response.ok) {
 
             throw new Error(
-                "AI boş cevap verdi"
+                "Web araması başarısız"
             );
         }
 
 
-        conversation.push({
-
-            role: "assistant",
-
-            content: answer
-        });
+        const data =
+            await response.json();
 
 
-        return answer;
+        let result = "";
 
 
-    } catch (error) {
+        if (
+            data.AbstractText
+        ) {
+
+            result =
+                data.AbstractText;
+
+        }
+
+        else if (
+            data.Answer
+        ) {
+
+            result =
+                data.Answer;
+
+        }
+
+        else if (
+            data.RelatedTopics &&
+            data.RelatedTopics.length > 0
+        ) {
+
+            const first =
+                data.RelatedTopics[0];
+
+
+            if (
+                first &&
+                first.Text
+            ) {
+
+                result =
+                    first.Text;
+            }
+        }
+
+
+        if (!result) {
+
+            return null;
+        }
+
+
+        return result;
+
+    }
+
+    catch (error) {
 
         console.error(
-            "AURA AI ERROR:",
+            "WEB ARAMA HATASI:",
             error
         );
 
-
-        /*
-          Hata olursa konuşma geçmişine
-          bozuk mesajı taşımıyoruz.
-        */
-
-        conversation.pop();
-
-
-        throw error;
+        return null;
     }
 }
 
 
-/* WEB GEREKTİREN SORU */
+/* =========================
+   WEB ARAMA KOMUTU
+========================= */
 
-function needsWebSearch(text) {
+function isWebSearchCommand(text) {
 
-    const lower =
-        text.toLocaleLowerCase("tr-TR");
-
-
-    const words = [
-
-        "internette ara",
-        "internetten ara",
-        "webde ara",
-        "web'de ara",
-        "güncel",
-        "guncel",
-        "son haber",
-        "son haberler",
-        "şu an",
-        "su an",
-        "bugün",
-        "bugun",
-        "en son",
-        "şimdi",
-        "simdi"
-    ];
+    const command =
+        text.toLowerCase();
 
 
-    return words.some(
-        function(word) {
+    return (
 
-            return lower.includes(word);
-        }
+        command.includes("internette ara") ||
+
+        command.includes("internetten ara") ||
+
+        command.includes("webde ara") ||
+
+        command.includes("web'de ara") ||
+
+        command.includes("internette araştır") ||
+
+        command.includes("internetten araştır") ||
+
+        command.includes("güncel bilgi") ||
+
+        command.includes("guncel bilgi") ||
+
+        command.startsWith("ara ")
+
     );
 }
 
 
-/* WEB ARAMALI AI */
+/* =========================
+   WEB ARAMALI AI
+========================= */
 
-async function askAIWithOptionalWeb(text) {
+async function askAIWithWeb(text) {
 
-    /*
-      Normal sorular:
-      sağlam ve basit AI çağrısı
-    */
-
-    if (
-        !needsWebSearch(text)
-    ) {
-
-        return await askAI(text);
-    }
+    const webResult =
+        await webSearch(text);
 
 
-    /*
-      Güncel soru:
-      OpenAI web search desteği
-      Puter dokümanındaki kullanıma
-      uygun şekilde çağrılıyor.
-    */
+    if (!webResult) {
 
-    const webConversation = [
-
-        systemPrompt,
-
-        {
-            role: "user",
-            content: text
-        }
-
-    ];
-
-
-    try {
-
-        const response =
-            await puter.ai.chat(
-                webConversation,
-                {
-                    model:
-                        "openai/gpt-5.3-chat",
-
-                    tools: [
-                        {
-                            type:
-                                "web_search"
-                        }
-                    ],
-
-                    temperature:
-                        0.5
-                }
-            );
-
-
-        const answer =
-            getAIText(response);
-
-
-        if (!answer) {
-
-            throw new Error(
-                "Web AI boş cevap verdi"
-            );
-        }
-
-
-        /*
-          Web konuşmasını normal
-          geçmişe tek cevap olarak ekle.
-        */
-
-        conversation.push({
-
-            role: "user",
-
-            content: text
-
-        });
-
-
-        conversation.push({
-
-            role: "assistant",
-
-            content: answer
-
-        });
-
-
-        return answer;
-
-
-    } catch (error) {
-
-        console.error(
-            "WEB AI ERROR:",
-            error
+        return await askAI(
+            text +
+            "\n\nWeb araması yapılamadı. " +
+            "Elindeki bilgilerle cevap ver."
         );
-
-
-        /*
-          Web araması çalışmazsa
-          normal AI'ye geri dön.
-        */
-
-        return await askAI(text);
     }
-        }
-    /* MESAJ GÖNDER */
 
-async function sendMessage(
+
+    const webPrompt = `
+
+Kullanıcı şu soruyu sordu:
+
+${text}
+
+Web aramasından alınan bilgi:
+
+${webResult}
+
+Bu bilgiyi kullanarak kullanıcıya
+Türkçe ve doğal bir cevap ver.
+
+Web sonucunu aynen kopyalama.
+
+Gereksiz şekilde kullanıcıya adıyla
+hitap etme.
+
+Cevabı mümkün olduğunca anlaşılır tut.
+
+`;
+
+
+    return await askAI(
+        webPrompt
+    );
+}
+
+
+/* =========================
+   SENDMESSAGE'İ GÜNCELLE
+========================= */
+
+const originalSendMessage =
+    sendMessage;
+
+
+/*
+  Yeni gönderme sistemi.
+*/
+
+sendMessage = async function(
     voiceMode = false
 ) {
 
@@ -956,10 +1131,6 @@ async function sendMessage(
         true;
 
 
-    auraStatus.textContent =
-        "THINKING";
-
-
     addMessage(
         "Düşünüyorum...",
         "aura"
@@ -972,10 +1143,29 @@ async function sendMessage(
 
     try {
 
-        const reply =
-            await askAIWithOptionalWeb(
-                text
-            );
+        let reply;
+
+
+        /*
+          WEB ARAMASI GEREKİYORSA
+        */
+
+        if (
+            isWebSearchCommand(text)
+        ) {
+
+            reply =
+                await askAIWithWeb(
+                    text
+                );
+
+        }
+
+        else {
+
+            reply =
+                await askAI(text);
+        }
 
 
         if (loading) {
@@ -990,7 +1180,8 @@ async function sendMessage(
 
 
         /*
-          SADECE SESLİ KOMUTTA KONUŞ
+          SADECE SESLİ KOMUTTA
+          SESLİ CEVAP
         */
 
         if (voiceMode) {
@@ -998,11 +1189,12 @@ async function sendMessage(
             speak(reply);
         }
 
+    }
 
-    } catch (error) {
+    catch (error) {
 
         console.error(
-            "SEND ERROR:",
+            "AURA HATASI:",
             error
         );
 
@@ -1013,16 +1205,10 @@ async function sendMessage(
 
 
         addMessage(
-            "AI bağlantısı kurulamadı. İnternet bağlantısını veya Puter bağlantısını kontrol et.",
+            "Bir hata oluştu. Tekrar deneyelim.",
             "aura"
         );
     }
-
-
-    auraStatus.textContent =
-        wakeMode
-            ? "AURA LISTENING"
-            : "AI READY";
 
 
     sendButton.disabled =
@@ -1032,497 +1218,12 @@ async function sendMessage(
         false;
 
     input.focus();
-}
-
-
-/* GÖNDER BUTONU */
-
-sendButton.addEventListener(
-    "click",
-    function() {
-
-        sendMessage(false);
-
-    }
-);
-
-
-/* ENTER */
-
-input.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            event.preventDefault();
-
-            sendMessage(false);
-        }
-
-    }
-);
-
-
-/* SES TANIMA */
-
-const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-
-let recognition = null;
-
-let wakeMode = false;
-
-let commandMode = false;
-
-let recognitionRunning = false;
-
-
-/* SES DESTEKLENMİYOR */
-
-if (!SpeechRecognition) {
-
-    micButton.disabled =
-        true;
-
-    auraStatus.textContent =
-        "VOICE NOT SUPPORTED";
-}
-
-
-/* RECOGNITION OLUŞTUR */
-
-function createRecognition() {
-
-    if (!SpeechRecognition) {
-        return null;
-    }
-
-
-    const rec =
-        new SpeechRecognition();
-
-
-    rec.lang =
-        "tr-TR";
-
-
-    rec.continuous =
-        true;
-
-
-    rec.interimResults =
-        false;
-
-
-    rec.maxAlternatives =
-        1;
-
-
-    rec.onstart =
-        function() {
-
-            recognitionRunning =
-                true;
-
-            auraStatus.textContent =
-                wakeMode
-                    ? "AURA LISTENING"
-                    : "LISTENING";
-
-            status.textContent =
-                "VOICE";
-        };
-
-
-    rec.onresult =
-        function(event) {
-
-            for (
-                let i =
-                    event.resultIndex;
-
-                i <
-                    event.results.length;
-
-                i++
-            ) {
-
-                if (
-                    !event.results[i].isFinal
-                ) {
-                    continue;
-                }
-
-
-                const spoken =
-                    event.results[i][0]
-                    .transcript
-                    .trim();
-
-
-                if (!spoken) {
-                    continue;
-                }
-
-
-                handleVoiceText(
-                    spoken
-                );
-            }
-        };
-
-
-    rec.onerror =
-        function(event) {
-
-            console.log(
-                "VOICE ERROR:",
-                event.error
-            );
-
-            recognitionRunning =
-                false;
-
-
-            if (
-                wakeMode
-            ) {
-
-                setTimeout(
-                    startRecognition,
-                    600
-                );
-            }
-        };
-
-
-    rec.onend =
-        function() {
-
-            recognitionRunning =
-                false;
-
-
-            if (
-                wakeMode
-            ) {
-
-                setTimeout(
-                    startRecognition,
-                    300
-                );
-
-            } else {
-
-                auraStatus.textContent =
-                    "AI READY";
-
-                status.textContent =
-                    "ONLINE";
-            }
-        };
-
-
-    return rec;
-}
-
-
-/* AURA VAR MI */
-
-function containsWakeWord(text) {
-
-    const lower =
-        text
-        .toLocaleLowerCase("tr-TR")
-        .trim();
-
-
-    return (
-        lower === "aura" ||
-        lower.startsWith("aura ") ||
-        lower.startsWith("aura,") ||
-        lower.startsWith("aura:")
-    );
-}
-
-
-/* AURA'YI SİL */
-
-function removeWakeWord(text) {
-
-    return text
-        .replace(
-            /^aura[\s,:-]*/i,
-            ""
-        )
-        .trim();
-}
-
-
-/* SESLİ KOMUT */
-
-function handleVoiceText(spoken) {
-
-    console.log(
-        "DUYULAN:",
-        spoken
-    );
-
-
-    /*
-      Daha önce AURA denmişse
-      sonraki cümle komuttur.
-    */
-
-    if (commandMode) {
-
-        commandMode =
-            false;
-
-
-        input.value =
-            spoken;
-
-
-        sendMessage(true);
-
-        return;
-    }
-
-
-    /*
-      AURA yoksa bekle.
-    */
-
-    if (
-        !containsWakeWord(spoken)
-    ) {
-
-        return;
-    }
-
-
-    const command =
-        removeWakeWord(
-            spoken
-        );
-
-
-    /*
-      Sadece AURA denirse
-      sonraki cümleyi bekle.
-    */
-
-    if (!command) {
-
-        commandMode =
-            true;
-
-
-        auraStatus.textContent =
-            "AURA AWAKE";
-
-
-        status.textContent =
-            "AWAKE";
-
-
-        speak(
-            "Dinliyorum"
-        );
-
-
-        return;
-    }
-
-
-    /*
-      AURA + komut
-    */
-
-    input.value =
-        command;
-
-
-    sendMessage(true);
-}
-
-
-/* DİNLEMEYİ BAŞLAT */
-
-function startRecognition() {
-
-    if (!SpeechRecognition) {
-        return;
-    }
-
-
-    if (!wakeMode) {
-        return;
-    }
-
-
-    if (recognitionRunning) {
-        return;
-    }
-
-
-    recognition =
-        createRecognition();
-
-
-    if (!recognition) {
-        return;
-    }
-
-
-    try {
-
-        recognition.start();
-
-    } catch (error) {
-
-        console.log(
-            "START:",
-            error
-        );
-    }
-}
-
-
-/* MİKROFON */
-
-micButton.addEventListener(
-    "click",
-    function() {
-
-        if (!SpeechRecognition) {
-
-            addMessage(
-                "Bu tarayıcı sesli komutu desteklemiyor.",
-                "aura"
-            );
-
-            return;
-        }
-
-
-        if (!wakeMode) {
-
-            wakeMode =
-                true;
-
-            commandMode =
-                false;
-
-
-            auraStatus.textContent =
-                "AURA LISTENING";
-
-            status.textContent =
-                "VOICE";
-
-
-            addMessage(
-                "AURA dinleme modu açıldı. AURA diyerek beni uyandırabilirsin.",
-                "aura"
-            );
-
-
-            startRecognition();
-
-            return;
-        }
-
-
-        wakeMode =
-            false;
-
-        commandMode =
-            false;
-
-
-        if (recognition) {
-
-            try {
-                recognition.stop();
-            } catch (error) {}
-        }
-
-
-        recognitionRunning =
-            false;
-
-
-        auraStatus.textContent =
-            "AI READY";
-
-        status.textContent =
-            "ONLINE";
-    });
-    /* =========================
-   BAŞLANGIÇ
-========================= */
-
-addMessage(
-    "Merhaba. Ben AURA AI.\n\nSistem hazır. Seni dinliyorum.",
-    "aura"
-);
+};
 
 
 /* =========================
-   SAYFA KAPANIRKEN
+   DOSYA KAPANIŞI
 ========================= */
-
-window.addEventListener(
-    "beforeunload",
-    function() {
-
-        if (
-            recognition &&
-            recognitionRunning
-        ) {
-
-            try {
-                recognition.stop();
-            } catch (error) {}
-        }
-
-    }
-);
-
-
-/* =========================
-   GENEL HATA YAKALAMA
-========================= */
-
-window.addEventListener(
-    "error",
-    function(event) {
-
-        console.error(
-            "AURA:",
-            event.error
-        );
-
-    }
-);
-
-
-/* =========================
-   BAŞLANGIÇ DURUMU
-========================= */
-
-auraStatus.textContent =
-    "AI READY";
-
-status.textContent =
-    "ONLINE";
 
 </script>
 
