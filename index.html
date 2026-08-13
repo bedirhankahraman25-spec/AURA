@@ -899,5 +899,86 @@ function startListening() {
     const SpeechRecognition =
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
+          if (!SpeechRecognition) {
+
+        addMessage(
+            "Telefonunun tarayıcısı sesli konuşmayı desteklemiyor.",
+            "aura"
+        );
+
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "tr-TR";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = function () {
+
+        addMessage(
+            "Dinliyorum...",
+            "aura"
+        );
+
+    };
+
+    recognition.onresult = function (event) {
+
+        const text =
+            event.results[0][0].transcript;
+
+        input.value = text;
+
+        sendMessage();
+
+    };
+
+    recognition.onerror = function () {
+
+        addMessage(
+            "Sesini anlayamadım. Tekrar deneyebilirsin.",
+            "aura"
+        );
+
+    };
+
+    recognition.start();
+
+}
+
+
+/* BAŞLANGIÇ MESAJI */
+
+addMessage(
+    "Merhaba. Ben AURA AI.\n\n" +
+    "Sistem hazır. Seni dinliyorum.",
+    "aura"
+);
+
+</script>
+
+
+<script>
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register(
+            "./service-worker.js"
+        );
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
 
 
