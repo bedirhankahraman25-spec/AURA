@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+    <title>AURA AI</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 18px;
+            text-align: center;
+            background: #111827;
+            border-bottom: 1px solid #263043;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        #chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+        }
+
+        .aura {
+            background: #172033;
+            margin-right: auto;
+        }
+
+        .user {
+            background: #2563eb;
+            margin-left: auto;
+        }
+
+        #bottom {
+            display: flex;
+            padding: 10px;
+            gap: 8px;
+            background: #111827;
+            border-top: 1px solid #263043;
+        }
+
+        #input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 13px;
+            border-radius: 12px;
+            background: #1f2937;
+            color: white;
+            font-size: 15px;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 0 17px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+        }
+
+        button:active {
+            transform: scale(.96);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>AURA AI</h1>
+    <p>Kişisel yapay zekâ asistanın</p>
+</header>
+
+<div id="chat"></div>
+
+<div id="bottom">
+    <input id="input" type="text" placeholder="AURA'ya bir şey sor..." autocomplete="off">
+    <button onclick="sendMessage()">Gönder</button>
+</div>
+
+<script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("input");
+
+    function addMessage(text, type) {
+        const message = document.createElement("div");
+        message.className = "message " + type;
+        message.textContent = text;
+        chat.appendChild(message);
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    function auraReply(text) {
+        const command = text.toLowerCase().trim();
+
+        if (
+            command === "merhaba" ||
+            command === "selam" ||
+            command.includes("merhaba aura") ||
+            command.includes("selam aura")
+        ) {
+            return "Merhaba. Ben AURA. Nasıl yardımcı olabilirim?";
+        }
+
+        if (command.includes("saat")) {
+            return "Şu an saat: " +
+                new Date().toLocaleTimeString("tr-TR");
+        }
+
+        if (command.includes("tarih")) {
+            return "Bugünün tarihi: " +
+                new Date().toLocaleDateString("tr-TR");
+        }
+
+        if (command.includes("kimsin")) {
+            return "Ben AURA AI. Telefonda çalışan kişisel asistanınım.";
+        }
+
+        if (command.includes("şaka")) {
+            const jokes = [
+                "Programcı neden kahve içer? Çünkü bug'ları ayıklaması gerekiyor.",
+                "Bilgisayar neden doktora gitmiş? Virüsü varmış.",
+                "Wi-Fi neden kavga etmiş? Bağlantısı kopmuş."
+            ];
+
+            return jokes[Math.floor(Math.random() * jokes.length)];
+        }
+
+        if (command === "yardım") {
+            return "Şimdilik deneyebileceğin komutlar:\n\n" +
+                   "• merhaba\n" +
+                   "• saat\n" +
+                   "• tarih\n" +
+                   "• kimsin\n" +
+                   "• şaka\n" +
+                   "• yardım";
+        }
+
+        return "Bunu henüz öğrenmedim. Bana başka bir şey söyle.";
+    }
+
+    function sendMessage() {
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        addMessage(text, "user");
+        input.value = "";
+
+        setTimeout(() => {
+            addMessage(auraReply(text), "aura");
+        }, 300);
+    }
+
+    input.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+
+    addMessage(
+        "Merhaba. Ben AURA AI.\n\n" +
+        "Bana \"yardım\" yazarak mevcut komutları görebilirsin.",
+        "aura"
+    );
+</script>
+
+</body>
+</html>
