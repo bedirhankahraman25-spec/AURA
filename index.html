@@ -186,6 +186,23 @@ if (
         if (command.includes("kimsin")) {
             return "Ben AURA AI. Telefonda çalışan kişisel asistanınım.";
         }
+        if (
+    command.includes("ben kimim") ||
+    command.includes("beni tanıyor musun") ||
+    command.includes("benim adım ne")
+) {
+    return "Sen " + kullaniciAdi + "sın.";
+}
+
+if (
+    command.includes("sevgilimin adı") ||
+    command.includes("sevgilimin ismi") ||
+    command.includes("sevgilim kim")
+) {
+    return "Sevgilinin adı " + sevgiliAdi + ".";
+}
+    
+    
 
         if (command.includes("şaka")) {
             const jokes = [
