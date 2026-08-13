@@ -124,7 +124,19 @@
 <script>
     const chat = document.getElementById("chat");
     const input = document.getElementById("input");
+function speak(text) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "tr-TR";
+    msg.rate = 0.9;
+    msg.pitch = 1;
+    msg.volume = 1;
 
+    window.speechSynthesis.cancel();
+
+    setTimeout(() => {
+        window.speechSynthesis.speak(msg);
+    }, 100);
+}
     function addMessage(text, type) {
     const message = document.createElement("div");
     message.className = "message " + type;
