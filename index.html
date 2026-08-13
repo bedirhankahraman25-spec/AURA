@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#02060a">
-<link rel="manifest" href="manifest.json">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#02060a">
+
+<link rel="manifest"
+      href="manifest.json">
 
 <title>AURA AI</title>
 
 <style>
 
+/* TEMEL */
+
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+
     overflow: hidden;
+
     font-family: Arial, sans-serif;
+
     color: #00eaff;
+
     background:
-        radial-gradient(circle at center,
-        #06232d 0%,
-        #02070b 45%,
-        #000000 100%);
+        radial-gradient(
+            circle at center,
+            #06232d 0%,
+            #02070b 50%,
+            #000000 100%
+        );
 }
+
 
 /* ÜST BAR */
 
 .top-bar {
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
 
-    background: rgba(0,10,15,.75);
-    border-bottom: 1px solid rgba(0,234,255,.35);
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background:
+        rgba(0,10,15,.85);
+
+    border-bottom:
+        1px solid
+        rgba(0,234,255,.4);
 }
 
 .logo {
+
     font-size: 21px;
+
     font-weight: bold;
+
     letter-spacing: 4px;
 
     text-shadow:
@@ -51,16 +82,22 @@ body {
 }
 
 .status {
+
     font-size: 11px;
+
     letter-spacing: 2px;
+
     color: #55ffcc;
 }
 
 .status::before {
+
     content: "";
+
     display: inline-block;
 
     width: 7px;
+
     height: 7px;
 
     margin-right: 7px;
@@ -74,52 +111,793 @@ body {
         0 0 15px #55ffcc;
 }
 
+
 /* ANA ALAN */
 
 .main {
-    height: calc(100dvh - 65px);
 
-    min-height: 0;
+    height: calc(100vh - 60px);
+
+    height: calc(100dvh - 60px);
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
+    min-height: 0;
 }
+
 
 /* AURA ÇEKİRDEĞİ */
 
 .aura-core {
-    width: 220px;
-    height: 220px;
 
-    margin-top: 25px;
+    width: 210px;
+
+    height: 210px;
+
+    margin-top: 15px;
 
     position: relative;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     flex-shrink: 0;
 }
 
-/* MERKEZ */
 
-.aura-center {
-    width: 105px;
-    height: 105px;
+/* HALKALAR */
+
+.aura-ring {
+
+    position: absolute;
 
     border-radius: 50%;
 
-    border: 2px solid #00eaff;
+    border: 1px solid #00eaff;
+
+    opacity: .7;
+}
+
+.ring1 {
+
+    width: 135px;
+
+    height: 135px;
+
+    border-left-color: transparent;
+
+    border-right-color: transparent;
+
+    animation:
+        rotate 7s linear infinite;
+}
+
+.ring2 {
+
+    width: 175px;
+
+    height: 175px;
+
+    border-top-color: transparent;
+
+    border-bottom-color: transparent;
+
+    animation:
+        reverseRotate 10s linear infinite;
+}
+
+.ring3 {
+
+    width: 210px;
+
+    height: 210px;
+
+    border-left-color: transparent;
+
+    border-bottom-color: transparent;
+
+    animation:
+        rotate 14s linear infinite;
+}
+
+
+/* MERKEZ */
+
+.aura-center {
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        #00eaff;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 21px;
+
     font-weight: bold;
 
     letter-spacing: 3px;
 
-   
+    color: #00eaff;
+
+    background:
+        radial-gradient(
+            circle,
+            #063b4b,
+            #020a0e
+        );
+
+    box-shadow:
+        0 0 15px #00eaff,
+        0 0 45px rgba(0,234,255,.7),
+        inset 0 0 25px rgba(0,234,255,.5);
+
+    animation:
+        pulse 2.2s infinite ease-in-out;
+
+    z-index: 5;
+}
+
+
+/* ANİMASYONLAR */
+
+@keyframes rotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes reverseRotate {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.06);
+
+    }
+
+}
+
+
+/* DURUM */
+
+.aura-status {
+
+    margin-top: -5px;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #8defff;
+
+    flex-shrink: 0;
+}
+
+
+/* SOHBET */
+
+#chat {
+
+    width: min(92%, 600px);
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 5px 5px 10px;
+
+    scrollbar-width: thin;
+}
+
+.message {
+
+    max-width: 85%;
+
+    padding: 10px 13px;
+
+    margin-bottom: 10px;
+
+    border-radius: 10px;
+
+    line-height: 1.4;
+
+    white-space: pre-wrap;
+
+    font-size: 14px;
+}
+
+.aura {
+
+    background:
+        rgba(0,35,45,.7);
+
+    margin-right: auto;
+
+    border:
+        1px solid
+        rgba(0,234,255,.25);
+}
+
+.user {
+
+    background:
+        rgba(0,90,120,.7);
+
+    margin-left: auto;
+
+    color: white;
+}
+
+
+/* ALT PANEL */
+
+#bottom {
+
+    width: 100%;
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    background:
+        rgba(0,10,15,.96);
+
+    border-top:
+        1px solid
+        rgba(0,234,255,.45);
+
+    z-index: 10;
+}
+
+
+/* YAZI */
+
+#input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 45px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid
+        rgba(0,234,255,.5);
+
+    outline: none;
+
+    background:
+        rgba(0,25,32,.95);
+
+    color: #00eaff;
+
+    font-size: 14px;
+}
+
+#input::placeholder {
+
+    color: #548995;
+}
+
+
+/* BUTONLAR */
+
+button {
+
+    height: 45px;
+
+    border:
+        1px solid
+        #00eaff;
+
+    border-radius: 8px;
+
+    padding: 0 14px;
+
+    background:
+        rgba(0,60,75,.8);
+
+    color: #00eaff;
+
+    font-size: 14px;
+}
+
+button:active {
+
+    transform: scale(.94);
+}
+
+.mic-button {
+
+    width: 45px;
+
+    padding: 0;
+
+    font-size: 20px;
+}
+
+
+/* TELEFON */
+
+@media (max-width: 500px) {
+
+    .aura-core {
+
+        transform: scale(.82);
+
+        margin-top: 5px;
+
+        margin-bottom: -10px;
+    }
+
+    .logo {
+
+        font-size: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ÜST -->
+
+<div class="top-bar">
+
+    <div class="logo">
+        AURA
+    </div>
+
+    <div class="status">
+        ONLINE
+    </div>
+
+</div>
+
+
+<!-- ANA -->
+
+<div class="main">
+
+
+    <!-- ÇEKİRDEK -->
+
+    <div class="aura-core">
+
+        <div class="aura-ring ring1"></div>
+
+        <div class="aura-ring ring2"></div>
+
+        <div class="aura-ring ring3"></div>
+
+        <div class="aura-center">
+            AURA
+        </div>
+
+    </div>
+
+
+    <div class="aura-status">
+        SYSTEM READY
+    </div>
+
+
+    <!-- MESAJLAR -->
+
+    <div id="chat"></div>
+
+
+    <!-- GİRİŞ -->
+
+    <div id="bottom">
+
+        <input
+            id="input"
+            type="text"
+            placeholder="AURA'ya bir şey sor..."
+            autocomplete="off"
+        >
+
+        <button
+            class="mic-button"
+            onclick="startListening()">
+            🎤
+        </button>
+
+        <button
+            onclick="sendMessage()">
+            Gönder
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* ELEMENTLER */
+
+const chat =
+    document.getElementById("chat");
+
+const input =
+    document.getElementById("input");
+
+
+/* SES */
+
+function speak(text) {
+
+    const msg =
+        new SpeechSynthesisUtterance(text);
+
+    msg.lang =
+        "tr-TR";
+
+    msg.rate =
+        0.9;
+
+    msg.pitch =
+        1;
+
+    msg.volume =
+        1;
+
+    window.speechSynthesis.cancel();
+
+    setTimeout(() => {
+
+        window.speechSynthesis.speak(msg);
+
+    }, 100);
+
+}
+
+
+/* MESAJ */
+
+function addMessage(text, type) {
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " + type;
+
+    message.textContent =
+        text;
+
+    chat.appendChild(message);
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+}
+
+
+/* AURA */
+
+function auraReply(text) {
+
+    const kullaniciAdi =
+        "Bedirhan Kahraman";
+
+    const sevgiliAdi =
+        "Edanur Kahraman";
+
+    const command =
+        text.toLowerCase().trim();
+
+
+    /* BEN KİMİM */
+
+    if (
+        command.includes("ben kimim") ||
+        command.includes("beni tanıyor musun") ||
+        command.includes("beni taniyor musun") ||
+        command.includes("benim adım ne") ||
+        command.includes("benim adim ne")
+    ) {
+
+        return "Sen " +
+            kullaniciAdi +
+            "sın.";
+
+    }
+
+
+    /* SEVGİLİ */
+
+    if (
+        command.includes("sevgilimin adı") ||
+        command.includes("sevgilimin adi") ||
+        command.includes("sevgilimin ismi") ||
+        command.includes("sevgilim kim")
+    ) {
+
+        return "Sevgilinin adı " +
+            sevgiliAdi +
+            ".";
+
+    }
+
+
+    /* MERHABA */
+
+    if (
+        command === "merhaba" ||
+        command === "selam" ||
+        command.includes("merhaba aura") ||
+        command.includes("selam aura")
+    ) {
+
+        return "Merhaba Bedirhan. AURA hazır.";
+
+    }
+
+
+    /* NASILSIN */
+
+    if (
+        command.includes("nasılsın") ||
+        command.includes("nasilsin") ||
+        command.includes("iyi misin")
+    ) {
+
+        return "İyiyim. Sistemlerim çalışıyor ve seni dinliyorum.";
+
+    }
+
+
+    /* NE YAPIYORSUN */
+
+    if (
+        command.includes("ne yapıyorsun") ||
+        command.includes("ne yapiyorsun") ||
+        command.includes("napıyorsun") ||
+        command.includes("napıyorsun")
+    ) {
+
+        return "Şu anda seninle konuşuyorum ve komutlarını bekliyorum.";
+
+    }
+
+
+    /* TEŞEKKÜR */
+
+    if (
+        command.includes("teşekkür") ||
+        command.includes("tesekkur") ||
+        command.includes("sağol") ||
+        command.includes("sagol")
+    ) {
+
+        return "Rica ederim.";
+
+    }
+
+
+    /* SAAT */
+
+    if (
+        command === "saat" ||
+        command.includes("saat kaç") ||
+        command.includes("saat kac")
+    ) {
+
+        return "Şu an saat: " +
+            new Date()
+            .toLocaleTimeString("tr-TR");
+
+    }
+
+
+    /* TARİH */
+
+    if (
+        command.includes("tarih") ||
+        command.includes("bugün hangi gün") ||
+        command.includes("bugun hangi gun")
+    ) {
+
+        return "Bugünün tarihi: " +
+            new Date()
+            .toLocaleDateString("tr-TR");
+
+    }
+
+
+    /* KİMSİN */
+
+    if (
+        command === "kimsin" ||
+        command.includes("sen kimsin")
+    ) {
+
+        return "Ben AURA AI. Bedirhan'ın kişisel yapay zekâ asistanıyım.";
+
+    }
+
+
+    /* ŞAKA */
+
+    if (
+        command.includes("şaka") ||
+        command.includes("saka") ||
+        command.includes("beni güldür") ||
+        command.includes("beni guldur") ||
+        command === "güldür" ||
+        command === "guldur"
+    ) {
+
+        const jokes = [
+
+            "Programcı neden kahve içer? Çünkü bug'ları ayıklaması gerekiyor.",
+
+            "Bilgisayar neden doktora gitmiş? Virüsü varmış.",
+
+            "Wi-Fi neden kavga etmiş? Bağlantısı kopmuş.",
+
+            "Bilgisayarın en sevdiği spor nedir? Ağ bağlantısı."
+
+        ];
+
+        return jokes[
+            Math.floor(
+                Math.random() *
+                jokes.length
+            )
+        ];
+
+    }
+
+
+    /* YARDIM */
+
+    if (
+        command === "yardım" ||
+        command === "yardim" ||
+        command.includes("neler yapabiliyorsun")
+    ) {
+
+        return "Şimdilik şunları yapabiliyorum:\n\n" +
+            "• Seni tanıyabilirim\n" +
+            "• Sevgilinin adını bilirim\n" +
+            "• Saat ve tarihi söyleyebilirim\n" +
+            "• Seninle sohbet edebilirim\n" +
+            "• Şaka yapabilirim\n" +
+            "• Sesli komutlarını anlayabilirim\n" +
+            "• Sesli cevap verebilirim";
+
+    }
+
+
+    /* BİLİNMEYEN */
+
+    return "Bunu henüz öğrenmedim. Bana başka bir şey söyle.";
+
+}
+
+
+/* GÖNDER */
+
+function sendMessage() {
+
+    const text =
+        input.value.trim();
+
+    if (!text) return;
+
+    addMessage(
+        text,
+        "user"
+    );
+
+    input.value = "";
+
+    setTimeout(() => {
+
+        const reply =
+            auraReply(text);
+
+        addMessage(
+            reply,
+            "aura"
+        );
+
+        speak(reply);
+
+    }, 300);
+
+}
+
+
+/* ENTER */
+
+input.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+/* MİKROFON */
+
+function startListening() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
