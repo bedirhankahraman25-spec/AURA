@@ -40,7 +40,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 0 18px;
+
     background: rgba(0,10,15,0.9);
     border-bottom: 1px solid rgba(0,234,255,0.4);
 }
@@ -49,6 +51,7 @@ body {
     font-size: 21px;
     font-weight: bold;
     letter-spacing: 4px;
+
     text-shadow:
         0 0 10px #00eaff,
         0 0 25px #00eaff;
@@ -63,11 +66,16 @@ body {
 .status::before {
     content: "";
     display: inline-block;
+
     width: 7px;
     height: 7px;
+
     margin-right: 7px;
+
     border-radius: 50%;
+
     background: #55ffcc;
+
     box-shadow:
         0 0 8px #55ffcc,
         0 0 15px #55ffcc;
@@ -76,65 +84,86 @@ body {
 .main {
     height: calc(100vh - 60px);
     height: calc(100dvh - 60px);
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     min-height: 0;
 }
 
 .aura-core {
     width: 210px;
     height: 210px;
+
     margin-top: 10px;
+
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     flex-shrink: 0;
 }
 
 .aura-ring {
     position: absolute;
+
     border-radius: 50%;
+
     border: 1px solid #00eaff;
+
     opacity: 0.7;
 }
 
 .ring1 {
     width: 135px;
     height: 135px;
+
     border-left-color: transparent;
     border-right-color: transparent;
+
     animation: rotate1 7s linear infinite;
 }
 
 .ring2 {
     width: 175px;
     height: 175px;
+
     border-top-color: transparent;
     border-bottom-color: transparent;
+
     animation: rotate2 10s linear infinite;
 }
 
 .ring3 {
     width: 210px;
     height: 210px;
+
     border-left-color: transparent;
     border-bottom-color: transparent;
+
     animation: rotate1 14s linear infinite;
 }
 
 .aura-center {
     width: 100px;
     height: 100px;
+
     border-radius: 50%;
+
     border: 2px solid #00eaff;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     color: #00eaff;
+
     font-size: 21px;
     font-weight: bold;
+
     letter-spacing: 3px;
 
     background:
@@ -150,10 +179,12 @@ body {
         inset 0 0 25px rgba(0,234,255,0.5);
 
     animation: pulse 2.2s infinite ease-in-out;
+
     z-index: 5;
 }
 
 @keyframes rotate1 {
+
     from {
         transform: rotate(0deg);
     }
@@ -164,6 +195,7 @@ body {
 }
 
 @keyframes rotate2 {
+
     from {
         transform: rotate(360deg);
     }
@@ -174,7 +206,9 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -186,63 +220,94 @@ body {
 .aura-status {
     margin-top: -8px;
     margin-bottom: 5px;
+
     font-size: 10px;
     letter-spacing: 3px;
+
     color: #8defff;
 }
 
 #chat {
     width: min(92%, 600px);
+
     flex: 1;
     min-height: 0;
+
     overflow-y: auto;
+
     padding: 5px 5px 10px;
 }
 
 .message {
     max-width: 85%;
+
     padding: 10px 13px;
+
     margin-bottom: 10px;
+
     border-radius: 10px;
+
     line-height: 1.4;
+
     white-space: pre-wrap;
+
     font-size: 14px;
 }
 
 .aura {
     background: rgba(0,35,45,0.8);
+
     margin-right: auto;
+
     border: 1px solid rgba(0,234,255,0.25);
 }
 
 .user {
     background: rgba(0,90,120,0.8);
+
     margin-left: auto;
+
     color: white;
 }
 
 #bottom {
     width: 100%;
+
     min-height: 65px;
+
     display: flex;
     align-items: center;
+
     gap: 8px;
+
     padding: 10px;
+
     background: rgba(0,10,15,0.97);
+
     border-top: 1px solid rgba(0,234,255,0.45);
+
     z-index: 10;
 }
 
 #input {
     flex: 1;
+
     min-width: 0;
+
     height: 45px;
+
     padding: 12px;
+
     border-radius: 8px;
+
     border: 1px solid rgba(0,234,255,0.5);
+
     outline: none;
+
     background: rgba(0,25,32,0.95);
+
     color: #00eaff;
+
     font-size: 14px;
 }
 
@@ -252,12 +317,19 @@ body {
 
 button {
     height: 45px;
+
     border: 1px solid #00eaff;
+
     border-radius: 8px;
+
     padding: 0 14px;
+
     background: rgba(0,60,75,0.9);
+
     color: #00eaff;
+
     font-size: 14px;
+
     cursor: pointer;
 }
 
@@ -279,6 +351,7 @@ button:disabled {
 
     .aura-core {
         transform: scale(0.82);
+
         margin-top: 0;
         margin-bottom: -15px;
     }
@@ -304,7 +377,7 @@ button:disabled {
         AURA
     </div>
 
-    <div class="status">
+    <div class="status" id="status">
         ONLINE
     </div>
 
@@ -315,7 +388,9 @@ button:disabled {
     <div class="aura-core">
 
         <div class="aura-ring ring1"></div>
+
         <div class="aura-ring ring2"></div>
+
         <div class="aura-ring ring3"></div>
 
         <div class="aura-center">
@@ -324,7 +399,7 @@ button:disabled {
 
     </div>
 
-    <div class="aura-status">
+    <div class="aura-status" id="auraStatus">
         AI SYSTEM READY
     </div>
 
@@ -335,20 +410,23 @@ button:disabled {
         <input
             id="input"
             type="text"
-            placeholder="AURA'ya bir şey sor..."
+            placeholder="Bir şey sor..."
             autocomplete="off"
+            disabled
         >
 
         <button
             class="mic-button"
             id="micButton"
-            type="button">
+            type="button"
+            disabled>
             🎤
         </button>
 
         <button
             id="sendButton"
-            type="button">
+            type="button"
+            disabled>
             Gönder
         </button>
 
@@ -359,20 +437,18 @@ button:disabled {
 <script src="https://js.puter.com/v2/"></script>
 
 <script>
-    const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const sendButton = document.getElementById("sendButton");
-const micButton = document.getElementById("micButton");
+    /* =========================================
+   AURA BULUT HAFIZASI
+========================================= */
+
+const MEMORY_KEY =
+    "aura_cloud_memory_v1";
+
+const CHAT_KEY =
+    "aura_cloud_chat_v1";
 
 
-/* ================================
-   KALICI HAFIZA
-================================ */
-
-const MEMORY_KEY = "AURA_PERMANENT_MEMORY";
-
-
-let memory = {
+const defaultMemory = {
 
     name: "Bedirhan Kahraman",
 
@@ -385,68 +461,439 @@ let memory = {
 };
 
 
-function loadMemory() {
+let memory = {
+    ...defaultMemory
+};
+
+
+let conversation = [
+
+    {
+        role: "system",
+        content: ""
+    }
+
+];
+
+
+let cloudReady = false;
+
+
+/* =========================================
+   HAFIZA METNİ
+========================================= */
+
+function buildMemoryText() {
+
+    let text =
+        "KALICI KULLANICI HAFIZASI:\n";
+
+    text +=
+        "Kullanıcının adı: " +
+        memory.name +
+        "\n";
+
+    text +=
+        "Kullanıcının sevgilisinin adı: " +
+        memory.girlfriend +
+        "\n";
+
+    if (memory.favoriteTeam) {
+
+        text +=
+            "Kullanıcının tuttuğu takım: " +
+            memory.favoriteTeam +
+            "\n";
+    }
+
+    if (
+        Array.isArray(memory.facts) &&
+        memory.facts.length > 0
+    ) {
+
+        text +=
+            "Kullanıcı hakkında hatırlanması gereken bilgiler:\n";
+
+        memory.facts.forEach(
+            function(fact) {
+
+                text +=
+                    "- " +
+                    fact +
+                    "\n";
+            }
+        );
+    }
+
+    return text;
+}
+
+
+/* =========================================
+   SİSTEM MESAJI
+========================================= */
+
+function buildSystemPrompt() {
+
+    return `
+Sen AURA adında kişisel bir yapay zekâ asistanısın.
+
+Türkçe konuş.
+
+Kullanıcının adı Bedirhan Kahraman.
+
+Kullanıcının sevgilisinin adı Edanur Kahraman.
+
+ÖNEMLİ KONUŞMA KURALLARI:
+
+Kullanıcıya sürekli ismiyle hitap etme.
+
+Her cevaba "Bedirhan" diye başlama.
+
+İsmini yalnızca gerçekten gerekli olduğunda kullan.
+
+Her mesajda kendini "AURA" diye tanıtma.
+
+Doğal, kısa ve anlaşılır cevaplar ver.
+
+Gereksiz tekrar yapma.
+
+Bilmediğin bilgiyi uydurma.
+
+Kullanıcı "ben kimim" derse Bedirhan Kahraman olduğunu söyle.
+
+Kullanıcı "sevgilimin adı ne" derse Edanur Kahraman olduğunu söyle.
+
+KALICI HAFIZA:
+
+${buildMemoryText()}
+
+Bu hafızadaki bilgileri konuşma sırasında gerektiğinde kullan.
+
+Kullanıcı yeni ve önemli bir bilgi verdiğinde bunu dikkate al.
+`;
+}
+
+
+/* =========================================
+   BULUTTAN HAFIZA YÜKLE
+========================================= */
+
+async function loadCloudMemory() {
 
     try {
 
         const saved =
-            localStorage.getItem(MEMORY_KEY);
+            await puter.kv.get(
+                MEMORY_KEY
+            );
 
-        if (saved) {
 
-            const parsed =
-                JSON.parse(saved);
+        if (
+            saved !== undefined &&
+            saved !== null
+        ) {
 
-            memory = {
-                ...memory,
-                ...parsed
-            };
+            if (
+                typeof saved === "string"
+            ) {
 
-            if (!Array.isArray(memory.facts)) {
-                memory.facts = [];
+                try {
+
+                    memory =
+                        JSON.parse(saved);
+
+                } catch {
+
+                    memory = {
+                        ...defaultMemory
+                    };
+                }
+
+            } else {
+
+                memory = {
+                    ...defaultMemory,
+                    ...saved
+                };
             }
         }
 
-    } catch (error) {
+
+        if (
+            !Array.isArray(memory.facts)
+        ) {
+
+            memory.facts = [];
+        }
+
+
+        console.log(
+            "BULUT HAFIZA YÜKLENDİ:",
+            memory
+        );
+
+
+        return true;
+
+    }
+
+    catch (error) {
 
         console.error(
-            "Hafıza yükleme hatası:",
+            "BULUT HAFIZA YÜKLEME HATASI:",
             error
         );
+
+        return false;
     }
 }
 
 
-function saveMemory() {
+/* =========================================
+   BULUTA HAFIZA KAYDET
+========================================= */
+
+async function saveCloudMemory() {
 
     try {
 
-        localStorage.setItem(
-            MEMORY_KEY,
-            JSON.stringify(memory)
+        const result =
+            await puter.kv.set(
+                MEMORY_KEY,
+                memory
+            );
+
+
+        console.log(
+            "HAFIZA BULUTA KAYDEDİLDİ:",
+            result
         );
 
-    } catch (error) {
+
+        return true;
+
+    }
+
+    catch (error) {
 
         console.error(
-            "Hafıza kaydetme hatası:",
+            "HAFIZA KAYDETME HATASI:",
             error
         );
+
+        return false;
     }
 }
 
 
-loadMemory();
+/* =========================================
+   KONUŞMA GEÇMİŞİNİ YÜKLE
+========================================= */
+
+async function loadCloudConversation() {
+
+    try {
+
+        const saved =
+            await puter.kv.get(
+                CHAT_KEY
+            );
 
 
-/* ================================
-   BİLGİYİ HAFIZAYA AL
-================================ */
+        if (
+            saved !== undefined &&
+            saved !== null &&
+            Array.isArray(saved)
+        ) {
 
-function learnMemory(text) {
+            conversation =
+                saved;
 
-    const lower =
-        text.toLocaleLowerCase("tr-TR");
+        }
+
+
+        if (
+            !Array.isArray(conversation) ||
+            conversation.length === 0
+        ) {
+
+            conversation = [
+
+                {
+                    role: "system",
+                    content: ""
+                }
+
+            ];
+        }
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "KONUŞMA YÜKLEME HATASI:",
+            error
+        );
+
+        conversation = [
+
+            {
+                role: "system",
+                content: ""
+            }
+
+        ];
+
+        return false;
+    }
+}
+
+
+/* =========================================
+   KONUŞMAYI BULUTA KAYDET
+========================================= */
+
+async function saveCloudConversation() {
+
+    try {
+
+        /*
+         * Çok fazla büyümemesi için
+         * son 40 mesajı tutuyoruz.
+         */
+
+        const system =
+            conversation[0];
+
+
+        const messages =
+            conversation.slice(-40);
+
+
+        conversation =
+            [
+                system,
+                ...messages.filter(
+                    function(item, index) {
+
+                        return (
+                            index !== 0
+                        );
+                    }
+                )
+            ];
+
+
+        await puter.kv.set(
+            CHAT_KEY,
+            conversation
+        );
+
+
+        console.log(
+            "KONUŞMA BULUTA KAYDEDİLDİ."
+        );
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "KONUŞMA KAYDETME HATASI:",
+            error
+        );
+
+        return false;
+    }
+}
+
+
+/* =========================================
+   SİSTEM MESAJINI GÜNCELLE
+========================================= */
+
+function updateSystemMessage() {
+
+    if (
+        !conversation[0] ||
+        conversation[0].role !== "system"
+    ) {
+
+        conversation.unshift({
+
+            role: "system",
+            content: buildSystemPrompt()
+
+        });
+
+    } else {
+
+        conversation[0].content =
+            buildSystemPrompt();
+    }
+}
+
+
+/* =========================================
+   BENZERSİZ BİLGİ EKLE
+========================================= */
+
+function addFact(fact) {
+
+    const clean =
+        String(fact)
+            .trim()
+            .replace(
+                /[.!?]+$/,
+                ""
+            );
+
+
+    if (!clean) {
+        return false;
+    }
+
+
+    const exists =
+        memory.facts.some(
+            function(item) {
+
+                return (
+                    item.toLocaleLowerCase("tr-TR") ===
+                    clean.toLocaleLowerCase("tr-TR")
+                );
+
+            }
+        );
+
+
+    if (exists) {
+        return false;
+    }
+
+
+    memory.facts.push(
+        clean
+    );
+
+
+    return true;
+            }
+    /* =========================================
+   MESAJDAN HAFIZA ÖĞREN
+========================================= */
+
+async function learnFromMessage(text) {
+
+    let changed = false;
 
 
     /* TAKIM */
@@ -455,37 +902,53 @@ function learnMemory(text) {
 
         /ben\s+(.+?)\s+tutuyorum/i,
 
-        /(.+?)\s+tutuyorum/i,
+        /ben\s+(.+?)\s+tutuyorum/iu,
 
-        /ben\s+(.+?)\s+taraftarıyım/i,
+        /(.+?)\s+taraftarıyım/i,
 
-        /ben\s+(.+?)\s+taraftariyim/i
+        /(.+?)\s+taraftariyim/i
 
     ];
 
 
-    for (const pattern of teamPatterns) {
+    for (
+        const pattern of teamPatterns
+    ) {
 
         const match =
             text.match(pattern);
 
+
         if (match) {
 
-            const team =
+            let team =
                 match[1]
                     .trim()
-                    .replace(/[.!?,]+$/, "");
+                    .replace(
+                        /^[ıi]\s+/i,
+                        ""
+                    )
+                    .replace(
+                        /[.!?,]+$/,
+                        ""
+                    );
+
 
             if (
-                team.length > 1 &&
-                team.length < 60
+                team.length >= 2 &&
+                team.length <= 60
             ) {
 
-                memory.favoriteTeam =
-                    team;
+                if (
+                    memory.favoriteTeam !==
+                    team
+                ) {
 
-                saveMemory();
+                    memory.favoriteTeam =
+                        team;
 
+                    changed = true;
+                }
             }
 
             break;
@@ -497,108 +960,57 @@ function learnMemory(text) {
 
     const rememberPatterns = [
 
-        /bunu hatırla[:\s]+(.+)/i,
+        /bunu\s+hatırla\s*[:\-]?\s*(.+)/i,
 
-        /bunu hatirla[:\s]+(.+)/i,
+        /bunu\s+hatirla\s*[:\-]?\s*(.+)/i,
 
-        /aklında tut[:\s]+(.+)/i,
+        /aklında\s+tut\s*[:\-]?\s*(.+)/i,
 
-        /aklinda tut[:\s]+(.+)/i,
+        /aklinda\s+tut\s*[:\-]?\s*(.+)/i,
 
-        /unutma[:\s]+(.+)/i
+        /unutma\s*[:\-]?\s*(.+)/i
 
     ];
 
 
-    for (const pattern of rememberPatterns) {
+    for (
+        const pattern of rememberPatterns
+    ) {
 
         const match =
             text.match(pattern);
 
+
         if (match) {
 
-            const fact =
-                match[1]
-                    .trim()
-                    .replace(/[.!?]+$/, "");
-
             if (
-                fact.length > 1 &&
-                fact.length < 250
+                addFact(match[1])
             ) {
 
-                if (
-                    !memory.facts.includes(fact)
-                ) {
-
-                    memory.facts.push(fact);
-
-                    saveMemory();
-
-                }
+                changed = true;
             }
 
             break;
         }
     }
-}
 
 
-/* ================================
-   HAFIZA BİLGİSİ
-================================ */
+    if (changed) {
 
-function getMemoryContext() {
+        await saveCloudMemory();
 
-    let result =
-        "KALICI KULLANICI HAFIZASI:\n";
-
-    result +=
-        "Kullanıcının adı: " +
-        memory.name +
-        "\n";
-
-    result +=
-        "Sevgilisinin adı: " +
-        memory.girlfriend +
-        "\n";
-
-
-    if (memory.favoriteTeam) {
-
-        result +=
-            "Tuttuğu takım: " +
-            memory.favoriteTeam +
-            "\n";
     }
 
 
-    if (memory.facts.length > 0) {
-
-        result +=
-            "Hatırlanması istenen bilgiler:\n";
-
-        memory.facts.forEach(
-            function(fact, index) {
-
-                result +=
-                    "- " +
-                    fact +
-                    "\n";
-            }
-        );
-    }
-
-
-    return result;
+    return changed;
 }
 
 
-/* ================================
-   HAFIZA SORGULARI
-================================ */
+/* =========================================
+   HAFIZA KOMUTLARI
+========================================= */
 
-function memoryCommand(text) {
+function handleMemoryCommand(text) {
 
     const lower =
         text
@@ -606,24 +1018,47 @@ function memoryCommand(text) {
             .trim();
 
 
+    /* HAFIZA GÖR */
+
     if (
+
         lower === "hafızamda ne var" ||
+
         lower === "hafizanda ne var" ||
+
         lower === "hafızanda ne var" ||
-        lower.includes("benim hakkımda ne biliyorsun") ||
-        lower.includes("benim hakkimda ne biliyorsun")
+
+        lower.includes(
+            "benim hakkımda ne biliyorsun"
+        ) ||
+
+        lower.includes(
+            "benim hakkimda ne biliyorsun"
+        )
+
     ) {
 
-        return getMemoryContext();
+        return buildMemoryText();
     }
 
 
+    /* TAKIM */
+
     if (
-        lower.includes("hangi takımı tutuyorum") ||
-        lower.includes("hangi takimi tutuyorum")
+
+        lower.includes(
+            "hangi takımı tutuyorum"
+        ) ||
+
+        lower.includes(
+            "hangi takimi tutuyorum"
+        )
+
     ) {
 
-        if (memory.favoriteTeam) {
+        if (
+            memory.favoriteTeam
+        ) {
 
             return (
                 "Tuttuğun takım " +
@@ -633,7 +1068,25 @@ function memoryCommand(text) {
 
         }
 
-        return "Tuttuğun takımı henüz hafızama kaydetmedim.";
+        return (
+            "Tuttuğun takımı henüz hafızamda bulamıyorum."
+        );
+    }
+
+
+    /* HAFIZA SİL */
+
+    if (
+
+        lower ===
+        "hafızayı temizle" ||
+
+        lower ===
+        "hafizayi temizle"
+
+    ) {
+
+        return "__CLEAR_MEMORY__";
     }
 
 
@@ -641,160 +1094,173 @@ function memoryCommand(text) {
 }
 
 
-/* ================================
-   AI SİSTEM MESAJI
-================================ */
-
-function systemPrompt() {
-
-    return `
-Sen AURA adında kişisel bir yapay zekâ asistanısın.
-
-Türkçe konuş.
-
-Kullanıcının adı Bedirhan Kahraman.
-
-Kullanıcının sevgilisinin adı Edanur Kahraman.
-
-ÖNEMLİ:
-Kullanıcıya sürekli ismiyle hitap etme.
-
-Her mesajın başında "Bedirhan" deme.
-
-İsmini yalnızca gerçekten doğal ve gerekli olduğu durumlarda kullan.
-
-Her mesajda kendini AURA olarak tanıtma.
-
-Doğal, kısa ve anlaşılır cevaplar ver.
-
-Kullanıcı "ben kimim" diye sorarsa Bedirhan Kahraman olduğunu söyle.
-
-Kullanıcı "sevgilimin adı ne" diye sorarsa Edanur Kahraman olduğunu söyle.
-
-Aşağıdaki kalıcı hafızayı kullan:
-
-${getMemoryContext()}
-
-Hafızadaki bilgileri kullanıcı sormadan gereksiz şekilde listeleme.
-
-Yeni ve önemli bir bilgi verildiğinde onu dikkate al.
-`;
-}
-
-
-/* ================================
-   KONUŞMA GEÇMİŞİ
-================================ */
-
-const conversation = [
-
-    {
-        role: "system",
-        content: systemPrompt()
-    }
-
-];
-/* ================================
+/* =========================================
    MESAJ EKLE
-================================ */
+========================================= */
 
-function addMessage(text, type) {
+function addMessage(
+    text,
+    type
+) {
 
     const message =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     message.className =
         "message " + type;
 
+
     message.textContent =
         text;
 
-    chat.appendChild(message);
+
+    chat.appendChild(
+        message
+    );
+
 
     chat.scrollTop =
         chat.scrollHeight;
 }
 
 
-/* ================================
-   SES
-================================ */
+/* =========================================
+   SES TEMİZLE
+========================================= */
 
 function cleanTextForSpeech(text) {
 
     return text
+
         .replace(
             /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
             ""
         )
+
         .replace(
             /https?:\/\/\S+/gi,
             ""
         )
+
         .replace(
             /[.,!?;:"'“”‘’()[\]{}<>…:;\/\\|@#$%^&*_+=~`-]/g,
             " "
         )
+
         .replace(
             /\s+/g,
             " "
         )
+
         .trim();
 }
 
 
+/* =========================================
+   KONUŞ
+========================================= */
+
 function speak(text) {
 
-    if (!("speechSynthesis" in window)) {
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
         return;
     }
 
+
     const clean =
         cleanTextForSpeech(text);
+
 
     if (!clean) {
         return;
     }
 
-    const voice =
-        new SpeechSynthesisUtterance(clean);
 
-    voice.lang = "tr-TR";
-    voice.rate = 0.9;
-    voice.pitch = 1;
-    voice.volume = 1;
+    const voice =
+        new SpeechSynthesisUtterance(
+            clean
+        );
+
+
+    voice.lang =
+        "tr-TR";
+
+    voice.rate =
+        0.9;
+
+    voice.pitch =
+        1;
+
+    voice.volume =
+        1;
+
 
     window.speechSynthesis.cancel();
 
-    window.speechSynthesis.speak(voice);
+
+    setTimeout(
+        function() {
+
+            window.speechSynthesis.speak(
+                voice
+            );
+
+        },
+        100
+    );
 }
 
 
-/* ================================
-   AI CEVABI
-================================ */
+/* =========================================
+   GERÇEK AI
+========================================= */
 
 async function askAI(text) {
 
-    learnMemory(text);
+    await learnFromMessage(
+        text
+    );
 
 
-    const special =
-        memoryCommand(text);
+    const memoryAnswer =
+        handleMemoryCommand(
+            text
+        );
 
 
-    if (special) {
-        return special;
+    if (
+        memoryAnswer ===
+        "__CLEAR_MEMORY__"
+    ) {
+
+        memory = {
+            ...defaultMemory,
+            facts: []
+        };
+
+
+        await saveCloudMemory();
+
+
+        return (
+            "Kalıcı hafızamı temizledim."
+        );
     }
 
 
-    /*
-     * Sistem mesajını güncel hafızayla
-     * yeniliyoruz.
-     */
+    if (memoryAnswer) {
 
-    conversation[0].content =
-        systemPrompt();
+        return memoryAnswer;
+    }
+
+
+    updateSystemMessage();
 
 
     conversation.push({
@@ -808,11 +1274,6 @@ async function askAI(text) {
 
     try {
 
-        /*
-         * Puter'ın desteklediği messages
-         * formatını kullanıyoruz.
-         */
-
         const response =
             await puter.ai.chat(
                 conversation,
@@ -822,64 +1283,46 @@ async function askAI(text) {
             );
 
 
-        console.log(
-            "PUTER CEVABI:",
-            response
-        );
-
-
         let answer = "";
 
 
         if (
             response &&
-            response.message
+            response.message &&
+            typeof response.message.content ===
+            "string"
         ) {
 
-            if (
-                typeof response.message.content ===
-                "string"
-            ) {
-
-                answer =
-                    response.message.content;
-
-            }
-
-            else if (
-                Array.isArray(
-                    response.message.content
-                )
-            ) {
-
-                answer =
-                    response.message.content
-                        .map(
-                            item =>
-                                typeof item === "string"
-                                    ? item
-                                    : item.text || ""
-                        )
-                        .join("");
-
-            }
+            answer =
+                response.message.content;
 
         }
 
-
-        if (!answer && response?.text) {
+        else if (
+            response &&
+            typeof response.text ===
+            "string"
+        ) {
 
             answer =
                 response.text;
 
         }
 
+        else if (
+            typeof response ===
+            "string"
+        ) {
 
-        if (!answer) {
+            answer =
+                response;
+
+        }
+
+        else {
 
             answer =
                 String(response);
-
         }
 
 
@@ -890,6 +1333,20 @@ async function askAI(text) {
             content: answer
 
         });
+
+
+        /*
+         * AI konuşmasını da buluta kaydet.
+         */
+
+        await saveCloudConversation();
+
+
+        /*
+         * Hafızayı tekrar güvenceye al.
+         */
+
+        await saveCloudMemory();
 
 
         return answer;
@@ -905,20 +1362,30 @@ async function askAI(text) {
 
 
         return (
-            "AI bağlantısında hata oluştu: " +
-            (error?.message || "Bilinmeyen hata")
+            "AI bağlantısında bir sorun oluştu. Tekrar deneyebiliriz."
         );
     }
 }
 
 
-/* ================================
+/* =========================================
    MESAJ GÖNDER
-================================ */
+========================================= */
 
 async function sendMessage(
     voiceMode = false
 ) {
+
+    if (!cloudReady) {
+
+        addMessage(
+            "Hafıza sistemi henüz hazır değil.",
+            "aura"
+        );
+
+        return;
+    }
+
 
     const text =
         input.value.trim();
@@ -935,7 +1402,8 @@ async function sendMessage(
     );
 
 
-    input.value = "";
+    input.value =
+        "";
 
 
     sendButton.disabled =
@@ -975,14 +1443,15 @@ async function sendMessage(
         if (voiceMode) {
 
             speak(reply);
-
         }
 
     }
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
 
 
         if (loading) {
@@ -1003,27 +1472,29 @@ async function sendMessage(
     micButton.disabled =
         false;
 
+
     input.focus();
-}
-
-
-/* ================================
+    }
+    /* =========================================
    GÖNDER BUTONU
-================================ */
+========================================= */
 
-sendButton.onclick =
+sendButton.addEventListener(
+    "click",
     function() {
 
         sendMessage(false);
 
-    };
+    }
+);
 
 
-/* ================================
+/* =========================================
    ENTER
-================================ */
+========================================= */
 
-input.onkeydown =
+input.addEventListener(
+    "keydown",
     function(event) {
 
         if (
@@ -1033,22 +1504,24 @@ input.onkeydown =
             event.preventDefault();
 
             sendMessage(false);
-
         }
 
-    };
-    /* ================================
+    }
+);
+
+
+/* =========================================
    MİKROFON
-================================ */
+========================================= */
 
 function startListening() {
 
-    const Recognition =
+    const SpeechRecognition =
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
 
 
-    if (!Recognition) {
+    if (!SpeechRecognition) {
 
         addMessage(
             "Bu tarayıcı sesli komutu desteklemiyor.",
@@ -1060,7 +1533,7 @@ function startListening() {
 
 
     const recognition =
-        new Recognition();
+        new SpeechRecognition();
 
 
     recognition.lang =
@@ -1080,6 +1553,7 @@ function startListening() {
 
             micButton.disabled =
                 true;
+
 
             addMessage(
                 "Dinliyorum...",
@@ -1109,7 +1583,7 @@ function startListening() {
         function(event) {
 
             console.error(
-                "Mikrofon hatası:",
+                "Mikrofon:",
                 event.error
             );
 
@@ -1141,7 +1615,10 @@ function startListening() {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
+
 
         micButton.disabled =
             false;
@@ -1149,45 +1626,155 @@ function startListening() {
 }
 
 
-micButton.onclick =
-    startListening;
-
-
-/* ================================
-   BAŞLANGIÇ
-================================ */
-
-addMessage(
-    "Merhaba. Sistem hazır. Seni dinliyorum.",
-    "aura"
+micButton.addEventListener(
+    "click",
+    startListening
 );
 
 
-input.focus();
+/* =========================================
+   AURA'YI BAŞLAT
+========================================= */
+
+async function initializeAURA() {
+
+    addMessage(
+        "Bulut hafızası yükleniyor...",
+        "aura"
+    );
 
 
-/* ================================
-   HAFIZAYI OTOMATİK KAYDET
-================================ */
+    const memoryLoaded =
+        await loadCloudMemory();
+
+
+    const chatLoaded =
+        await loadCloudConversation();
+
+
+    updateSystemMessage();
+
+
+    if (
+        memoryLoaded
+    ) {
+
+        cloudReady =
+            true;
+
+
+        input.disabled =
+            false;
+
+        sendButton.disabled =
+            false;
+
+        micButton.disabled =
+            false;
+
+
+        document.getElementById(
+            "status"
+        ).textContent =
+            "ONLINE";
+
+
+        document.getElementById(
+            "auraStatus"
+        ).textContent =
+            "MEMORY ONLINE";
+
+
+        chat.lastElementChild.remove();
+
+
+        addMessage(
+            "Sistem hazır. Kalıcı hafıza aktif.",
+            "aura"
+        );
+
+
+        console.log(
+            "AURA HAFIZA:",
+            memory
+        );
+
+
+        console.log(
+            "AURA KONUŞMA:",
+            conversation
+        );
+
+
+        input.focus();
+
+    }
+
+    else {
+
+        cloudReady =
+            false;
+
+
+        document.getElementById(
+            "status"
+        ).textContent =
+            "MEMORY ERROR";
+
+
+        document.getElementById(
+            "auraStatus"
+        ).textContent =
+            "MEMORY OFFLINE";
+
+
+        chat.lastElementChild.remove();
+
+
+        addMessage(
+            "Bulut hafızasına bağlanılamadı. Puter hesabının açık olduğundan emin ol.",
+            "aura"
+        );
+
+
+        /*
+         * AI'yi yine tamamen kilitlemiyoruz;
+         * ancak yanlışlıkla yerel hafıza kullanmaması
+         * için gönderme kapalı kalıyor.
+         */
+
+    }
+}
+
+
+/* =========================================
+   SAYFA KAPANIRKEN
+========================================= */
 
 window.addEventListener(
     "beforeunload",
     function() {
 
-        saveMemory();
+        /*
+         * beforeunload async işlemleri
+         * garanti etmediği için normal
+         * konuşma sırasında zaten
+         * kaydediyoruz.
+         */
+
+        console.log(
+            "AURA kapanıyor. Bulut verileri zaten kaydedildi."
+        );
 
     }
 );
 
 
-console.log(
-    "AURA başlatıldı."
-);
+/* =========================================
+   BAŞLAT
+========================================= */
 
-console.log(
-    "Kalıcı hafıza:",
-    memory
-);
+initializeAURA();
 
 </script>
 
