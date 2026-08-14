@@ -467,7 +467,8 @@ button:disabled {
 <script src="https://js.puter.com/v2/"></script>
 
 <script>
-      const chat =
+
+const chat =
     document.getElementById("chat");
 
 const input =
@@ -560,6 +561,241 @@ const conversation = [
 
 
 /* =========================
+   UYGULAMA KOMUTLARI
+========================= */
+
+function normalizeCommand(text) {
+
+    return text
+        .toLocaleLowerCase("tr-TR")
+        .replace(/[’']/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+
+function openAndroidIntent(url) {
+
+    try {
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+
+        link.style.display = "none";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        setTimeout(function() {
+
+            link.remove();
+
+        }, 1000);
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "INTENT HATASI:",
+            error
+        );
+
+        return false;
+    }
+}
+
+
+function openApplication(text) {
+
+    const command =
+        normalizeCommand(text);
+
+
+    /* WHATSAPP */
+
+    if (
+        command.includes("whatsapp")
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat") ||
+            command.includes("çalıştır") ||
+            command.includes("calistir")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://#Intent;" +
+            "package=com.whatsapp;" +
+            "end"
+        );
+    }
+
+
+    /* YOUTUBE */
+
+    if (
+        (
+            command.includes("youtube")
+            ||
+            command.includes("youtube u")
+            ||
+            command.includes("youtubeyi")
+        )
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://www.youtube.com/#Intent;" +
+            "scheme=https;" +
+            "package=com.google.android.youtube;" +
+            "end"
+        );
+    }
+
+
+    /* INSTAGRAM */
+
+    if (
+        command.includes("instagram")
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://instagram.com/#Intent;" +
+            "scheme=https;" +
+            "package=com.instagram.android;" +
+            "end"
+        );
+    }
+
+
+    /* CHROME */
+
+    if (
+        command.includes("chrome")
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://#Intent;" +
+            "package=com.android.chrome;" +
+            "end"
+        );
+    }
+
+
+    /* KAMERA */
+
+    if (
+        command.includes("kamera")
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://#Intent;" +
+            "action=android.media.action.IMAGE_CAPTURE;" +
+            "end"
+        );
+    }
+
+
+    /* GALERİ */
+
+    if (
+        (
+            command.includes("galeri")
+            ||
+            command.includes("fotoğraflar")
+            ||
+            command.includes("fotograflar")
+            ||
+            command.includes("fotoğrafları")
+            ||
+            command.includes("fotograflari")
+        )
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://#Intent;" +
+            "action=android.intent.action.VIEW;" +
+            "type=image/*;" +
+            "end"
+        );
+    }
+
+
+    /* AYARLAR */
+
+    if (
+        (
+            command.includes("ayarlar")
+            ||
+            command.includes("ayarları")
+            ||
+            command.includes("ayarlari")
+        )
+        &&
+        (
+            command.includes("aç") ||
+            command.includes("ac") ||
+            command.includes("başlat") ||
+            command.includes("baslat")
+        )
+    ) {
+
+        return openAndroidIntent(
+            "intent://#Intent;" +
+            "action=android.settings.SETTINGS;" +
+            "end"
+        );
+    }
+
+
+    return false;
+}
+
+
+/* =========================
    AI
 ========================= */
 
@@ -646,11 +882,10 @@ async function askAI(text) {
 
         return "AI bağlantısında bir sorun oluştu.";
     }
-}
-
+}<script>
 
 /* =========================
-   TEMEL MESAJ GÖNDERME
+   TEMEL MESAJ İŞLEME
 ========================= */
 
 async function processMessage(
@@ -663,6 +898,29 @@ async function processMessage(
         "user"
     );
 
+
+    /*
+       ÖNCE TELEFON KOMUTU
+    */
+
+    const appOpened =
+        openApplication(text);
+
+
+    if (appOpened) {
+
+        addMessage(
+            "Komut alındı. Uygulama açılıyor.",
+            "aura"
+        );
+
+        return;
+    }
+
+
+    /*
+       UYGULAMA KOMUTU DEĞİLSE AI
+    */
 
     addMessage(
         "Düşünüyorum...",
@@ -734,10 +992,163 @@ async function processMessage(
 
 
 /* =========================
-   YAZILI MESAJ
+   WEB ARAMA
 ========================= */
 
-async function sendTextMessage() {
+function needsWebSearch(text) {
+
+    const command =
+        text.toLowerCase();
+
+
+    const words = [
+
+        "internette ara",
+        "internetten ara",
+        "internette araştır",
+        "internetten araştır",
+        "webde ara",
+        "web'de ara",
+        "internetten bak",
+        "internete bak",
+        "güncel bilgi",
+        "guncel bilgi",
+        "hava durumu",
+        "hava nasıl",
+        "hava nasil",
+        "son dakika",
+        "haberler",
+        "güncel haber",
+        "guncel haber",
+        "şimdi",
+        "simdi",
+        "şu an",
+        "su an"
+
+    ];
+
+
+    return words.some(
+        function(word) {
+
+            return command.includes(word);
+
+        }
+    );
+}
+
+
+/* =========================
+   WEB DESTEKLİ AI
+========================= */
+
+async function askAIWithWeb(text) {
+
+    conversation.push({
+
+        role: "user",
+
+        content:
+            text +
+            "\n\n" +
+            "Bu soruyu güncel internet bilgileri " +
+            "gerekiyorsa web araması yaparak cevapla. " +
+            "Kullanıcıya gereksiz şekilde adıyla hitap etme."
+
+    });
+
+
+    try {
+
+        const response =
+            await puter.ai.chat(
+                conversation,
+                {
+                    model:
+                        "gpt-5.4-nano",
+
+                    tools: [
+                        {
+                            type: "web_search"
+                        }
+                    ]
+                }
+            );
+
+
+        let answer = "";
+
+
+        if (
+            response &&
+            response.message &&
+            response.message.content
+        ) {
+
+            answer =
+                response.message.content;
+
+        }
+
+        else if (
+            response &&
+            response.text
+        ) {
+
+            answer =
+                response.text;
+
+        }
+
+        else if (
+            typeof response === "string"
+        ) {
+
+            answer =
+                response;
+
+        }
+
+        else {
+
+            answer =
+                "Web aramasından cevap alınamadı.";
+        }
+
+
+        conversation.push({
+
+            role: "assistant",
+
+            content: answer
+
+        });
+
+
+        return answer;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "WEB HATASI:",
+            error
+        );
+
+
+        return await askAI(text);
+    }
+}
+
+
+/* =========================
+   ANA MESAJ SİSTEMİ
+========================= */
+
+async function sendMessage(
+    voiceMode = false
+) {
 
     const text =
         input.value.trim();
@@ -751,19 +1162,134 @@ async function sendTextMessage() {
     input.value = "";
 
 
-    await processMessage(
+    addMessage(
         text,
-        false
+        "user"
     );
+
+
+    /*
+       UYGULAMA KOMUTU
+    */
+
+    if (
+        openApplication(text)
+    ) {
+
+        addMessage(
+            "Komut alındı. Uygulama açılıyor.",
+            "aura"
+        );
+
+        input.focus();
+
+        return;
+    }
+
+
+    /*
+       NORMAL AI İŞLEMİ
+    */
+
+    addMessage(
+        "Düşünüyorum...",
+        "aura"
+    );
+
+
+    const loading =
+        chat.lastElementChild;
+
+
+    sendButton.disabled =
+        true;
+
+    micButton.disabled =
+        true;
+
+
+    try {
+
+        let reply;
+
+
+        if (
+            needsWebSearch(text)
+        ) {
+
+            reply =
+                await askAIWithWeb(
+                    text
+                );
+
+        }
+
+        else {
+
+            reply =
+                await askAI(text);
+        }
+
+
+        if (loading) {
+
+            loading.remove();
+        }
+
+
+        addMessage(
+            reply,
+            "aura"
+        );
+
+
+        if (voiceMode) {
+
+            speak(reply);
+        }
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        if (loading) {
+            loading.remove();
+        }
+
+
+        addMessage(
+            "Bir hata oluştu. Tekrar deneyelim.",
+            "aura"
+        );
+    }
+
+
+    sendButton.disabled =
+        false;
+
+    micButton.disabled =
+        false;
+
+    input.focus();
 }
 
 
 /* =========================
-   ENTER
+   GÖNDER
 ========================= */
 
-input.addEventListener(
-    "keydown",
+sendButton.onclick =
+    function() {
+
+        sendMessage(false);
+    };
+
+
+input.onkeydown =
     function(event) {
 
         if (
@@ -772,22 +1298,12 @@ input.addEventListener(
 
             event.preventDefault();
 
-            sendTextMessage();
+            sendMessage(false);
         }
-
-    }
-);
+    };
 
 
 /* =========================
-   GÖNDER BUTONU
-========================= */
-
-sendButton.addEventListener(
-    "click",
-    sendTextMessage
-);
-      /* =========================
    SES TEMİZLEME
 ========================= */
 
@@ -956,237 +1472,48 @@ if (SpeechRecognition) {
             input.value = "";
 
 
-            await processMessage(
-                text,
-                true
+            await sendVoiceMessage(
+                text
             );
         };
-}
-
-
-/* =========================
-   MİKROFON BUTONU
-========================= */
-
-micButton.addEventListener(
-    "click",
-    function() {
-
-        if (!recognition) {
-
-            addMessage(
-                "Bu tarayıcı sesli komutu desteklemiyor.",
-                "aura"
-            );
-
-            return;
-        }
-
-
-        if (isListening) {
-
-            recognition.stop();
-
-            return;
-        }
-
-
-        try {
-
-            recognition.start();
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Mikrofon başlatılamadı:",
-                error
-            );
-        }
-
-    }
-);
-
+}<script>
 
 /* =========================
-   BAŞLANGIÇ
+   SESLİ MESAJ GÖNDERME
 ========================= */
 
-addMessage(
-    "Merhaba. Ben AURA AI.\n\n" +
-    "Sistem hazır. Seni dinliyorum.",
-    "aura"
-);
-      /* =========================
-   WEB ARAMA
-========================= */
-
-function needsWebSearch(text) {
-
-    const command =
-        text.toLowerCase();
-
-
-    const words = [
-
-        "internette ara",
-        "internetten ara",
-        "internette araştır",
-        "internetten araştır",
-        "webde ara",
-        "web'de ara",
-        "internetten bak",
-        "internete bak",
-        "güncel bilgi",
-        "guncel bilgi",
-        "hava durumu",
-        "hava nasıl",
-        "hava nasil",
-        "son dakika",
-        "haberler",
-        "güncel haber",
-        "guncel haber",
-        "şimdi",
-        "simdi",
-        "şu an",
-        "su an"
-
-    ];
-
-
-    return words.some(
-        function(word) {
-
-            return command.includes(word);
-        }
-    );
-}
-
-
-/* =========================
-   WEB DESTEKLİ AI
-========================= */
-
-async function askAIWithWeb(text) {
-
-    conversation.push({
-
-        role: "user",
-
-        content:
-            text +
-            "\n\n" +
-            "Bu soruyu güncel internet bilgileri " +
-            "gerekiyorsa web araması yaparak cevapla. " +
-            "Kullanıcıya gereksiz şekilde adıyla hitap etme."
-
-    });
-
-
-    try {
-
-        const response =
-            await puter.ai.chat(
-                conversation,
-                {
-                    model:
-                        "gpt-5.4-nano",
-
-                    tools: [
-                        {
-                            type: "web_search"
-                        }
-                    ]
-                }
-            );
-
-
-        let answer = "";
-
-
-        if (
-            response &&
-            response.message &&
-            response.message.content
-        ) {
-
-            answer =
-                response.message.content;
-
-        }
-
-        else if (
-            response &&
-            response.text
-        ) {
-
-            answer =
-                response.text;
-
-        }
-
-        else if (
-            typeof response === "string"
-        ) {
-
-            answer =
-                response;
-
-        }
-
-        else {
-
-            answer =
-                "Web aramasından cevap alınamadı.";
-        }
-
-
-        conversation.push({
-
-            role: "assistant",
-
-            content: answer
-
-        });
-
-
-        return answer;
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "WEB HATASI:",
-            error
-        );
-
-
-        return await askAI(text);
-    }
-}
-
-
-/* =========================
-   WEB MESAJ SİSTEMİ
-========================= */
-
-async function sendMessage(
-    voiceMode = false
-) {
-
-    const text =
-        input.value.trim();
-
+async function sendVoiceMessage(text) {
 
     if (!text) {
         return;
     }
 
 
-    input.value = "";
+    /*
+       Önce uygulama komutu
+    */
 
+    if (
+        openApplication(text)
+    ) {
+
+        addMessage(
+            text,
+            "user"
+        );
+
+        addMessage(
+            "Komut alındı. Uygulama açılıyor.",
+            "aura"
+        );
+
+        return;
+    }
+
+
+    /*
+       Normal AI + Web sistemi
+    */
 
     addMessage(
         text,
@@ -1246,17 +1573,16 @@ async function sendMessage(
         );
 
 
-        if (voiceMode) {
-
-            speak(reply);
-        }
-
+        speak(reply);
 
     }
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "SESLİ MESAJ HATASI:",
+            error
+        );
 
 
         if (loading) {
@@ -1282,34 +1608,85 @@ async function sendMessage(
 
 
 /* =========================
-   YAZILI GÖNDERMEYİ
-   WEB SİSTEMİNE BAĞLA
+   MİKROFON BUTONU
 ========================= */
 
-sendButton.onclick =
+micButton.addEventListener(
+    "click",
     function() {
 
-        sendMessage(false);
-    };
+        if (!recognition) {
 
+            addMessage(
+                "Bu tarayıcı sesli komutu desteklemiyor.",
+                "aura"
+            );
 
-input.onkeydown =
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            event.preventDefault();
-
-            sendMessage(false);
+            return;
         }
-    };
+
+
+        if (isListening) {
+
+            recognition.stop();
+
+            return;
+        }
+
+
+        try {
+
+            recognition.start();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Mikrofon başlatılamadı:",
+                error
+            );
+        }
+
+    }
+);
 
 
 /* =========================
-   DOSYA SONU
+   UYGULAMA KOMUTLARINI
+   TEST ETMEK İÇİN ÖRNEKLER
 ========================= */
+
+/*
+
+AURA'ya şunları söyleyebilirsin:
+
+"WhatsApp'ı aç"
+
+"YouTube'u aç"
+
+"Instagram'ı aç"
+
+"Chrome'u aç"
+
+"Kamerayı aç"
+
+"Galeriyi aç"
+
+"Ayarları aç"
+
+*/
+
+
+/* =========================
+   BAŞLANGIÇ
+========================= */
+
+addMessage(
+    "Merhaba. Ben AURA AI.\n\n" +
+    "Sistem hazır. Seni dinliyorum.",
+    "aura"
+);
 
 </script>
 
