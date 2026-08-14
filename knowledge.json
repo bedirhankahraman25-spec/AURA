@@ -4,20 +4,92 @@
     "language": "Türkçe",
     "personality": "Doğal, akıllı, yardımsever ve anlaşılır"
   },
+
   "user": {
     "name": "Bedirhan Kahraman"
   },
+
   "relationship": {
     "girlfriend": "Edanur Kahraman"
   },
+
   "knowledge": {
-    "general": [],
-    "science": [],
-    "technology": [],
-    "history": [],
-    "software": [],
-    "mathematics": [],
-    "games": [],
-    "football": []
+
+    "general": [
+      {
+        "question": "AURA nedir?",
+        "answer": "AURA, Bedirhan için oluşturulmuş kişisel yapay zeka asistanıdır."
+      },
+      {
+        "question": "Türkiye'nin başkenti neresidir?",
+        "answer": "Türkiye'nin başkenti Ankara'dır."
+      }
+    ],
+
+    "science": [
+      {
+        "question": "Dünya'nın uydusu nedir?",
+        "answer": "Dünya'nın doğal uydusu Ay'dır."
+      },
+      {
+        "question": "Su kaç derecede kaynar?",
+        "answer": "Deniz seviyesinde saf su yaklaşık 100°C'de kaynar."
+      }
+    ],
+
+    "technology": [
+      {
+        "question": "Yapay zeka nedir?",
+        "answer": "Yapay zeka, bilgisayar sistemlerinin öğrenme, akıl yürütme, dil anlama ve problem çözme gibi görevleri gerçekleştirmesini sağlayan teknolojilerin genel adıdır."
+      },
+      {
+        "question": "PWA nedir?",
+        "answer": "PWA, web teknolojileriyle oluşturulup uygulama benzeri şekilde kullanılabilen Progressive Web App uygulamasıdır."
+      }
+    ],
+
+    "software": [
+      {
+        "question": "HTML nedir?",
+        "answer": "HTML, web sayfalarının yapısını oluşturmak için kullanılan işaretleme dilidir."
+      },
+      {
+        "question": "JavaScript nedir?",
+        "answer": "JavaScript, web sayfalarına etkileşim ve programlama özellikleri kazandıran bir programlama dilidir."
+      },
+      {
+        "question": "Python nedir?",
+        "answer": "Python, öğrenmesi kolay ve birçok farklı alanda kullanılan yüksek seviyeli bir programlama dilidir."
+      }
+    ],
+
+    "mathematics": [
+      {
+        "question": "Pi sayısı nedir?",
+        "answer": "Pi sayısı yaklaşık 3.14159265359 değerindedir ve bir çemberin çevresinin çapına oranını ifade eder."
+      }
+    ],
+
+    "history": [
+      {
+        "question": "Türkiye Cumhuriyeti ne zaman kuruldu?",
+        "answer": "Türkiye Cumhuriyeti 29 Ekim 1923 tarihinde ilan edildi."
+      }
+    ],
+
+    "football": [
+      {
+        "question": "Futbol nedir?",
+        "answer": "Futbol, iki takımın topu rakip kaleye göndererek gol atmaya çalıştığı takım sporudur."
+      }
+    ],
+
+    "games": [
+      {
+        "question": "Mobil oyun nedir?",
+        "answer": "Mobil oyun, telefon veya tablet gibi mobil cihazlarda oynanabilen video oyunudur."
+      }
+    ]
+
   }
 }
