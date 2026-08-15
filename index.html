@@ -15,21 +15,23 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
 html,
-body{
-    margin:0;
-    width:100%;
-    height:100%;
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
-body{
-    overflow:hidden;
-    font-family:Arial,sans-serif;
-    color:#00eaff;
+body {
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    color: #00eaff;
 
     background:
         radial-gradient(
@@ -40,148 +42,197 @@ body{
         );
 }
 
-.top-bar{
-    height:60px;
+/* =========================
+   ÜST BAR
+========================= */
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.top-bar {
 
-    padding:0 18px;
+    height: 60px;
 
-    background:rgba(0,10,15,.9);
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background:
+        rgba(0,10,15,0.9);
 
     border-bottom:
         1px solid
-        rgba(0,234,255,.4);
+        rgba(0,234,255,0.4);
 }
 
-.logo{
-    font-size:21px;
-    font-weight:bold;
-    letter-spacing:4px;
+.logo {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
 
     text-shadow:
         0 0 10px #00eaff,
         0 0 25px #00eaff;
 }
 
-.status{
-    font-size:11px;
-    letter-spacing:2px;
-    color:#55ffcc;
+.status {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #55ffcc;
+
+    text-transform: uppercase;
 }
 
-.status::before{
-    content:"";
+.status::before {
 
-    display:inline-block;
+    content: "";
 
-    width:7px;
-    height:7px;
+    display: inline-block;
 
-    margin-right:7px;
+    width: 7px;
 
-    border-radius:50%;
+    height: 7px;
 
-    background:#55ffcc;
+    margin-right: 7px;
+
+    border-radius: 50%;
+
+    background: #55ffcc;
 
     box-shadow:
         0 0 8px #55ffcc,
         0 0 15px #55ffcc;
 }
 
-.main{
-    height:calc(100vh - 60px);
-    height:calc(100dvh - 60px);
+/* =========================
+   ANA ALAN
+========================= */
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.main {
 
-    min-height:0;
+    height: calc(100vh - 60px);
+
+    height: calc(100dvh - 60px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-height: 0;
 }
 
-.aura-core{
-    width:210px;
-    height:210px;
+/* =========================
+   AURA ÇEKİRDEĞİ
+========================= */
 
-    margin-top:10px;
+.aura-core {
 
-    position:relative;
+    width: 210px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    height: 210px;
 
-    flex-shrink:0;
+    margin-top: 10px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
 }
 
-.aura-ring{
-    position:absolute;
+.aura-ring {
 
-    border-radius:50%;
+    position: absolute;
+
+    border-radius: 50%;
 
     border:
         1px solid
         #00eaff;
 
-    opacity:.7;
+    opacity: 0.7;
 }
 
-.ring1{
-    width:135px;
-    height:135px;
+.ring1 {
 
-    border-left-color:transparent;
-    border-right-color:transparent;
+    width: 135px;
+
+    height: 135px;
+
+    border-left-color: transparent;
+
+    border-right-color: transparent;
 
     animation:
         rotate1 7s linear infinite;
 }
 
-.ring2{
-    width:175px;
-    height:175px;
+.ring2 {
 
-    border-top-color:transparent;
-    border-bottom-color:transparent;
+    width: 175px;
+
+    height: 175px;
+
+    border-top-color: transparent;
+
+    border-bottom-color: transparent;
 
     animation:
         rotate2 10s linear infinite;
 }
 
-.ring3{
-    width:210px;
-    height:210px;
+.ring3 {
 
-    border-left-color:transparent;
-    border-bottom-color:transparent;
+    width: 210px;
+
+    height: 210px;
+
+    border-left-color: transparent;
+
+    border-bottom-color: transparent;
 
     animation:
         rotate1 14s linear infinite;
 }
 
-.aura-center{
-    width:100px;
-    height:100px;
+.aura-center {
 
-    border-radius:50%;
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
 
     border:
         2px solid
         #00eaff;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
 
-    color:#00eaff;
+    align-items: center;
 
-    font-size:21px;
-    font-weight:bold;
+    justify-content: center;
 
-    letter-spacing:3px;
+    color: #00eaff;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
 
     background:
         radial-gradient(
@@ -192,220 +243,251 @@ body{
 
     box-shadow:
         0 0 15px #00eaff,
-        0 0 45px rgba(0,234,255,.7),
-        inset 0 0 25px rgba(0,234,255,.5);
+        0 0 45px rgba(0,234,255,0.7),
+        inset 0 0 25px rgba(0,234,255,0.5);
 
     animation:
         pulse 2.2s infinite ease-in-out;
 
-    z-index:5;
+    z-index: 5;
 }
 
-@keyframes rotate1{
+@keyframes rotate1 {
 
-    from{
-        transform:rotate(0deg);
+    from {
+        transform: rotate(0deg);
     }
 
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes rotate2{
-
-    from{
-        transform:rotate(360deg);
-    }
-
-    to{
-        transform:rotate(0deg);
+    to {
+        transform: rotate(360deg);
     }
 }
 
-@keyframes pulse{
+@keyframes rotate2 {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pulse {
 
     0%,
-    100%{
-        transform:scale(1);
+    100% {
+        transform: scale(1);
     }
 
-    50%{
-        transform:scale(1.06);
+    50% {
+        transform: scale(1.06);
     }
 }
 
-.aura-status{
-    margin-top:-8px;
-    margin-bottom:5px;
+/* =========================
+   DURUM
+========================= */
 
-    font-size:10px;
-    letter-spacing:3px;
+.aura-status {
 
-    color:#8defff;
+    margin-top: -8px;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #8defff;
+
+    text-transform: uppercase;
 }
 
-#chat{
-    width:min(92%,600px);
+/* =========================
+   SOHBET
+========================= */
 
-    flex:1;
-    min-height:0;
+#chat {
 
-    overflow-y:auto;
+    width: min(92%, 600px);
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
 
     padding:
         5px 5px 10px;
+
+    scrollbar-width: thin;
 }
 
-.message{
-    max-width:85%;
+.message {
+
+    max-width: 85%;
 
     padding:
         10px 13px;
 
-    margin-bottom:10px;
+    margin-bottom: 10px;
 
-    border-radius:10px;
+    border-radius: 10px;
 
-    line-height:1.4;
+    line-height: 1.4;
 
-    white-space:pre-wrap;
+    white-space: pre-wrap;
 
-    font-size:14px;
+    font-size: 14px;
+
+    word-wrap: break-word;
 }
 
-.aura{
-    background:
-        rgba(0,35,45,.8);
+.aura {
 
-    margin-right:auto;
+    background:
+        rgba(0,35,45,0.8);
+
+    margin-right: auto;
 
     border:
         1px solid
-        rgba(0,234,255,.25);
+        rgba(0,234,255,0.25);
 }
 
-.user{
+.user {
+
     background:
-        rgba(0,90,120,.8);
+        rgba(0,90,120,0.8);
 
-    margin-left:auto;
+    margin-left: auto;
 
-    color:white;
+    color: white;
 }
 
-#bottom{
-    width:100%;
+/* =========================
+   ALT PANEL
+========================= */
 
-    min-height:65px;
+#bottom {
 
-    display:flex;
-    align-items:center;
+    width: 100%;
 
-    gap:8px;
+    min-height: 65px;
 
-    padding:10px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px;
 
     background:
-        rgba(0,10,15,.97);
+        rgba(0,10,15,0.97);
 
     border-top:
         1px solid
-        rgba(0,234,255,.45);
+        rgba(0,234,255,0.45);
 
-    z-index:10;
+    z-index: 10;
 }
 
-#input{
-    flex:1;
+#input {
 
-    min-width:0;
+    flex: 1;
 
-    height:45px;
+    min-width: 0;
 
-    padding:12px;
+    height: 45px;
 
-    border-radius:8px;
+    padding: 12px;
+
+    border-radius: 8px;
 
     border:
         1px solid
-        rgba(0,234,255,.5);
+        rgba(0,234,255,0.5);
 
-    outline:none;
+    outline: none;
 
     background:
-        rgba(0,25,32,.95);
+        rgba(0,25,32,0.95);
 
-    color:#00eaff;
+    color: #00eaff;
 
-    font-size:14px;
+    font-size: 14px;
 }
 
-#input::placeholder{
-    color:#548995;
+#input::placeholder {
+
+    color: #548995;
 }
 
-button{
-    height:45px;
+button {
+
+    height: 45px;
 
     border:
         1px solid
         #00eaff;
 
-    border-radius:8px;
+    border-radius: 8px;
 
-    padding:0 14px;
+    padding: 0 14px;
 
     background:
-        rgba(0,60,75,.9);
+        rgba(0,60,75,0.9);
 
-    color:#00eaff;
+    color: #00eaff;
 
-    font-size:14px;
+    font-size: 14px;
 
-    cursor:pointer;
+    cursor: pointer;
 }
 
-button:active{
-    transform:scale(.94);
+button:active {
+
+    transform: scale(0.94);
 }
 
-button:disabled{
-    opacity:.5;
+button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
 }
 
-.mic-button{
-    width:45px;
+.mic-button {
 
-    padding:0;
+    width: 45px;
 
-    font-size:20px;
+    padding: 0;
+
+    font-size: 20px;
 }
 
-#tools{
-    display:none;
-}
+@media (max-width: 500px) {
 
-#fileInput{
-    display:none;
-}
+    .aura-core {
 
-@media(max-width:500px){
+        transform: scale(0.82);
 
-    .aura-core{
+        margin-top: 0;
 
-        transform:scale(.82);
-
-        margin-top:0;
-        margin-bottom:-15px;
+        margin-bottom: -15px;
     }
 
-    .logo{
-        font-size:18px;
+    .logo {
+
+        font-size: 18px;
     }
 
-    button{
-        padding:0 11px;
+    button {
+
+        padding: 0 11px;
     }
 }
 
@@ -432,7 +514,9 @@ button:disabled{
     <div class="aura-core">
 
         <div class="aura-ring ring1"></div>
+
         <div class="aura-ring ring2"></div>
+
         <div class="aura-ring ring3"></div>
 
         <div class="aura-center">
@@ -473,17 +557,30 @@ button:disabled{
 
 </div>
 
-<input
-    id="fileInput"
-    type="file"
-    accept=".txt,.json,.csv,.md,.html,.js,.css,.py,.pdf">
-
 <script src="https://js.puter.com/v2/"></script>
 
-<script>
+<script>/* =====================================================
+   AURA AYARLARI
+===================================================== */
+
+const USER_NAME =
+    "Bedirhan Kahraman";
+
+const GIRLFRIEND_NAME =
+    "Edanur Kahraman";
+
+const MEMORY_KEY =
+    "AURA_MEMORY_V6";
+
+const CHAT_KEY =
+    "AURA_CHAT_V6";
+
+const TASK_KEY =
+    "AURA_TASKS_V6";
+
 
 /* =====================================================
-   TEMEL ELEMENTLER
+   HTML ELEMANLARI
 ===================================================== */
 
 const chat =
@@ -498,109 +595,38 @@ const sendButton =
 const micButton =
     document.getElementById("micButton");
 
-const fileInput =
-    document.getElementById("fileInput");
-
 
 /* =====================================================
-   KİŞİSEL BİLGİLER
+   GÜVENLİ LOCALSTORAGE
 ===================================================== */
 
-const USER_NAME =
-    "Bedirhan Kahraman";
+function loadData(
+    key,
+    fallback
+){
 
-const GIRLFRIEND_NAME =
-    "Edanur Kahraman";
+    try {
 
+        const raw =
+            localStorage.getItem(
+                key
+            );
 
-/* =====================================================
-   STORAGE ANAHTARLARI
-===================================================== */
+        if(
+            raw === null
+        ){
 
-const MEMORY_KEY =
-    "AURA_MEMORY_V4";
-
-const PERSONAL_MEMORY_KEY =
-    "AURA_PERSONAL_MEMORY_V3";
-
-const TASK_KEY =
-    "AURA_TASKS_V1";
-
-const REMINDER_KEY =
-    "AURA_REMINDERS_V1";
-
-const CUSTOM_COMMAND_KEY =
-    "AURA_CUSTOM_COMMANDS_V1";
-
-const PROFILE_KEY =
-    "AURA_PROFILE_V1";
-
-const CHAT_KEY =
-    "AURA_CHAT_V4";
-
-
-/* =====================================================
-   AURA SİSTEM PROMPTU
-===================================================== */
-
-const BASE_SYSTEM_PROMPT = `
-
-Sen AURA adında kişisel yapay zeka asistanısın.
-
-Türkçe konuş.
-
-Doğal, akıllı, sakin ve anlaşılır konuş.
-
-Kullanıcının adı Bedirhan Kahraman.
-
-Kullanıcıya her mesajda Bedirhan diye hitap etme.
-
-Gereksiz hitaplardan kaçın.
-
-Kullanıcı açıkça adını sorarsa
-Bedirhan Kahraman olduğunu söyle.
-
-Kullanıcının sevgilisi Edanur Kahraman'dır.
-
-Edanur hakkında kullanıcı soru sorarsa
-bu bilgiyi kullan.
-
-Bilmediğin kişisel bilgileri uydurma.
-
-Kullanıcıya ait kayıtlı hafıza verilirse
-cevaplarını buna göre kişiselleştir.
-
-Kısa sorulara kısa cevap ver.
-
-Detay istenirse detaylandır.
-
-Sen AURA'sın.
-
-`;/* =====================================================
-   GÜVENLİ STORAGE OKUMA
-===================================================== */
-
-function loadJSON(key, fallback){
-
-    try{
-
-        const saved =
-            localStorage.getItem(key);
-
-        if(!saved){
             return fallback;
         }
 
-        const data =
-            JSON.parse(saved);
+        return JSON.parse(
+            raw
+        );
 
-        return data;
-
-    }catch(error){
+    } catch(error){
 
         console.error(
-            "AURA STORAGE HATASI:",
-            key,
+            "AURA veri okuma hatası:",
             error
         );
 
@@ -609,22 +635,24 @@ function loadJSON(key, fallback){
 }
 
 
-function saveJSON(key, data){
+function saveData(
+    key,
+    value
+){
 
-    try{
+    try {
 
         localStorage.setItem(
             key,
-            JSON.stringify(data)
+            JSON.stringify(value)
         );
 
         return true;
 
-    }catch(error){
+    } catch(error){
 
         console.error(
-            "AURA STORAGE KAYIT HATASI:",
-            key,
+            "AURA veri kaydetme hatası:",
             error
         );
 
@@ -634,68 +662,91 @@ function saveJSON(key, data){
 
 
 /* =====================================================
+   METİN NORMALİZASYONU
+===================================================== */
+
+function normalizeText(
+    text
+){
+
+    return String(text || "")
+        .toLocaleLowerCase("tr-TR")
+        .trim()
+        .replace(
+            /\s+/g,
+            " "
+        );
+}
+
+
+/* =====================================================
    HAFIZA
 ===================================================== */
 
-let auraMemory =
-    loadJSON(
-        MEMORY_KEY,
-        {
-            facts:[],
-            preferences:[],
-            notes:[],
-            important:[]
-        }
-    );
+function createEmptyMemory(){
 
+    return {
 
-if(!auraMemory ||
-   typeof auraMemory !== "object"){
+        facts: [],
 
-    auraMemory = {
-        facts:[],
-        preferences:[],
-        notes:[],
-        important:[]
+        notes: [],
+
+        preferences: []
+
     };
 }
 
 
-function ensureMemoryStructure(){
-
-    const types = [
-        "facts",
-        "preferences",
-        "notes",
-        "important"
-    ];
-
-
-    types.forEach(
-        type => {
-
-            if(
-                !Array.isArray(
-                    auraMemory[type]
-                )
-            ){
-
-                auraMemory[type] = [];
-            }
-
-        }
+let auraMemory =
+    loadData(
+        MEMORY_KEY,
+        createEmptyMemory()
     );
+
+
+if(
+    !auraMemory ||
+    typeof auraMemory !== "object"
+){
+
+    auraMemory =
+        createEmptyMemory();
 }
 
 
-ensureMemoryStructure();
+if(
+    !Array.isArray(
+        auraMemory.facts
+    )
+){
+
+    auraMemory.facts = [];
+}
+
+
+if(
+    !Array.isArray(
+        auraMemory.notes
+    )
+){
+
+    auraMemory.notes = [];
+}
+
+
+if(
+    !Array.isArray(
+        auraMemory.preferences
+    )
+){
+
+    auraMemory.preferences = [];
+}
 
 
 function saveMemory(){
 
-    ensureMemoryStructure();
-
-    saveJSON(
+    saveData(
         MEMORY_KEY,
         auraMemory
     );
@@ -711,18 +762,54 @@ function addMemory(
         !auraMemory[type]
     ){
 
-        auraMemory[type] = [];
+        return false;
+    }
+
+
+    const value =
+        String(text || "").trim();
+
+
+    if(
+        !value
+    ){
+
+        return false;
+    }
+
+
+    /*
+       Aynı bilgiyi sürekli tekrar
+       kaydetmesini engelle.
+    */
+
+    const exists =
+        auraMemory[type].some(
+            item =>
+                normalizeText(
+                    item.text
+                ) ===
+                normalizeText(
+                    value
+                )
+        );
+
+
+    if(
+        exists
+    ){
+
+        return true;
     }
 
 
     auraMemory[type].push({
 
         id:
-            Date.now() +
-            Math.random(),
+            Date.now(),
 
         text:
-            String(text),
+            value,
 
         date:
             new Date()
@@ -734,87 +821,364 @@ function addMemory(
 
 
     /*
-       Aynı hafıza sınırsız büyümesin.
+       Hafızanın gereksiz büyümesini
+       engelle.
     */
 
-    auraMemory[type] =
-        auraMemory[type]
-            .slice(-100);
+    if(
+        auraMemory[type].length > 100
+    ){
+
+        auraMemory[type] =
+            auraMemory[type].slice(
+                -100
+            );
+    }
 
 
     saveMemory();
+
+    return true;
 }
 
 
 /* =====================================================
-   GELİŞMİŞ KİŞİSEL HAFIZA
+   HAFIZA METNİ
 ===================================================== */
 
-let personalMemory =
-    loadJSON(
-        PERSONAL_MEMORY_KEY,
-        []
+function getMemoryText(){
+
+    const parts = [];
+
+
+    if(
+        auraMemory.facts.length
+    ){
+
+        parts.push(
+            "Kayıtlı bilgiler:\n" +
+            auraMemory.facts
+                .map(
+                    item =>
+                        "- " +
+                        item.text
+                )
+                .join("\n")
+        );
+    }
+
+
+    if(
+        auraMemory.preferences.length
+    ){
+
+        parts.push(
+            "Kullanıcı tercihleri:\n" +
+            auraMemory.preferences
+                .map(
+                    item =>
+                        "- " +
+                        item.text
+                )
+                .join("\n")
+        );
+    }
+
+
+    if(
+        auraMemory.notes.length
+    ){
+
+        parts.push(
+            "Kullanıcı notları:\n" +
+            auraMemory.notes
+                .map(
+                    item =>
+                        "- " +
+                        item.text
+                )
+                .join("\n")
+        );
+    }
+
+
+    if(
+        !parts.length
+    ){
+
+        return:
+            "Henüz kayıtlı özel bilgi yok.";
+    }
+
+
+    return parts.join(
+        "\n\n"
     );
-
-
-if(
-    !Array.isArray(
-        personalMemory
-    )
-){
-
-    personalMemory = [];
 }
 
 
-function savePersonalMemory(){
+/* =====================================================
+   HAFIZA KOMUTLARI
+===================================================== */
 
-    personalMemory =
-        personalMemory.slice(-200);
-
-    saveJSON(
-        PERSONAL_MEMORY_KEY,
-        personalMemory
-    );
-}
-
-
-function addPersonalMemory(
-    category,
+function handleMemoryCommand(
     text
 ){
 
-    personalMemory.push({
-
-        id:
-            Date.now() +
-            Math.random(),
-
-        category:
-            category,
-
-        text:
-            String(text),
-
-        date:
-            new Date()
-                .toLocaleString(
-                    "tr-TR"
-                )
-
-    });
+    const command =
+        normalizeText(text);
 
 
-    savePersonalMemory();
-}
+    const notePatterns = [
+
+        "not al ",
+
+        "not kaydet ",
+
+        "bunu not al ",
+
+        "bunu kaydet ",
+
+        "hafızana kaydet ",
+
+        "hafizana kaydet "
+
+    ];
 
 
-/* =====================================================
-   GÖREVLER
+    for(
+        const pattern of notePatterns
+    ){
+
+        if(
+            command.startsWith(
+                pattern
+            )
+        ){
+
+            const value =
+                text
+                    .substring(
+                        pattern.length
+                    )
+                    .trim();
+
+
+            if(
+                !value
+            ){
+
+                return:
+                    "Kaydetmem için bir not belirt.";
+            }
+
+
+            addMemory(
+                "notes",
+                value
+            );
+
+
+            return:
+                "Tamam. Notu kalıcı hafızama kaydettim.";
+        }
+    }
+
+
+    const factPatterns = [
+
+        "bunu hatırla ",
+
+        "bunu hatirla ",
+
+        "bunu hafızana al ",
+
+        "bunu hafizana al ",
+
+        "bunu hafızanda tut ",
+
+        "bunu hafizanda tut ",
+
+        "bunu unutma "
+
+    ];
+
+
+    for(
+        const pattern of factPatterns
+    ){
+
+        if(
+            command.startsWith(
+                pattern
+            )
+        ){
+
+            const value =
+                text
+                    .substring(
+                        pattern.length
+                    )
+                    .trim();
+
+
+            if(
+                !value
+            ){
+
+                return:
+                    "Hatırlamam için bir bilgi belirt.";
+            }
+
+
+            addMemory(
+                "facts",
+                value
+            );
+
+
+            return:
+                "Tamam. Bunu kalıcı hafızama kaydettim.";
+        }
+    }
+
+
+    const preferencePatterns = [
+
+        "tercihimi hatırla ",
+
+        "tercihimi hatirla ",
+
+        "şunu seviyorum ",
+
+        "sunu seviyorum ",
+
+        "şunu sevmiyorum ",
+
+        "sunu sevmiyorum "
+
+    ];
+
+
+    for(
+        const pattern of preferencePatterns
+    ){
+
+        if(
+            command.startsWith(
+                pattern
+            )
+        ){
+
+            const value =
+                text
+                    .substring(
+                        pattern.length
+                    )
+                    .trim();
+
+
+            if(
+                !value
+            ){
+
+                return:
+                    "Hatırlamam için bir tercih belirt.";
+            }
+
+
+            addMemory(
+                "preferences",
+                value
+            );
+
+
+            return:
+                "Tamam. Tercihini kalıcı hafızama kaydettim.";
+        }
+    }
+
+
+    if(
+        command ===
+            "hafızamda ne var" ||
+
+        command ===
+            "hafizamda ne var" ||
+
+        command ===
+            "neyi hatırlıyorsun" ||
+
+        command ===
+            "neyi hatirliyorsun" ||
+
+        command ===
+            "hafızanı göster" ||
+
+        command ===
+            "hafizani goster"
+    ){
+
+        return getMemoryText();
+    }
+
+
+    if(
+        command ===
+            "hafızanı temizle" ||
+
+        command ===
+            "hafizani temizle" ||
+
+        command ===
+            "tüm hafızanı sil" ||
+
+        command ===
+            "tum hafizani sil"
+    ){
+
+        auraMemory =
+            createEmptyMemory();
+
+        saveMemory();
+
+
+        return:
+            "AURA hafızası tamamen temizlendi.";
+    }
+
+
+    if(
+        command ===
+            "notlarımı sil" ||
+
+        command ===
+            "notlarimi sil" ||
+
+        command ===
+            "tüm notları sil" ||
+
+        command ===
+            "tum notlari sil"
+    ){
+
+        auraMemory.notes = [];
+
+        saveMemory();
+
+
+        return:
+            "Tüm notlar silindi.";
+    }
+
+
+    return null;
+}/* =====================================================
+   GÖREV SİSTEMİ
 ===================================================== */
 
 let tasks =
-    loadJSON(
+    loadData(
         TASK_KEY,
         []
     );
@@ -830,25 +1194,36 @@ if(
 
 function saveTasks(){
 
-    tasks =
-        tasks.slice(-200);
-
-    saveJSON(
+    saveData(
         TASK_KEY,
         tasks
     );
 }
 
 
-function addTask(text){
+function addTask(
+    text
+){
 
-    const task = {
+    const value =
+        String(text || "").trim();
+
+
+    if(
+        !value
+    ){
+
+        return false;
+    }
+
+
+    tasks.push({
 
         id:
             Date.now(),
 
         text:
-            String(text),
+            value,
 
         completed:
             false,
@@ -859,489 +1234,214 @@ function addTask(text){
                     "tr-TR"
                 )
 
-    };
+    });
 
 
-    tasks.push(task);
+    if(
+        tasks.length > 100
+    ){
+
+        tasks =
+            tasks.slice(
+                -100
+            );
+    }
+
 
     saveTasks();
 
-    return task;
+    return true;
 }
 
 
-function completeTask(
-    id
-){
-
-    const task =
-        tasks.find(
-            item =>
-                String(item.id)
-                ===
-                String(id)
-        );
-
-
-    if(task){
-
-        task.completed =
-            true;
-
-        saveTasks();
-
-        return true;
-    }
-
-
-    return false;
-}
-
-
-function getOpenTasks(){
+function getActiveTasks(){
 
     return tasks.filter(
         task =>
-            !task.completed
+            task.completed === false
     );
 }
 
 
-/* =====================================================
-   HATIRLATICILAR
-===================================================== */
-
-let reminders =
-    loadJSON(
-        REMINDER_KEY,
-        []
-    );
-
-
-if(
-    !Array.isArray(
-        reminders
-    )
+function handleTaskCommand(
+    text
 ){
 
-    reminders = [];
-}
+    const command =
+        normalizeText(text);
 
 
-function saveReminders(){
+    if(
+        command === "görevlerim" ||
+        command === "gorevlerim" ||
+        command === "görevlerimi göster" ||
+        command === "gorevlerimi goster"
+    ){
 
-    reminders =
-        reminders.slice(-200);
-
-    saveJSON(
-        REMINDER_KEY,
-        reminders
-    );
-}
-
-
-function addReminder(
-    text,
-    timestamp
-){
-
-    const reminder = {
-
-        id:
-            Date.now(),
-
-        text:
-            String(text),
-
-        timestamp:
-            Number(timestamp),
-
-        notified:
-            false,
-
-        created:
-            new Date()
-                .toLocaleString(
-                    "tr-TR"
-                )
-
-    };
+        const active =
+            getActiveTasks();
 
 
-    reminders.push(
-        reminder
-    );
+        if(
+            active.length === 0
+        ){
 
-
-    saveReminders();
-
-
-    return reminder;
-}
-
-
-/* =====================================================
-   ÖZEL KOMUTLAR
-===================================================== */
-
-let customCommands =
-    loadJSON(
-        CUSTOM_COMMAND_KEY,
-        []
-    );
-
-
-if(
-    !Array.isArray(
-        customCommands
-    )
-){
-
-    customCommands = [];
-}
-
-
-function saveCustomCommands(){
-
-    customCommands =
-        customCommands.slice(-100);
-
-    saveJSON(
-        CUSTOM_COMMAND_KEY,
-        customCommands
-    );
-}
-
-
-function addCustomCommand(
-    name,
-    action
-){
-
-    const existing =
-        customCommands.find(
-            command =>
-                command.name
-                    .toLocaleLowerCase(
-                        "tr-TR"
-                    )
-                ===
-                name
-                    .toLocaleLowerCase(
-                        "tr-TR"
-                    )
-        );
-
-
-    if(existing){
-
-        existing.action =
-            action;
-
-    }else{
-
-        customCommands.push({
-
-            id:
-                Date.now(),
-
-            name:
-                name,
-
-            action:
-                action
-
-        });
-    }
-
-
-    saveCustomCommands();
-}
-
-
-/* =====================================================
-   PROFİL
-===================================================== */
-
-let auraProfile =
-    loadJSON(
-        PROFILE_KEY,
-        {
-            name:
-                USER_NAME,
-
-            girlfriend:
-                GIRLFRIEND_NAME,
-
-            created:
-                new Date()
-                    .toLocaleString(
-                        "tr-TR"
-                    )
+            return:
+                "Şu anda bekleyen bir görevin yok.";
         }
-    );
 
 
-if(
-    !auraProfile ||
-    typeof auraProfile !== "object"
-){
+        return:
 
-    auraProfile = {
+            "Bekleyen görevlerin:\n\n" +
 
-        name:
-            USER_NAME,
-
-        girlfriend:
-            GIRLFRIEND_NAME,
-
-        created:
-            new Date()
-                .toLocaleString(
-                    "tr-TR"
+            active
+                .map(
+                    (task,index) =>
+                        (
+                            index + 1
+                        ) +
+                        ". " +
+                        task.text
                 )
-    };
-}
-
-
-function saveProfile(){
-
-    saveJSON(
-        PROFILE_KEY,
-        auraProfile
-    );
-}
-
-
-saveProfile();
-
-
-/* =====================================================
-   HAFIZA METNİ
-===================================================== */
-
-function buildMemoryText(){
-
-    let text = "";
-
-
-    if(
-        auraMemory.facts.length
-    ){
-
-        text +=
-            "\nKAYITLI BİLGİLER:\n";
-
-        auraMemory.facts
-            .forEach(
-                item => {
-
-                    text +=
-                        "- " +
-                        item.text +
-                        "\n";
-                }
-            );
+                .join("\n");
     }
 
 
-    if(
-        auraMemory.preferences.length
+    const addPatterns = [
+
+        "görev ekle ",
+
+        "gorev ekle ",
+
+        "görevlere ekle ",
+
+        "gorevlere ekle "
+
+    ];
+
+
+    for(
+        const pattern of addPatterns
     ){
 
-        text +=
-            "\nTERCİHLER:\n";
-
-        auraMemory.preferences
-            .forEach(
-                item => {
-
-                    text +=
-                        "- " +
-                        item.text +
-                        "\n";
-                }
-            );
-    }
-
-
-    if(
-        auraMemory.notes.length
-    ){
-
-        text +=
-            "\nNOTLAR:\n";
-
-        auraMemory.notes
-            .forEach(
-                item => {
-
-                    text +=
-                        "- " +
-                        item.text +
-                        "\n";
-                }
-            );
-    }
-
-
-    if(
-        auraMemory.important.length
-    ){
-
-        text +=
-            "\nÖNEMLİ BİLGİLER:\n";
-
-        auraMemory.important
-            .forEach(
-                item => {
-
-                    text +=
-                        "- " +
-                        item.text +
-                        "\n";
-                }
-            );
-    }
-
-
-    if(
-        personalMemory.length
-    ){
-
-        text +=
-            "\nKİŞİSEL HAFIZA:\n";
-
-        personalMemory
-            .slice(-50)
-            .forEach(
-                item => {
-
-                    text +=
-                        "- [" +
-                        item.category +
-                        "] " +
-                        item.text +
-                        "\n";
-                }
-            );
-    }
-
-
-    return text.trim()
-        ||
-        "Kayıtlı özel bilgi bulunmuyor.";
-}
-
-
-/* =====================================================
-   SİSTEM PROMPTU OLUŞTUR
-===================================================== */
-
-function buildSystemPrompt(){
-
-    return (
-
-        BASE_SYSTEM_PROMPT +
-
-        "\n\n" +
-
-        "KULLANICI PROFİLİ:\n" +
-
-        "Ad: " +
-        auraProfile.name +
-
-        "\nSevgilisi: " +
-        auraProfile.girlfriend +
-
-        "\n\n" +
-
-        "AURA HAFIZASI:\n" +
-
-        buildMemoryText() +
-
-        "\n\n" +
-
-        "AURA GÖREVLERİ:\n" +
-
-        getOpenTasks()
-            .map(
-                task =>
-                    "- " +
-                    task.text
+        if(
+            command.startsWith(
+                pattern
             )
-            .join("\n") +
+        ){
 
-        "\n\n" +
+            const value =
+                text
+                    .substring(
+                        pattern.length
+                    )
+                    .trim();
 
-        "ÖNEMLİ KURAL:\n" +
 
-        "Kullanıcının hafızasında olmayan " +
-        "kişisel bilgileri uydurma."
+            if(
+                !value
+            ){
 
-    );
+                return:
+                    "Eklememi istediğin görevi belirt.";
+            }
+
+
+            addTask(
+                value
+            );
+
+
+            return:
+                "Görev eklendi: " +
+                value;
+        }
+    }
+
+
+    if(
+        command === "görevleri temizle" ||
+        command === "gorevleri temizle"
+    ){
+
+        tasks = [];
+
+        saveTasks();
+
+
+        return:
+            "Görev listesi temizlendi.";
+    }
+
+
+    return null;
 }
 
 
 /* =====================================================
-   METİN NORMALİZASYONU
+   HESAP MAKİNESİ
 ===================================================== */
 
-function normalizeText(text){
-
-    return String(text)
-        .toLocaleLowerCase(
-            "tr-TR"
-        )
-        .trim()
-        .replace(
-            /\s+/g,
-            " "
-        );
-}
-
-
-/* =====================================================
-   SAYI / HESAP ALGILAMA
-===================================================== */
-
-function calculateExpression(
+function calculateMath(
     text
 ){
 
     let expression =
-        String(text)
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
-            .trim();
+        normalizeText(
+            text
+        );
 
 
     expression =
         expression
+
             .replace(
                 /kaç eder/g,
                 ""
             )
+
+            .replace(
+                /kac eder/g,
+                ""
+            )
+
             .replace(
                 /hesapla/g,
                 ""
             )
+
             .replace(
-                /nedir/g,
+                /sonuç/g,
                 ""
             )
+
+            .replace(
+                /sonuc/g,
+                ""
+            )
+
             .trim();
 
 
+    if(
+        !expression
+    ){
+
+        return null;
+    }
+
+
     /*
-       Sadece güvenli matematik
-       karakterlerine izin ver.
+       Sadece matematik karakterleri.
+       eval kullanılmıyor.
     */
 
     if(
         !/^[0-9+\-*/%().,\s^]+$/
-            .test(expression)
+            .test(
+                expression
+            )
     ){
 
         return null;
@@ -1349,7 +1449,10 @@ function calculateExpression(
 
 
     if(
-        !/[0-9]/.test(expression)
+        !/[0-9]/
+            .test(
+                expression
+            )
     ){
 
         return null;
@@ -1359,28 +1462,21 @@ function calculateExpression(
     try{
 
         expression =
-            expression.replace(
-                /,/g,
-                "."
-            );
+            expression
+                .replace(
+                    /,/g,
+                    "."
+                )
+                .replace(
+                    /\^/g,
+                    "**"
+                );
 
-
-        expression =
-            expression.replace(
-                /\^/g,
-                "**"
-            );
-
-
-        /*
-           eval yalnızca yukarıdaki
-           whitelist'ten geçmiş ifadede
-           kullanılıyor.
-        */
 
         const result =
             Function(
-                '"use strict"; return (' +
+                '"use strict";' +
+                'return (' +
                 expression +
                 ')'
             )();
@@ -1401,219 +1497,361 @@ function calculateExpression(
             )
         ){
 
-            return "Sonuç tanımsız.";
+            return:
+                "Bu işlemin sonucu tanımsız.";
         }
 
 
-        return (
+        return:
             "Sonuç: " +
-            result
-        );
+            result;
 
     }catch(error){
 
         return null;
     }
-    }function handleLocalCommand(text){
+}
+
+
+/* =====================================================
+   TARİH / SAAT / KİMLİK / ŞAKA
+===================================================== */
+
+function getLocalCommand(
+    text
+){
 
     const command =
-        normalizeText(text);
-
-
-    /* =========================
-       TARİH
-    ========================= */
-
-    if(
-        command === "bugün tarih ne" ||
-        command === "bugun tarih ne" ||
-        command === "bugünün tarihi" ||
-        command === "bugunun tarihi" ||
-        command === "tarih ne" ||
-        command === "bugün hangi gün" ||
-        command === "bugun hangi gun"
-    ){
-
-        const now =
-            new Date();
-
-        return (
-            "Bugün " +
-            now.toLocaleDateString(
-                "tr-TR",
-                {
-                    weekday:"long",
-                    year:"numeric",
-                    month:"long",
-                    day:"numeric"
-                }
-            ) +
-            "."
+        normalizeText(
+            text
         );
-    }
 
-
-    /* =========================
-       SAAT
-    ========================= */
 
     if(
         command === "saat kaç" ||
         command === "saat kac" ||
         command === "şu an saat kaç" ||
-        command === "su an saat kac" ||
-        command === "saat"
+        command === "su an saat kac"
     ){
 
-        const now =
-            new Date();
-
-        return (
+        return:
             "Şu an saat " +
-            now.toLocaleTimeString(
-                "tr-TR",
-                {
-                    hour:"2-digit",
-                    minute:"2-digit"
-                }
-            ) +
-            "."
-        );
+            new Date()
+                .toLocaleTimeString(
+                    "tr-TR",
+                    {
+                        hour:
+                            "2-digit",
+
+                        minute:
+                            "2-digit"
+                    }
+                ) +
+            ".";
     }
 
 
-    /* =========================
-       KİMLİK
-    ========================= */
-
     if(
-        command === "ben kimim" ||
-        command === "ben kimim?"
+        command === "tarih ne" ||
+        command === "bugün tarih ne" ||
+        command === "bugun tarih ne" ||
+        command === "bugünün tarihi" ||
+        command === "bugunun tarihi" ||
+        command === "bugün hangi gün" ||
+        command === "bugun hangi gun"
     ){
 
-        return (
+        return:
+            "Bugün " +
+            new Date()
+                .toLocaleDateString(
+                    "tr-TR",
+                    {
+                        weekday:
+                            "long",
+
+                        year:
+                            "numeric",
+
+                        month:
+                            "long",
+
+                        day:
+                            "numeric"
+                    }
+                ) +
+            ".";
+    }
+
+
+    if(
+        command === "ben kimim"
+    ){
+
+        return:
             "Sen " +
             USER_NAME +
-            "'sın."
-        );
+            "'sın.";
     }
 
 
     if(
         command === "sevgilim kim" ||
-        command === "sevgilim kim?"
+        command === "sevgilimin adı ne" ||
+        command === "sevgilimin adi ne"
     ){
 
-        return (
+        return:
             "Sevgilinin adı " +
             GIRLFRIEND_NAME +
-            "."
-        );
+            ".";
     }
 
 
     if(
-        command === "edanur kim" ||
-        command === "edanur kim?"
+        command === "edanur kim"
     ){
 
-        return (
-            "Edanur Kahraman, " +
-            "senin sevgilin."
-        );
+        return:
+            "Edanur Kahraman, senin sevgilin.";
     }
 
 
     if(
         command === "sen kimsin" ||
-        command === "sen kimsin?"
+        command === "adın ne" ||
+        command === "adin ne"
     ){
 
-        return (
-            "Ben AURA. " +
-            "Kişisel yapay zeka asistanınım."
-        );
+        return:
+            "Ben AURA. Kişisel yapay zeka asistanınım.";
     }
 
-
-    /* =========================
-       HAFIZA GÖSTER
-    ========================= */
 
     if(
-        command === "hafızamda ne var" ||
-        command === "hafizamda ne var" ||
-        command === "neyi hatırlıyorsun" ||
-        command === "neyi hatirliyorsun"
+        command.includes("şaka yap") ||
+        command.includes("saka yap") ||
+        command.includes("şaka anlat") ||
+        command.includes("saka anlat")
     ){
 
-        return buildMemoryText();
+        const jokes = [
+
+            "Matematik kitabı neden üzgünmüş? Çünkü çok problemi varmış.",
+
+            "Bilgisayar neden doktora gitmiş? Virüs kapmış.",
+
+            "Telefon neden gözlük takmış? Ekranı bulanıkmış.",
+
+            "Elektrikçi neden yalnız kalmaz? Çünkü her zaman bir bağlantısı vardır.",
+
+            "Programcı neden kahve içer? Çünkü JavaScript tek başına yetmiyor."
+
+        ];
+
+
+        return:
+            jokes[
+                Math.floor(
+                    Math.random() *
+                    jokes.length
+                )
+            ];
     }
 
 
-    /* =========================
-       HAFIZA TEMİZLE
-    ========================= */
+    return null;
+}
+
+
+/* =====================================================
+   YEREL KOMUTLARI BİRLEŞTİR
+===================================================== */
+
+function handleLocalCommand(
+    text
+){
+
+    const memory =
+        handleMemoryCommand(
+            text
+        );
+
 
     if(
-        command === "hafızanı temizle" ||
-        command === "hafizani temizle" ||
-        command === "tüm hafızanı sil" ||
-        command === "tum hafizani sil"
+        memory !== null
     ){
 
-        auraMemory = {
-
-            facts:[],
-            preferences:[],
-            notes:[],
-            important:[]
-        };
-
-
-        personalMemory = [];
-
-
-        saveMemory();
-        savePersonalMemory();
-
-
-        return (
-            "Kayıtlı AURA hafızası temizlendi."
-        );
+        return memory;
     }
 
 
-    /* =========================
-       GÖREVLERİ GÖSTER
-    ========================= */
+    const task =
+        handleTaskCommand(
+            text
+        );
+
+
+    if(
+        task !== null
+    ){
+
+        return task;
+    }
+
+
+    const math =
+        calculateMath(
+            text
+        );
+
+
+    if(
+        math !== null
+    ){
+
+        return math;
+    }
+
+
+    const local =
+        getLocalCommand(
+            text
+        );
+
+
+    if(
+        local !== null
+    ){
+
+        return local;
+    }
+
+
+    return null;
+}/* =====================================================
+   GÖREV SİSTEMİ
+===================================================== */
+
+let tasks =
+    loadData(
+        TASK_KEY,
+        []
+    );
+
+
+if(
+    !Array.isArray(tasks)
+){
+
+    tasks = [];
+}
+
+
+function saveTasks(){
+
+    saveData(
+        TASK_KEY,
+        tasks
+    );
+}
+
+
+function addTask(
+    text
+){
+
+    const value =
+        String(text || "").trim();
+
+
+    if(
+        !value
+    ){
+
+        return false;
+    }
+
+
+    tasks.push({
+
+        id:
+            Date.now(),
+
+        text:
+            value,
+
+        completed:
+            false,
+
+        created:
+            new Date()
+                .toLocaleString(
+                    "tr-TR"
+                )
+
+    });
+
+
+    if(
+        tasks.length > 100
+    ){
+
+        tasks =
+            tasks.slice(
+                -100
+            );
+    }
+
+
+    saveTasks();
+
+    return true;
+}
+
+
+function getActiveTasks(){
+
+    return tasks.filter(
+        task =>
+            task.completed === false
+    );
+}
+
+
+function handleTaskCommand(
+    text
+){
+
+    const command =
+        normalizeText(text);
+
 
     if(
         command === "görevlerim" ||
         command === "gorevlerim" ||
         command === "görevlerimi göster" ||
-        command === "gorevlerimi goster" ||
-        command === "bugünkü görevlerim" ||
-        command === "bugunku gorevlerim"
+        command === "gorevlerimi goster"
     ){
 
-        const open =
-            getOpenTasks();
+        const active =
+            getActiveTasks();
 
 
         if(
-            open.length === 0
+            active.length === 0
         ){
 
-            return (
-                "Şu anda bekleyen görevin yok."
-            );
+            return:
+                "Şu anda bekleyen bir görevin yok.";
         }
 
 
-        return (
+        return:
+
             "Bekleyen görevlerin:\n\n" +
-            open
+
+            active
                 .map(
                     (task,index) =>
                         (
@@ -1622,34 +1860,25 @@ function calculateExpression(
                         ". " +
                         task.text
                 )
-                .join("\n")
-        );
+                .join("\n");
     }
 
 
-    /* =========================
-       GÖREV EKLE
-    ========================= */
-
-    const taskPatterns = [
-
-        "görevlere ekle ",
-        "gorevlere ekle ",
+    const addPatterns = [
 
         "görev ekle ",
+
         "gorev ekle ",
 
-        "yapılacaklara ekle ",
-        "yapilacaklara ekle ",
+        "görevlere ekle ",
 
-        "yapılacak ekle ",
-        "yapilacak ekle "
+        "gorevlere ekle "
 
     ];
 
 
     for(
-        const pattern of taskPatterns
+        const pattern of addPatterns
     ){
 
         if(
@@ -1658,7 +1887,7 @@ function calculateExpression(
             )
         ){
 
-            const taskText =
+            const value =
                 text
                     .substring(
                         pattern.length
@@ -1666,349 +1895,324 @@ function calculateExpression(
                     .trim();
 
 
-            if(!taskText){
+            if(
+                !value
+            ){
 
-                return (
-                    "Eklememi istediğin görevi belirt."
-                );
+                return:
+                    "Eklememi istediğin görevi belirt.";
             }
 
 
             addTask(
-                taskText
+                value
             );
 
 
-            return (
-                "Görev listesine eklendi: " +
-                taskText
-            );
+            return:
+                "Görev eklendi: " +
+                value;
         }
     }
 
 
-    /* =========================
-       GÖREV TAMAMLAMA
-    ========================= */
-
-    const completePatterns = [
-
-        "görevi tamamla ",
-        "gorevi tamamla ",
-
-        "görevi bitir ",
-        "gorevi bitir "
-
-    ];
-
-
-    for(
-        const pattern of completePatterns
+    if(
+        command === "görevleri temizle" ||
+        command === "gorevleri temizle"
     ){
 
-        if(
-            command.startsWith(
-                pattern
+        tasks = [];
+
+        saveTasks();
+
+
+        return:
+            "Görev listesi temizlendi.";
+    }
+
+
+    return null;
+}
+
+
+/* =====================================================
+   HESAP MAKİNESİ
+===================================================== */
+
+function calculateMath(
+    text
+){
+
+    let expression =
+        normalizeText(
+            text
+        );
+
+
+    expression =
+        expression
+
+            .replace(
+                /kaç eder/g,
+                ""
             )
-        ){
 
-            const numberText =
-                command
-                    .substring(
-                        pattern.length
-                    )
-                    .trim();
+            .replace(
+                /kac eder/g,
+                ""
+            )
+
+            .replace(
+                /hesapla/g,
+                ""
+            )
+
+            .replace(
+                /sonuç/g,
+                ""
+            )
+
+            .replace(
+                /sonuc/g,
+                ""
+            )
+
+            .trim();
 
 
-            const index =
-                parseInt(
-                    numberText,
-                    10
+    if(
+        !expression
+    ){
+
+        return null;
+    }
+
+
+    /*
+       Sadece matematik karakterleri.
+       eval kullanılmıyor.
+    */
+
+    if(
+        !/^[0-9+\-*/%().,\s^]+$/
+            .test(
+                expression
+            )
+    ){
+
+        return null;
+    }
+
+
+    if(
+        !/[0-9]/
+            .test(
+                expression
+            )
+    ){
+
+        return null;
+    }
+
+
+    try{
+
+        expression =
+            expression
+                .replace(
+                    /,/g,
+                    "."
+                )
+                .replace(
+                    /\^/g,
+                    "**"
                 );
 
 
-            const open =
-                getOpenTasks();
+        const result =
+            Function(
+                '"use strict";' +
+                'return (' +
+                expression +
+                ')'
+            )();
 
 
-            if(
-                Number.isInteger(index) &&
-                index >= 1 &&
-                index <= open.length
-            ){
+        if(
+            typeof result !==
+            "number"
+        ){
 
-                const success =
-                    completeTask(
-                        open[index - 1].id
-                    );
-
-
-                if(success){
-
-                    return (
-                        "Görev tamamlandı: " +
-                        open[index - 1].text
-                    );
-                }
-            }
-
-
-            return (
-                "Geçerli bir görev numarası bulunamadı."
-            );
+            return null;
         }
+
+
+        if(
+            !Number.isFinite(
+                result
+            )
+        ){
+
+            return:
+                "Bu işlemin sonucu tanımsız.";
+        }
+
+
+        return:
+            "Sonuç: " +
+            result;
+
+    }catch(error){
+
+        return null;
     }
+}
 
 
-    /* =========================
-       MATEMATİK
-    ========================= */
+/* =====================================================
+   TARİH / SAAT / KİMLİK / ŞAKA
+===================================================== */
 
-    const calculation =
-        calculateExpression(
+function getLocalCommand(
+    text
+){
+
+    const command =
+        normalizeText(
             text
         );
 
 
     if(
-        calculation !== null
+        command === "saat kaç" ||
+        command === "saat kac" ||
+        command === "şu an saat kaç" ||
+        command === "su an saat kac"
     ){
 
-        return calculation;
+        return:
+            "Şu an saat " +
+            new Date()
+                .toLocaleTimeString(
+                    "tr-TR",
+                    {
+                        hour:
+                            "2-digit",
+
+                        minute:
+                            "2-digit"
+                    }
+                ) +
+            ".";
     }
 
 
-    /* =========================
-       ŞAKA
-    ========================= */
+    if(
+        command === "tarih ne" ||
+        command === "bugün tarih ne" ||
+        command === "bugun tarih ne" ||
+        command === "bugünün tarihi" ||
+        command === "bugunun tarihi" ||
+        command === "bugün hangi gün" ||
+        command === "bugun hangi gun"
+    ){
+
+        return:
+            "Bugün " +
+            new Date()
+                .toLocaleDateString(
+                    "tr-TR",
+                    {
+                        weekday:
+                            "long",
+
+                        year:
+                            "numeric",
+
+                        month:
+                            "long",
+
+                        day:
+                            "numeric"
+                    }
+                ) +
+            ".";
+    }
+
 
     if(
-        command.includes(
-            "şaka yap"
-        ) ||
-        command.includes(
-            "saka yap"
-        ) ||
-        command.includes(
-            "bir şaka anlat"
-        ) ||
-        command.includes(
-            "bir saka anlat"
-        )
+        command === "ben kimim"
+    ){
+
+        return:
+            "Sen " +
+            USER_NAME +
+            "'sın.";
+    }
+
+
+    if(
+        command === "sevgilim kim" ||
+        command === "sevgilimin adı ne" ||
+        command === "sevgilimin adi ne"
+    ){
+
+        return:
+            "Sevgilinin adı " +
+            GIRLFRIEND_NAME +
+            ".";
+    }
+
+
+    if(
+        command === "edanur kim"
+    ){
+
+        return:
+            "Edanur Kahraman, senin sevgilin.";
+    }
+
+
+    if(
+        command === "sen kimsin" ||
+        command === "adın ne" ||
+        command === "adin ne"
+    ){
+
+        return:
+            "Ben AURA. Kişisel yapay zeka asistanınım.";
+    }
+
+
+    if(
+        command.includes("şaka yap") ||
+        command.includes("saka yap") ||
+        command.includes("şaka anlat") ||
+        command.includes("saka anlat")
     ){
 
         const jokes = [
 
-            "Bilgisayar neden doktora gitmiş? Çünkü virüs kapmış.",
-
             "Matematik kitabı neden üzgünmüş? Çünkü çok problemi varmış.",
 
-            "Telefon neden gözlük takmış? Çünkü ekranı bulanıkmış.",
+            "Bilgisayar neden doktora gitmiş? Virüs kapmış.",
 
-            "Programcı neden kahve içmiş? Çünkü kodları Java'ymış.",
+            "Telefon neden gözlük takmış? Ekranı bulanıkmış.",
 
-            "Elektrikçi neden hiç yalnız kalmaz? Çünkü her zaman bir bağlantısı vardır.",
+            "Elektrikçi neden yalnız kalmaz? Çünkü her zaman bir bağlantısı vardır.",
 
-            "AURA neden yorulmaz? Çünkü henüz uyku moduna geçmedim."
+            "Programcı neden kahve içer? Çünkü JavaScript tek başına yetmiyor."
 
         ];
 
 
-        return (
+        return:
             jokes[
                 Math.floor(
                     Math.random() *
                     jokes.length
                 )
-            ]
-        );
-    }
-
-
-    /* =========================
-       SİSTEM DURUMU
-    ========================= */
-
-    if(
-        command === "sistem durumu" ||
-        command === "sistem durumunu göster" ||
-        command === "sistem durumunu goster" ||
-        command === "aura sistem durumu"
-    ){
-
-        return (
-            "AURA SYSTEM\n" +
-            "──────────────\n" +
-            "AI        ONLINE\n" +
-            "MEMORY    ONLINE\n" +
-            "VOICE     " +
-            (
-                "speechSynthesis"
-                in window
-                ? "ONLINE"
-                : "OFFLINE"
-            ) +
-            "\n" +
-            "STORAGE   ONLINE\n" +
-            "TASKS     ONLINE\n" +
-            "REMINDER  ONLINE\n" +
-            "PROFILE   ONLINE\n" +
-            "WEB       READY"
-        );
-    }
-
-
-    /* =========================
-       PROFİL
-    ========================= */
-
-    if(
-        command === "profilimi göster" ||
-        command === "profilimi goster" ||
-        command === "profilim ne" ||
-        command === "benim profilim"
-    ){
-
-        return (
-            "AURA profilin:\n\n" +
-            "Ad: " +
-            auraProfile.name +
-            "\n" +
-            "Sevgili: " +
-            auraProfile.girlfriend
-        );
-    }
-
-
-    /* =========================
-       DOSYA OKUMA
-    ========================= */
-
-    if(
-        command === "dosya oku" ||
-        command === "dosya aç" ||
-        command === "dosya ac" ||
-        command === "dosya yükle" ||
-        command === "dosya yukle"
-    ){
-
-        fileInput.click();
-
-
-        return (
-            "Dosya seçme ekranını açtım."
-        );
-    }
-
-
-    /* =========================
-       ÖZEL KOMUT KAYDET
-    ========================= */
-
-    if(
-        command.startsWith(
-            "özel komut oluştur "
-        ) ||
-        command.startsWith(
-            "ozel komut olustur "
-        )
-    ){
-
-        const raw =
-            text
-                .replace(
-                    /^özel komut oluştur /i,
-                    ""
-                )
-                .replace(
-                    /^ozel komut olustur /i,
-                    ""
-                )
-                .trim();
-
-
-        const separator =
-            raw.includes(":")
-                ? ":"
-                : "=";
-
-
-        const parts =
-            raw.split(
-                separator
-            );
-
-
-        if(
-            parts.length < 2
-        ){
-
-            return (
-                "Komut formatı şöyle olmalı:\n" +
-                "Özel komut oluştur gece modu: iyi geceler"
-            );
-        }
-
-
-        const name =
-            parts[0].trim();
-
-
-        const action =
-            parts
-                .slice(1)
-                .join(separator)
-                .trim();
-
-
-        if(
-            !name ||
-            !action
-        ){
-
-            return (
-                "Komut adı ve yapılacak işlem gerekli."
-            );
-        }
-
-
-        addCustomCommand(
-            name,
-            action
-        );
-
-
-        return (
-            "Özel komut oluşturuldu: " +
-            name
-        );
-    }
-
-
-    /* =========================
-       ÖZEL KOMUT ÇALIŞTIR
-    ========================= */
-
-    const custom =
-        customCommands.find(
-            item =>
-                normalizeText(
-                    item.name
-                ) === command
-        );
-
-
-    if(custom){
-
-        /*
-           Özel komutun action kısmını
-           tekrar AURA'ya gönderiyoruz.
-        */
-
-        return (
-            "Özel komut sonucu:\n" +
-            custom.action
-        );
+            ];
     }
 
 
@@ -2017,744 +2221,83 @@ function calculateExpression(
 
 
 /* =====================================================
-   HAFIZA KOMUTLARI
+   YEREL KOMUTLARI BİRLEŞTİR
 ===================================================== */
 
-function rememberUserInformation(
+function handleLocalCommand(
     text
 ){
 
-    const command =
-        normalizeText(text);
+    const memory =
+        handleMemoryCommand(
+            text
+        );
 
 
-    const patterns = [
-
-        {
-            starts:[
-                "bunu hatırla ",
-                "bunu hatirla ",
-                "bunu hafızana al ",
-                "bunu hafizana al "
-            ],
-            type:"facts"
-        },
-
-        {
-            starts:[
-                "hafızana kaydet ",
-                "hafizana kaydet ",
-                "not al ",
-                "not kaydet ",
-                "bunu kaydet "
-            ],
-            type:"notes"
-        },
-
-        {
-            starts:[
-                "tercihimi hatırla ",
-                "tercihimi hatirla ",
-                "şunu seviyorum ",
-                "sunu seviyorum "
-            ],
-            type:"preferences"
-        },
-
-        {
-            starts:[
-                "bunu önemli olarak kaydet ",
-                "bunu onemli olarak kaydet "
-            ],
-            type:"important"
-
-        }
-
-    ];
-
-
-    for(
-        const pattern of patterns
+    if(
+        memory !== null
     ){
 
-        for(
-            const start of pattern.starts
-        ){
-
-            if(
-                command.startsWith(
-                    start
-                )
-            ){
-
-                const value =
-                    text
-                        .substring(
-                            start.length
-                        )
-                        .trim();
+        return memory;
+    }
 
 
-                if(!value){
-
-                    return (
-                        "Kaydetmem için bir bilgi belirt."
-                    );
-                }
+    const task =
+        handleTaskCommand(
+            text
+        );
 
 
-                addMemory(
-                    pattern.type,
-                    value
-                );
+    if(
+        task !== null
+    ){
+
+        return task;
+    }
 
 
-                addPersonalMemory(
-                    pattern.type,
-                    value
-                );
+    const math =
+        calculateMath(
+            text
+        );
 
 
-                return (
-                    "Tamam. Bunu kalıcı hafızama kaydettim."
-                );
-            }
-        }
+    if(
+        math !== null
+    ){
+
+        return math;
+    }
+
+
+    const local =
+        getLocalCommand(
+            text
+        );
+
+
+    if(
+        local !== null
+    ){
+
+        return local;
     }
 
 
     return null;
-    }async function loadKnowledgeBase(){
-
-    try{
-
-        const response =
-            await fetch(
-                "knowledge.json",
-                {
-                    cache:"no-store"
-                }
-            );
-
-
-        if(!response.ok){
-
-            console.warn(
-                "knowledge.json bulunamadı."
-            );
-
-            return [];
-        }
-
-
-        const data =
-            await response.json();
-
-
-        if(
-            Array.isArray(data)
-        ){
-
-            return data;
-        }
-
-
-        if(
-            data &&
-            Array.isArray(
-                data.knowledge
-            )
-        ){
-
-            return data.knowledge;
-        }
-
-
-        if(
-            data &&
-            Array.isArray(
-                data.items
-            )
-        ){
-
-            return data.items;
-        }
-
-
-        return [];
-
-    }catch(error){
-
-        console.error(
-            "BİLGİ TABANI HATASI:",
-            error
-        );
-
-
-        return [];
-    }
-}
-
-
-/* =====================================================
-   BİLGİ TABANI
-===================================================== */
-
-let knowledgeBase = [];
-
-
-loadKnowledgeBase()
-    .then(
-        data => {
-
-            knowledgeBase =
-                data;
-
-            console.log(
-                "AURA bilgi tabanı:",
-                knowledgeBase.length,
-                "kayıt"
-            );
-
-        }
-    );
-
-
-function searchKnowledge(text){
-
-    if(
-        !Array.isArray(
-            knowledgeBase
-        ) ||
-        knowledgeBase.length === 0
-    ){
-
-        return null;
-    }
-
-
-    const query =
-        normalizeText(text);
-
-
-    if(
-        query.length < 2
-    ){
-
-        return null;
-    }
-
-
-    let bestMatch =
-        null;
-
-    let bestScore =
-        0;
-
-
-    knowledgeBase.forEach(
-        item => {
-
-            if(!item){
-
-                return;
-            }
-
-
-            /*
-               knowledge.json için
-               farklı alan isimlerini
-               destekliyoruz.
-            */
-
-            const question =
-                normalizeText(
-                    item.question ||
-                    item.soru ||
-                    item.title ||
-                    item.name ||
-                    ""
-                );
-
-
-            const answer =
-                item.answer ||
-                item.cevap ||
-                item.response ||
-                item.content ||
-                "";
-
-
-            const keywords =
-                Array.isArray(
-                    item.keywords
-                )
-                    ? item.keywords
-                    : (
-                        Array.isArray(
-                            item.anahtar
-                        )
-                            ? item.anahtar
-                            : []
-                    );
-
-
-            if(
-                !answer
-            ){
-
-                return;
-            }
-
-
-            let score =
-                0;
-
-
-            if(
-                question &&
-                query === question
-            ){
-
-                score += 100;
-            }
-
-
-            if(
-                question &&
-                query.includes(question)
-            ){
-
-                score += 60;
-            }
-
-
-            if(
-                question &&
-                question.includes(query)
-            ){
-
-                score += 45;
-            }
-
-
-            const queryWords =
-                query.split(" ");
-
-
-            queryWords.forEach(
-                word => {
-
-                    if(
-                        word.length < 2
-                    ){
-
-                        return;
-                    }
-
-
-                    if(
-                        question.includes(
-                            word
-                        )
-                    ){
-
-                        score += 8;
-                    }
-
-
-                    keywords.forEach(
-                        keyword => {
-
-                            const normalized =
-                                normalizeText(
-                                    keyword
-                                );
-
-
-                            if(
-                                normalized &&
-                                normalized
-                                    .includes(word)
-                            ){
-
-                                score += 5;
-                            }
-                        }
-                    );
-
-                }
-            );
-
-
-            keywords.forEach(
-                keyword => {
-
-                    const normalized =
-                        normalizeText(
-                            keyword
-                        );
-
-
-                    if(
-                        normalized &&
-                        query.includes(
-                            normalized
-                        )
-                    ){
-
-                        score += 20;
-                    }
-                }
-            );
-
-
-            if(
-                score > bestScore
-            ){
-
-                bestScore =
-                    score;
-
-                bestMatch = {
-                    answer:
-                        String(answer),
-
-                    score:
-                        score
-                };
-            }
-
-        }
-    );
-
-
-    /*
-       Çok düşük eşleşmeleri
-       AI'ya bırak.
-    */
-
-    if(
-        !bestMatch ||
-        bestMatch.score < 12
-    ){
-
-        return null;
-    }
-
-
-    return bestMatch.answer;
-}
-
-
-/* =====================================================
-   DOSYA OKUMA
-===================================================== */
-
-fileInput.addEventListener(
-    "change",
-    async function(){
-
-        const file =
-            fileInput.files &&
-            fileInput.files[0];
-
-
-        if(!file){
-
-            return;
-        }
-
-
-        addMessage(
-            "Dosya okunuyor: " +
-            file.name,
-            "aura"
-        );
-
-
-        try{
-
-            const extension =
-                file.name
-                    .split(".")
-                    .pop()
-                    .toLowerCase();
-
-
-            /*
-               PDF için tarayıcıda doğrudan
-               metin çıkarma yapılmaz.
-               Kullanıcıya bilgi veriyoruz.
-            */
-
-            if(
-                extension === "pdf"
-            ){
-
-                addMessage(
-                    "PDF dosyası seçildi. Bu sürümde PDF metin çıkarma sistemi henüz etkin değil. TXT, JSON, CSV, MD, HTML, JS, CSS ve PY dosyalarını doğrudan okuyabilirim.",
-                    "aura"
-                );
-
-
-                fileInput.value =
-                    "";
-
-
-                return;
-            }
-
-
-            const text =
-                await file.text();
-
-
-            if(
-                !text.trim()
-            ){
-
-                addMessage(
-                    "Dosya boş görünüyor.",
-                    "aura"
-                );
-
-
-                fileInput.value =
-                    "";
-
-
-                return;
-            }
-
-
-            /*
-               Dosyayı geçici olarak
-               AURA'nın dosya hafızasına
-               aktar.
-            */
-
-            window.auraCurrentFile = {
-
-                name:
-                    file.name,
-
-                type:
-                    file.type,
-
-                content:
-                    text.slice(
-                        0,
-                        30000
-                    )
-
-            };
-
-
-            addMessage(
-                "Dosya başarıyla okundu: " +
-                file.name +
-                "\n\n" +
-                "Artık bu dosyayla ilgili soru sorabilirsin.",
-                "aura"
-            );
-
-
-        }catch(error){
-
-            console.error(
-                "DOSYA OKUMA HATASI:",
-                error
-            );
-
-
-            addMessage(
-                "Dosya okunurken bir hata oluştu.",
-                "aura"
-            );
-
-        }
-
-
-        fileInput.value =
-            "";
-    }
-);
-
-
-/* =====================================================
-   DOSYA İÇERİĞİNİ AI'YA AKTAR
-===================================================== */
-
-function getCurrentFileContext(){
-
-    if(
-        !window.auraCurrentFile
-    ){
-
-        return "";
-    }
-
-
-    return (
-
-        "\n\nKULLANICININ YÜKLEDİĞİ DOSYA:\n" +
-
-        "Dosya adı: " +
-        window.auraCurrentFile.name +
-
-        "\nDosya içeriği:\n" +
-
-        window.auraCurrentFile.content
-
-    );
-}
-
-
-/* =====================================================
-   DUYGU / KONUŞMA MODU
-===================================================== */
-
-function detectMood(text){
-
-    const command =
-        normalizeText(text);
-
-
-    const sadWords = [
-
-        "üzgünüm",
-        "uzgunum",
-        "moralim bozuk",
-        "canım sıkkın",
-        "canim sikkin",
-        "kötüyüm",
-        "kotuyum",
-        "ağlayacağım",
-        "aglayacagim",
-        "çok üzgün",
-        "cok uzgun"
-
-    ];
-
-
-    const happyWords = [
-
-        "çok mutluyum",
-        "cok mutluyum",
-        "mutluyum",
-        "harikayım",
-        "harikayim",
-        "çok mutluyum",
-        "cok mutluyum",
-        "süper",
-        "super",
-        "çok iyi",
-        "cok iyi"
-
-    ];
-
-
-    const angryWords = [
-
-        "sinirliyim",
-        "çok sinirliyim",
-        "cok sinirliyim",
-        "kızgınım",
-        "kizginim",
-        "sinir oldum",
-        "delirdim"
-
-    ];
-
-
-    if(
-        sadWords.some(
-            word =>
-                command.includes(word)
-        )
-    ){
-
-        return "sakin";
-    }
-
-
-    if(
-        happyWords.some(
-            word =>
-                command.includes(word)
-        )
-    ){
-
-        return "enerjik";
-    }
-
-
-    if(
-        angryWords.some(
-            word =>
-                command.includes(word)
-        )
-    ){
-
-        return "sakin";
-    }
-
-
-    return "normal";
-}
-
-
-function moodInstruction(
-    mood
-){
-
-    if(
-        mood === "sakin"
-    ){
-
-        return (
-            "Kullanıcı şu anda olumsuz veya " +
-            "üzgün bir ruh halinde olabilir. " +
-            "Daha sakin, anlayışlı ve destekleyici " +
-            "bir üslupla konuş."
-        );
-    }
-
-
-    if(
-        mood === "enerjik"
-    ){
-
-        return (
-            "Kullanıcı olumlu ve enerjik görünüyor. " +
-            "Doğal şekilde daha neşeli ve enerjik " +
-            "bir üslup kullan."
-        );
-    }
-
-
-    return (
-        "Normal, doğal ve dengeli bir üslup kullan."
-    );
-}
-
-
-/* =====================================================
-   SOHBET GEÇMİŞİ
+              }/* =====================================================
+   KONUŞMA HAFIZASI
 ===================================================== */
 
 let chatHistory =
-    loadJSON(
+    loadData(
         CHAT_KEY,
         []
     );
 
 
 if(
-    !Array.isArray(
-        chatHistory
-    )
+    !Array.isArray(chatHistory)
 ){
 
     chatHistory = [];
@@ -2763,18 +2306,25 @@ if(
 
 function saveChatHistory(){
 
-    chatHistory =
-        chatHistory.slice(-100);
+    if(
+        chatHistory.length > 100
+    ){
+
+        chatHistory =
+            chatHistory.slice(
+                -100
+            );
+    }
 
 
-    saveJSON(
+    saveData(
         CHAT_KEY,
         chatHistory
     );
 }
 
 
-function addHistoryItem(
+function addHistory(
     text,
     type
 ){
@@ -2803,7 +2353,8 @@ function addHistoryItem(
 
 function addMessage(
     text,
-    type
+    type,
+    save = true
 ){
 
     const message =
@@ -2830,15 +2381,24 @@ function addMessage(
         chat.scrollHeight;
 
 
-    addHistoryItem(
-        text,
-        type
-    );
+    if(
+        save &&
+        (
+            type === "user" ||
+            type === "aura"
+        )
+    ){
+
+        addHistory(
+            text,
+            type
+        );
+    }
 }
 
 
 /* =====================================================
-   SOHBET GEÇMİŞİNİ GERİ YÜKLE
+   KAYITLI SOHBETİ YÜKLE
 ===================================================== */
 
 function restoreChat(){
@@ -2850,7 +2410,8 @@ function restoreChat(){
         addMessage(
             "Merhaba. Ben AURA AI.\n\n" +
             "Sistem hazır. Seni dinliyorum.",
-            "aura"
+            "aura",
+            true
         );
 
 
@@ -2863,29 +2424,10 @@ function restoreChat(){
         .forEach(
             item => {
 
-                const message =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                message.className =
-                    "message " +
-                    (
-                        item.type === "user"
-                            ? "user"
-                            : "aura"
-                    );
-
-
-                message.textContent =
-                    String(
-                        item.text
-                    );
-
-
-                chat.appendChild(
-                    message
+                addMessage(
+                    item.text,
+                    item.type,
+                    false
                 );
 
             }
@@ -2894,124 +2436,320 @@ function restoreChat(){
 
     chat.scrollTop =
         chat.scrollHeight;
-    }async function askAI(text){
+}
+
+
+/* =====================================================
+   AURA SİSTEM PROMPTU
+===================================================== */
+
+function buildSystemPrompt(){
+
+    const activeTasks =
+        getActiveTasks();
+
+
+    let taskText =
+        "Bekleyen görev yok.";
+
 
     if(
-        typeof puter === "undefined"
+        activeTasks.length
     ){
 
-        return (
-            "AI servisi henüz yüklenmedi. " +
-            "Sayfayı yenileyip tekrar deneyebilirsin."
-        );
+        taskText =
+            activeTasks
+                .map(
+                    (task,index) =>
+                        (
+                            index + 1
+                        ) +
+                        ". " +
+                        task.text
+                )
+                .join("\n");
     }
 
 
-    const mood =
-        detectMood(text);
+    return `
+
+Sen AURA adında kişisel yapay zeka asistanısın.
+
+Türkçe konuş.
+
+Doğal, akıcı ve samimi konuş.
+
+Kullanıcının adı:
+${USER_NAME}
+
+Kullanıcının sevgilisi:
+${GIRLFRIEND_NAME}
+
+ÖNEMLİ:
+
+Kullanıcıya her mesajda "Bedirhan" deme.
+
+Gereksiz yere ismiyle hitap etme.
+
+Kullanıcının adı yalnızca gerekli olduğunda
+veya kullanıcı açıkça kim olduğunu sorduğunda kullanılabilir.
+
+"Ben kimim?" sorusuna:
+${USER_NAME}
+
+"Sevgilim kim?" sorusuna:
+${GIRLFRIEND_NAME}
+
+"Sen kimsin?" sorusuna:
+Ben AURA, kişisel yapay zeka asistanınım.
+
+Bilmediğin bilgileri uydurma.
+
+Sorulan soruya doğrudan cevap ver.
+
+Gereksiz uzun cevaplar verme.
+
+Kullanıcının kalıcı hafızası:
+
+${getMemoryText()}
+
+Bekleyen görevler:
+
+${taskText}
+
+`;
+}
 
 
-    const knowledge =
-        searchKnowledge(text);
+/* =====================================================
+   PUTER KONTROL
+===================================================== */
 
+function isPuterReady(){
 
-    const fileContext =
-        getCurrentFileContext();
-
-
-    /*
-       Bilgi tabanında doğrudan cevap varsa
-       gereksiz AI çağrısı yapmıyoruz.
-    */
-
-    if(
-        knowledge &&
-        knowledge.length > 0
-    ){
-
-        return knowledge;
-    }
-
-
-    const messages = [
-
-        {
-            role:"system",
-
-            content:
-                buildSystemPrompt() +
-
-                "\n\n" +
-
-                "KONUŞMA MODU:\n" +
-
-                moodInstruction(
-                    mood
-                ) +
-
-                "\n\n" +
-
-                "Kullanıcının sorusunu " +
-                "doğrudan cevapla. " +
-
-                "Gereksiz şekilde " +
-                "Bedirhan diye hitap etme." +
-
-                fileContext
-        }
-
-    ];
-
-
-    /*
-       Son konuşmalardan sınırlı miktarda
-       bağlam gönderiyoruz.
-    */
-
-    const recent =
-        conversation
-            .slice(-12);
-
-
-    recent.forEach(
-        message => {
-
-            if(
-                message.role === "user" ||
-                message.role === "assistant"
-            ){
-
-                messages.push({
-
-                    role:
-                        message.role,
-
-                    content:
-                        message.content
-
-                });
-
-            }
-
-        }
+    return (
+        typeof puter !== "undefined" &&
+        puter.ai &&
+        typeof puter.ai.chat === "function"
     );
+}
 
 
-    messages.push({
+/* =====================================================
+   AI CEVAP ÇIKARMA
+===================================================== */
 
-        role:"user",
+function extractAIText(
+    response
+){
+
+    if(
+        response === null ||
+        response === undefined
+    ){
+
+        return "";
+    }
+
+
+    if(
+        typeof response === "string"
+    ){
+
+        return response.trim();
+    }
+
+
+    if(
+        response.message &&
+        typeof response.message.content ===
+        "string"
+    ){
+
+        return response.message.content.trim();
+    }
+
+
+    if(
+        response.message &&
+        Array.isArray(
+            response.message.content
+        )
+    ){
+
+        return response.message.content
+            .map(
+                part => {
+
+                    if(
+                        typeof part === "string"
+                    ){
+
+                        return part;
+                    }
+
+
+                    if(
+                        part &&
+                        typeof part.text === "string"
+                    ){
+
+                        return part.text;
+                    }
+
+
+                    return "";
+                }
+            )
+            .join("")
+            .trim();
+    }
+
+
+    if(
+        typeof response.text === "string"
+    ){
+
+        return response.text.trim();
+    }
+
+
+    if(
+        typeof response.content === "string"
+    ){
+
+        return response.content.trim();
+    }
+
+
+    return "";
+}
+
+
+/* =====================================================
+   AI KONUŞMA DİZİSİ
+===================================================== */
+
+let conversation = [
+
+    {
+        role:
+            "system",
 
         content:
-            text
+            buildSystemPrompt()
+    }
+
+];
+
+
+/* =====================================================
+   PUTER HAZIRLANMASINI BEKLE
+===================================================== */
+
+async function waitForPuter(){
+
+    if(
+        isPuterReady()
+    ){
+
+        return true;
+    }
+
+
+    for(
+        let i = 0;
+        i < 30;
+        i++
+    ){
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    300
+                )
+        );
+
+
+        if(
+            isPuterReady()
+        ){
+
+            return true;
+        }
+    }
+
+
+    return false;
+}
+
+
+/* =====================================================
+   NORMAL AI
+===================================================== */
+
+async function askAI(
+    text
+){
+
+    conversation[0] = {
+
+        role:
+            "system",
+
+        content:
+            buildSystemPrompt()
+
+    };
+
+
+    conversation.push({
+
+        role:
+            "user",
+
+        content:
+            String(text)
 
     });
+
+
+    if(
+        conversation.length > 31
+    ){
+
+        conversation =
+            [
+                conversation[0]
+            ].concat(
+                conversation.slice(-30)
+            );
+    }
+
+
+    const ready =
+        await waitForPuter();
+
+
+    if(
+        !ready
+    ){
+
+        conversation.pop();
+
+
+        return:
+            "AURA'nın AI bağlantısı hazır değil. " +
+            "Sayfayı yenileyip tekrar deneyebilirsin.";
+    }
 
 
     try{
 
         const response =
             await puter.ai.chat(
-                messages,
+                conversation,
                 {
                     model:
                         "gpt-5.4-nano"
@@ -3019,7 +2757,7 @@ function restoreChat(){
             );
 
 
-        let answer =
+        const answer =
             extractAIText(
                 response
             );
@@ -3029,20 +2767,12 @@ function restoreChat(){
             !answer
         ){
 
-            answer =
-                "AURA cevap oluşturamadı.";
+            conversation.pop();
+
+
+            return:
+                "AURA şu anda cevap oluşturamadı.";
         }
-
-
-        conversation.push({
-
-            role:
-                "user",
-
-            content:
-                text
-
-        });
 
 
         conversation.push({
@@ -3066,104 +2796,22 @@ function restoreChat(){
         );
 
 
-        return (
-            "AI bağlantısında bir sorun oluştu. " +
-            "Biraz sonra tekrar deneyebilirsin."
-        );
+        if(
+            conversation.length &&
+            conversation[
+                conversation.length - 1
+            ].role === "user"
+        ){
+
+            conversation.pop();
+        }
+
+
+        return:
+            "AI bağlantısında geçici bir sorun oluştu.";
     }
-}
-
-
-/* =====================================================
-   AI CEVABI ÇIKAR
-===================================================== */
-
-function extractAIText(
-    response
-){
-
-    if(
-        !response
-    ){
-
-        return "";
-    }
-
-
-    if(
-        typeof response === "string"
-    ){
-
-        return response.trim();
-    }
-
-
-    if(
-        response.message &&
-        typeof response.message.content === "string"
-    ){
-
-        return response
-            .message
-            .content
-            .trim();
-    }
-
-
-    if(
-        response.message &&
-        Array.isArray(
-            response.message.content
-        )
-    ){
-
-        return response
-            .message
-            .content
-            .map(
-                part => {
-
-                    if(
-                        typeof part ===
-                        "string"
-                    ){
-
-                        return part;
-                    }
-
-
-                    if(
-                        part &&
-                        typeof part.text ===
-                        "string"
-                    ){
-
-                        return part.text;
-                    }
-
-
-                    return "";
-                }
-            )
-            .join("")
-            .trim();
-    }
-
-
-    if(
-        typeof response.text === "string"
-    ){
-
-        return response.text.trim();
-    }
-
-
-    return "";
-}
-
-
-/* =====================================================
-   WEB ARAMA GEREKLİ Mİ?
+    }/* =====================================================
+   GÜNCEL BİLGİ GEREKİYOR MU?
 ===================================================== */
 
 function needsWebSearch(
@@ -3171,22 +2819,23 @@ function needsWebSearch(
 ){
 
     const command =
-        normalizeText(text);
+        normalizeText(
+            text
+        );
 
 
-    const words = [
+    const keywords = [
 
         "internette ara",
         "internetten ara",
-
         "internette araştır",
         "internetten araştır",
 
-        "internette bak",
-        "internetten bak",
-
         "webde ara",
         "web'de ara",
+
+        "internetten bak",
+        "internete bak",
 
         "güncel bilgi",
         "guncel bilgi",
@@ -3195,33 +2844,25 @@ function needsWebSearch(
         "guncel haber",
 
         "son dakika",
-
         "haberler",
 
         "hava durumu",
-
         "hava nasıl",
         "hava nasil",
-
-        "şu an",
-        "su an",
 
         "şimdi",
         "simdi",
 
-        "bugün",
-        "bugun",
+        "şu an",
+        "su an"
 
-        "en son",
-
-        "2026"
     ];
 
 
-    return words.some(
-        word =>
+    return keywords.some(
+        keyword =>
             command.includes(
-                word
+                keyword
             )
     );
 }
@@ -3235,101 +2876,67 @@ async function askAIWithWeb(
     text
 ){
 
-    if(
-        typeof puter === "undefined"
-    ){
+    /*
+       Web Search desteği Puter tarafında
+       mevcut değilse normal AI'ye düşer.
+    */
 
-        return (
-            "AI servisi yüklenemedi."
-        );
-    }
+    conversation[0] = {
 
-
-    const mood =
-        detectMood(text);
-
-
-    const fileContext =
-        getCurrentFileContext();
-
-
-    const messages = [
-
-        {
-            role:"system",
-
-            content:
-
-                buildSystemPrompt() +
-
-                "\n\n" +
-
-                moodInstruction(
-                    mood
-                ) +
-
-                "\n\n" +
-
-                "Bu soru güncel internet " +
-                "bilgisi gerektirebilir. " +
-
-                "Web araması kullanabiliyorsan " +
-                "güncel bilgiyle cevapla. " +
-
-                "Bilgi kesin değilse bunu açıkça belirt." +
-
-                fileContext
-        }
-
-    ];
-
-
-    conversation
-        .slice(-10)
-        .forEach(
-            message => {
-
-                if(
-                    message.role === "user" ||
-                    message.role === "assistant"
-                ){
-
-                    messages.push({
-
-                        role:
-                            message.role,
-
-                        content:
-                            message.content
-
-                    });
-
-                }
-
-            }
-        );
-
-
-    messages.push({
-
-        role:"user",
+        role:
+            "system",
 
         content:
-            text
+            buildSystemPrompt()
+    };
+
+
+    const webPrompt =
+        String(text) +
+        "\n\n" +
+        "Bu soruda güncel internet bilgisi gerekiyorsa " +
+        "web araması kullan. Güncel bilgi ile genel " +
+        "bilgiyi birbirine karıştırma. " +
+        "Kullanıcıya gereksiz şekilde adıyla hitap et.";
+
+
+    conversation.push({
+
+        role:
+            "user",
+
+        content:
+            webPrompt
 
     });
+
+
+    const ready =
+        await waitForPuter();
+
+
+    if(
+        !ready
+    ){
+
+        conversation.pop();
+
+
+        return:
+            "AURA'nın AI bağlantısı hazır değil.";
+    }
 
 
     try{
 
         const response =
             await puter.ai.chat(
-                messages,
+                conversation,
                 {
                     model:
                         "gpt-5.4-nano",
 
-                    tools:[
+                    tools: [
                         {
                             type:
                                 "web_search"
@@ -3339,68 +2946,145 @@ async function askAIWithWeb(
             );
 
 
-        let answer =
+        const answer =
             extractAIText(
                 response
             );
 
 
         if(
-            !answer
+            answer
         ){
 
-            /*
-               Web araması desteklenmezse
-               normal AI'ya düş.
-            */
+            conversation.push({
 
-            return await askAI(
-                text
-            );
+                role:
+                    "assistant",
+
+                content:
+                    answer
+
+            });
+
+
+            return answer;
         }
 
 
-        conversation.push({
-
-            role:
-                "user",
-
-            content:
-                text
-
-        });
-
-
-        conversation.push({
-
-            role:
-                "assistant",
-
-            content:
-                answer
-
-        });
-
-
-        return answer;
-
     }catch(error){
 
-        console.error(
-            "AURA WEB HATASI:",
+        console.warn(
+            "Web araması kullanılamadı:",
             error
         );
+    }
 
 
-        /*
-           Web sistemi hata verirse
-           AURA tamamen çalışmayı bırakmasın.
-        */
+    /*
+       Web araması başarısız olursa
+       AURA tamamen bozulmasın.
+    */
 
-        return await askAI(
+    if(
+        conversation.length &&
+        conversation[
+            conversation.length - 1
+        ].role === "user"
+    ){
+
+        conversation.pop();
+    }
+
+
+    return await askAI(
+        text
+    );
+}
+
+
+/* =====================================================
+   KULLANICI BİLGİSİNİ ÖĞREN
+===================================================== */
+
+function rememberUserInformation(
+    text
+){
+
+    const command =
+        normalizeText(
             text
         );
+
+
+    const namePatterns = [
+
+        "benim adım ",
+
+        "benim adim "
+
+    ];
+
+
+    for(
+        const pattern of namePatterns
+    ){
+
+        if(
+            command.startsWith(
+                pattern
+            )
+        ){
+
+            const value =
+                text
+                    .substring(
+                        pattern.length
+                    )
+                    .trim();
+
+
+            if(
+                value
+            ){
+
+                addMemory(
+                    "facts",
+                    "Kullanıcının söylediği isim: " +
+                    value
+                );
+
+
+                return:
+                    "Tamam. Bunu hafızama kaydettim.";
+            }
+        }
     }
+
+
+    /*
+       Kullanıcı açık şekilde
+       bir şeyi sevdiğini söylüyorsa
+       tercih olarak kaydet.
+    */
+
+    if(
+        command.includes(
+            " seviyorum"
+        )
+    ){
+
+        addMemory(
+            "preferences",
+            text
+        );
+
+
+        return:
+            "Tamam. Bu tercihini hafızama kaydettim.";
+    }
+
+
+    return null;
 }
 
 
@@ -3412,7 +3096,7 @@ function cleanTextForSpeech(
     text
 ){
 
-    return String(text)
+    return String(text || "")
 
         .replace(
             /https?:\/\/\S+/gi,
@@ -3439,7 +3123,7 @@ function cleanTextForSpeech(
 
 
 /* =====================================================
-   SESLENDİRME
+   AURA SESLENDİRME
 ===================================================== */
 
 function speak(
@@ -3468,67 +3152,46 @@ function speak(
     }
 
 
-    window.speechSynthesis.cancel();
+    try{
+
+        window.speechSynthesis.cancel();
 
 
-    const utterance =
-        new SpeechSynthesisUtterance(
-            clean
+        const utterance =
+            new SpeechSynthesisUtterance(
+                clean
+            );
+
+
+        utterance.lang =
+            "tr-TR";
+
+        utterance.rate =
+            0.9;
+
+        utterance.pitch =
+            1;
+
+        utterance.volume =
+            1;
+
+
+        window.speechSynthesis.speak(
+            utterance
         );
 
+    }catch(error){
 
-    utterance.lang =
-        "tr-TR";
-
-    utterance.rate =
-        0.9;
-
-    utterance.pitch =
-        1;
-
-    utterance.volume =
-        1;
-
-
-    /*
-       Türkçe seslerden uygun olanı
-       bulmaya çalış.
-    */
-
-    const voices =
-        window.speechSynthesis
-            .getVoices();
-
-
-    const turkishVoice =
-        voices.find(
-            voice =>
-                voice.lang &&
-                voice.lang
-                    .toLowerCase()
-                    .startsWith(
-                        "tr"
-                    )
+        console.error(
+            "Seslendirme hatası:",
+            error
         );
-
-
-    if(
-        turkishVoice
-    ){
-
-        utterance.voice =
-            turkishVoice;
     }
-
-
-    window.speechSynthesis.speak(
-        utterance
-    );
 }
 
 
 /* =====================================================
-   SESLİ KOMUT SİSTEMİ
+   SES TANIMA
 ===================================================== */
 
 const SpeechRecognition =
@@ -3577,11 +3240,6 @@ if(
 
             micButton.textContent =
                 "🔴";
-
-
-            micButton.disabled =
-                false;
-
         };
 
 
@@ -3594,11 +3252,6 @@ if(
 
             micButton.textContent =
                 "🎤";
-
-
-            micButton.disabled =
-                false;
-
         };
 
 
@@ -3606,8 +3259,8 @@ if(
         function(event){
 
             console.error(
-                "SES TANIMA HATASI:",
-                event.error
+                "Mikrofon hatası:",
+                event
             );
 
 
@@ -3617,30 +3270,13 @@ if(
 
             micButton.textContent =
                 "🎤";
-
-
-            micButton.disabled =
-                false;
-
-
-            if(
-                event.error !==
-                "aborted"
-            ){
-
-                addMessage(
-                    "Mikrofon kullanılırken bir sorun oluştu.",
-                    "aura"
-                );
-            }
-
         };
 
 
     recognition.onresult =
         async function(event){
 
-            const result =
+            const text =
                 event
                     .results[0][0]
                     .transcript
@@ -3648,7 +3284,7 @@ if(
 
 
             if(
-                !result
+                !text
             ){
 
                 return;
@@ -3656,13 +3292,12 @@ if(
 
 
             input.value =
-                result;
+                text;
 
 
             await sendMessage(
                 true
             );
-
         };
 }
 
@@ -3684,6 +3319,7 @@ micButton.addEventListener(
                 "aura"
             );
 
+
             return;
         }
 
@@ -3692,7 +3328,17 @@ micButton.addEventListener(
             isListening
         ){
 
-            recognition.stop();
+            try{
+
+                recognition.stop();
+
+            }catch(error){
+
+                console.error(
+                    error
+                );
+            }
+
 
             return;
         }
@@ -3705,217 +3351,46 @@ micButton.addEventListener(
         }catch(error){
 
             console.error(
-                "MİKROFON BAŞLATMA HATASI:",
+                "Mikrofon başlatılamadı:",
                 error
             );
-
         }
 
     }
-);
-
-
-/* =====================================================
-   SESLER YÜKLENDİĞİNDE
+);/* =====================================================
+   MESAJ İŞLEME
 ===================================================== */
 
-if(
-    "speechSynthesis" in window
+let isProcessing =
+    false;
+
+
+async function sendMessage(
+    voiceMode = false
 ){
 
-    window.speechSynthesis
-        .onvoiceschanged =
-        function(){
-
-            window.speechSynthesis
-                .getVoices();
-
-        };
-}
-
-
-/* =====================================================
-   HATIRLATICI KONTROLÜ
-===================================================== */
-
-function checkReminders(){
-
-    const now =
-        Date.now();
-
-
-    let changed =
-        false;
-
-
-    reminders.forEach(
-        reminder => {
-
-            if(
-                reminder.notified
-            ){
-
-                return;
-            }
-
-
-            if(
-                Number(reminder.timestamp)
-                <=
-                now
-            ){
-
-                reminder.notified =
-                    true;
-
-
-                changed =
-                    true;
-
-
-                addMessage(
-                    "HATIRLATICI:\n" +
-                    reminder.text,
-                    "aura"
-                );
-
-
-                /*
-                   Tarayıcı destekliyorsa
-                   sesli bildirim.
-                */
-
-                speak(
-                    "Hatırlatıcı. " +
-                    reminder.text
-                );
-
-            }
-
-        }
-    );
-
-
-    if(changed){
-
-        saveReminders();
-    }
-}
-
-
-/* =====================================================
-   HATIRLATICI KOMUTLARI
-===================================================== */
-
-function parseReminder(
-    text
-){
-
-    const command =
-        normalizeText(text);
-
-
-    /*
-       Örnek:
-       "30 dakika sonra bana su içmeyi hatırlat"
-    */
-
-    const match =
-        command.match(
-            /^(\d+)\s*(dakika|dk|saat|sa)\s+sonra\s+(.+)$/
-        );
-
-
     if(
-        !match
+        isProcessing
     ){
-
-        return null;
-    }
-
-
-    const amount =
-        Number(
-            match[1]
-        );
-
-
-    const unit =
-        match[2];
-
-
-    const reminderText =
-        match[3]
-            .replace(
-                /^bana\s+/,
-                ""
-            )
-            .replace(
-                /hatırlat$/i,
-                ""
-            )
-            .trim();
-
-
-    if(
-        !amount ||
-        !reminderText
-    ){
-
-        return null;
-    }
-
-
-    let milliseconds;
-
-
-    if(
-        unit === "dakika" ||
-        unit === "dk"
-    ){
-
-        milliseconds =
-            amount *
-            60 *
-            1000;
-
-    }else{
-
-        milliseconds =
-            amount *
-            60 *
-            60 *
-            1000;
-    }
-
-
-    return {
-
-        text:
-            reminderText,
-
-        timestamp:
-            Date.now() +
-            milliseconds
-
-    };
-    }/* =====================================================
-   ANA MESAJ İŞLEYİCİ
-===================================================== */
-
-async function sendMessage(voiceMode = false){
-
-    const text =
-        input.value.trim();
-
-
-    if(!text){
 
         return;
     }
 
 
-    input.value = "";
+    const text =
+        input.value.trim();
+
+
+    if(
+        !text
+    ){
+
+        return;
+    }
+
+
+    input.value =
+        "";
 
 
     addMessage(
@@ -3934,8 +3409,13 @@ async function sendMessage(voiceMode = false){
         chat.lastElementChild;
 
 
+    isProcessing =
+        true;
+
+
     sendButton.disabled =
         true;
+
 
     micButton.disabled =
         true;
@@ -3943,174 +3423,60 @@ async function sendMessage(voiceMode = false){
 
     try{
 
-        /*
-           1 — Yerel komutları kontrol et
-        */
-
-        const localResponse =
+        let reply =
             handleLocalCommand(
                 text
             );
 
 
-        if(
-            localResponse !== null
-        ){
-
-            if(loading){
-
-                loading.remove();
-            }
-
-
-            addMessage(
-                localResponse,
-                "aura"
-            );
-
-
-            if(voiceMode){
-
-                speak(
-                    localResponse
-                );
-            }
-
-
-            return;
-        }
-
-
         /*
-           2 — Hafızaya kaydedilecek
-           bir bilgi var mı?
+           Yerel komut değilse
+           kullanıcı bilgisini kontrol et.
         */
 
-        const memoryResponse =
-            rememberUserInformation(
-                text
-            );
-
-
         if(
-            memoryResponse !== null
-        ){
-
-            if(loading){
-
-                loading.remove();
-            }
-
-
-            addMessage(
-                memoryResponse,
-                "aura"
-            );
-
-
-            if(voiceMode){
-
-                speak(
-                    memoryResponse
-                );
-            }
-
-
-            return;
-        }
-
-
-        /*
-           3 — Hatırlatıcı kontrolü
-        */
-
-        const reminder =
-            parseReminder(
-                text
-            );
-
-
-        if(
-            reminder
-        ){
-
-            const saved =
-                addReminder(
-                    reminder.text,
-                    reminder.timestamp
-                );
-
-
-            if(loading){
-
-                loading.remove();
-            }
-
-
-            const date =
-                new Date(
-                    saved.timestamp
-                );
-
-
-            const response =
-                (
-                    "Tamam. " +
-                    reminder.text +
-                    " için hatırlatıcı oluşturdum.\n" +
-                    "Zaman: " +
-                    date.toLocaleString(
-                        "tr-TR"
-                    )
-                );
-
-
-            addMessage(
-                response,
-                "aura"
-            );
-
-
-            if(voiceMode){
-
-                speak(
-                    response
-                );
-            }
-
-
-            return;
-        }
-
-
-        /*
-           4 — Normal AI / Web AI
-        */
-
-        let reply;
-
-
-        if(
-            needsWebSearch(
-                text
-            )
+            reply === null
         ){
 
             reply =
-                await askAIWithWeb(
-                    text
-                );
-
-        }else{
-
-            reply =
-                await askAI(
+                rememberUserInformation(
                     text
                 );
         }
 
 
-        if(loading){
+        /*
+           Hâlâ cevap yoksa AI'ye gönder.
+        */
+
+        if(
+            reply === null
+        ){
+
+            if(
+                needsWebSearch(
+                    text
+                )
+            ){
+
+                reply =
+                    await askAIWithWeb(
+                        text
+                    );
+
+            }else{
+
+                reply =
+                    await askAI(
+                        text
+                    );
+            }
+        }
+
+
+        if(
+            loading
+        ){
 
             loading.remove();
         }
@@ -4122,57 +3488,51 @@ async function sendMessage(voiceMode = false){
         );
 
 
-        if(voiceMode){
+        if(
+            voiceMode
+        ){
 
             speak(
                 reply
             );
         }
 
-
     }catch(error){
 
         console.error(
-            "AURA MESAJ HATASI:",
+            "MESAJ HATASI:",
             error
         );
 
 
-        if(loading){
+        if(
+            loading
+        ){
 
             loading.remove();
         }
 
 
-        const errorMessage =
-            "Bir hata oluştu. " +
-            "Tekrar deneyebiliriz.";
-
-
         addMessage(
-            errorMessage,
+            "Bir hata oluştu. Tekrar deneyelim.",
             "aura"
         );
 
-
-        if(voiceMode){
-
-            speak(
-                errorMessage
-            );
-        }
-
-
     }finally{
+
+        isProcessing =
+            false;
+
 
         sendButton.disabled =
             false;
 
+
         micButton.disabled =
             false;
 
-        input.focus();
 
+        input.focus();
     }
 }
 
@@ -4194,7 +3554,7 @@ sendButton.addEventListener(
 
 
 /* =====================================================
-   ENTER İLE GÖNDER
+   ENTER
 ===================================================== */
 
 input.addEventListener(
@@ -4207,6 +3567,7 @@ input.addEventListener(
 
             event.preventDefault();
 
+
             sendMessage(
                 false
             );
@@ -4217,259 +3578,7 @@ input.addEventListener(
 
 
 /* =====================================================
-   KLAVYE KISAYOLU
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        /*
-           CTRL + K
-           giriş kutusuna odaklan
-        */
-
-        if(
-            event.ctrlKey &&
-            event.key.toLowerCase() === "k"
-        ){
-
-            event.preventDefault();
-
-            input.focus();
-        }
-
-    }
-);
-
-
-/* =====================================================
-   HATIRLATICI DÖNGÜSÜ
-===================================================== */
-
-checkReminders();
-
-
-setInterval(
-    checkReminders,
-    1000
-);
-
-
-/* =====================================================
-   SAYFA GÖRÜNÜR OLDUĞUNDA
-===================================================== */
-
-document.addEventListener(
-    "visibilitychange",
-    function(){
-
-        if(
-            !document.hidden
-        ){
-
-            checkReminders();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   AURA BAŞLAT
-===================================================== */
-
-function initializeAura(){
-
-    try{
-
-        /*
-           Hafıza yapısını garanti et.
-        */
-
-        ensureMemoryStructure();
-
-
-        /*
-           Storage kayıtlarını yenile.
-        */
-
-        saveMemory();
-
-        savePersonalMemory();
-
-        saveTasks();
-
-        saveReminders();
-
-        saveCustomCommands();
-
-        saveProfile();
-
-
-        /*
-           Sohbet geçmişini yükle.
-        */
-
-        restoreChat();
-
-
-        /*
-           İlk açılışta girişe odaklan.
-        */
-
-        setTimeout(
-            function(){
-
-                input.focus();
-
-            },
-            300
-        );
-
-
-        console.log(
-            "AURA SYSTEM READY"
-        );
-
-
-        console.log(
-            "Memory:",
-            auraMemory
-        );
-
-
-        console.log(
-            "Tasks:",
-            tasks
-        );
-
-
-        console.log(
-            "Reminders:",
-            reminders
-        );
-
-
-        console.log(
-            "Custom commands:",
-            customCommands
-        );
-
-
-        console.log(
-            "Knowledge base:",
-            knowledgeBase
-        );
-
-
-    }catch(error){
-
-        console.error(
-            "AURA BAŞLATMA HATASI:",
-            error
-        );
-
-
-        /*
-           Sistem başlatılırken hata olsa bile
-           kullanıcı boş ekran görmesin.
-        */
-
-        if(
-            chat.children.length === 0
-        ){
-
-            addMessage(
-                "AURA başlatıldı. Sistem hazır.",
-                "aura"
-            );
-        }
-
-    }
-}
-
-
-/* =====================================================
-   PUTER HAZIRLIK KONTROLÜ
-===================================================== */
-
-function waitForPuter(){
-
-    let attempts =
-        0;
-
-
-    const timer =
-        setInterval(
-            function(){
-
-                attempts++;
-
-
-                if(
-                    typeof puter !== "undefined"
-                ){
-
-                    clearInterval(
-                        timer
-                    );
-
-
-                    console.log(
-                        "AURA AI bağlantısı hazır."
-                    );
-
-
-                    return;
-                }
-
-
-                /*
-                   10 saniyeden fazla bekleme.
-                */
-
-                if(
-                    attempts >= 20
-                ){
-
-                    clearInterval(
-                        timer
-                    );
-
-
-                    console.warn(
-                        "Puter AI henüz hazır değil."
-                    );
-                }
-
-            },
-            500
-        );
-}
-
-
-/* =====================================================
-   SAYFA TAMAMEN YÜKLENDİ
-===================================================== */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        initializeAura();
-
-        waitForPuter();
-
-        checkReminders();
-
-    }
-);
-
-
-/* =====================================================
-   SAYFA KAPANIRKEN KAYDET
+   SAYFA KAPANMADAN KAYDET
 ===================================================== */
 
 window.addEventListener(
@@ -4480,22 +3589,14 @@ window.addEventListener(
 
             saveMemory();
 
-            savePersonalMemory();
+            saveChatHistory();
 
             saveTasks();
-
-            saveReminders();
-
-            saveCustomCommands();
-
-            saveProfile();
-
-            saveChatHistory();
 
         }catch(error){
 
             console.error(
-                "AURA KAPANIŞ KAYIT HATASI:",
+                "Kapanış kayıt hatası:",
                 error
             );
         }
@@ -4505,108 +3606,29 @@ window.addEventListener(
 
 
 /* =====================================================
-   MOBİL TARAYICI İÇİN EK KORUMA
+   BAŞLANGIÇ
 ===================================================== */
 
-window.addEventListener(
-    "pagehide",
-    function(){
+restoreChat();
 
-        try{
-
-            saveMemory();
-
-            savePersonalMemory();
-
-            saveTasks();
-
-            saveReminders();
-
-            saveCustomCommands();
-
-            saveProfile();
-
-            saveChatHistory();
-
-        }catch(error){
-
-            console.error(
-                "AURA PAGEHIDE HATASI:",
-                error
-            );
-        }
-
-    }
-);
-
-
-/* =====================================================
-   GLOBAL AURA NESNESİ
-   GELİŞTİRME İÇİN
-===================================================== */
-
-window.AURA = {
-
-    version:
-        "AURA-ADVANCED-V1",
-
-    user:
-        USER_NAME,
-
-    girlfriend:
-        GIRLFRIEND_NAME,
-
-    memory:
-        auraMemory,
-
-    tasks:
-        tasks,
-
-    reminders:
-        reminders,
-
-    ask:
-        askAI,
-
-    speak:
-        speak,
-
-    addMemory:
-        addMemory,
-
-    addTask:
-        addTask,
-
-    addReminder:
-        addReminder,
-
-    searchKnowledge:
-        searchKnowledge,
-
-    reloadKnowledge:
-        async function(){
-
-            knowledgeBase =
-                await loadKnowledgeBase();
-
-            return knowledgeBase;
-        }
-
-};
-
-
-/* =====================================================
-   SON DURUM
-===================================================== */
 
 console.log(
-    "%c AURA AI SYSTEM ONLINE ",
-    "color:#00eaff;font-weight:bold;font-size:16px;"
+    "AURA AI hazır."
 );
 
 console.log(
-    "Version:",
-    window.AURA.version
+    "Puter hazır:",
+    isPuterReady()
+);
+
+console.log(
+    "AURA hafızası:",
+    auraMemory
+);
+
+console.log(
+    "AURA görevleri:",
+    tasks
 );
 
 </script>
