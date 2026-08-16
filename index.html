@@ -2,19 +2,18 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AURA AI</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
 html,body{
-    margin:0;
     width:100%;
     height:100%;
+    margin:0;
 }
 
 body{
@@ -24,43 +23,67 @@ body{
 
     background:
         radial-gradient(
-            ellipse at 50% 20%,
-            #075879 0%,
-            #04324b 28%,
-            #021522 58%,
-            #00070e 100%
+            circle at 50% 22%,
+            #063b5b 0%,
+            #031d32 25%,
+            #010b17 55%,
+            #000307 100%
         );
 }
 
 /* =========================
-   ARKA PLAN IŞIKLARI
+   ARKA PLAN
 ========================= */
 
 body::before{
     content:"";
     position:fixed;
-    width:500px;
-    height:500px;
-
-    left:50%;
-    top:5%;
-
-    transform:translateX(-50%);
-
-    border-radius:50%;
+    inset:0;
+    pointer-events:none;
 
     background:
         radial-gradient(
-            circle,
-            rgba(0,234,255,.13),
-            transparent 68%
+            circle at 20% 20%,
+            rgba(0,120,255,.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(0,190,255,.06),
+            transparent 28%
+        ),
+        linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(0,140,255,.035) 50%,
+            transparent 100%
+        );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    opacity:.16;
+
+    background:
+        linear-gradient(
+            rgba(0,180,255,.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,180,255,.08) 1px,
+            transparent 1px
         );
 
-    pointer-events:none;
+    background-size:45px 45px;
 }
 
 /* =========================
-   ÜST PANEL
+   ÜST BAR
 ========================= */
 
 .header{
@@ -73,20 +96,18 @@ body::before{
     padding:0 18px;
 
     background:
-        rgba(1,13,23,.72);
+        rgba(0,5,12,.82);
 
     border-bottom:
         1px solid
-        rgba(0,234,255,.25);
-
-    backdrop-filter:blur(12px);
+        rgba(0,180,255,.25);
 
     position:relative;
     z-index:10;
 }
 
 .logo{
-    color:#00eaff;
+    color:#00dfff;
 
     font-size:20px;
     font-weight:bold;
@@ -94,8 +115,8 @@ body::before{
     letter-spacing:5px;
 
     text-shadow:
-        0 0 10px #00eaff,
-        0 0 25px rgba(0,234,255,.5);
+        0 0 10px #00dfff,
+        0 0 25px rgba(0,190,255,.6);
 }
 
 .status{
@@ -104,7 +125,7 @@ body::before{
 
     gap:7px;
 
-    color:#55ffcc;
+    color:#53ffcc;
 
     font-size:9px;
 
@@ -117,10 +138,11 @@ body::before{
 
     border-radius:50%;
 
-    background:#55ffcc;
+    background:#53ffcc;
 
     box-shadow:
-        0 0 10px #55ffcc;
+        0 0 8px #53ffcc,
+        0 0 16px #53ffcc;
 }
 
 /* =========================
@@ -132,21 +154,23 @@ body::before{
 
     display:flex;
     flex-direction:column;
-
     align-items:center;
 
     min-height:0;
 
     position:relative;
+    z-index:2;
 }
 
 /* =========================
-   ÇEKİRDEK
+   AURA KÜRESİ
 ========================= */
 
 .core{
-    width:190px;
-    height:190px;
+    width:230px;
+    height:230px;
+
+    margin-top:-5px;
 
     position:relative;
 
@@ -157,104 +181,248 @@ body::before{
     flex-shrink:0;
 }
 
-.ring{
+/* Dış enerji halkaları */
+
+.orbit{
     position:absolute;
 
     border-radius:50%;
 
     border:1px solid
-        rgba(0,234,255,.7);
+        rgba(0,214,255,.65);
 
     box-shadow:
         0 0 10px
-        rgba(0,234,255,.25);
+        rgba(0,200,255,.25);
 }
 
-.ring.one{
-    width:112px;
-    height:112px;
+.orbit.one{
+    width:145px;
+    height:145px;
 
     border-left-color:transparent;
     border-right-color:transparent;
 
+    transform:rotate(25deg);
+
     animation:
-        rotate 5s linear infinite;
+        orbitA 5s linear infinite;
 }
 
-.ring.two{
-    width:150px;
-    height:150px;
+.orbit.two{
+    width:180px;
+    height:180px;
 
     border-top-color:transparent;
     border-bottom-color:transparent;
 
+    transform:rotate(-35deg);
+
     animation:
-        rotateReverse 8s linear infinite;
+        orbitB 8s linear infinite;
 }
 
-.ring.three{
-    width:184px;
-    height:184px;
+.orbit.three{
+    width:215px;
+    height:215px;
 
     border-left-color:transparent;
     border-bottom-color:transparent;
 
+    transform:rotate(55deg);
+
     animation:
-        rotate 13s linear infinite;
+        orbitA 12s linear infinite;
 }
 
-.center{
-    width:80px;
-    height:80px;
+/* Kürenin dış ışığı */
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.core-glow{
+    position:absolute;
+
+    width:150px;
+    height:150px;
 
     border-radius:50%;
 
-    border:
-        2px solid #00eaff;
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,220,255,.22),
+            rgba(0,100,180,.08) 45%,
+            transparent 72%
+        );
+
+    filter:blur(5px);
+
+    animation:
+        glowPulse 2.5s ease-in-out infinite;
+}
+
+/* Kürenin kendisi */
+
+.sphere{
+    width:112px;
+    height:112px;
+
+    position:relative;
+
+    border-radius:50%;
 
     background:
         radial-gradient(
-            circle at 40% 35%,
-            #0b7994,
-            #032a3c 55%,
-            #01101a
+            circle at 35% 28%,
+            #a8faff 0%,
+            #18d7f5 8%,
+            #087da5 25%,
+            #034263 48%,
+            #011726 73%,
+            #000810 100%
         );
 
-    color:#00eaff;
-
-    font-size:17px;
-    font-weight:bold;
-
-    letter-spacing:3px;
+    border:
+        1px solid
+        rgba(100,245,255,.85);
 
     box-shadow:
-        0 0 12px #00eaff,
-        0 0 40px rgba(0,234,255,.5),
-        inset 0 0 20px rgba(0,234,255,.45);
+        0 0 12px #00dfff,
+        0 0 35px rgba(0,200,255,.7),
+        0 0 80px rgba(0,120,255,.35),
+        inset -15px -12px 25px rgba(0,0,0,.55),
+        inset 10px 8px 18px rgba(150,255,255,.35);
 
     animation:
-        corePulse 2.2s ease-in-out infinite;
+        spherePulse 2.2s ease-in-out infinite;
+
+    z-index:5;
 }
 
-@keyframes rotate{
+/* Küre içindeki enerji çizgileri */
+
+.sphere::before{
+    content:"";
+
+    position:absolute;
+
+    left:8px;
+    right:8px;
+
+    top:50%;
+
+    height:24px;
+
+    transform:
+        translateY(-50%)
+        rotate(-18deg);
+
+    border-top:
+        1px solid
+        rgba(160,250,255,.7);
+
+    border-bottom:
+        1px solid
+        rgba(0,220,255,.45);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 8px
+        rgba(0,234,255,.7);
+}
+
+.sphere::after{
+    content:"";
+
+    position:absolute;
+
+    top:5px;
+    bottom:5px;
+
+    left:50%;
+
+    width:28px;
+
+    transform:
+        translateX(-50%)
+        rotate(28deg);
+
+    border-left:
+        1px solid
+        rgba(130,245,255,.55);
+
+    border-right:
+        1px solid
+        rgba(0,200,255,.35);
+
+    border-radius:50%;
+}
+
+/* Kürenin merkez çekirdeği */
+
+.core-center{
+    position:absolute;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #9fffff 15%,
+            #00dfff 35%,
+            #007aab 65%,
+            transparent 100%
+        );
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 20px #00eaff,
+        0 0 40px #008cff;
+
+    animation:
+        coreFlash 1.8s ease-in-out infinite;
+
+    z-index:7;
+}
+
+@keyframes orbitA{
     to{
-        transform:rotate(360deg);
+        transform:rotate(385deg);
     }
 }
 
-@keyframes rotateReverse{
+@keyframes orbitB{
     to{
-        transform:rotate(-360deg);
+        transform:rotate(-395deg);
     }
 }
 
-@keyframes corePulse{
+@keyframes glowPulse{
     50%{
-        transform:scale(1.06);
+        transform:scale(1.12);
+        opacity:.8;
+    }
+}
+
+@keyframes spherePulse{
+    50%{
+        transform:scale(1.045);
+        box-shadow:
+            0 0 18px #00dfff,
+            0 0 48px rgba(0,200,255,.8),
+            0 0 90px rgba(0,120,255,.45),
+            inset -15px -12px 25px rgba(0,0,0,.55),
+            inset 10px 8px 18px rgba(150,255,255,.4);
+    }
+}
+
+@keyframes coreFlash{
+    50%{
+        transform:scale(1.18);
+        opacity:.8;
     }
 }
 
@@ -264,18 +432,21 @@ body::before{
 
 .system{
     margin-top:-8px;
+    margin-bottom:7px;
 
-    margin-bottom:8px;
-
-    color:#83e9f7;
+    color:#79dff5;
 
     font-size:9px;
 
     letter-spacing:3px;
+
+    text-shadow:
+        0 0 8px
+        rgba(0,210,255,.55);
 }
 
 /* =========================
-   SOHBET PANELİ
+   SOHBET
 ========================= */
 
 .chat-panel{
@@ -286,57 +457,46 @@ body::before{
     min-height:0;
 
     display:flex;
-
     flex-direction:column;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(4,42,60,.48),
-            rgba(0,12,23,.55)
-        );
+        rgba(1,12,23,.55);
 
     border:
         1px solid
-        rgba(0,234,255,.18);
+        rgba(0,170,255,.17);
 
-    border-radius:20px 20px 0 0;
+    border-radius:
+        18px 18px 0 0;
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(8px);
 
     overflow:hidden;
-
-    box-shadow:
-        0 -10px 40px
-        rgba(0,0,0,.15);
 }
 
-/* =========================
-   PANEL BAŞLIĞI
-========================= */
-
-.panel-head{
-    height:34px;
+.panel-title{
+    height:31px;
 
     display:flex;
-
     align-items:center;
 
     padding:0 13px;
 
-    border-bottom:
-        1px solid
-        rgba(0,234,255,.12);
-
     color:
-        rgba(150,230,240,.6);
+        rgba(120,210,235,.55);
 
     font-size:8px;
 
     letter-spacing:2px;
+
+    border-bottom:
+        1px solid
+        rgba(0,180,255,.12);
 }
 
-.panel-line{
+.panel-title::after{
+    content:"";
+
     flex:1;
 
     height:1px;
@@ -346,14 +506,10 @@ body::before{
     background:
         linear-gradient(
             90deg,
-            rgba(0,234,255,.25),
+            rgba(0,200,255,.3),
             transparent
         );
 }
-
-/* =========================
-   MESAJ ALANI
-========================= */
 
 #chat{
     flex:1;
@@ -363,13 +519,12 @@ body::before{
     overflow-y:auto;
 
     padding:
-        12px 12px 8px;
+        12px 12px 10px;
 
     scrollbar-width:thin;
 
     scrollbar-color:
-        rgba(0,234,255,.4)
-        transparent;
+        #007ea8 transparent;
 }
 
 #chat::-webkit-scrollbar{
@@ -377,7 +532,7 @@ body::before{
 }
 
 #chat::-webkit-scrollbar-thumb{
-    background:#00eaff;
+    background:#008fbd;
 
     border-radius:10px;
 }
@@ -389,7 +544,8 @@ body::before{
 .message{
     max-width:82%;
 
-    padding:10px 13px;
+    padding:
+        10px 13px;
 
     margin-bottom:9px;
 
@@ -406,7 +562,6 @@ body::before{
 }
 
 @keyframes messageIn{
-
     from{
         opacity:0;
         transform:translateY(5px);
@@ -421,53 +576,47 @@ body::before{
 .aura{
     margin-right:auto;
 
-    color:#d9fbff;
+    color:#d9faff;
 
     background:
-        rgba(3,54,72,.68);
+        linear-gradient(
+            135deg,
+            rgba(3,55,77,.72),
+            rgba(1,23,38,.72)
+        );
 
     border-left:
-        2px solid #00eaff;
-
-    border-top:
-        1px solid
-        rgba(0,234,255,.18);
-
-    border-right:
-        1px solid
-        rgba(0,234,255,.08);
-
-    border-bottom:
-        1px solid
-        rgba(0,234,255,.08);
+        2px solid
+        #00dfff;
 
     border-top-left-radius:3px;
 
     box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.12);
+        0 4px 18px
+        rgba(0,0,0,.18);
 }
 
 .user{
     margin-left:auto;
 
-    color:white;
+    color:#ffffff;
 
     background:
-        rgba(7,108,139,.7);
+        linear-gradient(
+            135deg,
+            rgba(5,89,125,.8),
+            rgba(3,49,78,.85)
+        );
 
     border-right:
-        2px solid #55ffcc;
-
-    border-top:
-        1px solid
-        rgba(85,255,204,.18);
+        2px solid
+        #43ffce;
 
     border-top-right-radius:3px;
 }
 
 /* =========================
-   MESAJ GİRİŞ PANELİ
+   ALT MESAJ PANELİ
 ========================= */
 
 .bottom{
@@ -477,52 +626,62 @@ body::before{
         9px 8px 10px;
 
     background:
-        rgba(0,10,19,.72);
+        linear-gradient(
+            180deg,
+            #031a2c,
+            #020d1b
+        );
 
     border:
         1px solid
-        rgba(0,234,255,.18);
+        rgba(0,170,255,.2);
 
     border-top:0;
 
     border-radius:
-        0 0 20px 20px;
+        0 0 18px 18px;
 
-    backdrop-filter:blur(10px);
+    box-shadow:
+        0 -10px 30px
+        rgba(0,50,100,.18);
 }
 
 .composer{
     height:48px;
 
     display:flex;
-
     align-items:center;
 
     gap:7px;
 
-    padding:4px 5px 4px 14px;
+    padding:
+        4px 5px 4px 13px;
 
-    border-radius:15px;
+    border-radius:14px;
 
     background:
-        rgba(2,30,43,.82);
+        #041d31;
 
     border:
         1px solid
-        rgba(0,234,255,.25);
+        rgba(0,180,255,.3);
 
-    transition:
-        border .2s,
-        box-shadow .2s;
+    box-shadow:
+        inset 0 0 15px
+        rgba(0,100,180,.08);
+
+    transition:.2s;
 }
 
 .composer:focus-within{
     border-color:
-        rgba(0,234,255,.65);
+        rgba(0,220,255,.7);
 
     box-shadow:
         0 0 18px
-        rgba(0,234,255,.08);
+        rgba(0,180,255,.1),
+        inset 0 0 15px
+        rgba(0,100,180,.1);
 }
 
 #input{
@@ -543,13 +702,8 @@ body::before{
 }
 
 #input::placeholder{
-    color:
-        rgba(120,190,205,.5);
+    color:#52798b;
 }
-
-/* =========================
-   BUTONLAR
-========================= */
 
 .button{
     width:40px;
@@ -559,25 +713,18 @@ body::before{
 
     border:0;
 
-    border-radius:12px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
+    border-radius:11px;
 
     cursor:pointer;
 
-    font-size:16px;
-
-    color:#00eaff;
+    color:#00dfff;
 
     background:
-        rgba(0,69,91,.7);
+        #062b43;
 
-    transition:
-        transform .12s,
-        background .15s;
+    font-size:16px;
+
+    transition:.15s;
 }
 
 .button:active{
@@ -585,28 +732,30 @@ body::before{
 }
 
 .send{
-    color:#00202a;
+    color:#001821;
 
     background:
         linear-gradient(
             135deg,
-            #00eaff,
-            #55ffcc
+            #00dfff,
+            #45ffce
         );
 
     box-shadow:
-        0 0 14px
-        rgba(0,234,255,.25);
+        0 0 15px
+        rgba(0,220,255,.25);
 }
 
-/* MOBİL */
+/* =========================
+   MOBİL
+========================= */
 
 @media(max-width:500px){
 
     .core{
-        transform:scale(.84);
+        transform:scale(.82);
 
-        margin-top:-4px;
+        margin-top:-5px;
         margin-bottom:-13px;
     }
 
@@ -629,7 +778,6 @@ body::before{
         height:38px;
     }
 }
-
 </style>
 </head>
 
@@ -642,11 +790,8 @@ body::before{
     </div>
 
     <div class="status">
-
         <span class="status-dot"></span>
-
         SYSTEM ONLINE
-
     </div>
 
 </div>
@@ -656,43 +801,38 @@ body::before{
 
     <div class="core">
 
-        <div class="ring one"></div>
+        <div class="orbit one"></div>
+        <div class="orbit two"></div>
+        <div class="orbit three"></div>
 
-        <div class="ring two"></div>
+        <div class="core-glow"></div>
 
-        <div class="ring three"></div>
+        <div class="sphere"></div>
 
-        <div class="center">
-            AURA
-        </div>
+        <div class="core-center"></div>
 
     </div>
 
 
     <div class="system">
-        PERSONAL AI CORE
+        AURA CORE // READY
     </div>
 
 
     <div class="chat-panel">
 
-        <div class="panel-head">
-
-            AURA COMMUNICATION
-
-            <div class="panel-line"></div>
-
+        <div class="panel-title">
+            COMMUNICATION CHANNEL
         </div>
-
 
         <div id="chat">
 
             <div class="message aura">
-                Sistem başlatıldı.
+                AURA çekirdeği başlatıldı.
             </div>
 
             <div class="message aura">
-                AURA hazır. Seni dinliyorum.
+                Sistem hazır. Seni dinliyorum.
             </div>
 
         </div>
@@ -707,7 +847,7 @@ body::before{
             <input
                 id="input"
                 type="text"
-                placeholder="Mesajını yaz..."
+                placeholder="AURA'ya mesaj yaz..."
                 autocomplete="off"
             >
 
@@ -747,10 +887,7 @@ const chat =
     document.getElementById("chat");
 
 
-function addMessage(
-    text,
-    type
-){
+function addMessage(text,type){
 
     const message =
         document.createElement("div");
@@ -761,9 +898,7 @@ function addMessage(
     message.textContent =
         text;
 
-    chat.appendChild(
-        message
-    );
+    chat.appendChild(message);
 
     chat.scrollTop =
         chat.scrollHeight;
@@ -784,19 +919,16 @@ function sendMessage(){
         "user"
     );
 
-    input.value = "";
+    input.value="";
 
-    setTimeout(
-        function(){
+    setTimeout(function(){
 
-            addMessage(
-                "Mesajını aldım. AURA prototip modu aktif.",
-                "aura"
-            );
+        addMessage(
+            "Mesajını aldım. AURA prototip modu aktif.",
+            "aura"
+        );
 
-        },
-        350
-    );
+    },350);
 }
 
 
@@ -810,9 +942,7 @@ input.addEventListener(
     "keydown",
     function(event){
 
-        if(
-            event.key === "Enter"
-        ){
+        if(event.key==="Enter"){
 
             event.preventDefault();
 
@@ -828,7 +958,7 @@ mic.addEventListener(
     function(){
 
         addMessage(
-            "Sesli iletişim modülü hazır.",
+            "Sesli iletişim prototipte hazır.",
             "aura"
         );
 
