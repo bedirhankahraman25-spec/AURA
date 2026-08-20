@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta
-    name="theme-color"
-    content="#020912"
->
+<meta name="theme-color" content="#020912">
 
 <title>AURA AI</title>
 
@@ -32,12 +26,7 @@ body{
 
 body{
     overflow:hidden;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family:Arial,Helvetica,sans-serif;
     color:#dffaff;
 
     background:
@@ -67,22 +56,20 @@ button{
     flex-direction:column;
 
     position:relative;
-
     overflow:hidden;
 }
 
 .topbar{
-    height:72px;
-    flex:0 0 72px;
+    height:64px;
+    flex:0 0 64px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 24px;
+    padding:0 18px;
 
-    background:
-        rgba(0,7,13,.94);
+    background:rgba(0,7,13,.94);
 
     border-bottom:
         1px solid
@@ -96,23 +83,18 @@ button{
 }
 
 .logo{
-    font-size:25px;
+    font-size:22px;
     letter-spacing:6px;
-
     color:#00eaff;
 
     text-shadow:
-        0 0 12px
-        rgba(0,234,255,.9),
-
-        0 0 25px
-        rgba(0,234,255,.55);
+        0 0 12px rgba(0,234,255,.9),
+        0 0 25px rgba(0,234,255,.55);
 }
 
 .online{
-    font-size:11px;
-    letter-spacing:3px;
-
+    font-size:9px;
+    letter-spacing:2px;
     color:#69ffd7;
 }
 
@@ -122,7 +104,7 @@ button{
     width:8px;
     height:8px;
 
-    margin-right:8px;
+    margin-right:7px;
 
     border-radius:50%;
 
@@ -136,7 +118,6 @@ button{
     position:relative;
 
     flex:1;
-
     min-height:0;
 
     overflow:hidden;
@@ -151,8 +132,7 @@ button{
     left:50%;
     top:50%;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     border-radius:50%;
 
@@ -167,8 +147,22 @@ button{
     filter:blur(12px);
 
     pointer-events:none;
+}
 
-    z-index:0;
+.status-line{
+    position:absolute;
+
+    left:50%;
+    top:15px;
+
+    transform:translateX(-50%);
+
+    color:#6b99a6;
+
+    font-size:9px;
+    letter-spacing:2px;
+
+    z-index:2;
 }
 
 .core-zone{
@@ -177,12 +171,10 @@ button{
     inset:0;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    transition:
-        all .45s ease;
+    transition:all .45s ease;
 
     z-index:3;
 
@@ -191,13 +183,12 @@ button{
 
 .app.chat-open .core-zone{
     align-items:flex-start;
-
-    padding-top:48px;
+    padding-top:32px;
 }
 
 .core-button{
-    width:158px;
-    height:158px;
+    width:140px;
+    height:140px;
 
     position:relative;
 
@@ -237,7 +228,6 @@ button{
         infinite;
 
     user-select:none;
-
     outline:none;
 }
 
@@ -246,10 +236,8 @@ button{
 }
 
 .core-text{
-    font-size:20px;
-
+    font-size:18px;
     font-weight:700;
-
     letter-spacing:6px;
 
     text-shadow:
@@ -270,30 +258,36 @@ button{
 }
 
 .r1{
-    width:190px;
-    height:190px;
+    width:170px;
+    height:170px;
 
     border-left-color:transparent;
     border-bottom-color:transparent;
 
     animation:
-        rotateOne 9s linear infinite;
+        rotateOne
+        9s
+        linear
+        infinite;
 }
 
 .r2{
-    width:218px;
-    height:218px;
+    width:195px;
+    height:195px;
 
     border-right-color:transparent;
     border-top-color:transparent;
 
     animation:
-        rotateTwo 13s linear infinite;
+        rotateTwo
+        13s
+        linear
+        infinite;
 }
 
 .r3{
-    width:245px;
-    height:245px;
+    width:220px;
+    height:220px;
 
     border-left-color:transparent;
     border-right-color:transparent;
@@ -301,7 +295,10 @@ button{
     opacity:.42;
 
     animation:
-        rotateOne 17s linear infinite;
+        rotateOne
+        17s
+        linear
+        infinite;
 }
 
 @keyframes rotateOne{
@@ -333,39 +330,33 @@ button{
     50%{
         transform:scale(1.035);
     }
-}
-
-.chat-panel{
+}.chat-panel{
     position:absolute;
 
-    left:14px;
-    right:14px;
-    bottom:14px;
+    left:5px;
+    right:5px;
+    bottom:5px;
 
-    height:min(66%,600px);
-    min-height:300px;
+    height:72%;
 
     display:flex;
     flex-direction:column;
 
     background:
-        rgba(1,12,21,.95);
+        rgba(1,12,21,.96);
 
     border:
         1px solid
         rgba(0,234,255,.35);
 
-    border-radius:28px;
+    border-radius:23px;
 
     box-shadow:
         0 0 35px rgba(0,0,0,.45),
-        inset 0 0 25px
-        rgba(0,234,255,.04);
+        inset 0 0 25px rgba(0,234,255,.04);
 
     transform:
-        translateY(
-            calc(100% + 35px)
-        );
+        translateY(calc(100% + 35px));
 
     opacity:0;
 
@@ -389,31 +380,52 @@ button{
 }
 
 .chat-head{
-    height:52px;
-    flex:0 0 52px;
+    height:50px;
+    flex:0 0 50px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 18px;
+    padding:0 12px;
 
     border-bottom:
         1px solid
         rgba(0,234,255,.15);
 }
 
+.chat-head-left{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    min-width:0;
+}
+
 .chat-title{
-    font-size:11px;
-
-    letter-spacing:3px;
-
+    font-size:9px;
+    letter-spacing:2.5px;
     color:#8fefff;
+    white-space:nowrap;
+}
+
+.file-hint{
+    font-size:7px;
+    color:#578592;
+    letter-spacing:.5px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+
+    max-width:120px;
 }
 
 .close-btn{
     width:34px;
     height:34px;
+
+    flex:0 0 34px;
 
     border-radius:50%;
 
@@ -426,40 +438,65 @@ button{
 
 .messages{
     flex:1;
-
     min-height:0;
 
     overflow-y:auto;
 
     padding:
-        18px
-        10px
-        105px;
+        15px
+        6px
+        112px;
+
+    scroll-behavior:smooth;
+
+    overscroll-behavior:contain;
+}
+
+.messages::-webkit-scrollbar{
+    width:4px;
+}
+
+.messages::-webkit-scrollbar-thumb{
+    background:rgba(0,234,255,.3);
+    border-radius:10px;
 }
 
 .msg{
-    max-width:88%;
+    width:fit-content;
+    max-width:91%;
 
-    padding:
-        14px
-        16px;
+    padding:13px 15px;
 
     margin:
-        0 14px 12px;
+        0 6px 12px;
 
     border-radius:16px;
 
     line-height:1.5;
 
-    font-size:15px;
+    font-size:14px;
 
     white-space:pre-wrap;
 
     overflow-wrap:anywhere;
-
     word-break:break-word;
 
     text-align:left;
+
+    animation:
+        messageIn .2s ease;
+}
+
+@keyframes messageIn{
+    from{
+        opacity:0;
+        transform:translateY(6px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .msg.aura{
@@ -468,8 +505,8 @@ button{
     background:
         linear-gradient(
             135deg,
-            rgba(4,44,61,.95),
-            rgba(2,24,35,.95)
+            rgba(4,44,61,.96),
+            rgba(2,24,35,.96)
         );
 
     border-left:
@@ -498,59 +535,79 @@ button{
         18px 5px 18px 18px;
 
     color:#fff;
-}.input-area{
+}
+
+.input-area{
     position:absolute;
 
-    left:15px;
-    right:15px;
-    bottom:15px;
+    left:7px;
+    right:7px;
+    bottom:7px;
 
-    min-height:76px;
+    min-height:68px;
 
-    padding:10px;
+    padding:7px;
 
-    display:flex;
+    display:grid;
 
-    gap:9px;
+    grid-template-columns:
+        minmax(0,1fr)
+        46px
+        46px;
+
+    gap:6px;
 
     align-items:center;
 
     background:
-        rgba(2,24,37,.98);
+        rgba(2,24,37,.99);
 
     border:
         1px solid
         rgba(0,234,255,.65);
 
-    border-radius:25px;
+    border-radius:22px;
 
     box-shadow:
         0 0 20px
         rgba(0,234,255,.12);
+
+    width:auto;
 }
 
-#input{
-    flex:1;
-
+.input-wrap{
     min-width:0;
 
-    height:52px;
+    width:100%;
+    height:50px;
 
-    padding:
-        0 15px;
+    display:flex;
+    align-items:center;
 
-    border:none;
-
-    outline:none;
+    overflow:hidden;
 
     border-radius:17px;
 
     background:
         rgba(0,48,65,.75);
+}
+
+#input{
+    width:100%;
+    min-width:0;
+
+    height:100%;
+
+    padding:0 12px;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
 
     color:#e9fdff;
 
-    font-size:15px;
+    font-size:14px;
 }
 
 #input::placeholder{
@@ -558,31 +615,38 @@ button{
 }
 
 .action-button{
-    width:52px;
-    height:52px;
+    width:46px;
+    height:46px;
 
-    flex-shrink:0;
+    min-width:46px;
+    max-width:46px;
 
-    border:none;
-
-    border-radius:17px;
-
-    cursor:pointer;
+    padding:0;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    font-size:21px;
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:20px;
 
     transition:
         transform .15s,
         filter .15s;
+
+    overflow:hidden;
 }
 
 .action-button:active{
     transform:scale(.92);
+}
+
+.action-button:disabled{
+    opacity:.45;
+    cursor:default;
 }
 
 #micButton{
@@ -615,7 +679,7 @@ button{
 
     color:#001018;
 
-    font-size:25px;
+    font-size:23px;
 
     font-weight:900;
 
@@ -624,18 +688,14 @@ button{
         rgba(0,234,255,.35);
 }
 
-.action-button:disabled{
-    opacity:.45;
-
-    cursor:default;
-}
-
 .file-pill{
+    display:none;
+
     margin:
-        8px 14px;
+        8px 12px 0;
 
     padding:
-        9px 12px;
+        8px 10px;
 
     border-radius:10px;
 
@@ -643,33 +703,11 @@ button{
 
     color:#86eefa;
 
-    font-size:12px;
-
-    display:none;
+    font-size:11px;
 }
 
 .file-pill.show{
     display:block;
-}
-
-.status-line{
-    position:absolute;
-
-    top:18px;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    color:#6c9daa;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    opacity:.8;
-
-    z-index:1;
 }
 
 .toast{
@@ -716,97 +754,12 @@ button{
         translate(-50%,0);
 }
 
-@media(max-width:600px){
-
-    .topbar{
-        height:64px;
-        flex-basis:64px;
-
-        padding:0 18px;
-    }
-
-    .logo{
-        font-size:21px;
-    }
-
-    .online{
-        font-size:10px;
-        letter-spacing:2px;
-    }
-
-    .app.chat-open .core-zone{
-        align-items:flex-start;
-        padding-top:34px;
-    }
-
-    .core-button{
-        width:140px;
-        height:140px;
-
-        font-size:18px;
-    }
-
-    .r1{
-        width:170px;
-        height:170px;
-    }
-
-    .r2{
-        width:195px;
-        height:195px;
-    }
-
-    .r3{
-        width:220px;
-        height:220px;
-    }
-
-    .chat-panel{
-        left:8px;
-        right:8px;
-        bottom:8px;
-
-        height:70%;
-
-        border-radius:24px;
-    }
-
-    .messages{
-        padding:
-            18px
-            8px
-            110px;
-    }
-
-    .msg{
-        max-width:90%;
-        font-size:14px;
-    }
-
-    .input-area{
-        left:10px;
-        right:10px;
-        bottom:10px;
-
-        min-height:70px;
-
-        border-radius:22px;
-    }
-
-    #input{
-        font-size:14px;
-    }
-
-    .action-button{
-        width:48px;
-        height:48px;
-    }
+.hidden{
+    display:none!important;
 }
 
 </style>
-</head>
-
-<body>
+</head><body>
 
 <div class="app" id="app">
 
@@ -840,7 +793,7 @@ button{
                 class="core-button"
                 id="coreButton"
                 type="button"
-            >
+                aria-label="AURA sohbetini aç">
 
                 <span class="ring r1"></span>
                 <span class="ring r2"></span>
@@ -861,8 +814,16 @@ button{
 
             <div class="chat-head">
 
-                <div class="chat-title">
-                    AURA COMMUNICATION
+                <div class="chat-head-left">
+
+                    <div class="chat-title">
+                        AURA COMMUNICATION
+                    </div>
+
+                    <div class="file-hint">
+                        Dosya için "dosya oku" yaz
+                    </div>
+
                 </div>
 
                 <button
@@ -905,7 +866,7 @@ button{
                     id="micButton"
                     class="action-button"
                     type="button"
-                >
+                    title="Sesli konuşma">
                     🎙
                 </button>
 
@@ -914,7 +875,7 @@ button{
                     id="sendButton"
                     class="action-button"
                     type="button"
-                >
+                    title="Gönder">
                     ➤
                 </button>
 
@@ -929,7 +890,7 @@ button{
         type="file"
         id="fileInput"
         class="hidden"
-        accept=".txt,.md,.json,.csv,.html,.css,.js,.py,.pdf"
+        accept=".txt,.md,.json,.csv,.html,.css,.js,.py"
     >
 
 
@@ -943,7 +904,9 @@ button{
 
 <script src="https://js.puter.com/v2/"></script>
 
-<script>"use strict";
+<script>
+
+"use strict";
 
 
 const app =
@@ -970,14 +933,14 @@ const sendButton =
 const micButton =
     document.getElementById("micButton");
 
-const toast =
-    document.getElementById("toast");
-
 const fileInput =
     document.getElementById("fileInput");
 
 const filePill =
     document.getElementById("filePill");
+
+const toast =
+    document.getElementById("toast");
 
 const statusLine =
     document.getElementById("statusLine");
@@ -989,32 +952,30 @@ const USER_NAME =
 const GIRLFRIEND_NAME =
     "Edanur";
 
-
-const STORAGE={
-
-    memory:
-        "AURA_MEMORY_FINAL",
-
-    tasks:
-        "AURA_TASKS_FINAL",
-
-    reminders:
-        "AURA_REMINDERS_FINAL",
-
-    history:
-        "AURA_HISTORY_FINAL",
-
-    knowledge:
-        "AURA_KNOWLEDGE_FINAL"
-
-};
-
-
 const AI_MODEL =
     "gpt-5.4-nano";
 
 
-const state={
+const STORAGE = {
+
+    memory:
+        "AURA_MEMORY_FINAL_2",
+
+    tasks:
+        "AURA_TASKS_FINAL_2",
+
+    reminders:
+        "AURA_REMINDERS_FINAL_2",
+
+    history:
+        "AURA_HISTORY_FINAL_2",
+
+    knowledge:
+        "AURA_KNOWLEDGE_FINAL_2"
+};
+
+
+const state = {
 
     memory:{
         facts:[],
@@ -1041,31 +1002,21 @@ const state={
     voiceRequest:false,
 
     recognition:null
-
-};
-
-
-function loadJSON(
+};function loadJSON(
     key,
     fallback
 ){
 
     try{
 
-        const raw=
-            localStorage.getItem(
-                key
-            );
+        const raw =
+            localStorage.getItem(key);
 
         if(!raw){
-
             return fallback;
         }
 
-        const value=
-            JSON.parse(raw);
-
-        return value;
+        return JSON.parse(raw);
 
     }catch(error){
 
@@ -1075,9 +1026,7 @@ function loadJSON(
         );
 
         return fallback;
-
     }
-
 }
 
 
@@ -1099,37 +1048,35 @@ function saveJSON(
             "Storage kayıt:",
             error
         );
-
     }
-
 }
 
 
-state.memory=
+state.memory =
     loadJSON(
         STORAGE.memory,
         state.memory
     );
 
-state.tasks=
+state.tasks =
     loadJSON(
         STORAGE.tasks,
         []
     );
 
-state.reminders=
+state.reminders =
     loadJSON(
         STORAGE.reminders,
         []
     );
 
-state.history=
+state.history =
     loadJSON(
         STORAGE.history,
         []
     );
 
-state.knowledge=
+state.knowledge =
     loadJSON(
         STORAGE.knowledge,
         [
@@ -1154,7 +1101,6 @@ function cleanText(
     return String(
         value ?? ""
     ).trim();
-
 }
 
 
@@ -1162,195 +1108,26 @@ function showToast(
     text
 ){
 
-    toast.textContent=
+    toast.textContent =
         cleanText(text);
 
-    toast.classList.add(
-        "show"
-    );
+    toast.classList.add("show");
 
     clearTimeout(
         showToast.timer
     );
 
-    showToast.timer=
+    showToast.timer =
         setTimeout(
             ()=>{
-                toast.classList.remove(
-                    "show"
-                );
+                toast.classList.remove("show");
             },
-            2400
+            2300
         );
-
 }
 
 
-function openChat(){
-
-    app.classList.add(
-        "chat-open"
-    );
-
-    setTimeout(
-        ()=>{
-            input.focus();
-        },
-        300
-    );
-
-}
-
-
-function closeChatBox(){
-
-    app.classList.remove(
-        "chat-open"
-    );
-
-}
-
-
-coreButton.addEventListener(
-    "click",
-    ()=>{
-        openChat();
-    }
-);
-
-
-closeChat.addEventListener(
-    "click",
-    ()=>{
-        closeChatBox();
-    }
-);
-
-
-function addMessage(
-    text,
-    role="aura",
-    persist=true
-){
-
-    const value=
-        cleanText(text);
-
-    if(!value){
-
-        return;
-
-    }
-
-
-    const element=
-        document.createElement(
-            "div"
-        );
-
-
-    element.className=
-        "msg " +
-        (
-            role==="user"
-                ? "user"
-                : "aura"
-        );
-
-
-    element.textContent=
-        value;
-
-
-    messagesEl.appendChild(
-        element
-    );
-
-
-    requestAnimationFrame(
-        ()=>{
-            messagesEl.scrollTop=
-                messagesEl.scrollHeight;
-        }
-    );
-
-
-    if(persist){
-
-        state.history.push({
-
-            role:
-                role==="user"
-                    ? "user"
-                    : "aura",
-
-            text:value,
-
-            time:
-                Date.now()
-
-        });
-
-
-        if(
-            state.history.length>100
-        ){
-
-            state.history=
-                state.history.slice(-100);
-
-        }
-
-
-        saveJSON(
-            STORAGE.history,
-            state.history
-        );
-
-    }
-
-}
-
-
-function renderHistory(){
-
-    messagesEl.innerHTML="";
-
-
-    if(
-        !state.history.length
-    ){
-
-        addMessage(
-            "Selam Bedirhan, sistem hazır. Seni dinliyorum.",
-            "aura",
-            true
-        );
-
-        return;
-
-    }
-
-
-    state.history.forEach(
-        item=>{
-
-            addMessage(
-                item.text,
-                item.role,
-                false
-            );
-
-        }
-    );
-
-}
-
-
-renderHistory();
-
-
-function saveAll(){
+function saveEverything(){
 
     saveJSON(
         STORAGE.memory,
@@ -1376,28 +1153,163 @@ function saveAll(){
         STORAGE.knowledge,
         state.knowledge
     );
-
 }
+
+
+function addMessage(
+    text,
+    role="aura",
+    persist=true
+){
+
+    const value =
+        cleanText(text);
+
+    if(!value){
+        return;
+    }
+
+
+    const element =
+        document.createElement("div");
+
+
+    element.className =
+        "msg " +
+        (
+            role === "user"
+                ? "user"
+                : "aura"
+        );
+
+
+    element.textContent =
+        value;
+
+
+    messagesEl.appendChild(
+        element
+    );
+
+
+    requestAnimationFrame(
+        ()=>{
+            messagesEl.scrollTop =
+                messagesEl.scrollHeight;
+        }
+    );
+
+
+    if(persist){
+
+        state.history.push({
+
+            role:
+                role === "user"
+                    ? "user"
+                    : "aura",
+
+            text:value,
+
+            time:Date.now()
+        });
+
+
+        if(
+            state.history.length > 100
+        ){
+
+            state.history =
+                state.history.slice(-100);
+        }
+
+
+        saveJSON(
+            STORAGE.history,
+            state.history
+        );
+    }
+}
+
+
+function resetVisibleChat(){
+
+    messagesEl.innerHTML = "";
+
+    filePill.textContent = "";
+
+    filePill.classList.remove("show");
+
+    state.fileContext = "";
+    state.fileName = "";
+
+    addMessage(
+        "Selam Bedirhan, sistem hazır. Seni dinliyorum.",
+        "aura",
+        false
+    );
+}
+
+
+function openChat(){
+
+    resetVisibleChat();
+
+    app.classList.add("chat-open");
+
+    setTimeout(
+        ()=>{
+            input.focus();
+        },
+        300
+    );
+}
+
+
+function closeChatBox(){
+
+    app.classList.remove("chat-open");
+
+    input.blur();
+
+    resetVisibleChat();
+}
+
+
+coreButton.addEventListener(
+    "click",
+    ()=>{
+        openChat();
+    }
+);
+
+
+closeChat.addEventListener(
+    "click",
+    ()=>{
+        closeChatBox();
+    }
+);
 
 
 function memoryText(){
 
-    const result=[];
+    const sections=[];
 
 
     if(
         state.memory.facts.length
     ){
 
-        result.push(
-            "Bilgiler:\n"+
+        sections.push(
+            "Bilgiler:\n" +
             state.memory.facts
                 .map(
-                    x=>"- "+x.text
+                    x =>
+                        "- " + x.text
                 )
                 .join("\n")
         );
-
     }
 
 
@@ -1405,15 +1317,15 @@ function memoryText(){
         state.memory.preferences.length
     ){
 
-        result.push(
-            "Tercihler:\n"+
+        sections.push(
+            "Tercihler:\n" +
             state.memory.preferences
                 .map(
-                    x=>"- "+x.text
+                    x =>
+                        "- " + x.text
                 )
                 .join("\n")
         );
-
     }
 
 
@@ -1421,23 +1333,22 @@ function memoryText(){
         state.memory.notes.length
     ){
 
-        result.push(
-            "Notlar:\n"+
+        sections.push(
+            "Notlar:\n" +
             state.memory.notes
                 .map(
-                    x=>"- "+x.text
+                    x =>
+                        "- " + x.text
                 )
                 .join("\n")
         );
-
     }
 
 
-    return result.join(
-        "\n\n"
-    ) ||
-    "Kayıtlı özel bilgi yok.";
-
+    return (
+        sections.join("\n\n") ||
+        "Kayıtlı özel bilgi yok."
+    );
 }
 
 
@@ -1451,9 +1362,7 @@ function addMemory(
             state.memory[type]
         )
     ){
-
         return;
-
     }
 
 
@@ -1464,34 +1373,63 @@ function addMemory(
 
         time:
             Date.now()
-
     });
 
 
-    state.memory[type]=
-        state.memory[type].slice(
-            -100
-        );
+    state.memory[type] =
+        state.memory[type].slice(-100);
 
 
     saveJSON(
         STORAGE.memory,
         state.memory
     );
+}
 
-}function memoryCommand(
-    text
+
+function saveConversation(
+    userText,
+    auraText
 ){
 
-    const lower=
+    state.history.push({
+
+        role:"user",
+        text:cleanText(userText),
+        time:Date.now()
+    });
+
+
+    state.history.push({
+
+        role:"aura",
+        text:cleanText(auraText),
+        time:Date.now()
+    });
+
+
+    if(
+        state.history.length > 100
+    ){
+
+        state.history =
+            state.history.slice(-100);
+    }
+
+
+    saveJSON(
+        STORAGE.history,
+        state.history
+    );
+}function memoryCommand(text){
+
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
-    const groups=[
+    const groups = [
 
         {
             type:"notes",
@@ -1530,7 +1468,6 @@ function addMemory(
                 "sunu sevmiyorum "
             ]
         }
-
     ];
 
 
@@ -1546,11 +1483,9 @@ function addMemory(
                 lower.startsWith(prefix)
             ){
 
-                const value=
+                const value =
                     text
-                        .slice(
-                            prefix.length
-                        )
+                        .slice(prefix.length)
                         .trim();
 
 
@@ -1561,7 +1496,6 @@ function addMemory(
                         response:
                             "Kaydedilecek bilgiyi belirt."
                     };
-
                 }
 
 
@@ -1576,36 +1510,35 @@ function addMemory(
                     response:
                         "Tamam, bunu hafızaya kaydettim."
                 };
-
             }
-
         }
-
     }
 
 
     if(
-        lower==="hafızamda ne var"||
-        lower==="hafizamda ne var"||
-        lower==="neyi hatırlıyorsun"||
-        lower==="neyi hatirliyorsun"
+        [
+            "hafızamda ne var",
+            "hafizamda ne var",
+            "neyi hatırlıyorsun",
+            "neyi hatirliyorsun"
+        ].includes(lower)
     ){
 
         return {
             handled:true,
-            response:
-                memoryText()
+            response:memoryText()
         };
-
     }
 
 
     if(
-        lower==="hafızanı temizle"||
-        lower==="hafizani temizle"
+        [
+            "hafızanı temizle",
+            "hafizani temizle"
+        ].includes(lower)
     ){
 
-        state.memory={
+        state.memory = {
             facts:[],
             preferences:[],
             notes:[]
@@ -1623,30 +1556,24 @@ function addMemory(
             response:
                 "AURA hafızası temizlendi."
         };
-
     }
 
 
     return {
         handled:false
     };
-
 }
 
 
-function taskCommand(
-    text
-){
+function taskCommand(text){
 
-    const lower=
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
-    let match=
+    const match =
         lower.match(
             /^(?:görev ekle|gorev ekle)\s+(.+)$/
         );
@@ -1654,32 +1581,27 @@ function taskCommand(
 
     if(match){
 
-        const title=
+        const start =
             text
-                .slice(
-                    text
-                        .toLocaleLowerCase(
-                            "tr-TR"
-                        )
-                        .indexOf(
-                            match[1]
-                        )
-                )
+                .toLocaleLowerCase("tr-TR")
+                .indexOf(match[1]);
+
+
+        const title =
+            text
+                .slice(start)
                 .trim();
 
 
         state.tasks.push({
 
-            id:
-                Date.now(),
+            id:Date.now(),
 
             title,
 
             done:false,
 
-            time:
-                Date.now()
-
+            time:Date.now()
         });
 
 
@@ -1694,7 +1616,6 @@ function taskCommand(
             response:
                 `Görev eklendi: ${title}`
         };
-
     }
 
 
@@ -1716,7 +1637,6 @@ function taskCommand(
                 response:
                     "Görev listesi boş."
             };
-
         }
 
 
@@ -1725,36 +1645,33 @@ function taskCommand(
             response:
                 state.tasks
                     .map(
-                        (x,i)=>
-                        `${i+1}. ${
-                            x.done
-                                ?"✓"
-                                :"○"
-                        } ${x.title}`
+                        (x,index)=>
+                            `${index+1}. ${
+                                x.done ? "✓" : "○"
+                            } ${x.title}`
                     )
                     .join("\n")
         };
-
     }
 
 
-    match=
+    const done =
         lower.match(
             /^(?:görevi tamamla|gorevi tamamla)\s+(\d+)$/
         );
 
 
-    if(match){
+    if(done){
 
-        const index=
-            Number(match[1])-1;
+        const index =
+            Number(done[1])-1;
 
 
         if(
             state.tasks[index]
         ){
 
-            state.tasks[index].done=
+            state.tasks[index].done =
                 true;
 
 
@@ -1769,7 +1686,6 @@ function taskCommand(
                 response:
                     "Görev tamamlandı."
             };
-
         }
 
 
@@ -1778,30 +1694,24 @@ function taskCommand(
             response:
                 "Bu numarada görev bulunamadı."
         };
-
     }
 
 
     return {
         handled:false
     };
-
 }
 
 
-function reminderCommand(
-    text
-){
+function reminderCommand(text){
 
-    const lower=
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
-    const match=
+    const match =
         lower.match(
             /^(?:hatırlat|hatirlat)\s+(\d+)\s*(saniye|dakika|dk|saat)\s+(.+)$/
         );
@@ -1809,59 +1719,50 @@ function reminderCommand(
 
     if(match){
 
-        const count=
-            Number(
-                match[1]
-            );
+        const count =
+            Number(match[1]);
 
 
-        const unit=
+        const unit =
             match[2];
 
 
-        const message=
+        const index =
             text
-                .slice(
-                    text
-                        .toLocaleLowerCase(
-                            "tr-TR"
-                        )
-                        .indexOf(
-                            match[3]
-                        )
-                )
+                .toLocaleLowerCase("tr-TR")
+                .indexOf(match[3]);
+
+
+        const message =
+            text
+                .slice(index)
                 .trim();
 
 
-        const multiplier=
-            unit==="saniye"
-                ?1000
-                :unit==="saat"
-                    ?3600000
-                    :60000;
+        const multiplier =
+            unit === "saniye"
+                ? 1000
+                : unit === "saat"
+                    ? 3600000
+                    : 60000;
 
 
-        const item={
+        const item = {
 
-            id:
-                Date.now(),
+            id:Date.now(),
 
-            msg:
-                message,
+            msg:message,
 
             due:
-                Date.now()+
-                count*
+                Date.now() +
+                count *
                 multiplier,
 
             done:false
-
         };
 
 
-        state.reminders.push(
-            item
-        );
+        state.reminders.push(item);
 
 
         saveJSON(
@@ -1870,9 +1771,7 @@ function reminderCommand(
         );
 
 
-        scheduleReminder(
-            item
-        );
+        scheduleReminder(item);
 
 
         return {
@@ -1880,23 +1779,21 @@ function reminderCommand(
             response:
                 `${count} ${unit} sonra "${message}" için hatırlatacağım.`
         };
-
     }
 
 
     if(
         [
             "hatırlatıcılarım",
-            "hatirlaticilarim",
-            "hatırlatıcı listesi",
-            "hatirlatici listesi"
+            "hatirlaticilarim"
         ].includes(lower)
     ){
 
-        const active=
+        const active =
             state.reminders.filter(
-                x=>
-                    !x.done
+                x =>
+                    !x.done &&
+                    x.due > Date.now()
             );
 
 
@@ -1909,7 +1806,6 @@ function reminderCommand(
                 response:
                     "Aktif hatırlatıcı yok."
             };
-
         }
 
 
@@ -1918,110 +1814,90 @@ function reminderCommand(
             response:
                 active
                     .map(
-                        (x,i)=>
-                        `${i+1}. ${x.msg} — ${new Date(x.due).toLocaleString("tr-TR")}`
+                        (x,index)=>
+                            `${index+1}. ${x.msg} — ${new Date(x.due).toLocaleString("tr-TR")}`
                     )
                     .join("\n")
         };
-
     }
 
 
     return {
         handled:false
     };
-
 }
 
 
-function scheduleReminder(
-    item
-){
+function scheduleReminder(item){
 
-    const delay=
+    const delay =
         Math.max(
             0,
-            item.due-Date.now()
+            item.due - Date.now()
         );
 
 
     setTimeout(
         ()=>{
-            if(
-                !item.done
-            ){
 
-                item.done=
-                    true;
+            if(item.done){
+                return;
+            }
 
 
-                saveJSON(
-                    STORAGE.reminders,
-                    state.reminders
-                );
+            item.done = true;
 
 
-                addMessage(
-                    "Hatırlatıcı: "+
-                    item.msg,
-                    "aura",
-                    true
-                );
+            saveJSON(
+                STORAGE.reminders,
+                state.reminders
+            );
 
+
+            const message =
+                "Hatırlatıcı: " +
+                item.msg;
+
+
+            addMessage(
+                message,
+                "aura",
+                true
+            );
+
+
+            try{
 
                 if(
-                    Notification &&
-                    Notification.permission==="granted"
+                    "Notification" in window &&
+                    Notification.permission === "granted"
                 ){
 
-                    try{
-
-                        new Notification(
-                            "AURA",
-                            {
-                                body:
-                                    item.msg
-                            }
-                        );
-
-                    }catch{}
-
+                    new Notification(
+                        "AURA",
+                        {
+                            body:item.msg
+                        }
+                    );
                 }
 
+            }catch{}
 
-            }
         },
         Math.min(
             delay,
             2147483647
         )
     );
+                      }function knowledgeCommand(text){
 
-}
-
-
-state.reminders
-    .filter(
-        x=>!x.done
-    )
-    .forEach(
-        scheduleReminder
-    );
-
-
-function knowledgeCommand(
-    text
-){
-
-    const lower=
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
-    const match=
+    const match =
         lower.match(
             /^(?:bilgi ekle|bilgi kaydet)\s+(.+)$/
         );
@@ -2029,36 +1905,33 @@ function knowledgeCommand(
 
     if(match){
 
-        const raw=
+        const start =
             text
-                .slice(
-                    text
-                        .toLocaleLowerCase(
-                            "tr-TR"
-                        )
-                        .indexOf(
-                            match[1]
-                        )
-                )
+                .toLocaleLowerCase("tr-TR")
+                .indexOf(match[1]);
+
+
+        const raw =
+            text
+                .slice(start)
                 .trim();
 
 
-        const parts=
+        const parts =
             raw.split("|");
 
 
         state.knowledge.push({
 
             title:
-                parts.length>1
-                    ?parts[0].trim()
-                    :"Kullanıcı bilgisi",
+                parts.length > 1
+                    ? parts[0].trim()
+                    : "Kullanıcı bilgisi",
 
             text:
-                parts.length>1
-                    ?parts.slice(1).join("|").trim()
-                    :raw
-
+                parts.length > 1
+                    ? parts.slice(1).join("|").trim()
+                    : raw
         });
 
 
@@ -2073,7 +1946,6 @@ function knowledgeCommand(
             response:
                 "Bilgi tabanına eklendi."
         };
-
     }
 
 
@@ -2089,249 +1961,31 @@ function knowledgeCommand(
             response:
                 state.knowledge
                     .map(
-                        x=>
-                        `${x.title}: ${x.text}`
+                        x =>
+                            `${x.title}: ${x.text}`
                     )
                     .join("\n")
         };
-
     }
 
 
     return {
         handled:false
     };
-
-    }async function openSelectedFile(
-    file
-){
-
-    if(!file){
-
-        return;
-
-    }
-
-
-    const name=
-        file.name
-            .toLowerCase();
-
-
-    try{
-
-        if(
-            name.endsWith(".pdf")
-        ){
-
-            if(
-                !window.pdfjsLib
-            ){
-
-                await loadPDFJS();
-
-            }
-
-
-            const buffer=
-                new Uint8Array(
-                    await file.arrayBuffer()
-                );
-
-
-            const pdf=
-                await window.pdfjsLib
-                    .getDocument({
-                        data:buffer
-                    })
-                    .promise;
-
-
-            let fullText="";
-
-
-            for(
-                let pageNum=1;
-                pageNum<=pdf.numPages;
-                pageNum++
-            ){
-
-                const page=
-                    await pdf.getPage(
-                        pageNum
-                    );
-
-
-                const content=
-                    await page.getTextContent();
-
-
-                const pageText=
-                    content.items
-                        .map(
-                            item=>
-                                item.str||""
-                        )
-                        .join(" ");
-
-
-                fullText+=
-                    `\n[Sayfa ${pageNum}]\n${pageText}`;
-
-
-                if(
-                    fullText.length>=30000
-                ){
-
-                    break;
-
-                }
-
-            }
-
-
-            state.fileContext=
-                fullText.slice(
-                    0,
-                    30000
-                );
-
-        }else{
-
-            state.fileContext=
-                (
-                    await file.text()
-                )
-                .slice(
-                    0,
-                    30000
-                );
-
-        }
-
-
-        state.fileName=
-            file.name;
-
-
-        filePill.textContent=
-            `Dosya: ${file.name}`;
-
-        filePill.classList.add(
-            "show"
-        );
-
-
-        addMessage(
-            `${file.name} okundu. İçeriği hakkında soru sorabilirsin.`,
-            "aura",
-            true
-        );
-
-
-        openChat();
-
-
-    }catch(error){
-
-        console.error(
-            "Dosya hatası:",
-            error
-        );
-
-
-        showToast(
-            "Dosya okunamadı."
-        );
-
-    }
-
 }
 
 
-async function loadPDFJS(){
+function siteCommand(text){
 
-    if(
-        window.pdfjsLib
-    ){
-
-        return;
-
-    }
-
-
-    await new Promise(
-        (resolve,reject)=>{
-
-            const script=
-                document.createElement(
-                    "script"
-                );
-
-
-            script.src=
-                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
-
-
-            script.type=
-                "module";
-
-
-            script.onload=
-                resolve;
-
-            script.onerror=
-                reject;
-
-
-            document.head.appendChild(
-                script
-            );
-
-        }
-    );
-
-}
-
-
-fileInput.addEventListener(
-    "change",
-    async()=>{
-
-        const file=
-            fileInput.files?.[0];
-
-
-        if(file){
-
-            await openSelectedFile(
-                file
-            );
-
-        }
-
-
-        fileInput.value="";
-
-    }
-);
-
-
-function siteCommand(
-    text
-){
-
-    const lower=
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
-    const match=
+    const match =
         lower.match(
-            /^(?:siteyi aç|siteyi ac|site aç|site ac)\s+(.+)$/
+            /^(?:site aç|site ac|siteyi aç|siteyi ac)\s+(.+)$/
         );
 
 
@@ -2340,15 +1994,14 @@ function siteCommand(
         return {
             handled:false
         };
-
     }
 
 
-    const name=
+    const name =
         match[1].trim();
 
 
-    const sites={
+    const sites = {
 
         youtube:
             "https://www.youtube.com",
@@ -2373,51 +2026,42 @@ function siteCommand(
 
         tiktok:
             "https://www.tiktok.com"
-
     };
 
 
-    let url=
+    let url =
         sites[name];
 
 
     if(!url){
 
         if(
-            /^https?:\/\//i.test(
-                name
-            )
+            /^https?:\/\//i.test(name)
         ){
 
-            url=
-                name;
+            url = name;
 
         }else{
 
-            url=
-                "https://www.google.com/search?q="+
-                encodeURIComponent(
-                    name
-                );
-
+            url =
+                "https://www.google.com/search?q=" +
+                encodeURIComponent(name);
         }
-
     }
 
 
-    const opened=
+    const win =
         window.open(
             url,
             "_blank"
         );
 
 
-    if(!opened){
+    if(!win){
 
         showToast(
-            "Tarayıcı yeni pencereyi engelledi."
+            "Tarayıcı yeni sekmeyi engelledi."
         );
-
     }
 
 
@@ -2426,46 +2070,19 @@ function siteCommand(
         response:
             `${name} açılıyor.`
     };
-
 }
 
 
-function basicCommand(
-    text
-){
+function basicCommand(text){
 
-    const lower=
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
     if(
-        lower==="saat kaç"||
-        lower==="saat kac"
-    ){
-
-        return {
-            handled:true,
-            response:
-                "Şu an saat "+
-                new Date()
-                    .toLocaleTimeString(
-                        "tr-TR",
-                        {
-                            hour:"2-digit",
-                            minute:"2-digit"
-                        }
-                    )
-        };
-
-    }
-
-
-    if(
-        lower==="ben kimim"
+        lower === "ben kimim"
     ){
 
         return {
@@ -2473,13 +2090,12 @@ function basicCommand(
             response:
                 "Sen Bedirhan Kahraman'sın."
         };
-
     }
 
 
     if(
-        lower.includes("sevgilim kim")||
-        lower.includes("sevgilimin adı ne")||
+        lower.includes("sevgilim kim") ||
+        lower.includes("sevgilimin adı ne") ||
         lower.includes("sevgilimin adi ne")
     ){
 
@@ -2488,12 +2104,11 @@ function basicCommand(
             response:
                 "Sevgilinin adı Edanur."
         };
-
     }
 
 
     if(
-        lower==="sen kimsin"
+        lower === "sen kimsin"
     ){
 
         return {
@@ -2501,20 +2116,41 @@ function basicCommand(
             response:
                 "Ben AURA. Bedirhan'ın kişisel yapay zeka asistanıyım."
         };
-
     }
 
 
     if(
-        lower.includes("şaka")||
+        lower === "saat kaç" ||
+        lower === "saat kac"
+    ){
+
+        return {
+            handled:true,
+            response:
+                "Şu an saat " +
+                new Date()
+                    .toLocaleTimeString(
+                        "tr-TR",
+                        {
+                            hour:"2-digit",
+                            minute:"2-digit"
+                        }
+                    ) +
+                "."
+        };
+    }
+
+
+    if(
+        lower.includes("şaka") ||
         lower.includes("saka")
     ){
 
-        const jokes=[
+        const jokes = [
 
             "Bilgisayar neden doktora gitmiş? Virüs kapmış.",
 
-            "Programcı neden kahve içer? Java'sı bitmiş.",
+            "Programcı neden kahve içmiş? Java'sı bitmiş.",
 
             "Telefon neden gözlük takmış? Ekranı göremiyormuş."
 
@@ -2526,46 +2162,45 @@ function basicCommand(
             response:
                 jokes[
                     Math.floor(
-                        Math.random()*
+                        Math.random() *
                         jokes.length
                     )
                 ]
         };
-
     }
 
 
     return {
         handled:false
     };
-
 }
 
 
-function localCommand(
-    text
-){
+function localCommand(text){
 
-    const list=[
+    const handlers = [
 
-        memoryCommand(text),
+        memoryCommand,
 
-        taskCommand(text),
+        taskCommand,
 
-        reminderCommand(text),
+        reminderCommand,
 
-        knowledgeCommand(text),
+        knowledgeCommand,
 
-        siteCommand(text),
+        siteCommand,
 
-        basicCommand(text)
-
+        basicCommand
     ];
 
 
     for(
-        const result of list
+        const handler of handlers
     ){
+
+        const result =
+            handler(text);
+
 
         if(
             result &&
@@ -2573,25 +2208,35 @@ function localCommand(
         ){
 
             return result;
-
         }
-
     }
 
 
-    const lower=
+    const lower =
         text
-            .toLocaleLowerCase(
-                "tr-TR"
-            )
+            .toLocaleLowerCase("tr-TR")
             .trim();
 
 
     if(
-        lower==="dosya oku"||
-        lower==="dosya aç"||
-        lower==="dosya ac"
+        lower === "dosya oku" ||
+        lower === "dosya aç" ||
+        lower === "dosya ac" ||
+        lower === "dosya yükle" ||
+        lower === "dosya yukle"
     ){
+
+        if(
+            !app.classList.contains("chat-open")
+        ){
+
+            return {
+                handled:true,
+                response:
+                    "Önce sohbet panelini aç."
+            };
+        }
+
 
         fileInput.click();
 
@@ -2601,43 +2246,15 @@ function localCommand(
             response:
                 "Dosya seçme ekranı açıldı."
         };
-
     }
 
 
     if(
-        lower==="hafızanı temizle"||
-        lower==="hafizani temizle"
+        lower === "görevleri temizle" ||
+        lower === "gorevleri temizle"
     ){
 
-        state.memory={
-            facts:[],
-            preferences:[],
-            notes:[]
-        };
-
-
-        saveJSON(
-            STORAGE.memory,
-            state.memory
-        );
-
-
-        return {
-            handled:true,
-            response:
-                "Hafıza temizlendi."
-        };
-
-    }
-
-
-    if(
-        lower==="görevleri temizle"||
-        lower==="gorevleri temizle"
-    ){
-
-        state.tasks=[];
+        state.tasks = [];
 
 
         saveJSON(
@@ -2651,13 +2268,12 @@ function localCommand(
             response:
                 "Görev listesi temizlendi."
         };
-
     }
 
 
     if(
-        lower==="özelliklerin neler"||
-        lower==="ozelliklerin neler"
+        lower === "özelliklerin neler" ||
+        lower === "ozelliklerin neler"
     ){
 
         return {
@@ -2665,56 +2281,151 @@ function localCommand(
             response:
 `AURA'nın aktif özellikleri:
 
-• Yapay zeka sohbeti
+• AI sohbeti
 • Kalıcı hafıza
 • Bilgi tabanı
 • Görev listesi
 • Hatırlatıcı
 • Dosya okuma
-• PDF metin okuma
 • Site açma
-• Sesli konuşma
+• Sesli giriş
 • Sesli cevap
-• Sohbet geçmişi
-• Çekirdeğe dokunarak sohbet açma`
+• Çekirdeğe dokunarak sohbet açma
+• Sohbet panelini sürükleyerek kapatma`
         };
-
     }
 
 
     return {
         handled:false
     };
+}
 
-        }function normalizeAIResponse(
-    response
-){
+
+async function readFile(file){
+
+    if(!file){
+        return;
+    }
+
+
+    try{
+
+        const name =
+            file.name.toLowerCase();
+
+
+        const supported =
+            [
+                ".txt",
+                ".md",
+                ".json",
+                ".csv",
+                ".html",
+                ".css",
+                ".js",
+                ".py"
+            ]
+            .some(
+                ext =>
+                    name.endsWith(ext)
+            );
+
+
+        if(!supported){
+
+            showToast(
+                "Bu dosya türü şimdilik desteklenmiyor."
+            );
+
+            return;
+        }
+
+
+        const text =
+            await file.text();
+
+
+        state.fileName =
+            file.name;
+
+
+        state.fileContext =
+            text.slice(
+                0,
+                30000
+            );
+
+
+        filePill.textContent =
+            `Dosya: ${file.name}`;
+
+
+        filePill.classList.add("show");
+
+
+        addMessage(
+            `${file.name} okundu. İçeriği hakkında soru sorabilirsin.`,
+            "aura",
+            true
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "Dosya:",
+            error
+        );
+
+
+        showToast(
+            "Dosya okunamadı."
+        );
+    }
+}
+
+
+fileInput.addEventListener(
+    "change",
+    async ()=>{
+
+        const file =
+            fileInput.files?.[0];
+
+
+        if(file){
+
+            await readFile(file);
+        }
+
+
+        fileInput.value = "";
+    }
+);function normalizeAIResponse(response){
 
     if(
-        response===null||
-        response===undefined
+        response === null ||
+        response === undefined
     ){
 
         return "";
-
     }
 
 
     if(
-        typeof response==="string"
+        typeof response === "string"
     ){
 
         return response.trim();
-
     }
 
 
     if(
-        typeof response.message?.content==="string"
+        typeof response.message?.content === "string"
     ){
 
         return response.message.content.trim();
-
     }
 
 
@@ -2726,67 +2437,52 @@ function localCommand(
 
         return response.message.content
             .map(
-                part=>{
-
-                    if(
-                        typeof part==="string"
-                    ){
-
-                        return part;
-
-                    }
-
-
-                    if(
-                        part &&
-                        typeof part.text==="string"
-                    ){
-
-                        return part.text;
-
-                    }
-
-
-                    return "";
-
-                }
+                part =>
+                    typeof part === "string"
+                        ? part
+                        : part?.text || ""
             )
             .join("")
             .trim();
-
     }
 
 
     if(
-        typeof response.text==="string"
+        typeof response.text === "string"
     ){
 
         return response.text.trim();
-
     }
 
 
     if(
-        typeof response.content==="string"
+        typeof response.content === "string"
     ){
 
         return response.content.trim();
-
     }
 
 
     return "";
-
 }
 
 
 function buildPrompt(){
 
-    const knowledge=
+    const knowledge =
         state.knowledge
             .map(
-                x=>
-                `${x.title}: ${x.text}`
+                x =>
+                    `${x.title}: ${x.text}`
+            )
+            .join("\n");
+
+
+    const tasks =
+        state.tasks
+            .map(
+                x =>
+                    `${x.done ? "✓" : "○"} ${x.title}`
             )
             .join("\n");
 
@@ -2794,89 +2490,72 @@ function buildPrompt(){
     return `
 Sen AURA adlı kişisel yapay zeka asistanısın.
 
-Kullanıcı:
-Bedirhan Kahraman
+Kullanıcının adı Bedirhan'dır.
 
-Kullanıcının sevgilisi:
-Edanur
+Bedirhan'ın sevgilisinin adı Edanur'dur.
 
 Edanur AURA'nın sevgilisi değildir.
 Edanur, Bedirhan'ın sevgilisidir.
 
 Türkçe konuş.
 
-Her cümlenin başında Bedirhan deme.
-
 Doğal konuş.
+
+Kullanıcıya her mesajda Bedirhan diye hitap etme.
 
 Bilmediğin bilgileri uydurma.
 
-Kalıcı hafıza:
+KALICI HAFIZA:
 
 ${memoryText()}
 
-Bilgi tabanı:
+BİLGİ TABANI:
 
 ${knowledge || "Yok"}
 
-Görevler:
+GÖREVLER:
 
-${
-    state.tasks
-        .map(
-            x=>
-            `${x.done?"✓":"○"} ${x.title}`
-        )
-        .join("\n")||
-    "Yok"
-}
+${tasks || "Yok"}
 
-Dosya bağlamı:
+DOSYA:
 
 ${
     state.fileContext
-        ?
-        `Dosya: ${state.fileName}\n${state.fileContext}`
-        :
-        "Yok"
+        ? `Dosya adı: ${state.fileName}\n${state.fileContext}`
+        : "Yüklü dosya yok."
 }
 `;
 }
 
 
-async function askAI(
-    text
-){
+async function askAI(text){
 
     if(
-        typeof puter==="undefined"
+        typeof puter === "undefined"
     ){
 
         throw new Error(
             "Puter yüklenmedi."
         );
-
     }
 
 
     if(
-        !puter.ai||
-        typeof puter.ai.chat!=="function"
+        !puter.ai ||
+        typeof puter.ai.chat !== "function"
     ){
 
         throw new Error(
             "Puter AI servisi bulunamadı."
         );
-
     }
 
 
-    const messages=[
+    const messages = [
 
         {
             role:"system",
-            content:
-                buildPrompt()
+            content:buildPrompt()
         }
 
     ];
@@ -2885,31 +2564,23 @@ async function askAI(
     state.history
         .slice(-12)
         .forEach(
-            item=>{
+            item => {
 
                 if(
                     item &&
-                    (
-                        item.role==="user"||
-                        item.role==="aura"
-                    ) &&
-                    typeof item.text==="string"
+                    typeof item.text === "string"
                 ){
 
                     messages.push({
 
                         role:
-                            item.role==="user"
-                                ?"user"
-                                :"assistant",
+                            item.role === "user"
+                                ? "user"
+                                : "assistant",
 
-                        content:
-                            item.text
-
+                        content:item.text
                     });
-
                 }
-
             }
         );
 
@@ -2917,27 +2588,18 @@ async function askAI(
     messages.push({
 
         role:"user",
-
-        content:
-            String(text)
-
+        content:String(text)
     });
 
 
-    const response=
+    const response =
         await puter.ai.chat(
-            messages,
-            {
-                model:
-                    AI_MODEL
-            }
+            messages
         );
 
 
-    const answer=
-        normalizeAIResponse(
-            response
-        );
+    const answer =
+        normalizeAIResponse(response);
 
 
     if(!answer){
@@ -2945,26 +2607,22 @@ async function askAI(
         throw new Error(
             "AI metin döndürmedi."
         );
-
     }
 
 
     return answer;
-
 }
 
 
-function cleanSpeechText(
-    text
-){
+function cleanSpeechText(text){
 
-    let result=
-        String(text??"");
+    let result =
+        String(text ?? "");
 
 
     try{
 
-        result=
+        result =
             result.replace(
                 /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
                 " "
@@ -2972,232 +2630,170 @@ function cleanSpeechText(
 
     }catch{
 
-        result=
+        result =
             result.replace(
                 /[\u{1F300}-\u{1FAFF}]/gu,
                 " "
             );
-
     }
 
 
     return result
-
         .replace(
             /https?:\/\/\S+/gi,
             " "
         )
-
         .replace(
-            /[`*_#~|<>[\]{}]/g,
+            /[`*_#~|<>{}\[\]]/g,
             " "
         )
-
         .replace(
             /[•●◆◇★☆✓✔→←↑↓]/g,
             " "
         )
-
         .replace(
             /\s+/g,
             " "
         )
-
         .trim();
-
 }
 
 
-function speak(
-    text
-){
+function speak(text){
 
     if(
-        !("speechSynthesis"in window)
+        !("speechSynthesis" in window)
     ){
 
         return;
-
     }
 
 
-    const clean=
-        cleanSpeechText(
-            text
-        );
+    const clean =
+        cleanSpeechText(text);
 
 
     if(!clean){
-
         return;
-
     }
 
 
     speechSynthesis.cancel();
 
 
-    const utterance=
-        new SpeechSynthesisUtterance(
-            clean
-        );
+    const utterance =
+        new SpeechSynthesisUtterance(clean);
 
 
-    utterance.lang=
-        "tr-TR";
-
-    utterance.rate=
-        .92;
-
-    utterance.pitch=
-        1;
-
-    utterance.volume=
-        1;
+    utterance.lang = "tr-TR";
+    utterance.rate = .92;
+    utterance.pitch = 1;
+    utterance.volume = 1;
 
 
     speechSynthesis.speak(
         utterance
     );
-
 }
 
 
-function getVoiceRecognition(){
-
-    const Recognition=
-        window.SpeechRecognition||
-        window.webkitSpeechRecognition;
+const Recognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
 
 
-    if(!Recognition){
+if(Recognition){
 
-        return null;
-
-    }
-
-
-    const recognition=
+    state.recognition =
         new Recognition();
 
 
-    recognition.lang=
+    state.recognition.lang =
         "tr-TR";
 
-    recognition.continuous=
+    state.recognition.continuous =
         false;
 
-    recognition.interimResults=
+    state.recognition.interimResults =
         false;
 
-    recognition.maxAlternatives=
-        1;
 
-
-    return recognition;
-
-}
-
-
-state.recognition=
-    getVoiceRecognition();
-
-
-if(
-    state.recognition
-){
-
-    state.recognition.onstart=
+    state.recognition.onstart =
         ()=>{
 
-            state.listening=
-                true;
+            state.listening = true;
 
             micButton.classList.add(
                 "listening"
             );
 
-            micButton.textContent=
+            micButton.textContent =
                 "⏺";
 
+            showToast(
+                "Dinliyorum..."
+            );
         };
 
 
-    state.recognition.onend=
+    state.recognition.onend =
         ()=>{
 
-            state.listening=
-                false;
+            state.listening = false;
 
             micButton.classList.remove(
                 "listening"
             );
 
-            micButton.textContent=
+            micButton.textContent =
                 "🎙";
-
         };
 
 
-    state.recognition.onerror=
-        error=>{
+    state.recognition.onerror =
+        error => {
 
             console.error(
-                "Speech:",
+                "Mikrofon:",
                 error
             );
 
-            state.listening=
-                false;
-
-            state.voiceRequest=
-                false;
+            state.listening = false;
+            state.voiceRequest = false;
 
             micButton.classList.remove(
                 "listening"
             );
 
-            micButton.textContent=
+            micButton.textContent =
                 "🎙";
 
             showToast(
                 "Mikrofon kullanılamadı."
             );
-
         };
 
 
-    state.recognition.onresult=
-        event=>{
+    state.recognition.onresult =
+        event => {
 
-            const result=
-                event
-                    .results[0][0]
+            const result =
+                event.results[0][0]
                     .transcript
                     .trim();
 
 
             if(!result){
-
                 return;
-
             }
 
 
-            state.voiceRequest=
-                true;
+            state.voiceRequest = true;
 
+            input.value = result;
 
-            input.value=
-                result;
-
-
-            sendMessage(
-                true
-            );
-
+            sendMessage(true);
         };
-
 }
 
 
@@ -3210,11 +2806,10 @@ micButton.addEventListener(
         ){
 
             showToast(
-                "Tarayıcı sesli girişi desteklemiyor."
+                "Bu tarayıcı sesli girişi desteklemiyor."
             );
 
             return;
-
         }
 
 
@@ -3228,130 +2823,45 @@ micButton.addEventListener(
 
             }else{
 
-                state.voiceRequest=
-                    true;
+                state.voiceRequest = true;
 
                 state.recognition.start();
-
             }
 
         }catch(error){
 
-            console.error(
-                error
-            );
-
+            console.error(error);
         }
-
     }
 );
 
 
-let startY=
-    null;
-
-
-chatPanel.addEventListener(
-    "touchstart",
-    event=>{
-
-        if(
-            event.touches.length!==1
-        ){
-
-            return;
-
-        }
-
-
-        startY=
-            event.touches[0].clientY;
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-chatPanel.addEventListener(
-    "touchend",
-    event=>{
-
-        if(
-            startY===null
-        ){
-
-            return;
-
-        }
-
-
-        const endY=
-            event.changedTouches[0].clientY;
-
-
-        const distance=
-            endY-startY;
-
-
-        if(
-            distance>70
-        ){
-
-            closeChatBox();
-
-        }
-
-
-        startY=
-            null;
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-closeChat.addEventListener(
-    "click",
-    closeChatBox
-);async function sendMessage(
-    voiceMode=false
+async function sendMessage(
+    fromVoice=false
 ){
 
-    if(
-        state.busy
-    ){
-
+    if(state.busy){
         return;
-
     }
 
 
-    const text=
-        cleanText(
-            input.value
-        );
+    const text =
+        cleanText(input.value);
 
 
     if(!text){
-
         return;
-
     }
 
 
-    const shouldSpeak=
+    const shouldSpeak =
         Boolean(
-            voiceMode||
+            fromVoice ||
             state.voiceRequest
         );
 
 
-    state.voiceRequest=
-        false;
+    state.voiceRequest = false;
 
 
     addMessage(
@@ -3361,34 +2871,23 @@ closeChat.addEventListener(
     );
 
 
-    input.value=
-        "";
+    input.value = "";
 
 
-    openChat();
+    state.busy = true;
+
+    sendButton.disabled = true;
+    micButton.disabled = true;
 
 
-    state.busy=
-        true;
-
-
-    sendButton.disabled=
-        true;
-
-    micButton.disabled=
-        true;
-
-
-    statusLine.textContent=
+    statusLine.textContent =
         "AURA DÜŞÜNÜYOR";
 
 
     try{
 
-        const local=
-            localCommand(
-                text
-            );
+        const local =
+            localCommand(text);
 
 
         if(
@@ -3402,26 +2901,20 @@ closeChat.addEventListener(
             );
 
 
-            if(
-                shouldSpeak
-            ){
+            if(shouldSpeak){
 
                 speak(
                     local.response
                 );
-
             }
 
 
             return;
-
         }
 
 
-        const answer=
-            await askAI(
-                text
-            );
+        const answer =
+            await askAI(text);
 
 
         addMessage(
@@ -3431,25 +2924,15 @@ closeChat.addEventListener(
         );
 
 
-        /*
-         * SADECE SESLİ KOMUTTA
-         * AURA KONUŞUR.
-         *
-         * Yazılı mesaj:
-         * shouldSpeak = false
-         *
-         * Mikrofon mesajı:
-         * shouldSpeak = true
-         */
+        saveConversation(
+            text,
+            answer
+        );
 
-        if(
-            shouldSpeak
-        ){
 
-            speak(
-                answer
-            );
+        if(shouldSpeak){
 
+            speak(answer);
         }
 
 
@@ -3461,49 +2944,26 @@ closeChat.addEventListener(
         );
 
 
-        const errorMessage=
-            "AI bağlantısında bir sorun oluştu. İnternet bağlantını ve Puter bağlantısını kontrol edip tekrar dene.";
-
-
         addMessage(
-            errorMessage,
+            "AI bağlantısında bir sorun oluştu. Lütfen tekrar dene.",
             "aura",
             true
         );
 
 
-        if(
-            shouldSpeak
-        ){
-
-            speak(
-                errorMessage
-            );
-
-        }
-
-
     }finally{
 
-        state.busy=
-            false;
+        state.busy = false;
 
-        sendButton.disabled=
-            false;
+        sendButton.disabled = false;
+        micButton.disabled = false;
 
-        micButton.disabled=
-            false;
+        state.voiceRequest = false;
 
-        state.voiceRequest=
-            false;
-
-        statusLine.textContent=
-            "";
+        statusLine.textContent = "";
 
         input.focus();
-
     }
-
 }
 
 
@@ -3517,77 +2977,82 @@ sendButton.addEventListener(
 
 input.addEventListener(
     "keydown",
-    event=>{
+    event => {
 
         if(
-            event.key==="Enter" &&
+            event.key === "Enter" &&
             !event.shiftKey
         ){
 
             event.preventDefault();
 
             sendMessage(false);
-
         }
-
     }
 );
 
 
-document.addEventListener(
-    "keydown",
-    event=>{
+let touchStartY = null;
+
+
+chatPanel.addEventListener(
+    "touchstart",
+    event => {
 
         if(
-            event.key==="Escape"
+            event.touches.length !== 1
+        ){
+            return;
+        }
+
+
+        touchStartY =
+            event.touches[0].clientY;
+    },
+    {
+        passive:true
+    }
+);
+
+
+chatPanel.addEventListener(
+    "touchend",
+    event => {
+
+        if(
+            touchStartY === null
+        ){
+            return;
+        }
+
+
+        const endY =
+            event.changedTouches[0].clientY;
+
+
+        const distance =
+            endY - touchStartY;
+
+
+        if(
+            distance > 70
         ){
 
             closeChatBox();
-
         }
 
-    }
-);
 
-
-window.addEventListener(
-    "beforeunload",
-    ()=>{
-        saveAll();
-    }
-);
-
-
-window.addEventListener(
-    "error",
-    event=>{
-
-        console.error(
-            "AURA JS:",
-            event.error||
-            event.message
-        );
-
-    }
-);
-
-
-window.addEventListener(
-    "unhandledrejection",
-    event=>{
-
-        console.error(
-            "AURA Promise:",
-            event.reason
-        );
-
+        touchStartY = null;
+    },
+    {
+        passive:true
     }
 );
 
 
 if(
-    "Notification"in window &&
-    Notification.permission==="default"
+    "Notification" in window &&
+    Notification.permission === "default"
 ){
 
     Notification
@@ -3595,23 +3060,43 @@ if(
         .catch(
             ()=>{}
         );
-
 }
 
 
-state.reminders
-    .filter(
-        item=>
-            !item.done &&
-            item.due>Date.now()
-    )
-    .forEach(
-        scheduleReminder
-    );
+window.addEventListener(
+    "beforeunload",
+    ()=>{
+        saveEverything();
+    }
+);
 
 
-statusLine.textContent="";
+window.addEventListener(
+    "error",
+    event => {
 
+        console.error(
+            "AURA JS:",
+            event.error ||
+            event.message
+        );
+    }
+);
+
+
+window.addEventListener(
+    "unhandledrejection",
+    event => {
+
+        console.error(
+            "AURA Promise:",
+            event.reason
+        );
+    }
+);
+
+
+closeChatBox();
 
 </script>
 
