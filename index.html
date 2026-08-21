@@ -6,32 +6,13 @@
 <meta name="theme-color" content="#03050a">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>AURA AI</title>
+<title>AURA AI - Dynamic System</title>
 <style>
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
     -webkit-tap-highlight-color:transparent;
-}
-html, body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#03050a;
-    color:#e8fbff;
-    font-family:Inter, Roboto, Arial, sans-serif;
-}
-body{
-    touch-action:manipulation;
-}
-button, input, textarea{
-    font-family:inherit;
-}
-button{
-    border:0;
-    outline:none;
-    cursor:pointer;
 }
 :root{
     --bg:#03050a;
@@ -47,7 +28,19 @@ button{
     --line:rgba(0,234,255,.18);
     --shadow:0 0 30px rgba(0,220,255,.13);
 }
-  
+    
+html, body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter, Roboto, Arial, sans-serif;
+}
+body{ touch-action:manipulation; }
+button, input, textarea, select{ font-family:inherit; }
+button{ border:0; outline:none; cursor:pointer; }
+
 #app{
     position:relative;
     width:100%;
@@ -69,7 +62,7 @@ button{
     background-size:40px 40px;
     mask-image:linear-gradient(to bottom, black, transparent 92%);
 }
-.header{
+    .header{
     position:absolute;
     top:0; left:0; right:0;
     height:62px;
@@ -82,26 +75,15 @@ button{
     border-bottom:1px solid var(--line);
     backdrop-filter:blur(16px);
 }
-.brand{
-    display:flex;
-    align-items:center;
-    gap:9px;
-}
+.brand{ display:flex; align-items:center; gap:9px; }
 .brand-dot{
     width:9px; height:9px;
     border-radius:50%;
     background:var(--cyan);
     box-shadow:0 0 8px var(--cyan), 0 0 20px var(--cyan);
 }
-.brand-name{
-    font-size:18px;
-    font-weight:800;
-    letter-spacing:3px;
-}
-.header-actions{
-    display:flex;
-    gap:7px;
-}
+.brand-name{ font-size:18px; font-weight:800; letter-spacing:3px; }
+.header-actions{ display:flex; gap:7px; }
 .icon-btn{
     width:38px; height:38px;
     border-radius:11px;
@@ -112,113 +94,54 @@ button{
     transition:.2s;
 }
 .icon-btn:active{ transform:scale(.92); }
-  .main{
-    position:absolute;
-    top:62px; left:0; right:0; bottom:0;
-    overflow:hidden;
-}
+    .main{ position:absolute; top:62px; left:0; right:0; bottom:0; overflow:hidden; }
 .core-area{
-    position:absolute;
-    top:0; left:0; right:0;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    pointer-events:none;
-    transition:transform .32s ease;
+    position:absolute; top:0; left:0; right:0; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    pointer-events:none; transition:transform .32s ease;
 }
-#app.chat-open .core-area{
-    transform:translateY(-18%);
-}
+#app.chat-open .core-area{ transform:translateY(-18%); }
 .aura-core{
-    position:relative;
-    width:200px; height:200px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    pointer-events:auto;
-    cursor:pointer;
-    user-select:none;
+    position:relative; width:200px; height:200px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    pointer-events:auto; cursor:pointer; user-select:none;
     transition:transform .28s ease, filter .28s ease;
 }
 .aura-core:active{ transform:scale(.94); }
 #app.chat-open .aura-core{ transform:scale(.82); }
-  .core-ring{
-    position:absolute;
-    border-radius:50%;
-    border:1px solid rgba(0,234,255,.32);
-    pointer-events:none;
-}
-.ring1{
-    inset:0;
-    border-top-color:var(--cyan);
-    border-bottom-color:transparent;
-    animation:auraRotate 15s linear infinite;
-}
-.ring2{
-    inset:15px;
-    border-left-color:var(--cyan2);
-    border-right-color:transparent;
-    animation:auraRotateReverse 9s linear infinite;
-}
-.ring3{
-    inset:31px;
-    border-color:rgba(0,255,157,.20);
-    animation:auraRingPulse 2.5s ease-in-out infinite;
-}
+.core-ring{ position:absolute; border-radius:50%; border:1px solid rgba(0,234,255,.32); pointer-events:none; }
+.ring1{ inset:0; border-top-color:var(--cyan); border-bottom-color:transparent; animation:auraRotate 15s linear infinite; }
+.ring2{ inset:15px; border-left-color:var(--cyan2); border-right-color:transparent; animation:auraRotateReverse 9s linear infinite; }
+.ring3{ inset:31px; border-color:rgba(0,255,157,.20); animation:auraRingPulse 2.5s ease-in-out infinite; }
 .core-glow{
-    position:absolute;
-    width:94px; height:94px;
-    border-radius:50%;
+    position:absolute; width:94px; height:94px; border-radius:50%;
     background:radial-gradient(circle, #ffffff 0%, #8df8ff 8%, #00eaff 22%, #008cff 42%, rgba(0,130,255,.20) 66%, transparent 74%);
     box-shadow:0 0 22px var(--cyan), 0 0 65px rgba(0,170,255,.45);
-    animation:auraCorePulse 2s ease-in-out infinite;
-    pointer-events:none;
+    animation:auraCorePulse 2s ease-in-out infinite; pointer-events:none;
 }
 .core-text{
-    position:absolute;
-    z-index:5;
-    color:#ffffff;
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:4px;
-    text-shadow:0 0 8px var(--cyan), 0 0 22px rgba(0,220,255,.9);
-    pointer-events:none;
+    position:absolute; z-index:5; color:#ffffff; font-size:22px; font-weight:900;
+    letter-spacing:4px; text-shadow:0 0 8px var(--cyan), 0 0 22px rgba(0,220,255,.9); pointer-events:none;
 }
-.aura-core.listening .core-glow{ animation:auraCorePulse .75s ease-in-out infinite, auraListenHue .8s linear infinite; }
+    .aura-core.listening .core-glow{ animation:auraCorePulse .75s ease-in-out infinite, auraListenHue .8s linear infinite; }
 .aura-core.speaking .core-glow{ animation:auraCorePulse .30s ease-in-out infinite; }
-.aura-core.processing .core-glow{ animation:auraCorePulse .50s ease-in-out infinite; }
+.aura-core.processing .core-glow{ animation:auraCorePulse .50s ease-in-out infinite, auraListenHue .4s linear infinite; }
 
 @keyframes auraRotate{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
 @keyframes auraRotateReverse{ from{transform:rotate(360deg);} to{transform:rotate(0deg);} }
 @keyframes auraRingPulse{ 0%,100%{transform:scale(.92);opacity:.35;} 50%{transform:scale(1.08);opacity:.82;} }
 @keyframes auraCorePulse{ 0%,100%{transform:scale(.92);} 50%{transform:scale(1.08);} }
 @keyframes auraListenHue{ 0%{filter:hue-rotate(0deg);} 50%{filter:hue-rotate(70deg);} 100%{filter:hue-rotate(0deg);} }
-  .chat-panel{
-    position:absolute;
-    left:8px; right:8px; bottom:8px;
-    height:min(58%, 570px);
-    display:flex;
-    flex-direction:column;
-    z-index:40;
-    border-radius:20px;
+    .chat-panel{
+    position:absolute; left:8px; right:8px; bottom:8px; height:min(58%, 570px);
+    display:flex; flex-direction:column; z-index:40; border-radius:20px;
     background:linear-gradient(180deg, rgba(7,13,22,.97), rgba(3,7,13,.98));
-    border:1px solid rgba(0,220,255,.20);
-    box-shadow:0 0 40px rgba(0,0,0,.35), 0 0 30px rgba(0,220,255,.07);
-    backdrop-filter:blur(18px);
-    transform:translateY(calc(100% + 25px));
-    opacity:0;
-    pointer-events:none;
-    transition:transform .35s ease, opacity .25s ease;
+    border:1px solid rgba(0,220,255,.20); box-shadow:0 0 40px rgba(0,0,0,.35), 0 0 30px rgba(0,220,255,.07);
+    backdrop-filter:blur(18px); transform:translateY(calc(100% + 25px)); opacity:0;
+    pointer-events:none; transition:transform .35s ease, opacity .25s ease;
 }
 #app.chat-open .chat-panel{ transform:translateY(0); opacity:1; pointer-events:auto; }
-.chat-header{
-    height:46px; flex:0 0 46px;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 13px;
-    border-bottom:1px solid rgba(0,220,255,.10);
-}
+.chat-header{ height:46px; flex:0 0 46px; display:flex; align-items:center; justify-content:space-between; padding:0 13px; border-bottom:1px solid rgba(0,220,255,.10); }
 .chat-title{ color:var(--cyan); font-size:11px; font-weight:800; letter-spacing:1.5px; }
 .chat-close{ width:31px; height:31px; border-radius:9px; color:#91aeb9; background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.06); }
 .chat{ flex:1; min-height:0; overflow-y:auto; padding:12px 10px; scrollbar-width:thin; scrollbar-color:rgba(0,220,255,.28) transparent; }
@@ -230,7 +153,7 @@ button{
 .msg-label{ display:block; margin-bottom:3px; color:var(--cyan); font-size:8px; font-weight:700; letter-spacing:1px; }
 .message.user .msg-label{ color:#6cbcff; text-align:right; }
 @keyframes messageEnter{ from{opacity:0; transform:translateY(7px);} to{opacity:1; transform:translateY(0);} }
-  .chat-input-area{ flex:0 0 auto; display:flex; align-items:center; gap:7px; padding:8px; border-top:1px solid rgba(0,220,255,.10); }
+    .chat-input-area{ flex:0 0 auto; display:flex; align-items:center; gap:7px; padding:8px; border-top:1px solid rgba(0,220,255,.10); }
 .chat-input-wrap{ flex:1; position:relative; height:45px; }
 #userInput{ width:100%; height:100%; border-radius:13px; outline:none; border:1px solid rgba(0,220,255,.16); background:rgba(255,255,255,.035); color:var(--text); padding:0 43px 0 13px; font-size:12px; }
 #userInput::placeholder{ color:#54727f; }
@@ -239,11 +162,11 @@ button{
 .send-btn:active{ transform:scale(.90); }
 .mic-btn{ width:45px; height:45px; flex:0 0 45px; border-radius:13px; color:var(--cyan); background:rgba(0,220,255,.06); border:1px solid var(--line); font-size:18px; }
 .mic-btn.active{ color:white; background:rgba(0,255,157,.11); border-color:rgba(0,255,157,.40); box-shadow:0 0 18px rgba(0,255,157,.14); }
-.status-row{ position:absolute; top:10px; left:10px; right:10px; display:flex; justify-content:center; gap:6px; z-index:20; pointer-events:none; transition:opacity .25s ease; }
+    .status-row{ position:absolute; top:10px; left:10px; right:10px; display:flex; justify-content:center; gap:6px; z-index:20; pointer-events:none; transition:opacity .25s ease; }
 #app.chat-open .status-row{ opacity:0; }
 .status-chip{ padding:5px 8px; border-radius:20px; color:#557480; background:rgba(3,5,10,.45); border:1px solid rgba(255,255,255,.045); font-size:8px; }
 .status-chip.active{ color:var(--green); }
-  #toast{ position:absolute; left:50%; bottom:18px; transform:translate(-50%,30px); z-index:500; max-width:90%; padding:9px 13px; border-radius:11px; color:var(--text); background:#0b141e; border:1px solid var(--line); opacity:0; pointer-events:none; transition:.25s; font-size:10px; white-space:nowrap; }
+#toast{ position:absolute; left:50%; bottom:18px; transform:translate(-50%,30px); z-index:500; max-width:90%; padding:9px 13px; border-radius:11px; color:var(--text); background:#0b141e; border:1px solid var(--line); opacity:0; pointer-events:none; transition:.25s; font-size:10px; white-space:nowrap; }
 #toast.show{ opacity:1; transform:translate(-50%,0); }
 .panel-overlay{ position:absolute; inset:0; z-index:100; display:none; background:rgba(0,0,0,.72); backdrop-filter:blur(9px); }
 .panel-overlay.open{ display:block; }
@@ -268,6 +191,7 @@ button{
 .modal-actions button{ flex:1; padding:11px; border-radius:10px; }
 .cancel-btn{ color:#aaa; background:rgba(255,255,255,.06); }
 .confirm-btn{ color:#001014; background:var(--cyan); }
+.api-input{ width:100%; padding:8px; border-radius:8px; background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--text); font-size:10px; margin-top:5px; }
 </style>
 </head>
 <body>
@@ -303,50 +227,46 @@ button{
         </div>
                 <section class="chat-panel" id="chatPanel">
             <div class="chat-header">
-                <div class="chat-title">AURA MESAJ</div>
+                <div class="chat-title">AURA DİNAMİK YAPAY ZEKA</div>
                 <button class="chat-close" onclick="toggleChatPanel(false)">×</button>
             </div>
             <div class="chat" id="chat">
                 <div class="message aura">
                     <div class="bubble">
                         <span class="msg-label">AURA</span>
-                        AURA hazır. Bana bir komut verebilirsin.
+                        Sistem aktif. Bütün yapay zeka modülleri ve canlı zeka bağlantısı hazır. Sorunuzu iletebilirsiniz.
                     </div>
                 </div>
             </div>
             <div class="chat-input-area">
                 <button class="mic-btn" id="micBtn" onclick="toggleListening()">🎙</button>
                 <div class="chat-input-wrap">
-                    <input id="userInput" type="text" autocomplete="off" placeholder="AURA'ya bir şey sor...">
+                    <input id="userInput" type="text" autocomplete="off" placeholder="AURA'ya bir şey yazın...">
                     <button class="send-btn" onclick="sendMessage()">➤</button>
                 </div>
             </div>
         </section>
     </main>
-
-    <div class="panel-overlay" id="systemPanel">
+        <div class="panel-overlay" id="systemPanel">
         <div class="side-panel">
             <div class="panel-title">
                 <h2>Sistem Durumu</h2>
                 <button class="close-btn" onclick="closePanel('systemPanel')">×</button>
             </div>
             <div class="card">
-                <div class="card-title">AURA CORE</div>
-                <div class="row"><span class="row-label">Çekirdek</span><span class="value" id="sysCore">ONLINE</span></div>
-                <div class="row"><span class="row-label">Hafıza</span><span class="value">AKTİF</span></div>
-                <div class="row"><span class="row-label">Ses sistemi</span><span class="value" id="sysSpeech">HAZIR</span></div>
+                <div class="card-title">AURA AI CORE</div>
+                <div class="row"><span class="row-label">Çekirdek Motoru</span><span class="value" id="sysCore">LLM DYNAMIC</span></div>
+                <div class="row"><span class="row-label">Hafıza Motoru</span><span class="value">Gelişmiş V2</span></div>
+                <div class="row"><span class="row-label">Sesli Yanıt</span><span class="value" id="sysSpeech">HAZIR</span></div>
                 <div class="row"><span class="row-label">Mikrofon</span><span class="value" id="sysMic">BEKLEMEDE</span></div>
-                <div class="row"><span class="row-label">Otomasyon</span><span class="value" id="sysAutomation">AKTİF</span></div>
-                <div class="row"><span class="row-label">Güvenlik</span><span class="value">AKTİF</span></div>
             </div>
             <div class="card">
                 <div class="card-title">İSTATİSTİKLER</div>
-                <div class="row"><span class="row-label">Mesaj</span><span class="value" id="statMessages">0</span></div>
-                <div class="row"><span class="row-label">Hafıza</span><span class="value" id="statMemory">0</span></div>
-                <div class="row"><span class="row-label">Görev</span><span class="value" id="statTasks">0</span></div>
+                <div class="row"><span class="row-label">Mesaj Sayısı</span><span class="value" id="statMessages">0</span></div>
+                <div class="row"><span class="row-label">Kalıcı Hafıza</span><span class="value" id="statMemory">0</span></div>
+                <div class="row"><span class="row-label">Görevler</span><span class="value" id="statTasks">0</span></div>
             </div>
-            <button class="panel-btn" onclick="runSystemDiagnostic()">Sistem tanılamasını çalıştır</button>
-            <button class="panel-btn" onclick="showAURASystemInfo()">AURA sistem bilgisi</button>
+            <button class="panel-btn" onclick="runSystemDiagnostic()">Tanılama Çalıştır</button>
         </div>
     </div>
 
@@ -357,13 +277,12 @@ button{
                 <button class="close-btn" onclick="closePanel('memoryPanel')">×</button>
             </div>
             <div class="card">
-                <div class="card-title">HAFIZA 2.0</div>
-                <div class="row"><span class="row-label">Kalıcı hafıza</span><span class="value">AKTİF</span></div>
-                <div class="row"><span class="row-label">Kayıt</span><span class="value" id="memoryCount">0</span></div>
+                <div class="card-title">KALICI BELLEK</div>
+                <div class="row"><span class="row-label">Kayıtlı Öğe</span><span class="value" id="memoryCount">0</span></div>
             </div>
             <div id="memoryList"></div>
-            <button class="panel-btn" onclick="addMemoryFromPanel()">+ Yeni hafıza ekle</button>
-            <button class="panel-btn danger" onclick="clearAllMemoryWithConfirm()">Tüm hafızayı temizle</button>
+            <button class="panel-btn" onclick="addMemoryFromPanel()">+ Yeni Hafıza Ekle</button>
+            <button class="panel-btn danger" onclick="clearAllMemoryWithConfirm()">Tüm Hafızayı Sil</button>
         </div>
     </div>
         <div class="panel-overlay" id="settingsPanel">
@@ -373,41 +292,25 @@ button{
                 <button class="close-btn" onclick="closePanel('settingsPanel')">×</button>
             </div>
             <div class="card">
-                <div class="card-title">SES</div>
+                <div class="card-title">CANLI AI BAĞLANTISI (GEMINI/OPENAI)</div>
+                <div class="row-label">API Key (Dinamik Cevaplar İçin):</div>
+                <input type="password" id="apiKeyInput" class="api-input" placeholder="Gemini API Key girin..." onchange="saveApiKey(this.value)">
+            </div>
+            <div class="card">
+                <div class="card-title">SES AYARLARI</div>
                 <div class="row">
-                    <span class="row-label">Sesli cevap</span>
+                    <span class="row-label">Sesli Yanıt</span>
                     <button class="panel-btn" style="width:auto;margin:0;padding:7px 12px" onclick="toggleVoice()" id="voiceToggle">AÇIK</button>
                 </div>
-                <div class="row">
-                    <span class="row-label">Sürekli dinleme</span>
-                    <button class="panel-btn" style="width:auto;margin:0;padding:7px 12px" onclick="toggleContinuousMode()" id="continuousToggle">KAPALI</button>
-                </div>
             </div>
-            <div class="card">
-                <div class="card-title">PROAKTİF SİSTEM</div>
-                <div class="row">
-                    <span class="row-label">Proaktif AURA</span>
-                    <button class="panel-btn" style="width:auto;margin:0;padding:7px 12px" onclick="toggleProactive()" id="proactiveToggle">AÇIK</button>
-                </div>
-                <div class="row">
-                    <span class="row-label">Otomasyon</span>
-                    <button class="panel-btn" style="width:auto;margin:0;padding:7px 12px" onclick="toggleAutomation()" id="automationToggle">AÇIK</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-title">GÜVENLİK</div>
-                <div class="row"><span class="row-label">Kritik işlem onayı</span><span class="value">AKTİF</span></div>
-                <div class="row"><span class="row-label">Riskli işlem kontrolü</span><span class="value">AKTİF</span></div>
-            </div>
-            <button class="panel-btn" onclick="requestNotificationPermission()">Bildirim iznini kontrol et</button>
-            <button class="panel-btn danger" onclick="resetAURAWithConfirm()">AURA'yı sıfırla</button>
+            <button class="panel-btn danger" onclick="resetAURAWithConfirm()">AURA'yı Sıfırla</button>
         </div>
     </div>
 
     <div class="modal" id="securityModal">
         <div class="modal-box">
             <div class="modal-title" id="securityTitle">Güvenlik Onayı</div>
-            <div class="modal-text" id="securityText">Bu işlem için onay gerekiyor.</div>
+            <div class="modal-text" id="securityText">İşlem onayı bekleniyor...</div>
             <div class="modal-actions">
                 <button class="cancel-btn" onclick="securityResolve(false)">İptal</button>
                 <button class="confirm-btn" onclick="securityResolve(true)">Onayla</button>
@@ -417,10 +320,8 @@ button{
     <div id="toast"></div>
 </div>
 <script>
-const AURA_VERSION = "4.0";
-const AURA_NAME = "AURA";
+const AURA_VERSION = "5.0-LLM";
 const USER_NAME = localStorage.getItem("aura_user_name") || "Bedirhan Kahraman";
-const GIRLFRIEND_NAME = localStorage.getItem("aura_girlfriend_name") || "Edanur Kahraman";
 
 const AURA = {
     online: navigator.onLine,
@@ -428,19 +329,18 @@ const AURA = {
     speaking: false,
     processing: false,
     chatOpen: false,
+    apiKey: localStorage.getItem("aura_api_key") || "",
     continuousMode: localStorage.getItem("aura_continuous") === "true",
     voiceEnabled: localStorage.getItem("aura_voice") !== "false",
     proactiveEnabled: localStorage.getItem("aura_proactive") !== "false",
     automationEnabled: localStorage.getItem("aura_automation") !== "false",
     messageCount: Number(localStorage.getItem("aura_message_count") || 0),
-    sessionStart: Date.now(),
     lastUserActivity: Date.now(),
     pendingSecurity: null,
     recognition: null,
     memories: [],
     tasks: [],
-    history: [],
-    settings: {}
+    history: []
 };
 
 const app = document.getElementById("app");
@@ -449,7 +349,35 @@ const chatPanel = document.getElementById("chatPanel");
 const chat = document.getElementById("chat");
 const userInput = document.getElementById("userInput");
 const micBtn = document.getElementById("micBtn");
-  function toggleChatPanel(force){
+
+const STORAGE = {
+    memories: "aura_memories_v2",
+    tasks: "aura_tasks_v2",
+    history: "aura_history_v2",
+    messageCount: "aura_message_count"
+};
+
+function loadPersistentData(){
+    try{ AURA.memories = JSON.parse(localStorage.getItem(STORAGE.memories) || "[]"); } catch(e){ AURA.memories = []; }
+    try{ AURA.tasks = JSON.parse(localStorage.getItem(STORAGE.tasks) || "[]"); } catch(e){ AURA.tasks = []; }
+    try{ AURA.history = JSON.parse(localStorage.getItem(STORAGE.history) || "[]"); } catch(e){ AURA.history = []; }
+    const keyInput = document.getElementById("apiKeyInput");
+    if(keyInput && AURA.apiKey) keyInput.value = AURA.apiKey;
+}
+
+function saveApiKey(val){
+    AURA.apiKey = val.trim();
+    localStorage.setItem("aura_api_key", AURA.apiKey);
+    toast("API Anahtarı Kaydedildi.");
+}
+    function saveMemories(){ localStorage.setItem(STORAGE.memories, JSON.stringify(AURA.memories)); }
+function saveTasks(){ localStorage.setItem(STORAGE.tasks, JSON.stringify(AURA.tasks)); }
+function saveHistory(){
+    if(AURA.history.length > 50) AURA.history = AURA.history.slice(-50);
+    localStorage.setItem(STORAGE.history, JSON.stringify(AURA.history));
+}
+
+function toggleChatPanel(force){
     let shouldOpen = (typeof force === "boolean") ? force : !AURA.chatOpen;
     AURA.chatOpen = shouldOpen;
     app.classList.toggle("chat-open", shouldOpen);
@@ -495,225 +423,7 @@ function closePanel(id){
     const panel = document.getElementById(id);
     if(panel) panel.classList.remove("open");
 }
-
-const STORAGE = {
-    memories: "aura_memories_v2",
-    tasks: "aura_tasks_v2",
-    history: "aura_history_v2",
-    settings: "aura_settings_v2",
-    messageCount: "aura_message_count"
-};
-
-function loadPersistentData(){
-    try{ AURA.memories = JSON.parse(localStorage.getItem(STORAGE.memories) || "[]"); } catch(e){ AURA.memories = []; }
-    try{ AURA.tasks = JSON.parse(localStorage.getItem(STORAGE.tasks) || "[]"); } catch(e){ AURA.tasks = []; }
-    try{ AURA.history = JSON.parse(localStorage.getItem(STORAGE.history) || "[]"); } catch(e){ AURA.history = []; }
-    try{ AURA.settings = JSON.parse(localStorage.getItem(STORAGE.settings) || "{}"); } catch(e){ AURA.settings = {}; }
-}
-
-function saveMemories(){ localStorage.setItem(STORAGE.memories, JSON.stringify(AURA.memories)); }
-function saveTasks(){ localStorage.setItem(STORAGE.tasks, JSON.stringify(AURA.tasks)); }
-function saveHistory(){
-    if(AURA.history.length > 200) AURA.history = AURA.history.slice(-200);
-    localStorage.setItem(STORAGE.history, JSON.stringify(AURA.history));
-      }
-  function addMemory(key, value, category="genel"){
-    key = String(key).trim();
-    value = String(value).trim();
-    if(!key || !value) return false;
-
-    const existing = AURA.memories.find(m => m.key.toLowerCase() === key.toLowerCase());
-    if(existing){
-        existing.value = value;
-        existing.category = category;
-        existing.updated = new Date().toISOString();
-    } else {
-        AURA.memories.push({
-            id: crypto.randomUUID ? crypto.randomUUID() : Date.now() + "_" + Math.random(),
-            key: key, value: value, category: category,
-            created: new Date().toISOString(), updated: new Date().toISOString()
-        });
-    }
-    saveMemories();
-    updateMemoryPanel();
-    updateUI();
-    return true;
-}
-
-function removeMemory(id){
-    AURA.memories = AURA.memories.filter(m => m.id !== id);
-    saveMemories();
-    updateMemoryPanel();
-    updateUI();
-}
-
-function findMemory(query){
-    const q = String(query).toLowerCase();
-    return AURA.memories.filter(m => 
-        m.key.toLowerCase().includes(q) || 
-        m.value.toLowerCase().includes(q) || 
-        m.category.toLowerCase().includes(q)
-    );
-}
-
-function getMemoryContext(){
-    if(!AURA.memories.length) return "Henüz kayıtlı özel hafıza yok.";
-    return AURA.memories.slice(-30).map(m => `${m.key}: ${m.value}`).join("\n");
-}
-
-function handleMemoryCommand(text){
-    const lower = text.toLowerCase();
-    let match = text.match(/(?:beni\s+)?hatırla\s*[:\-]?\s*(.+)/i);
-    if(match){
-        addMemory("Kullanıcı bilgisi", match[1].trim(), "kişisel");
-        return "Tamam. Bu bilgiyi kalıcı hafızama kaydettim.";
-    }
-
-    match = text.match(/(?:hafızana|hafızaya)\s+kaydet\s*[:\-]?\s*(.+)/i);
-    if(match){
-        addMemory("Kullanıcı notu", match[1].trim(), "not");
-        return "Bilgiyi hafızaya kaydettim.";
-    }
-
-    if(lower.includes("ne hatırlıyorsun") || lower.includes("hafızanda ne var") || lower.includes("beni hatırlıyor musun")){
-        if(!AURA.memories.length) return "Şu anda kayıtlı özel bir hafıza bulunmuyor.";
-        return "Hafızamda şunlar bulunuyor:\n\n" + getMemoryContext();
-    }
-    return null;
-}
-  function updateMemoryPanel(){
-    const list = document.getElementById("memoryList");
-    const count = document.getElementById("memoryCount");
-    if(!list || !count) return;
-    count.textContent = AURA.memories.length;
-    list.innerHTML = "";
-
-    if(!AURA.memories.length){
-        list.innerHTML = `<div class="card"><div class="card-title">HAFIZA BOŞ</div><div style="color:#7595a5;font-size:10px;line-height:1.5">Henüz kayıtlı özel hafıza bulunmuyor.</div></div>`;
-        return;
-    }
-
-    AURA.memories.slice().reverse().forEach(memory => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <div class="card-title">${escapeHTML(memory.key)}</div>
-            <div style="color:#a7bdc7;font-size:10px;line-height:1.5">${escapeHTML(memory.value)}</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-                <span style="color:#7595a5;font-size:8px">${escapeHTML(memory.category)}</span>
-                <button style="background:none;color:#ff6680;font-size:9px" onclick="removeMemory('${memory.id}')">SİL</button>
-            </div>`;
-        list.appendChild(card);
-    });
-}
-
-function addMemoryFromPanel(){
-    const key = prompt("Hafıza adı:");
-    if(!key) return;
-    const value = prompt("Hafıza değeri:");
-    if(!value) return;
-    const category = prompt("Kategori:", "genel") || "genel";
-    addMemory(key, value, category);
-    toast("Hafıza kaydedildi.");
-}
-
-function clearAllMemoryWithConfirm(){
-    requestSecurity("Hafıza temizleme", "Tüm kayıtlı hafıza silinecek.", () => {
-        AURA.memories = [];
-        saveMemories();
-        updateMemoryPanel();
-        updateUI();
-        addMessage("Tüm hafıza kayıtlarını temizledim.", "aura", true);
-    });
-}
-
-function recordHistory(userText, auraText){
-    AURA.history.push({ time: new Date().toISOString(), user: userText, aura: auraText });
-    saveHistory();
-}
-
-function escapeHTML(text){
-    return String(text).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
-}
-
-function addMessage(text, sender="aura", speakIt=false){
-    if(!chat) return;
-    const wrap = document.createElement("div");
-    wrap.className = "message " + sender;
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
-    const label = document.createElement("span");
-    label.className = "msg-label";
-    label.textContent = sender === "user" ? USER_NAME : "AURA";
-
-    bubble.appendChild(label);
-    bubble.appendChild(document.createTextNode(text));
-    wrap.appendChild(bubble);
-    chat.appendChild(wrap);
-
-    scrollChatToBottom();
-    AURA.messageCount++;
-    localStorage.setItem(STORAGE.messageCount, AURA.messageCount);
-    updateStats();
-
-    if(speakIt && sender === "aura") speak(text);
-}
-
-function sendMessage(){
-    const text = userInput.value.trim();
-    if(!text) return;
-    if(!AURA.chatOpen) toggleChatPanel(true);
-    userInput.value = "";
-    AURA.lastUserActivity = Date.now();
-    addMessage(text, "user", false);
-    processCommand(text);
-}
-
-userInput.addEventListener("keydown", event => {
-    if(event.key === "Enter"){
-        event.preventDefault();
-        sendMessage();
-    }
-});
-
-chatPanel.addEventListener("click", event => event.stopPropagation());
-auraCore.addEventListener("click", event => { event.stopPropagation(); toggleChatPanel(); });
-  function updateUI(){
-    const memoryChip = document.getElementById("memoryChip");
-    const autoChip = document.getElementById("autoChip");
-    if(memoryChip) memoryChip.textContent = "MEMORY " + AURA.memories.length;
-    if(autoChip){
-        autoChip.textContent = AURA.automationEnabled ? "AUTO ON" : "AUTO OFF";
-        autoChip.classList.toggle("active", AURA.automationEnabled);
-    }
-
-    const voiceToggle = document.getElementById("voiceToggle");
-    const continuousToggle = document.getElementById("continuousToggle");
-    const proactiveToggle = document.getElementById("proactiveToggle");
-    const automationToggle = document.getElementById("automationToggle");
-
-    if(voiceToggle) voiceToggle.textContent = AURA.voiceEnabled ? "AÇIK" : "KAPALI";
-    if(continuousToggle) continuousToggle.textContent = AURA.continuousMode ? "AÇIK" : "KAPALI";
-    if(proactiveToggle) proactiveToggle.textContent = AURA.proactiveEnabled ? "AÇIK" : "KAPALI";
-    if(automationToggle) automationToggle.textContent = AURA.automationEnabled ? "AÇIK" : "KAPALI";
-
-    const onlineChip = document.getElementById("onlineChip");
-    if(onlineChip){
-        onlineChip.textContent = AURA.online ? "ONLINE" : "OFFLINE";
-        onlineChip.classList.toggle("active", AURA.online);
-    }
-}
-
-function updateStats(){
-    const memoryEl = document.getElementById("statMemory");
-    const taskEl = document.getElementById("statTasks");
-    const messageEl = document.getElementById("statMessages");
-    if(memoryEl) memoryEl.textContent = AURA.memories.length;
-    if(taskEl) taskEl.textContent = AURA.tasks.filter(task => !task.completed).length;
-    if(messageEl) messageEl.textContent = AURA.messageCount;
-}
-
-function speak(text){
+    function speak(text){
     if(!AURA.voiceEnabled || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
 
@@ -739,37 +449,21 @@ function speak(text){
     speechSynthesis.speak(utterance);
 }
 
-function toggleVoice(){
-    AURA.voiceEnabled = !AURA.voiceEnabled;
-    localStorage.setItem("aura_voice", AURA.voiceEnabled);
-    if(!AURA.voiceEnabled && "speechSynthesis" in window) speechSynthesis.cancel();
-    updateUI();
-    toast(AURA.voiceEnabled ? "Sesli cevap açıldı." : "Sesli cevap kapatıldı.");
-}
-
 let speechRecognitionSupported = false;
 function setupRecognition(){
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if(!SpeechRecognition){
-        speechRecognitionSupported = false;
-        const micStatus = document.getElementById("sysMic");
-        if(micStatus) micStatus.textContent = "DESTEKLENMİYOR";
-        return;
-    }
+    if(!SpeechRecognition){ speechRecognitionSupported = false; return; }
 
     speechRecognitionSupported = true;
     AURA.recognition = new SpeechRecognition();
     AURA.recognition.lang = "tr-TR";
     AURA.recognition.continuous = false;
     AURA.recognition.interimResults = true;
-    AURA.recognition.maxAlternatives = 1;
 
     AURA.recognition.onstart = () => {
         AURA.listening = true;
         coreState("listening");
         micBtn.classList.add("active");
-        const status = document.getElementById("sysMic");
-        if(status) status.textContent = "DİNLİYOR";
     };
 
     AURA.recognition.onresult = event => {
@@ -777,161 +471,133 @@ function setupRecognition(){
         for(let i = event.resultIndex; i < event.results.length; i++){
             transcript += event.results[i][0].transcript;
         }
-        transcript = transcript.trim();
         const last = event.results[event.results.length - 1];
         if(last && last.isFinal){
-            userInput.value = transcript;
+            userInput.value = transcript.trim();
             setTimeout(sendMessage, 80);
         }
-    };
-
-    AURA.recognition.onerror = event => {
-        console.log("AURA Speech Error:", event.error);
-        AURA.listening = false;
-        coreState("normal");
-        micBtn.classList.remove("active");
-        if(event.error === "not-allowed") toast("Mikrofon izni verilmedi.");
     };
 
     AURA.recognition.onend = () => {
         AURA.listening = false;
         micBtn.classList.remove("active");
         coreState("normal");
-        const status = document.getElementById("sysMic");
-        if(status) status.textContent = "BEKLEMEDE";
-        if(AURA.continuousMode && !AURA.speaking){
-            setTimeout(() => { if(AURA.continuousMode && !AURA.listening) startListening(); }, 500);
-        }
     };
 }
 
 function startListening(){
-    if(!speechRecognitionSupported){ toast("Bu tarayıcı sesli komut sistemini desteklemiyor."); return; }
+    if(!speechRecognitionSupported){ toast("Sesli komut desteklenmiyor."); return; }
     if(AURA.listening) return;
     if(!AURA.chatOpen) toggleChatPanel(true);
-    try{ AURA.recognition.start(); }catch(error){ console.log(error); }
+    try{ AURA.recognition.start(); }catch(error){}
 }
 
 function stopListening(){
-    if(AURA.recognition && AURA.listening){
-        try{ AURA.recognition.stop(); }catch(error){}
-    }
+    if(AURA.recognition && AURA.listening){ try{ AURA.recognition.stop(); }catch(e){} }
 }
 
 function toggleListening(){
-    if(AURA.listening) stopListening();
-    else startListening();
+    if(AURA.listening) stopListening(); else startListening();
+}
+    function addMemory(key, value, category="genel"){
+    key = String(key).trim(); value = String(value).trim();
+    if(!key || !value) return false;
+    const existing = AURA.memories.find(m => m.key.toLowerCase() === key.toLowerCase());
+    if(existing){ existing.value = value; existing.updated = new Date().toISOString(); }
+    else { AURA.memories.push({ id: Date.now() + "_" + Math.random(), key, value, category }); }
+    saveMemories(); updateMemoryPanel(); updateUI();
+    return true;
 }
 
-function toggleContinuousMode(){
-    AURA.continuousMode = !AURA.continuousMode;
-    localStorage.setItem("aura_continuous", AURA.continuousMode);
-    updateUI();
-    if(AURA.continuousMode){
-        toast("Sürekli dinleme açıldı.");
-        if(!AURA.chatOpen) toggleChatPanel(true);
-        setTimeout(startListening, 500);
-    } else {
-        stopListening();
-        toast("Sürekli dinleme kapatıldı.");
+function removeMemory(id){
+    AURA.memories = AURA.memories.filter(m => m.id !== id);
+    saveMemories(); updateMemoryPanel(); updateUI();
+}
+
+function getMemoryContext(){
+    if(!AURA.memories.length) return "Kayıtlı hafıza yok.";
+    return AURA.memories.map(m => `${m.key}: ${m.value}`).join("\n");
+}
+
+function updateMemoryPanel(){
+    const list = document.getElementById("memoryList");
+    const count = document.getElementById("memoryCount");
+    if(!list || !count) return;
+    count.textContent = AURA.memories.length;
+    list.innerHTML = "";
+    AURA.memories.slice().reverse().forEach(memory => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<div class="card-title">${escapeHTML(memory.key)}</div><div style="color:#a7bdc7;font-size:10px;">${escapeHTML(memory.value)}</div><button style="background:none;color:#ff6680;font-size:9px;margin-top:5px" onclick="removeMemory('${memory.id}')">SİL</button>`;
+        list.appendChild(card);
+    });
+}
+    async function callAIAPI(userText) {
+    if (!AURA.apiKey) {
+        return "Sabit yanıtlar yerine canlı yapay zeka cevapları almak için Ayarlar (⚙) panelinden Google Gemini API key'inizi giriniz.";
     }
-  }
-  async function processCommand(text){
+
+    const systemPrompt = `Sen AURA adlı akıllı, yardımsever, dinamik ve gelişmiş bir yapay zeka asistanısın. Kullanıcının adı: ${USER_NAME}. 
+Kullanıcı hafızası:
+${getMemoryContext()}
+Cevapları Türkçe ver, net, canlı ve orijinal ol. Sabit kalıp cümleler kullanma.`;
+
+    const contents = AURA.history.slice(-10).map(h => [
+        { role: "user", parts: [{ text: h.user }] },
+        { role: "model", parts: [{ text: h.aura }] }
+    ]).flat();
+
+    contents.push({ role: "user", parts: [{ text: userText }] });
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${AURA.apiKey}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                system_instruction: { parts: [{ text: systemPrompt }] },
+                contents: contents
+            })
+        });
+
+        const data = await response.json();
+        if (data.candidates && data.candidates[0].content.parts[0].text) {
+            return data.candidates[0].content.parts[0].text;
+        }
+        return "Yapay zeka yanıt oluşturamadı, lütfen API anahtarınızı kontrol edin.";
+    } catch (e) {
+        console.error(e);
+        return "Bağlantı hatası oluştu. Canlı yapay zeka motoruna ulaşılamadı.";
+    }
+    }
+    async function processCommand(text){
     AURA.processing = true;
     coreState("processing");
     const lower = text.toLowerCase().trim();
 
-    const memoryResponse = handleMemoryCommand(text);
-    if(memoryResponse){ respond(text, memoryResponse); return; }
+    // Özel Komut Kontrolleri
+    if(lower.startsWith("hatırla:") || lower.startsWith("kaydet:")){
+        const parts = text.split(":");
+        if(parts.length > 1){
+            addMemory("Not", parts[1].trim());
+            respond(text, "Bu bilgiyi hafızama kaydettim.");
+            return;
+        }
+    }
 
-    if(/^(merhaba|selam|sa|hey|günaydın|iyi akşamlar|iyi geceler)/i.test(text)){
-        respond(text, generateGreeting());
+    if(lower === "saat kaç" || lower === "saat"){
+        respond(text, `Şu an saat ${new Date().toLocaleTimeString("tr-TR", {hour:"2-digit", minute:"2-digit"})}.`);
         return;
     }
 
-    if(lower.includes("sen kimsin") || lower.includes("adın ne") || lower === "kimsin"){
-        respond(text, "Ben AURA. Kişisel yapay zeka asistanınım. Hafıza, görev, otomasyon, sesli komut, kodlama, görsel analiz ve güvenlik sistemlerim aktif.");
+    if(lower.startsWith("internette ara")){
+        const q = text.replace("internette ara", "").trim();
+        searchWeb(q);
         return;
     }
 
-    if(lower.includes("benim adım ne") || lower.includes("ben kimim")){
-        respond(text, `Seni ${USER_NAME} olarak tanıyorum.`);
-        return;
-    }
-
-    if(lower.includes("sevgilimin adı") || lower.includes("sevgilim kim")){
-        respond(text, `Sevgilinin adı ${GIRLFRIEND_NAME}.`);
-        return;
-    }
-
-    if(lower.includes("saat kaç") || lower === "saat"){
-        const now = new Date();
-        respond(text, `Şu an saat ${now.toLocaleTimeString("tr-TR", {hour:"2-digit", minute:"2-digit"})}.`);
-        return;
-    }
-
-    if(lower.includes("bugün günlerden") || lower.includes("tarih ne") || lower.includes("bugünün tarihi")){
-        const now = new Date();
-        respond(text, `Bugün ${now.toLocaleDateString("tr-TR", {weekday:"long", day:"numeric", month:"long", year:"numeric"})}.`);
-        return;
-    }
-
-    if(lower.includes("şaka yap") || lower.includes("espri yap")){
-        respond(text, randomJoke());
-        return;
-    }
-
-    if(lower.includes("sistem durumu") || lower.includes("sistemi kontrol et")){
-        runSystemDiagnostic();
-        return;
-    }
-
-    if(lower.includes("hafıza merkezi") || lower.includes("hafıza yönetimi")){
-        openPanel("memoryPanel");
-        respond(text, "Hafıza yönetim merkezini açtım.");
-        return;
-    }
-
-    if(lower.startsWith("görev oluştur") || lower.startsWith("görev ekle") || lower.startsWith("hatırlat")){
-        const result = parseTaskCommand(text);
-        respond(text, result || "Görevi anlayamadım. Örnek: 30 dakika sonra bana su içmeyi hatırlat.");
-        return;
-    }
-
-    if(lower.includes("görevlerimi göster") || lower.includes("görevlerim ne") || lower.includes("aktif görevler")){
-        respond(text, getTaskSummary());
-        return;
-    }
-
-    if(lower.startsWith("uygulamayı aç") || lower.startsWith("uygulama aç") || lower.startsWith("telefonu aç")){
-        openAndroidApp(extractAppName(text));
-        return;
-    }
-
-    if(lower.startsWith("kod yaz") || lower.startsWith("kod oluştur") || lower.includes("javascript kodu") || lower.includes("python kodu") || lower.includes("html kodu")){
-        runCodingAgent(text);
-        return;
-    }
-
-    if(lower.includes("görsel analiz") || lower.includes("resim analiz")){
-        openImageAnalyzer();
-        respond(text, "Görsel analiz altyapısını açtım. Bir görsel seçebilirsin.");
-        return;
-    }
-
-    if(lower.startsWith("internette ara") || lower.startsWith("webde ara") || lower.startsWith("google'da ara") || lower.startsWith("google da ara")){
-        const query = text.replace(/^(internette ara|webde ara|google'?da ara)\s*/i, "").trim();
-        if(query){ searchWeb(query); } else { respond(text, "Ne aramamı istediğini belirtmelisin."); }
-        return;
-    }
-
-    if(lower.includes("proaktif modu") || lower.includes("proaktif sistemi")){ toggleProactive(); return; }
-    if(lower.includes("sürekli dinleme") || lower.includes("sürekli konuşma")){ toggleContinuousMode(); return; }
-    if(lower.includes("sesli cevap")){ toggleVoice(); return; }
-    if(lower === "yardım" || lower === "komutlar" || lower.includes("neler yapabiliyorsun")){ respond(text, getHelpText()); return; }
-    if(lower.includes("güvenlik testi")){ securityTest(); return; }
-
-    respond(text, generateNaturalResponse(text));
+    // Dinamik Yapay Zeka Yanıtı Üretimi
+    const aiResponse = await callAIAPI(text);
+    respond(text, aiResponse);
 }
 
 function respond(userText, response){
@@ -941,365 +607,98 @@ function respond(userText, response){
     addMessage(response, "aura", true);
 }
 
-function generateGreeting(){
-    const hour = new Date().getHours();
-    let greeting = (hour < 12) ? "Günaydın" : (hour < 18) ? "İyi günler" : "İyi akşamlar";
-    return `${greeting} ${USER_NAME}. AURA hazır.`;
+function recordHistory(userText, auraText){
+    AURA.history.push({ time: new Date().toISOString(), user: userText, aura: auraText });
+    saveHistory();
 }
 
-function randomJoke(){
-    const jokes = [
-        "Programcı neden denize girmez? Çünkü çok fazla bug var.",
-        "Bilgisayar neden doktora gitmiş? Virüsü varmış.",
-        "Programcı kahvesini neden kodla içer? Çünkü kaynak kodu sıcak sever.",
-        "Yapay zeka neden bilgisayara kızmış? Çünkü ona sürekli input vermiş."
-    ];
-    return jokes[Math.floor(Math.random() * jokes.length)];
-}
+function addMessage(text, sender="aura", speakIt=false){
+    if(!chat) return;
+    const wrap = document.createElement("div");
+    wrap.className = "message " + sender;
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    const label = document.createElement("span");
+    label.className = "msg-label";
+    label.textContent = sender === "user" ? USER_NAME : "AURA";
 
-function generateNaturalResponse(text){
-    const lower = text.toLowerCase();
-    if(lower.includes("teşekkür")) return "Rica ederim.";
-    if(lower.includes("sıkıldım")) return "İstersen yeni bir proje, oyun, görev veya sohbet başlatabiliriz.";
-    if(lower.includes("nasılsın")) return "Sistemlerim normal çalışıyor. AURA hazır.";
-    if(lower.endsWith("?")) return "Bu konuda yardımcı olabilirim. Biraz daha ayrıntı verirsen daha net cevaplayabilirim.";
-    return "Komutunu aldım. Bu işlem için yerleşik bir komut bulamadım. Yardım yazarak komut listesini görebilirsin.";
-              }
-  function getHelpText(){
-    return `AURA ile yapabileceklerin:
+    bubble.appendChild(label);
+    bubble.appendChild(document.createTextNode(text));
+    wrap.appendChild(bubble);
+    chat.appendChild(wrap);
 
-• Doğal sohbet
-• Saat ve tarih
-• Kalıcı hafıza
-• Hafıza yönetimi
-• Görev ve hatırlatıcı
-• Otomasyon
-• Proaktif sistem
-• Sesli komut
-• Sesli cevap
-• Sürekli dinleme
-• Kodlama ajanı
-• Görsel analiz
-• Android uygulama açma
-• Web araması
-• Sistem teşhisi
-• Güvenlik onayı`;
-}
-
-function parseTaskCommand(text){
-    let taskText = text.replace(/^(görev oluştur|görev ekle|hatırlat)\s*/i, "").trim();
-    if(!taskText) return null;
-
-    let delayMs = null;
-    let match = taskText.match(/(\d+)\s*dakika\s+sonra/i);
-    if(match){
-        delayMs = Number(match[1]) * 60 * 1000;
-        taskText = taskText.replace(match[0], "").trim();
-    }
-
-    if(!delayMs){
-        match = taskText.match(/(\d+)\s*saat\s+sonra/i);
-        if(match){
-            delayMs = Number(match[1]) * 60 * 60 * 1000;
-            taskText = taskText.replace(match[0], "").trim();
-        }
-    }
-
-    if(!delayMs){
-        match = taskText.match(/(\d+)\s*saniye\s+sonra/i);
-        if(match){
-            delayMs = Number(match[1]) * 1000;
-            taskText = taskText.replace(match[0], "").trim();
-        }
-    }
-
-    if(!delayMs && /yarın/i.test(taskText)){
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        tomorrow.setHours(9, 0, 0, 0);
-        delayMs = tomorrow.getTime() - Date.now();
-        taskText = taskText.replace(/yarın/i, "").trim();
-    }
-
-    if(!delayMs) return null;
-
-    taskText = taskText.replace(/^bana\s+/i, "").replace(/^şunu\s+/i, "").replace(/^diye\s+/i, "").replace(/^hatırlat\s*/i, "").trim();
-    if(!taskText) taskText = "Görev";
-
-    const task = {
-        id: crypto.randomUUID ? crypto.randomUUID() : Date.now() + "_" + Math.random(),
-        title: taskText, created: Date.now(), due: Date.now() + delayMs, completed: false, notified: false
-    };
-
-    AURA.tasks.push(task);
-    saveTasks();
+    scrollChatToBottom();
+    AURA.messageCount++;
+    localStorage.setItem(STORAGE.messageCount, AURA.messageCount);
     updateStats();
 
-    return `Tamam. "${taskText}" görevini ${formatRemaining(delayMs)} sonra hatırlatacağım.`;
+    if(speakIt && sender === "aura") speak(text);
+                }
+    function sendMessage(){
+    const text = userInput.value.trim();
+    if(!text) return;
+    if(!AURA.chatOpen) toggleChatPanel(true);
+    userInput.value = "";
+    AURA.lastUserActivity = Date.now();
+    addMessage(text, "user", false);
+    processCommand(text);
 }
 
-function getTaskSummary(){
-    const active = AURA.tasks.filter(task => !task.completed);
-    if(!active.length) return "Aktif bir görevin bulunmuyor.";
-    return "Aktif görevlerin:\n\n" + active.map((task,index) => `${index + 1}. ${task.title}\n   ${formatDateTime(task.due)}`).join("\n\n");
-}
-
-function formatRemaining(ms){
-    const minutes = Math.round(ms / 60000);
-    if(minutes < 1) return "1 dakikadan kısa";
-    if(minutes < 60) return `${minutes} dakika`;
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    if(mins) return `${hours} saat ${mins} dakika`;
-    return `${hours} saat`;
-}
-
-function formatDateTime(timestamp){
-    return new Date(timestamp).toLocaleString("tr-TR", {day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit"});
-      }
-  function checkTasks(){
-    if(!AURA.automationEnabled) return;
-    const now = Date.now();
-    AURA.tasks.forEach(task => {
-        if(task.completed || task.notified) return;
-        if(now >= task.due){
-            task.notified = true;
-            notifyTask(task);
-        }
-    });
-    saveTasks();
-    updateStats();
-}
-setInterval(checkTasks, 1000);
-
-function notifyTask(task){
-    const message = `Hatırlatma: ${task.title}`;
-    addMessage(message, "aura", true);
-    toast(message);
-    if("Notification" in window && Notification.permission === "granted"){
-        try{ new Notification("AURA Hatırlatma", { body: task.title }); }catch(error){}
-    }
-}
-
-function toggleAutomation(){
-    AURA.automationEnabled = !AURA.automationEnabled;
-    localStorage.setItem("aura_automation", AURA.automationEnabled);
-    updateUI();
-    toast(AURA.automationEnabled ? "Otomasyon aktif." : "Otomasyon kapatıldı.");
-}
-
-let proactiveTimer = null;
-function toggleProactive(){
-    AURA.proactiveEnabled = !AURA.proactiveEnabled;
-    localStorage.setItem("aura_proactive", AURA.proactiveEnabled);
-    updateUI();
-    if(AURA.proactiveEnabled){ startProactiveEngine(); toast("Proaktif AURA aktif."); }
-    else { stopProactiveEngine(); toast("Proaktif AURA kapatıldı."); }
-}
-
-function startProactiveEngine(){ stopProactiveEngine(); proactiveTimer = setInterval(proactiveCheck, 60000); }
-function stopProactiveEngine(){ if(proactiveTimer){ clearInterval(proactiveTimer); proactiveTimer = null; } }
-
-function proactiveCheck(){
-    if(!AURA.proactiveEnabled) return;
-    const inactive = Date.now() - AURA.lastUserActivity;
-    if(inactive > 30 * 60 * 1000){
-        const message = "AURA aktif. İstersen görevlerini veya hafızanı kontrol edebilirim.";
-        if(!AURA.chatOpen) addMessage(message, "aura", false);
-        AURA.lastUserActivity = Date.now();
-        return;
-    }
-
-    const nextTask = AURA.tasks.filter(task => !task.completed && !task.notified).sort((a,b) => a.due - b.due)[0];
-    if(!nextTask) return;
-
-    const remaining = nextTask.due - Date.now();
-    if(remaining > 0 && remaining <= 5 * 60 * 1000){
-        const warning = `Yaklaşan görev: ${nextTask.title}. Yaklaşık ${formatRemaining(remaining)} kaldı.`;
-        addMessage(warning, "aura", true);
-    }
-}
-
-const ANDROID_APPS = {
-    chrome:{ name:"Chrome", url:"googlechrome://", package:"com.android.chrome" },
-    youtube:{ name:"YouTube", url:"youtube://", package:"com.google.android.youtube" },
-    whatsapp:{ name:"WhatsApp", url:"whatsapp://", package:"com.whatsapp" },
-    instagram:{ name:"Instagram", url:"instagram://", package:"com.instagram.android" },
-    telegram:{ name:"Telegram", url:"tg://", package:"org.telegram.messenger" },
-    spotify:{ name:"Spotify", url:"spotify://", package:"com.spotify.music" },
-    settings:{ name:"Ayarlar", url:"intent:#Intent;action=android.settings.SETTINGS;end", package:"" }
-};
-
-function normalizeAppName(name){
-    const n = String(name).toLowerCase().trim();
-    const aliases = { "google chrome":"chrome", "chrome":"chrome", "youtube":"youtube", "whatsapp":"whatsapp", "instagram":"instagram", "insta":"instagram", "telegram":"telegram", "spotify":"spotify", "ayarlar":"settings" };
-    return aliases[n] || n;
-}
-
-function extractAppName(text){
-    return text.replace(/^(uygulamayı aç|uygulama aç|telefonu aç)\s*/i, "").trim();
-}
-  function openAndroidApp(appName){
-    const key = normalizeAppName(appName);
-    const appInfo = ANDROID_APPS[key];
-    if(!appInfo){
-        addMessage(`"${appName}" için tanımlı bir uygulama bulunamadı.`, "aura", true);
-        return;
-    }
-    requestSecurity(`${appInfo.name} açma`, `${appInfo.name} uygulamasını açmayı deneyeceğim.`, () => {
-        try{ window.location.href = appInfo.url; } catch(error){ toast("Uygulama açılamadı."); }
-    });
-}
-
-function openImageAnalyzer(){
-    const input = document.createElement("input");
-    input.type = "file"; input.accept = "image/*";
-    input.onchange = event => {
-        const file = event.target.files[0];
-        if(!file) return;
-        const reader = new FileReader();
-        reader.onload = event2 => {
-            const img = new Image();
-            img.onload = () => {
-                addMessage(`Görsel analiz altyapısı hazırlandı.\n\nDosya: ${file.name}\nÇözünürlük: ${img.naturalWidth} × ${img.naturalHeight}\nBoyut: ${(file.size / 1024 / 1024).toFixed(2)} MB\n\nGerçek nesne ve metin tanıma için harici görsel AI motoru bağlanabilir.`, "aura", true);
-            };
-            img.src = event2.target.result;
-        };
-        reader.readAsDataURL(file);
-    };
-    input.click();
-}
-
-function runCodingAgent(command){
-    const lower = command.toLowerCase();
-    let language = "javascript";
-    if(lower.includes("python")) language = "python";
-    else if(lower.includes("html")) language = "html";
-    else if(lower.includes("css")) language = "css";
-
-    let request = command.replace(/^(kod yaz|kod oluştur)\s*/i, "").replace(/^(python|javascript|html|css)\s*/i, "").trim();
-    if(!request) request = "Basit bir örnek oluştur";
-
-    const code = generateCodeTemplate(language, request);
-    addMessage(`Kodlama ajanı çalıştı.\n\nDil: ${language}\n\nİstek:\n${request}\n\nKod:\n\n${code}`, "aura", false);
-}
-
-function generateCodeTemplate(language, request){
-    const safe = String(request).replace(/[\r\n]+/g, " ");
-    if(language === "html"){
-        return `<!DOCTYPE html>\n<html lang="tr">\n<head>\n<meta charset="UTF-8">\n<title>AURA Kod</title>\n</head>\n<body>\n<h1>AURA Kodlama Ajanı</h1>\n<p>${escapeHTML(safe)}</p>\n</body>\n</html>`;
-    }
-    if(language === "python"){
-        return `def aura():\n    request = ${JSON.stringify(safe)}\n    print("AURA:", request)\n\nif __name__ == "__main__":\n    aura()`;
-    }
-    return `function auraTask(){\n    const request = ${JSON.stringify(safe)};\n    console.log("AURA:", request);\n}\nauraTask();`;
-}
-
-function requestSecurity(title, description, callback){
-    AURA.pendingSecurity = { callback: callback };
-    const titleEl = document.getElementById("securityTitle");
-    const textEl = document.getElementById("securityText");
-    const modal = document.getElementById("securityModal");
-    if(titleEl) titleEl.textContent = "Güvenlik Onayı";
-    if(textEl) textEl.textContent = `${title}: ${description}`;
-    if(modal) modal.classList.add("open");
-}
-
-function securityResolve(approved){
-    const modal = document.getElementById("securityModal");
-    if(modal) modal.classList.remove("open");
-    const pending = AURA.pendingSecurity;
-    AURA.pendingSecurity = null;
-    if(!pending) return;
-
-    if(approved){
-        try{ pending.callback(); }catch(error){ console.error(error); toast("İşlem sırasında hata oluştu."); }
-    } else {
-        addMessage("Güvenlik onayı verilmediği için işlemi iptal ettim.", "aura", true);
-    }
-}
-  function securityTest(){
-    requestSecurity("Güvenlik sistemi testi", "Bu işlem yalnızca onay mekanizmasını test eder.", () => {
-        addMessage("Güvenlik testi başarılı. Onay mekanizması çalışıyor.", "aura", true);
-    });
-}
-
-function resetAURAWithConfirm(){
-    requestSecurity("AURA sıfırlama", "Hafıza, görev ve geçmiş verileri temizlenecek.", () => {
-        localStorage.removeItem(STORAGE.memories);
-        localStorage.removeItem(STORAGE.tasks);
-        localStorage.removeItem(STORAGE.history);
-        AURA.memories = []; AURA.tasks = []; AURA.history = [];
-        updateMemoryPanel(); updateStats(); updateUI();
-        addMessage("AURA yerel verileri sıfırlandı.", "aura", true);
-    });
-}
-
-function runSystemDiagnostic(){
-    const report = `AURA SİSTEM TARAMASI\n\nÇekirdek: ONLINE\nHafıza: ${typeof localStorage !== "undefined" ? "OK" : "HATA"}\nSes çıkışı: ${"speechSynthesis" in window ? "OK" : "YOK"}\nSesli komut: ${speechRecognitionSupported ? "OK" : "YOK"}\nBildirim: ${"Notification" in window ? "OK" : "YOK"}\nService Worker: ${"serviceWorker" in navigator ? "OK" : "YOK"}\n\nAktif görev: ${AURA.tasks.filter(t => !t.completed).length}\nHafıza kayıtları: ${AURA.memories.length}\nDurum: NORMAL`;
-    addMessage(report, "aura", false);
-}
-
-function showAURASystemInfo(){
-    addMessage(`AURA ${AURA_VERSION}\n\nÇekirdek: AURA AI CORE\nHafıza: Hafıza 2.0\nProaktif: ${AURA.proactiveEnabled ? "AKTİF" : "KAPALI"}\nSürekli dinleme: ${AURA.continuousMode ? "AKTİF" : "KAPALI"}`, "aura", true);
-}
+userInput.addEventListener("keydown", event => {
+    if(event.key === "Enter"){ event.preventDefault(); sendMessage(); }
+});
 
 function searchWeb(query){
     if(!query) return;
     const url = "https://www.google.com/search?q=" + encodeURIComponent(query);
-    requestSecurity("Web araması", `"${query}" için tarayıcıda arama yapılacak.`, () => {
-        window.open(url, "_blank");
-        addMessage(`"${query}" için web aramasını açtım.`, "aura", true);
-    });
+    window.open(url, "_blank");
+    addMessage(`"${query}" için web araması başlatıldı.`, "aura", true);
 }
 
-async function requestNotificationPermission(){
-    if(!("Notification" in window)){ toast("Bildirimler bu tarayıcıda desteklenmiyor."); return; }
-    try{
-        const permission = await Notification.requestPermission();
-        toast(permission === "granted" ? "Bildirim izni verildi." : "Bildirim izni verilmedi.");
-    }catch(error){ toast("Bildirim izni alınamadı."); }
+function escapeHTML(text){
+    return String(text).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
 
-function updateOnlineStatus(){
-    AURA.online = navigator.onLine;
-    const chip = document.getElementById("onlineChip");
-    if(chip){
-        chip.textContent = AURA.online ? "ONLINE" : "OFFLINE";
-        chip.classList.toggle("active", AURA.online);
+function updateUI(){
+    const memoryChip = document.getElementById("memoryChip");
+    if(memoryChip) memoryChip.textContent = "MEMORY " + AURA.memories.length;
+    const voiceToggle = document.getElementById("voiceToggle");
+    if(voiceToggle) voiceToggle.textContent = AURA.voiceEnabled ? "AÇIK" : "KAPALI";
+}
+
+function updateStats(){
+    const memoryEl = document.getElementById("statMemory");
+    const messageEl = document.getElementById("statMessages");
+    if(memoryEl) memoryEl.textContent = AURA.memories.length;
+    if(messageEl) messageEl.textContent = AURA.messageCount;
+}
+
+function toggleVoice(){
+    AURA.voiceEnabled = !AURA.voiceEnabled;
+    localStorage.setItem("aura_voice", AURA.voiceEnabled);
+    updateUI();
+}
+
+function runSystemDiagnostic(){
+    addMessage(`SİSTEM TEŞHİSİ:\n- Çekirdek: Aktif (LLM Engine)\n- Hafıza: ${AURA.memories.length} Öğe\n- API Bağlantısı: ${AURA.apiKey ? 'Yapılandırıldı' : 'Eksik'}`, "aura", false);
+}
+    function resetAURAWithConfirm(){
+    if(confirm("Tüm yerel veriler sıfırlanacak. Onaylıyor musunuz?")){
+        localStorage.clear();
+        location.reload();
     }
 }
 
-window.addEventListener("online", () => { updateOnlineStatus(); toast("İnternet bağlantısı geri geldi."); });
-window.addEventListener("offline", () => { updateOnlineStatus(); toast("İnternet bağlantısı kesildi."); });
-
-let initialized = false;
 function auraInit(){
-    if(initialized) return;
-    initialized = true;
     loadPersistentData();
     setupRecognition();
     updateMemoryPanel();
     updateStats();
     updateUI();
-    updateOnlineStatus();
     coreState("normal");
-    toggleChatPanel(false);
 }
 
-if("speechSynthesis" in window){
-    speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-}
-
-setInterval(updateStats, 10000);
-if(AURA.proactiveEnabled) startProactiveEngine();
-
-document.addEventListener("DOMContentLoaded", () => setTimeout(auraInit, 80));
-if(document.readyState === "interactive" || document.readyState === "complete"){
-    setTimeout(auraInit, 120);
-}
-
-window.addEventListener("error", event => { console.error("AURA ERROR:", event.error); AURA.processing = false; coreState("normal"); });
+document.addEventListener("DOMContentLoaded", auraInit);
 </script>
 </body>
 </html>
