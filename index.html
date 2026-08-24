@@ -2,3627 +2,3988 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1.0,
-      maximum-scale=1.0,user-scalable=no">
-
-<meta name="theme-color" content="#020811">
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<title>AURA</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#030914">
+<meta name="description" content="AURA Personal AI Assistant">
+<title>AURA AI</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+:root{
+--bg:#02060d;
+--bg2:#06101d;
+--panel:#071321;
+--panel2:#0a1929;
+--line:rgba(42,183,255,.18);
+--line2:rgba(42,183,255,.35);
+--text:#e9f8ff;
+--muted:#7893a8;
+--blue:#18baff;
+--blue2:#356dff;
+--green:#45efac;
+--yellow:#ffd166;
+--red:#ff5875;
+--shadow:0 20px 80px rgba(0,0,0,.55);
+--radius:22px;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    margin:0;
-    overflow:hidden;
+*{
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+html{
+margin:0;
+padding:0;
+background:var(--bg);
 }
 
 body{
-    font-family:Arial,sans-serif;
-    color:#dffcff;
-    background:
-        radial-gradient(
-            circle at 50% 42%,
-            #07334a 0%,
-            #03131f 35%,
-            #01070d 72%,
-            #000 100%
-        );
+margin:0;
+min-height:100vh;
+background:
+radial-gradient(circle at 50% 28%,rgba(20,139,255,.12),transparent 32%),
+radial-gradient(circle at 50% 100%,rgba(0,85,180,.08),transparent 40%),
+var(--bg);
+color:var(--text);
+font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+overflow-x:hidden;
 }
 
-button,input,textarea{
-    font:inherit;
+button,
+input,
+textarea,
+select{
+font:inherit;
 }
 
 button{
-    border:0;
-    outline:0;
+cursor:pointer;
 }
 
-#app{
-    width:100%;
-    height:100%;
-    position:relative;
-    overflow:hidden;
+.app{
+min-height:100vh;
+position:relative;
+overflow:hidden;
 }
 
-.top{
-    height:48px;
-    position:absolute;
-    left:0;
-    right:0;
-    top:0;
-    z-index:20;
+.grid{
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.18;
+background-image:
+linear-gradient(rgba(30,160,255,.11) 1px,transparent 1px),
+linear-gradient(90deg,rgba(30,160,255,.11) 1px,transparent 1px);
+background-size:36px 36px;
+mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.glow{
+position:fixed;
+width:520px;
+height:520px;
+left:50%;
+top:35%;
+transform:translate(-50%,-50%);
+background:radial-gradient(circle,rgba(20,170,255,.13),transparent 68%);
+filter:blur(12px);
+pointer-events:none;
+}
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(2,12,20,.94),
-            rgba(2,8,14,.65)
-        );
+.container{
+position:relative;
+z-index:2;
+width:min(1500px,100%);
+margin:auto;
+padding:14px;
+}
+     .topbar{
+height:62px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+}
 
-    border-bottom:1px solid
-        rgba(50,210,255,.16);
+.brand{
+display:flex;
+align-items:center;
+gap:11px;
 }
 
 .logo{
-    color:#7deeff;
-    font-size:17px;
-    font-weight:700;
-    letter-spacing:5px;
-    text-shadow:
-        0 0 8px #00dfff,
-        0 0 22px rgba(0,220,255,.65);
+width:45px;
+height:45px;
+display:grid;
+place-items:center;
+border-radius:15px;
+background:linear-gradient(145deg,#0a2943,#07111e);
+border:1px solid var(--line2);
+box-shadow:0 0 30px rgba(24,186,255,.14);
+font-weight:900;
+letter-spacing:.08em;
+}
+
+.brand-text h1{
+font-size:20px;
+margin:0;
+letter-spacing:.08em;
+}
+
+.brand-text span{
+display:block;
+font-size:10px;
+color:var(--muted);
+letter-spacing:.14em;
+margin-top:2px;
+}
+
+.top-buttons{
+display:flex;
+gap:7px;
+}
+
+.btn{
+border:1px solid var(--line);
+background:rgba(6,17,29,.8);
+color:var(--text);
+border-radius:13px;
+padding:9px 12px;
+transition:.2s;
+}
+
+.btn:hover{
+border-color:var(--line2);
+transform:translateY(-1px);
+}
+
+.btn.primary{
+background:linear-gradient(135deg,#098dce,#3157ff);
+border:0;
+font-weight:700;
+}
+
+.btn.danger{
+color:#ff9bad;
+border-color:rgba(255,88,117,.3);
+}
+
+.statusbar{
+display:flex;
+gap:7px;
+flex-wrap:wrap;
+margin:8px 0 14px;
 }
 
 .status{
-    position:absolute;
-    right:14px;
-    font-size:8px;
-    letter-spacing:2px;
-    color:#7bffd7;
+font-size:11px;
+color:var(--muted);
+border:1px solid var(--line);
+background:rgba(3,11,20,.7);
+padding:7px 10px;
+border-radius:999px;
 }
 
-.status:before{
-    content:"";
-    display:inline-block;
-    width:6px;
-    height:6px;
-    margin-right:5px;
-    border-radius:50%;
-    background:#64ffd2;
-    box-shadow:0 0 9px #64ffd2;
+.status strong{
+color:var(--text);
 }
 
-#coreArea{
-    position:absolute;
-    inset:48px 0 0 0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transition:
-        transform .45s ease,
-        opacity .35s ease;
-}
-
-.coreWrap{
-    width:230px;
-    height:230px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.core{
-    width:118px;
-    height:118px;
-    border-radius:50%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#b9f9ff;
-    font-size:22px;
-    font-weight:700;
-    letter-spacing:4px;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #126b83,
-            #063448 42%,
-            #020d18 75%,
-            #01060b
-        );
-
-    border:2px solid #43eaff;
-
-    box-shadow:
-        0 0 12px #00dfff,
-        0 0 35px rgba(0,225,255,.65),
-        0 0 75px rgba(0,135,255,.25),
-        inset 0 0 25px rgba(0,220,255,.45);
-
-    animation:corePulse 2.7s ease-in-out infinite;
-
-    z-index:5;
-    cursor:pointer;
-}
-
-@keyframes corePulse{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.055);
-    }
-}
-
-.ring{
-    position:absolute;
-    border-radius:50%;
-    border:1px solid rgba(70,225,255,.55);
-    pointer-events:none;
-}
-
-.r1{
-    width:150px;
-    height:150px;
-    border-left-color:transparent;
-    border-right-color:transparent;
-    animation:spin 8s linear infinite;
-}
-
-.r2{
-    width:190px;
-    height:190px;
-    border-top-color:transparent;
-    border-bottom-color:transparent;
-    animation:spinReverse 12s linear infinite;
-}
-
-.r3{
-    width:220px;
-    height:220px;
-    border-left-color:transparent;
-    border-bottom-color:transparent;
-    opacity:.45;
-    animation:spin 17s linear infinite;
-}
-
-@keyframes spin{
-    from{transform:rotate(0)}
-    to{transform:rotate(360deg)}
-}
-
-@keyframes spinReverse{
-    from{transform:rotate(360deg)}
-    to{transform:rotate(0)}
-}
-    .chatPanel{
-    position:absolute;
-    left:7%;
-    right:7%;
-    bottom:0;
-
-    height:min(64vh,560px);
-
-    display:flex;
-    flex-direction:column;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(3,22,35,.96),
-            rgba(1,10,18,.985)
-        );
-
-    border:1px solid rgba(65,220,255,.2);
-    border-bottom:0;
-
-    border-radius:22px 22px 0 0;
-
-    box-shadow:
-        0 -12px 45px rgba(0,0,0,.55),
-        0 0 35px rgba(0,180,255,.08);
-
-    transform:translateY(105%);
-    transition:transform .45s cubic-bezier(.22,.8,.25,1);
-
-    z-index:30;
-}
-
-.chatPanel.open{
-    transform:translateY(0);
-}
-
-.chatHead{
-    height:46px;
-    flex-shrink:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-
-    border-bottom:1px solid
-        rgba(70,220,255,.12);
-}
-
-.dragBar{
-    width:42px;
-    height:4px;
-    border-radius:10px;
-    background:rgba(160,240,255,.35);
-}
-
-.closeChat{
-    position:absolute;
-    right:12px;
-    width:30px;
-    height:30px;
-    border-radius:50%;
-
-    color:#8defff;
-    background:rgba(50,180,220,.08);
-
-    cursor:pointer;
-}
-
-.messages{
-    flex:1;
-    min-height:0;
-
-    overflow-y:auto;
-
-    padding:14px 12px 12px;
-
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-
-    scrollbar-width:none;
-}
-
-.messages::-webkit-scrollbar{
-    display:none;
-}
-
-.message{
-    max-width:82%;
-    padding:10px 12px;
-
-    border-radius:15px;
-
-    font-size:13px;
-    line-height:1.45;
-
-    white-space:pre-wrap;
-    word-break:break-word;
-}
-
-.message.aura{
-    align-self:flex-start;
-
-    color:#d9fbff;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(8,57,76,.9),
-            rgba(3,27,42,.92)
-        );
-
-    border:1px solid
-        rgba(60,220,255,.16);
-
-    border-bottom-left-radius:5px;
-}
-
-.message.user{
-    align-self:flex-end;
-
-    color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(0,103,145,.92),
-            rgba(0,61,94,.95)
-        );
-
-    border:1px solid
-        rgba(65,220,255,.18);
-
-    border-bottom-right-radius:5px;
-}
-
-.message.system{
-    align-self:center;
-    max-width:90%;
-
-    color:#82b7c5;
-    font-size:10px;
-    text-align:center;
-
-    background:rgba(20,90,110,.08);
-}
-
-.composer{
-    min-height:66px;
-    flex-shrink:0;
-
-    display:flex;
-    align-items:flex-end;
-    gap:7px;
-
-    padding:9px;
-
-    background:
-        rgba(1,9,16,.98);
-
-    border-top:1px solid
-        rgba(60,220,255,.13);
-}
-
-.inputBox{
-    flex:1;
-    min-width:0;
-
-    min-height:44px;
-    max-height:110px;
-
-    display:flex;
-    align-items:center;
-
-    padding:0 12px;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(6,42,61,.96),
-            rgba(2,22,35,.98)
-        );
-
-    border:1px solid
-        rgba(70,220,255,.22);
-}
-
-#messageInput{
-    width:100%;
-    border:0;
-    outline:0;
-    resize:none;
-
-    color:#e9fdff;
-    background:transparent;
-
-    font-size:13px;
-
-    min-height:24px;
-    max-height:92px;
-}
-
-#messageInput::placeholder{
-    color:#6f9eaa;
-}
-
-.iconBtn{
-    width:44px;
-    height:44px;
-    flex-shrink:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    color:#91efff;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(7,61,82,.95),
-            rgba(2,29,43,.98)
-        );
-
-    border:1px solid
-        rgba(75,220,255,.22);
-
-    cursor:pointer;
-}
-
-.sendBtn{
-    width:44px;
-    height:44px;
-    flex-shrink:0;
-
-    border-radius:14px;
-
-    color:#001016;
-    background:#63eaff;
-
-    box-shadow:
-        0 0 15px rgba(70,230,255,.25);
-
-    cursor:pointer;
-}
-
-.sendBtn:active,
-.iconBtn:active,
-.closeChat:active{
-    transform:scale(.94);
-}
-
-.typing{
-    display:none;
-    align-self:flex-start;
-
-    padding:8px 12px;
-
-    color:#79d8e8;
-    font-size:11px;
-
-    background:rgba(10,65,83,.5);
-    border-radius:12px;
-}
-
-.typing.show{
-    display:block;
-}
-    .overlay{
-    position:absolute;
-    inset:0;
-
-    display:none;
-    align-items:flex-end;
-    justify-content:center;
-
-    background:rgba(0,0,0,.48);
-
-    z-index:50;
-}
-
-.overlay.show{
-    display:flex;
-}
-
-.modal{
-    width:min(94%,520px);
-    max-height:82vh;
-
-    overflow:auto;
-
-    margin-bottom:10px;
-    padding:17px;
-
-    border-radius:20px;
-
-    color:#e5fcff;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(4,29,44,.99),
-            rgba(2,13,22,.99)
-        );
-
-    border:1px solid
-        rgba(65,220,255,.2);
-
-    box-shadow:
-        0 15px 60px rgba(0,0,0,.65);
-}
-
-.modalTitle{
-    font-size:16px;
-    font-weight:700;
-    color:#80edff;
-    margin-bottom:13px;
-}
-
-.modalClose{
-    float:right;
-
-    width:30px;
-    height:30px;
-
-    border-radius:50%;
-
-    color:#9eefff;
-    background:rgba(50,180,220,.1);
-}
-
-.cardGrid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:9px;
+.layout{
+display:grid;
+grid-template-columns:minmax(0,1.45fr) minmax(320px,.7fr);
+gap:14px;
 }
 
 .card{
-    min-height:76px;
-
-    padding:12px;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,54,71,.7),
-            rgba(3,25,38,.8)
-        );
-
-    border:1px solid
-        rgba(65,210,255,.13);
-
-    cursor:pointer;
+background:linear-gradient(180deg,rgba(7,18,31,.92),rgba(3,10,19,.9));
+border:1px solid var(--line);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
 }
 
-.card:active{
-    transform:scale(.98);
+.main-card{
+min-height:700px;
+overflow:hidden;
+display:flex;
+flex-direction:column;
 }
 
-.cardIcon{
-    font-size:21px;
-    margin-bottom:7px;
+.core-area{
+flex:1;
+min-height:440px;
+display:grid;
+place-items:center;
+position:relative;
 }
 
-.cardTitle{
-    color:#b9f7ff;
-    font-size:12px;
-    font-weight:700;
+.core{
+width:245px;
+height:245px;
+position:relative;
+display:grid;
+place-items:center;
+border-radius:50%;
+isolation:isolate;
+user-select:none;
+touch-action:manipulation;
+animation:auraFloat 5s ease-in-out infinite;
+}
+      .core-main{
+position:absolute;
+inset:17px;
+border-radius:50%;
+z-index:3;
+background:
+radial-gradient(circle at 35% 28%,#a5efff 0,#4ad7ff 12%,#168fff 38%,#203cc4 67%,#040a20 100%);
+box-shadow:
+0 0 30px rgba(32,193,255,.9),
+0 0 75px rgba(24,166,255,.55),
+0 0 140px rgba(38,91,255,.25),
+inset 0 0 45px rgba(255,255,255,.2);
 }
 
-.cardText{
-    color:#6fabb7;
-    font-size:9px;
-    margin-top:4px;
+.core-main:after{
+content:"AURA";
+position:absolute;
+inset:0;
+display:grid;
+place-items:center;
+font-size:28px;
+font-weight:900;
+letter-spacing:.18em;
+color:white;
+text-shadow:0 0 18px rgba(255,255,255,.9);
 }
 
-.formGroup{
-    margin-bottom:11px;
+.ring{
+position:absolute;
+border-radius:50%;
+border:2px solid rgba(55,204,255,.45);
 }
 
-.formLabel{
-    display:block;
-    color:#75c8d8;
-    font-size:10px;
-    margin-bottom:5px;
+.ring.one{
+inset:-9px;
+animation:spin 8s linear infinite;
 }
 
-.formInput{
-    width:100%;
-    min-height:40px;
-
-    padding:9px 11px;
-
-    color:white;
-
-    background:#031823;
-
-    border:1px solid
-        rgba(65,210,255,.2);
-
-    border-radius:11px;
-    outline:0;
+.ring.two{
+inset:-29px;
+border-color:rgba(60,110,255,.34);
+animation:spin 13s linear infinite reverse;
 }
 
-.action{
-    width:100%;
-    min-height:42px;
-
-    margin-top:8px;
-
-    color:#001217;
-    background:#69eaff;
-
-    border-radius:11px;
-
-    font-weight:700;
+.ring.three{
+inset:-53px;
+border-style:dashed;
+border-color:rgba(50,198,255,.22);
+animation:spin 19s linear infinite;
 }
 
-.secondary{
-    color:#a8f1ff;
-    background:rgba(30,130,160,.14);
-    border:1px solid rgba(70,220,255,.18);
+.ring.four{
+inset:-82px;
+border-color:rgba(104,220,255,.12);
+animation:spin 28s linear infinite reverse;
 }
 
-.list{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
+.orbit{
+position:absolute;
+width:6px;
+height:6px;
+border-radius:50%;
+background:#73e9ff;
+box-shadow:0 0 14px #20caff;
+animation:orbit 7s linear infinite;
 }
 
-.listItem{
-    padding:10px;
-
-    border-radius:11px;
-
-    background:rgba(20,80,100,.12);
-    border:1px solid rgba(70,210,255,.1);
-
-    font-size:11px;
+.orbit.o2{
+animation-duration:10s;
+animation-delay:-3s;
 }
 
-.empty{
-    text-align:center;
-    padding:25px 10px;
-    color:#5c8993;
-    font-size:11px;
+.orbit.o3{
+animation-duration:13s;
+animation-delay:-7s;
 }
 
-.toast{
-    position:absolute;
-
-    left:50%;
-    bottom:20px;
-
-    transform:
-        translate(-50%,20px);
-
-    opacity:0;
-
-    pointer-events:none;
-
-    padding:10px 15px;
-
-    border-radius:12px;
-
-    background:
-        rgba(3,25,35,.96);
-
-    border:1px solid
-        rgba(70,220,255,.25);
-
-    color:#baf7ff;
-
-    font-size:11px;
-
-    transition:.3s;
-
-    z-index:100;
+.orbit.o4{
+animation-duration:17s;
+animation-delay:-11s;
 }
 
-.toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
+.core.listening{
+animation:auraPulse 1s infinite;
+}
+
+.core.thinking{
+animation:auraPulse 1.6s infinite;
+}
+
+.core.speaking{
+animation:auraPulse .7s infinite;
+}
+
+.core.error .core-main{
+filter:hue-rotate(300deg);
+}
+
+.core-label{
+position:absolute;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+font-size:11px;
+color:var(--muted);
+letter-spacing:.13em;
+text-transform:uppercase;
+white-space:nowrap;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg)}
+}
+
+@keyframes orbit{
+from{transform:rotate(0deg) translateX(165px)}
+to{transform:rotate(360deg) translateX(165px)}
+}
+
+@keyframes auraPulse{
+50%{transform:scale(1.045)}
+}
+
+@keyframes auraFloat{
+50%{transform:translateY(-7px)}
+}
+      .quick-actions{
+display:flex;
+flex-wrap:wrap;
+gap:7px;
+padding:0 18px 17px;
+}
+
+.chat{
+height:280px;
+border-top:1px solid var(--line);
+display:flex;
+flex-direction:column;
+}
+
+.messages{
+flex:1;
+overflow-y:auto;
+padding:12px 18px;
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.message{
+max-width:86%;
+padding:10px 13px;
+border-radius:16px;
+font-size:13px;
+line-height:1.45;
+white-space:pre-wrap;
+word-break:break-word;
+border:1px solid var(--line);
+}
+
+.message.user{
+align-self:flex-end;
+background:rgba(21,108,165,.22);
+}
+
+.message.aura{
+align-self:flex-start;
+background:rgba(7,21,36,.9);
+}
+
+.message.system{
+align-self:center;
+font-size:11px;
+color:var(--yellow);
+background:rgba(255,209,102,.06);
+}
+
+.composer{
+display:grid;
+grid-template-columns:1fr auto auto;
+gap:7px;
+padding:9px 18px 14px;
+}
+
+.chat-input{
+width:100%;
+min-height:45px;
+max-height:120px;
+resize:none;
+outline:0;
+border:1px solid var(--line);
+background:#030a13;
+color:var(--text);
+border-radius:14px;
+padding:11px 12px;
+}
+
+.chat-input:focus,
+.input:focus,
+.select:focus{
+border-color:var(--line2);
+box-shadow:0 0 0 3px rgba(24,186,255,.07);
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.tabs{
+display:flex;
+gap:6px;
+overflow-x:auto;
+padding:9px;
+border-bottom:1px solid var(--line);
+}
+
+.tab{
+white-space:nowrap;
+padding:8px 11px;
+border-radius:11px;
+border:1px solid transparent;
+background:transparent;
+color:var(--muted);
+}
+
+.tab.active,
+.tab:hover{
+color:var(--text);
+background:rgba(24,186,255,.09);
+border-color:var(--line);
+}
+
+.panel{
+padding:14px;
 }
 
 .hidden{
-    display:none!important;
+display:none!important;
+}
+      .stack{
+display:grid;
+gap:9px;
 }
 
-@media(max-width:500px){
-    .chatPanel{
-        left:3%;
-        right:3%;
-        height:66vh;
-    }
-
-    .coreWrap{
-        transform:scale(.94);
-    }
-
-    .cardGrid{
-        grid-template-columns:1fr 1fr;
-    }
+.row{
+display:flex;
+align-items:center;
+gap:7px;
+flex-wrap:wrap;
 }
-    </style>
+
+.between{
+justify-content:space-between;
+}
+
+.input,
+.select{
+width:100%;
+padding:10px 11px;
+border:1px solid var(--line);
+border-radius:12px;
+outline:0;
+background:#030a13;
+color:var(--text);
+}
+
+textarea.input{
+min-height:100px;
+resize:vertical;
+}
+
+.list{
+display:grid;
+gap:8px;
+margin-top:10px;
+}
+
+.item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+padding:10px;
+border:1px solid var(--line);
+border-radius:14px;
+background:rgba(4,13,23,.72);
+}
+
+.item-main{
+min-width:0;
+}
+
+.item-title{
+font-size:13px;
+font-weight:700;
+word-break:break-word;
+}
+
+.item-sub{
+font-size:10px;
+color:var(--muted);
+margin-top:3px;
+word-break:break-word;
+}
+
+.item-actions{
+display:flex;
+gap:5px;
+flex-shrink:0;
+}
+
+.mini{
+padding:6px 8px;
+font-size:10px;
+border-radius:9px;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:8px;
+}
+
+.tool{
+padding:11px;
+text-align:left;
+border:1px solid var(--line);
+border-radius:14px;
+background:rgba(4,14,25,.8);
+color:var(--text);
+}
+
+.tool:hover{
+border-color:var(--line2);
+}
+
+.tool strong{
+display:block;
+font-size:12px;
+}
+
+.tool span{
+display:block;
+font-size:10px;
+color:var(--muted);
+margin-top:3px;
+}
+
+.label{
+font-size:11px;
+color:var(--muted);
+}
+
+.clock{
+font-size:50px;
+font-weight:900;
+text-align:center;
+padding:15px 0;
+letter-spacing:.04em;
+}
+
+.progress{
+height:7px;
+border-radius:99px;
+overflow:hidden;
+background:#030a13;
+border:1px solid var(--line);
+}
+
+.progress-bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,var(--blue),var(--blue2));
+transition:width .3s;
+}
+
+.segment{
+display:flex;
+border:1px solid var(--line);
+border-radius:12px;
+overflow:hidden;
+}
+
+.segment button{
+flex:1;
+padding:8px;
+border:0;
+border-right:1px solid var(--line);
+background:transparent;
+color:var(--muted);
+}
+
+.segment button:last-child{
+border-right:0;
+}
+
+.segment button.active{
+background:rgba(24,186,255,.12);
+color:var(--text);
+}
+      .modal-background{
+position:fixed;
+inset:0;
+z-index:100;
+display:grid;
+place-items:center;
+padding:16px;
+background:rgba(0,0,0,.68);
+}
+
+.modal{
+width:min(720px,100%);
+max-height:90vh;
+overflow:auto;
+}
+
+.modal-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+padding:14px 16px;
+border-bottom:1px solid var(--line);
+}
+
+.modal-head h2{
+font-size:15px;
+margin:0;
+}
+
+.toast-area{
+position:fixed;
+right:15px;
+bottom:15px;
+z-index:200;
+display:grid;
+gap:7px;
+}
+
+.toast{
+padding:11px 14px;
+background:#071525;
+border:1px solid var(--line2);
+border-radius:13px;
+box-shadow:var(--shadow);
+font-size:12px;
+max-width:320px;
+}
+
+.footer{
+padding:13px 2px 3px;
+font-size:10px;
+color:#5d7689;
+text-align:center;
+}
+
+.badge{
+display:inline-block;
+padding:3px 7px;
+border-radius:99px;
+font-size:9px;
+border:1px solid var(--line);
+color:var(--muted);
+}
+
+.good{
+color:var(--green);
+}
+
+.warn{
+color:var(--yellow);
+}
+
+.bad{
+color:var(--red);
+}
+
+@media(max-width:980px){
+.layout{
+grid-template-columns:1fr;
+}
+}
+
+@media(max-width:650px){
+.container{
+padding:9px;
+}
+
+.topbar{
+height:56px;
+}
+
+.logo{
+width:40px;
+height:40px;
+}
+
+.brand-text h1{
+font-size:17px;
+}
+
+.brand-text span{
+font-size:8px;
+}
+
+.top-buttons .btn{
+padding:8px;
+font-size:10px;
+}
+
+.main-card{
+min-height:650px;
+}
+
+.core-area{
+min-height:390px;
+}
+
+.core{
+width:190px;
+height:190px;
+}
+
+.core-main:after{
+font-size:22px;
+}
+
+.ring.three{
+inset:-44px;
+}
+
+.ring.four{
+inset:-67px;
+}
+
+.quick-actions{
+padding-left:10px;
+padding-right:10px;
+}
+
+.chat{
+height:310px;
+}
+
+.composer{
+grid-template-columns:1fr auto;
+padding-left:10px;
+padding-right:10px;
+}
+
+.composer .clear-chat{
+display:none;
+}
+
+.message{
+max-width:93%;
+}
+
+.clock{
+font-size:40px;
+}
+}
+</style>
 </head>
-
 <body>
+      <div class="app">
+<div class="grid"></div>
+<div class="glow"></div>
 
-<div id="app">
+<div class="container">
 
-    <div class="top">
-        <div class="logo">AURA</div>
-        <div class="status" id="networkStatus">
-            ONLINE
-        </div>
-    </div>
+<header class="topbar">
 
-    <main id="coreArea">
+<div class="brand">
+<div class="logo">AU</div>
+<div class="brand-text">
+<h1>AURA</h1>
+<span>PERSONAL AI ASSISTANT</span>
+</div>
+</div>
 
-        <div class="coreWrap">
+<div class="top-buttons">
+<button class="btn" id="topFocus">Focus</button>
+<button class="btn" id="topMemory">Memory</button>
+<button class="btn" id="topSettings">Ayarlar</button>
+</div>
 
-            <div class="ring r1"></div>
-            <div class="ring r2"></div>
-            <div class="ring r3"></div>
+</header>
 
-            <div
-                class="core"
-                id="auraCore">
-                AURA
-            </div>
+<div class="statusbar">
+<div class="status">● <strong id="statusOnline">ONLINE</strong></div>
+<div class="status">◈ <strong id="statusMemory">MEMORY</strong></div>
+<div class="status">◉ <strong id="statusVoice">VOICE</strong></div>
+<div class="status">⚙ <strong id="statusMode">AUTO</strong></div>
+<div class="status">BAT <strong id="statusBattery">—</strong></div>
+<div class="status">NET <strong id="statusNetwork">—</strong></div>
+</div>
 
-        </div>
+<main class="layout">
 
-    </main>
+<section class="card main-card">
 
-    <section
-        class="chatPanel"
-        id="chatPanel">
+<div class="core-area">
 
-        <div
-            class="chatHead"
-            id="chatDrag">
+<div class="core" id="auraCore" role="button" tabindex="0">
 
-            <div class="dragBar"></div>
+<div class="core-main"></div>
 
-            <button
-                class="closeChat"
-                id="closeChat">
-                ×
-            </button>
+<div class="ring one"></div>
+<div class="ring two"></div>
+<div class="ring three"></div>
+<div class="ring four"></div>
 
-        </div>
+<div class="orbit"></div>
+<div class="orbit o2"></div>
+<div class="orbit o3"></div>
+<div class="orbit o4"></div>
 
-        <div
-            class="messages"
-            id="messages">
-        </div>
-
-        <div
-            class="typing"
-            id="typing">
-            AURA düşünüyor...
-        </div>
-
-        <div class="composer">
-
-            <button
-                class="iconBtn"
-                id="fileBtn"
-                title="Dosya">
-                ＋
-            </button>
-
-            <div class="inputBox">
-
-                <textarea
-                    id="messageInput"
-                    rows="1"
-                    placeholder="AURA'ya bir şey yaz...">
-                </textarea>
-
-            </div>
-
-            <button
-                class="iconBtn"
-                id="micBtn"
-                title="Sesli giriş">
-                🎙
-            </button>
-
-            <button
-                class="sendBtn"
-                id="sendBtn"
-                title="Gönder">
-                ➤
-            </button>
-
-            <input
-                id="fileInput"
-                class="hidden"
-                type="file"
-                multiple>
-
-        </div>
-
-    </section>
-
-    <div
-        class="overlay"
-        id="overlay">
-
-        <div
-            class="modal"
-            id="modal">
-        </div>
-
-    </div>
-
-    <div
-        class="toast"
-        id="toast">
-    </div>
+<div class="core-label" id="coreLabel">
+DOKUN VE KONUŞ
+</div>
 
 </div>
 
-<script src="https://js.puter.com/v2/"></script>
+</div>
 
+<div class="quick-actions">
+<button class="btn primary" id="microphoneButton">Mikrofon</button>
+<button class="btn" id="stopSpeechButton">Sesi Durdur</button>
+<button class="btn" id="webButton">Web Ara</button>
+<button class="btn" id="cameraButton">Kamera</button>
+<button class="btn" id="systemButton">Sistem</button>
+</div>
+
+<div class="chat">
+
+<div class="messages" id="messages"></div>
+
+<div class="composer">
+
+<textarea
+class="chat-input"
+id="chatInput"
+placeholder="AURA'ya bir şey sor..."
+></textarea>
+
+<button class="btn" id="sendButton">Gönder</button>
+
+<button class="btn clear-chat" id="clearChatButton">Temizle</button>
+
+</div>
+
+</div>
+
+</section>
+<aside class="side">
+
+<div class="card">
+
+<div class="tabs">
+
+<button class="tab active" data-tab="home">Genel</button>
+<button class="tab" data-tab="tools">Araçlar</button>
+<button class="tab" data-tab="tasks">Görevler</button>
+<button class="tab" data-tab="focus">Focus</button>
+<button class="tab" data-tab="memory">Hafıza</button>
+
+</div>
+
+<div class="panel tab-panel" id="tab-home">
+
+<div class="stack">
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">AURA Durumu</div>
+<div class="item-sub" id="overviewStatus">
+Sistem hazır.
+</div>
+</div>
+<span class="badge good">READY</span>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Hafıza</div>
+<div class="item-sub">
+<span id="memoryCount">0</span> kayıt
+</div>
+</div>
+<button class="btn mini" id="homeMemory">Aç</button>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Görevler</div>
+<div class="item-sub">
+<span id="taskCount">0</span> açık görev
+</div>
+</div>
+<button class="btn mini" id="homeTasks">Aç</button>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Focus</div>
+<div class="item-sub" id="homeFocus">
+25:00 • Hazır
+</div>
+</div>
+<button class="btn mini" id="homeFocusButton">Aç</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="panel tab-panel hidden" id="tab-tools">
+
+<div class="tools">
+
+<button class="tool" data-tool="calculator">
+<strong>Hesap Makinesi</strong>
+<span>Matematik işlemleri</span>
+</button>
+
+<button class="tool" data-tool="converter">
+<strong>Dönüştürücü</strong>
+<span>Birim / yüzde</span>
+</button>
+
+<button class="tool" data-tool="timer">
+<strong>Zamanlayıcı</strong>
+<span>Geri sayım</span>
+</button>
+
+<button class="tool" data-tool="notes">
+<strong>Notlar</strong>
+<span>Kalıcı notlar</span>
+</button>
+
+<button class="tool" data-tool="json">
+<strong>JSON</strong>
+<span>Format / doğrula</span>
+</button>
+
+<button class="tool" data-tool="search">
+<strong>Araştır</strong>
+<span>Web araması</span>
+</button>
+
+<button class="tool" data-tool="weather">
+<strong>Hava Durumu</strong>
+<span>Konum / şehir</span>
+</button>
+
+<button class="tool" data-tool="camera">
+<strong>Kamera</strong>
+<span>Görüntü al</span>
+</button>
+
+<button class="tool" data-tool="file">
+<strong>Dosya</strong>
+<span>Dosya inceleme</span>
+</button>
+
+<button class="tool" data-tool="notify">
+<strong>Bildirim</strong>
+<span>Yerel bildirim</span>
+</button>
+
+<button class="tool" data-tool="qr">
+<strong>QR</strong>
+<span>QR tarama</span>
+</button>
+
+<button class="tool" data-tool="stats">
+<strong>İstatistik</strong>
+<span>AURA kullanımı</span>
+</button>
+
+</div>
+
+</div>
+<div class="panel tab-panel hidden" id="tab-tasks">
+
+<div class="row">
+
+<input
+class="input"
+id="taskInput"
+placeholder="Yeni görev..."
+>
+
+<button class="btn primary" id="addTaskButton">
+Ekle
+</button>
+
+</div>
+
+<div class="list" id="taskList"></div>
+
+</div>
+
+<div class="panel tab-panel hidden" id="tab-focus">
+
+<div class="segment">
+
+<button data-focus="25" class="active">
+25 dk
+</button>
+
+<button data-focus="50">
+50 dk
+</button>
+
+<button data-focus="5">
+5 dk
+</button>
+
+</div>
+
+<div class="clock" id="focusClock">
+25:00
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="focusProgress"></div>
+</div>
+
+<div class="row" style="margin-top:10px">
+
+<button class="btn primary" id="focusStart">
+Başlat
+</button>
+
+<button class="btn" id="focusPause">
+Duraklat
+</button>
+
+<button class="btn" id="focusReset">
+Sıfırla
+</button>
+
+</div>
+
+</div>
+
+<div class="panel tab-panel hidden" id="tab-memory">
+
+<div class="row">
+
+<input
+class="input"
+id="memorySearch"
+placeholder="Hafızada ara..."
+>
+
+<button class="btn danger mini" id="clearMemoryButton">
+Sil
+</button>
+
+</div>
+
+<div class="list" id="memoryList"></div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="panel">
+
+<div class="stack">
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Komutlar</div>
+<div class="item-sub">
+"saat kaç", "tarihi söyle", "bunu hatırla", "görev ekle", "focus", "hafızam", "sistem durumu"
+</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Güvenlik</div>
+<div class="item-sub">
+Kritik veri işlemlerinde onay sistemi.
+</div>
+</div>
+<button class="btn mini" id="securityButton">
+Ayarla
+</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</aside>
+
+</main>
+
+<div class="footer">
+AURA v4 • Local Memory • Voice • Tools • Focus
+</div>
+
+</div>
+</div>
+
+<div id="modalRoot" class="hidden"></div>
+<div class="toast-area" id="toastArea"></div>
 <script>
 "use strict";
 
-const $ = id =>
-    document.getElementById(id);
+const $ = (selector, root=document) => root.querySelector(selector);
+const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
 
-const core =
-    $("auraCore");
-
-const coreArea =
-    $("coreArea");
-
-const chatPanel =
-    $("chatPanel");
-
-const messages =
-    $("messages");
-
-const input =
-    $("messageInput");
-
-const sendBtn =
-    $("sendBtn");
-
-const micBtn =
-    $("micBtn");
-
-const fileBtn =
-    $("fileBtn");
-
-const fileInput =
-    $("fileInput");
-
-const closeChat =
-    $("closeChat");
-
-const overlay =
-    $("overlay");
-
-const modal =
-    $("modal");
-
-const toast =
-    $("toast");
-
-const typing =
-    $("typing");
-
-const networkStatus =
-    $("networkStatus");
-
-const STORAGE =
-    "AURA_EDA_V10";
-
-const DB_NAME =
-    "AURA_OFFLINE_DB";
-
-const DB_VERSION =
-    1;
-
-let state = {
-    memories:[],
-    notes:[],
-    tasks:[],
-    events:[],
-    moods:[],
-    cycles:[],
-    memoriesOfUs:[],
-    favoriteStories:[],
-    settings:{
-        voice:false,
-        theme:"blue"
-    },
-    chat:[]
+const STORAGE = {
+state:"AURA_STATE_V4",
+memory:"AURA_MEMORY_V4",
+tasks:"AURA_TASKS_V4",
+notes:"AURA_NOTES_V4",
+stats:"AURA_STATS_V4",
+chat:"AURA_CHAT_V4"
 };
 
+const DEFAULT_STATE = {
+userName:"Kullanıcı",
+assistantName:"AURA",
+mode:"AUTO",
+voice:true,
+autoSpeak:true,
+security:true,
+sound:true,
+focusMinutes:25,
+ttsRate:1,
+ai:{
+enabled:false,
+endpoint:"",
+model:"",
+key:""
+}
+};
+
+let state = load(STORAGE.state, DEFAULT_STATE);
+let memory = load(STORAGE.memory, []);
+let tasks = load(STORAGE.tasks, []);
+let notes = load(STORAGE.notes, []);
+let stats = load(STORAGE.stats,{
+messages:0,
+voiceCommands:0,
+focusSeconds:0,
+searches:0,
+sessions:0
+});
+
 let recognition = null;
-let isListening = false;
-let touchStartY = 0;
-let touchCurrentY = 0;
-let draggingChat = false;
-let currentAudio = null;
-    function saveState(){
-    try{
-        localStorage.setItem(
-            STORAGE,
-            JSON.stringify(state)
-        );
-    }catch(e){
-        console.error(e);
-    }
+let listening = false;
+
+let focusTimer = null;
+let focusRunning = false;
+let focusRemaining = (state.focusMinutes || 25) * 60;
+
+let timerHandle = null;
+let timerRemaining = 0;
+
+let cameraStream = null;
+
+function load(key,fallback){
+try{
+const value = localStorage.getItem(key);
+return value ? JSON.parse(value) : structuredClone(fallback);
+}catch{
+return structuredClone(fallback);
+}
 }
 
-function loadState(){
-
-    try{
-
-        const raw =
-            localStorage.getItem(STORAGE);
-
-        if(!raw) return;
-
-        const parsed =
-            JSON.parse(raw);
-
-        state = {
-            ...state,
-            ...parsed,
-            settings:{
-                ...state.settings,
-                ...(parsed.settings || {})
-            }
-        };
-
-    }catch(e){
-        console.error(
-            "AURA hafızası okunamadı",
-            e
-        );
-    }
+function save(key,value){
+try{
+localStorage.setItem(key,JSON.stringify(value));
+}catch{}
 }
 
-function toastMessage(text){
-
-    toast.textContent = text;
-    toast.classList.add("show");
-
-    clearTimeout(
-        toastMessage.timer
-    );
-
-    toastMessage.timer =
-        setTimeout(()=>{
-            toast.classList.remove("show");
-        },2200);
+function saveAll(){
+save(STORAGE.state,state);
+save(STORAGE.memory,memory);
+save(STORAGE.tasks,tasks);
+save(STORAGE.notes,notes);
+save(STORAGE.stats,stats);
 }
 
-function openChat(){
-
-    chatPanel.classList.add("open");
-
-    coreArea.style.transform =
-        "translateY(-7vh) scale(.88)";
-
-    setTimeout(()=>{
-        input.focus();
-        scrollMessages();
-    },420);
+function uuid(){
+if(window.crypto && crypto.randomUUID){
+return crypto.randomUUID();
+}
+return Date.now()+"_"+Math.random().toString(16).slice(2);
 }
 
-function closeChatPanel(){
-
-    chatPanel.classList.remove("open");
-
-    coreArea.style.transform =
-        "translateY(0) scale(1)";
+function toast(text){
+const element=document.createElement("div");
+element.className="toast";
+element.textContent=text;
+$("#toastArea").appendChild(element);
+setTimeout(()=>element.remove(),3200);
 }
 
-function toggleChat(){
-    if(
-        chatPanel.classList.contains("open")
-    ){
-        closeChatPanel();
-    }else{
-        openChat();
-    }
+function formatTime(date=new Date()){
+return date.toLocaleTimeString("tr-TR",{
+hour:"2-digit",
+minute:"2-digit"
+});
 }
 
-function scrollMessages(){
+function formatDate(date=new Date()){
+return date.toLocaleDateString("tr-TR",{
+day:"2-digit",
+month:"long",
+year:"numeric"
+});
+}
+      function clockText(seconds){
+seconds=Math.max(0,Math.floor(seconds));
 
-    messages.scrollTop =
-        messages.scrollHeight;
+const minutes=Math.floor(seconds/60);
+const secs=seconds%60;
+
+return String(minutes).padStart(2,"0")+":"+
+String(secs).padStart(2,"0");
 }
 
-function addMessage(
-    text,
-    type="aura",
-    save=true
-){
+function setCore(mode,label){
+const core=$("#auraCore");
 
-    const el =
-        document.createElement("div");
+core.classList.remove(
+"listening",
+"thinking",
+"speaking",
+"error"
+);
 
-    el.className =
-        "message " + type;
-
-    el.textContent = text;
-
-    messages.appendChild(el);
-
-    if(save){
-
-        state.chat.push({
-            text,
-            type,
-            time:Date.now()
-        });
-
-        if(
-            state.chat.length > 100
-        ){
-            state.chat =
-                state.chat.slice(-100);
-        }
-
-        saveState();
-    }
-
-    scrollMessages();
+if(mode){
+core.classList.add(mode);
 }
 
-function loadChat(){
-
-    messages.innerHTML = "";
-
-    if(
-        !state.chat.length
-    ){
-        addMessage(
-            "Selam Bedirhan, sistem hazır.",
-            "aura",
-            false
-        );
-        return;
-    }
-
-    state.chat.forEach(item=>{
-        addMessage(
-            item.text,
-            item.type,
-            false
-        );
-    });
-}
-    function clearCurrentChat(){
-
-    state.chat = [];
-    saveState();
-
-    messages.innerHTML = "";
-
-    addMessage(
-        "Yeni sohbet hazır.",
-        "system",
-        false
-    );
+$("#coreLabel").textContent=label || "HAZIR";
 }
 
-function memoryText(){
+function addMessage(text,type="aura",shouldSpeak=false){
+const element=document.createElement("div");
 
-    if(
-        !state.memories.length
-    ){
-        return "Kayıtlı özel bilgi bulunmuyor.";
-    }
+element.className="message "+type;
+element.textContent=text;
 
-    return state.memories
-        .map(x=>"• "+x.text)
-        .join("\n");
+$("#messages").appendChild(element);
+
+$("#messages").scrollTop=$("#messages").scrollHeight;
+
+if(type==="user"){
+stats.messages++;
 }
 
-function addMemory(text){
-
-    if(!text) return;
-
-    state.memories.push({
-        text,
-        time:Date.now()
-    });
-
-    saveState();
-
-    toastMessage(
-        "Bilgi hafızaya kaydedildi."
-    );
+if(shouldSpeak && state.voice && state.autoSpeak){
+speak(text);
 }
 
-function deleteMemory(index){
-
-    state.memories.splice(index,1);
-
-    saveState();
-
-    showMemoryModal();
+saveAll();
 }
 
-function showMemoryModal(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="closeModal()">×</button>
-
-        <div class="modalTitle">
-            AURA Hafızası
-        </div>
-
-        <div class="list">
-            ${
-                state.memories.length
-                ?
-                state.memories.map(
-                    (x,i)=>`
-                    <div class="listItem">
-                        ${escapeHTML(x.text)}
-                        <br>
-                        <button
-                            class="action secondary"
-                            onclick="deleteMemory(${i})">
-                            Sil
-                        </button>
-                    </div>
-                    `
-                ).join("")
-                :
-                `<div class="empty">
-                    Hafıza boş.
-                </div>`
-            }
-        </div>
-
-        <button
-            class="action"
-            onclick="showAddMemory()">
-            Yeni bilgi ekle
-        </button>
-    `;
-
-    openModal();
+function speak(text){
+if(!("speechSynthesis" in window)){
+toast("Sesli çıkış desteklenmiyor.");
+return;
 }
 
-function showAddMemory(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showMemoryModal()">×</button>
-
-        <div class="modalTitle">
-            Hafızaya Bilgi Ekle
-        </div>
-
-        <div class="formGroup">
-            <label class="formLabel">
-                Bilgi
-            </label>
-
-            <input
-                class="formInput"
-                id="memoryInput"
-                placeholder="Örneğin: Çikolatalı tatlıları seviyor.">
-        </div>
-
-        <button
-            class="action"
-            onclick="saveMemoryForm()">
-            Kaydet
-        </button>
-    `;
+if(!state.voice){
+return;
 }
 
-function saveMemoryForm(){
+window.speechSynthesis.cancel();
 
-    const el =
-        $("memoryInput");
+const utterance=new SpeechSynthesisUtterance(text);
 
-    if(!el || !el.value.trim()){
-        return;
-    }
+utterance.lang="tr-TR";
+utterance.rate=Number(state.ttsRate)||1;
+utterance.pitch=1;
 
-    addMemory(el.value.trim());
+utterance.onstart=()=>{
+setCore("speaking","KONUŞUYOR");
+};
 
-    showMemoryModal();
+utterance.onend=()=>{
+setCore("","HAZIR");
+};
+
+utterance.onerror=()=>{
+setCore("","HAZIR");
+};
+
+window.speechSynthesis.speak(utterance);
 }
 
-function openModal(){
-    overlay.classList.add("show");
+function stopSpeech(){
+if("speechSynthesis" in window){
+window.speechSynthesis.cancel();
+}
+
+setCore("","HAZIR");
+}
+
+function cleanText(text){
+return String(text||"").replace(/<[^>]*>/g,"").trim();
+}
+
+function getOnline(){
+return navigator.onLine;
+}
+
+function updateStatus(){
+$("#statusOnline").textContent=getOnline()?"ONLINE":"OFFLINE";
+$("#statusNetwork").textContent=getOnline()?"ONLINE":"OFFLINE";
+$("#statusMemory").textContent="ACTIVE";
+$("#statusVoice").textContent=("speechSynthesis" in window)?"READY":"NO";
+$("#statusMode").textContent=state.mode||"AUTO";
+}
+      function addMemory(text,category="general"){
+text=cleanText(text);
+
+if(!text){
+return;
+}
+
+memory.unshift({
+id:uuid(),
+text,
+category,
+date:new Date().toISOString()
+});
+
+memory=memory.slice(0,500);
+
+saveAll();
+renderMemory();
+
+toast("Hafızaya kaydedildi.");
+}
+
+function deleteMemory(id){
+memory=memory.filter(item=>item.id!==id);
+saveAll();
+renderMemory();
+}
+
+function renderMemory(){
+const list=$("#memoryList");
+
+if(!list){
+return;
+}
+
+const query=($("#memorySearch")?.value||"")
+.toLowerCase()
+.trim();
+
+list.innerHTML="";
+
+const filtered=memory.filter(item=>{
+return !query ||
+item.text.toLowerCase().includes(query) ||
+item.category.toLowerCase().includes(query);
+});
+
+if(!filtered.length){
+const empty=document.createElement("div");
+empty.className="item";
+empty.textContent="Hafızada kayıt bulunmuyor.";
+list.appendChild(empty);
+return;
+}
+
+filtered.slice(0,100).forEach(item=>{
+
+const row=document.createElement("div");
+row.className="item";
+
+const main=document.createElement("div");
+main.className="item-main";
+
+const title=document.createElement("div");
+title.className="item-title";
+title.textContent=item.text;
+
+const sub=document.createElement("div");
+sub.className="item-sub";
+sub.textContent=
+item.category+" • "+
+new Date(item.date).toLocaleString("tr-TR");
+
+main.appendChild(title);
+main.appendChild(sub);
+
+const actions=document.createElement("div");
+actions.className="item-actions";
+
+const remove=document.createElement("button");
+remove.className="btn danger mini";
+remove.textContent="Sil";
+
+remove.onclick=()=>{
+deleteMemory(item.id);
+};
+
+actions.appendChild(remove);
+
+row.appendChild(main);
+row.appendChild(actions);
+
+list.appendChild(row);
+
+});
+}
+
+function memorySummary(){
+if(!memory.length){
+return "Hafızamda kayıtlı bilgi bulunmuyor.";
+}
+
+const latest=memory
+.slice(0,5)
+.map(item=>item.text)
+.join(" | ");
+
+return "Hafızamda "+memory.length+
+" kayıt var. Son kayıtlar: "+latest;
+}
+      function addTask(title){
+title=cleanText(title);
+
+if(!title){
+return;
+}
+
+tasks.unshift({
+id:uuid(),
+title,
+done:false,
+created:new Date().toISOString()
+});
+
+saveAll();
+renderTasks();
+
+$("#taskInput").value="";
+
+toast("Görev eklendi.");
+}
+
+function renderTasks(){
+const list=$("#taskList");
+
+if(!list){
+return;
+}
+
+list.innerHTML="";
+
+if(!tasks.length){
+const empty=document.createElement("div");
+empty.className="item";
+empty.textContent="Henüz görev yok.";
+list.appendChild(empty);
+return;
+}
+
+tasks.forEach(task=>{
+
+const row=document.createElement("div");
+row.className="item";
+
+const main=document.createElement("div");
+main.className="item-main";
+
+const title=document.createElement("div");
+title.className="item-title";
+
+title.textContent=
+(task.done?"✓ ":"")+task.title;
+
+if(task.done){
+title.style.textDecoration="line-through";
+}
+
+const sub=document.createElement("div");
+sub.className="item-sub";
+
+sub.textContent=
+new Date(task.created).toLocaleString("tr-TR");
+
+main.appendChild(title);
+main.appendChild(sub);
+
+const actions=document.createElement("div");
+actions.className="item-actions";
+
+const complete=document.createElement("button");
+complete.className="btn mini";
+complete.textContent=task.done?"Aç":"Tamam";
+
+complete.onclick=()=>{
+task.done=!task.done;
+saveAll();
+renderTasks();
+updateOverview();
+};
+
+const remove=document.createElement("button");
+remove.className="btn danger mini";
+remove.textContent="Sil";
+
+remove.onclick=()=>{
+tasks=tasks.filter(item=>item.id!==task.id);
+saveAll();
+renderTasks();
+updateOverview();
+};
+
+actions.appendChild(complete);
+actions.appendChild(remove);
+
+row.appendChild(main);
+row.appendChild(actions);
+
+list.appendChild(row);
+
+});
+}
+
+function updateOverview(){
+$("#memoryCount").textContent=memory.length;
+
+$("#taskCount").textContent=
+tasks.filter(task=>!task.done).length;
+
+$("#homeFocus").textContent=
+clockText(focusRemaining)+" • "+
+(focusRunning?"ÇALIŞIYOR":"HAZIR");
+      }
+      function setTab(name){
+$$(".tab-panel").forEach(panel=>{
+panel.classList.add("hidden");
+});
+
+const target=$("#tab-"+name);
+
+if(target){
+target.classList.remove("hidden");
+}
+
+$$(".tab").forEach(tab=>{
+tab.classList.toggle(
+"active",
+tab.dataset.tab===name
+);
+});
+}
+
+function openModal(title,content,onReady){
+const root=$("#modalRoot");
+
+root.className="modal-background";
+
+root.innerHTML="";
+
+const modal=document.createElement("div");
+modal.className="modal card";
+
+const head=document.createElement("div");
+head.className="modal-head";
+
+const heading=document.createElement("h2");
+heading.textContent=title;
+
+const close=document.createElement("button");
+close.className="btn";
+close.textContent="Kapat";
+
+close.onclick=closeModal;
+
+head.appendChild(heading);
+head.appendChild(close);
+
+const body=document.createElement("div");
+body.className="panel";
+body.innerHTML=content;
+
+modal.appendChild(head);
+modal.appendChild(body);
+
+root.appendChild(modal);
+
+if(onReady){
+onReady(root);
+}
 }
 
 function closeModal(){
-    overlay.classList.remove("show");
+const root=$("#modalRoot");
+
+root.className="hidden";
+root.innerHTML="";
 }
 
-function escapeHTML(text){
-
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-}
-    function showFeatureMenu(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="closeModal()">×</button>
-
-        <div class="modalTitle">
-            AURA
-        </div>
-
-        <div class="cardGrid">
-
-            <div
-                class="card"
-                onclick="showMemoryModal()">
-                <div class="cardIcon">🧠</div>
-                <div class="cardTitle">
-                    Hafıza
-                </div>
-                <div class="cardText">
-                    Kayıtlı bilgiler
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showStories()">
-                <div class="cardIcon">📖</div>
-                <div class="cardTitle">
-                    Masallar
-                </div>
-                <div class="cardText">
-                    Offline masal arşivi
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showEvents()">
-                <div class="cardIcon">💝</div>
-                <div class="cardTitle">
-                    Özel Günler
-                </div>
-                <div class="cardText">
-                    Tarihler ve anılar
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showCycle()">
-                <div class="cardIcon">🌸</div>
-                <div class="cardTitle">
-                    Regl Takibi
-                </div>
-                <div class="cardText">
-                    Döngü kayıtları
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showTasks()">
-                <div class="cardIcon">✓</div>
-                <div class="cardTitle">
-                    Görevler
-                </div>
-                <div class="cardText">
-                    Günlük plan
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showMoods()">
-                <div class="cardIcon">☁</div>
-                <div class="cardTitle">
-                    Ruh Hali
-                </div>
-                <div class="cardText">
-                    Günlük check-in
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showMemoriesOfUs()">
-                <div class="cardIcon">♥</div>
-                <div class="cardTitle">
-                    Anılarımız
-                </div>
-                <div class="cardText">
-                    Fotoğraf ve notlar
-                </div>
-            </div>
-
-            <div
-                class="card"
-                onclick="showSettings()">
-                <div class="cardIcon">⚙</div>
-                <div class="cardTitle">
-                    Ayarlar
-                </div>
-                <div class="cardText">
-                    AURA seçenekleri
-                </div>
-            </div>
-
-        </div>
-    `;
-
-    openModal();
+function criticalAction(message,callback){
+if(!state.security){
+callback();
+return;
 }
 
-function showDashboard(){
+openModal(
+"Güvenlik Onayı",
+`
+<div class="stack">
+<div class="item">
+<div class="item-main">
+<div class="item-title">${escapeHTML(message)}</div>
+<div class="item-sub">Bu işlem geri alınamayabilir.</div>
+</div>
+</div>
 
-    showFeatureMenu();
+<div class="row">
+<button class="btn primary" id="confirmAction">Onayla</button>
+<button class="btn" id="cancelAction">Vazgeç</button>
+</div>
+</div>
+`,
+root=>{
+$("#confirmAction",root).onclick=()=>{
+closeModal();
+callback();
+};
+
+$("#cancelAction",root).onclick=closeModal;
+}
+);
 }
 
-function showSettings(){
+function escapeHTML(value){
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+}
+      function startListening(){
 
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            AURA Ayarları
-        </div>
-
-        <div class="formGroup">
-
-            <label class="formLabel">
-                Sesli cevap
-            </label>
-
-            <button
-                class="action secondary"
-                onclick="toggleVoice()">
-
-                ${
-                    state.settings.voice
-                    ? "Açık"
-                    : "Kapalı"
-                }
-
-            </button>
-
-        </div>
-
-        <button
-            class="action secondary"
-            onclick="clearCurrentChat()">
-
-            Yeni sohbet
-
-        </button>
-
-        <button
-            class="action secondary"
-            onclick="showMemoryModal()">
-
-            Hafızayı yönet
-
-        </button>
-
-        <button
-            class="action secondary"
-            onclick="showFeatureMenu()">
-
-            Geri
-
-        </button>
-    `;
-
-    openModal();
+if(!("SpeechRecognition" in window) &&
+!("webkitSpeechRecognition" in window)){
+toast("Bu tarayıcı sesli giriş desteklemiyor.");
+return;
 }
 
-function toggleVoice(){
-
-    state.settings.voice =
-        !state.settings.voice;
-
-    saveState();
-
-    showSettings();
-}
-    function showStories(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            Masal Arşivi
-        </div>
-
-        <div class="list">
-
-            <div class="listItem">
-                <b>Pinokyo</b><br>
-                <small>
-                    Kayıtlı ses dosyası varsa
-                    buradan oynatılır.
-                </small>
-
-                <button
-                    class="action secondary"
-                    onclick="playStory('pinokyo')">
-                    Dinle
-                </button>
-            </div>
-
-            <div class="listItem">
-                <b>Çizmeli Kedi</b><br>
-                <small>
-                    Offline dinleme desteği
-                </small>
-
-                <button
-                    class="action secondary"
-                    onclick="playStory('cizmeli-kedi')">
-                    Dinle
-                </button>
-            </div>
-
-            <div class="listItem">
-                <b>Kırmızı Başlıklı Kız</b><br>
-                <small>
-                    Offline arşiv
-                </small>
-
-                <button
-                    class="action secondary"
-                    onclick="playStory('kirmizi-baslikli-kiz')">
-                    Dinle
-                </button>
-            </div>
-
-        </div>
-
-        <button
-            class="action"
-            onclick="showStoryUpload()">
-            Masal / ses kaydı ekle
-        </button>
-    `;
-
-    openModal();
+if(listening){
+stopListening();
+return;
 }
 
-function showStoryUpload(){
+const SpeechRecognition=
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
 
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showStories()">×</button>
+recognition=new SpeechRecognition();
 
-        <div class="modalTitle">
-            Offline Ses Kaydı
-        </div>
+recognition.lang="tr-TR";
+recognition.continuous=false;
+recognition.interimResults=false;
 
-        <div class="formGroup">
+recognition.onstart=()=>{
+listening=true;
+stats.voiceCommands++;
 
-            <label class="formLabel">
-                Masal adı
-            </label>
+$("#microphoneButton").textContent="Dinliyorum...";
 
-            <input
-                class="formInput"
-                id="storyName"
-                placeholder="Örneğin: Uyku Masalı">
+setCore("listening","DİNLİYORUM");
 
-        </div>
+saveAll();
+};
 
-        <div class="formGroup">
+recognition.onresult=event=>{
 
-            <label class="formLabel">
-                Ses dosyası
-            </label>
+const result=
+event.results?.[0]?.[0]?.transcript||"";
 
-            <input
-                class="formInput"
-                id="storyFile"
-                type="file"
-                accept="audio/*">
-
-        </div>
-
-        <button
-            class="action"
-            onclick="saveStory()">
-            Telefona kaydet
-        </button>
-    `;
+if(result){
+$("#chatInput").value=result;
+sendMessage();
 }
 
-async function saveStory(){
+};
 
-    const name =
-        $("storyName").value.trim();
+recognition.onerror=()=>{
+toast("Mikrofon kullanılamadı.");
+stopListening();
+};
 
-    const file =
-        $("storyFile").files[0];
+recognition.onend=()=>{
+stopListening();
+};
 
-    if(!name || !file){
-        toastMessage(
-            "Masal adı ve ses dosyası gerekli."
-        );
-        return;
-    }
-
-    try{
-
-        await dbPut(
-            "stories",
-            {
-                id:"story_"+Date.now(),
-                name,
-                type:file.type,
-                blob:file,
-                created:Date.now()
-            }
-        );
-
-        toastMessage(
-            "Masal offline kaydedildi."
-        );
-
-        showStories();
-
-    }catch(e){
-
-        console.error(e);
-
-        toastMessage(
-            "Ses kaydedilemedi."
-        );
-    }
+try{
+recognition.start();
+}catch{
+stopListening();
+}
 }
 
-async function playStory(id){
+function stopListening(){
 
-    try{
+try{
+recognition?.stop();
+}catch{}
 
-        const item =
-            await dbGet("stories",id);
+listening=false;
 
-        if(!item){
-            toastMessage(
-                "Bu kayıt henüz yüklenmemiş."
-            );
-            return;
-        }
+$("#microphoneButton").textContent="Mikrofon";
 
-        if(currentAudio){
-            currentAudio.pause();
-        }
+setCore("","HAZIR");
 
-        const url =
-            URL.createObjectURL(item.blob);
-
-        currentAudio =
-            new Audio(url);
-
-        await currentAudio.play();
-
-        toastMessage(
-            item.name+" oynatılıyor."
-        );
-
-    }catch(e){
-
-        console.error(e);
-
-        toastMessage(
-            "Ses oynatılamadı."
-        );
-    }
-    }
-    let dbPromise = null;
-
-function openDB(){
-
-    if(dbPromise) return dbPromise;
-
-    dbPromise =
-        new Promise((resolve,reject)=>{
-
-            const request =
-                indexedDB.open(
-                    DB_NAME,
-                    DB_VERSION
-                );
-
-            request.onupgradeneeded =
-                event=>{
-
-                    const db =
-                        event.target.result;
-
-                    if(
-                        !db.objectStoreNames
-                            .contains("stories")
-                    ){
-                        db.createObjectStore(
-                            "stories",
-                            {keyPath:"id"}
-                        );
-                    }
-
-                    if(
-                        !db.objectStoreNames
-                            .contains("files")
-                    ){
-                        db.createObjectStore(
-                            "files",
-                            {keyPath:"id"}
-                        );
-                    }
-                };
-
-            request.onsuccess =
-                ()=>resolve(
-                    request.result
-                );
-
-            request.onerror =
-                ()=>reject(
-                    request.error
-                );
-        });
-
-    return dbPromise;
-}
-
-async function dbPut(
-    storeName,
-    data
-){
-
-    const db =
-        await openDB();
-
-    return new Promise(
-        (resolve,reject)=>{
-
-            const tx =
-                db.transaction(
-                    storeName,
-                    "readwrite"
-                );
-
-            tx.objectStore(
-                storeName
-            ).put(data);
-
-            tx.oncomplete =
-                ()=>resolve(true);
-
-            tx.onerror =
-                ()=>reject(tx.error);
-        }
-    );
-}
-
-async function dbGet(
-    storeName,
-    key
-){
-
-    const db =
-        await openDB();
-
-    return new Promise(
-        (resolve,reject)=>{
-
-            const tx =
-                db.transaction(
-                    storeName,
-                    "readonly"
-                );
-
-            const request =
-                tx.objectStore(
-                    storeName
-                ).get(key);
-
-            request.onsuccess =
-                ()=>resolve(
-                    request.result
-                );
-
-            request.onerror =
-                ()=>reject(
-                    request.error
-                );
-        }
-    );
-}
-
-async function dbAll(
-    storeName
-){
-
-    const db =
-        await openDB();
-
-    return new Promise(
-        (resolve,reject)=>{
-
-            const tx =
-                db.transaction(
-                    storeName,
-                    "readonly"
-                );
-
-            const request =
-                tx.objectStore(
-                    storeName
-                ).getAll();
-
-            request.onsuccess =
-                ()=>resolve(
-                    request.result || []
-                );
-
-            request.onerror =
-                ()=>reject(
-                    request.error
-                );
-        }
-    );
-}
-    function showEvents(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            Özel Günler
-        </div>
-
-        <button
-            class="action"
-            onclick="addEventForm()">
-            Yeni özel gün
-        </button>
-
-        <div class="list"
-             style="margin-top:10px">
-
-            ${
-                state.events.length
-                ?
-                state.events.map(
-                    (event,index)=>{
-
-                        const days =
-                            daysUntil(
-                                event.date
-                            );
-
-                        return `
-                        <div class="listItem">
-
-                            <b>
-                                ${escapeHTML(
-                                    event.title
-                                )}
-                            </b>
-
-                            <br>
-
-                            ${formatDate(
-                                event.date
-                            )}
-
-                            <br>
-
-                            <small>
-                                ${
-                                    days >= 0
-                                    ? days+
-                                      " gün kaldı."
-                                    : "Tarih geçti."
-                                }
-                            </small>
-
-                            <button
-                                class="action secondary"
-                                onclick="deleteEvent(${index})">
-                                Sil
-                            </button>
-
-                        </div>
-                        `;
-                    }
-                ).join("")
-                :
-                `<div class="empty">
-                    Henüz özel gün yok.
-                </div>`
-            }
-
-        </div>
-    `;
-
-    openModal();
-}
-
-function addEventForm(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showEvents()">×</button>
-
-        <div class="modalTitle">
-            Özel Gün Ekle
-        </div>
-
-        <div class="formGroup">
-            <label class="formLabel">
-                Başlık
-            </label>
-
-            <input
-                class="formInput"
-                id="eventTitle"
-                placeholder="Doğum günü">
-        </div>
-
-        <div class="formGroup">
-            <label class="formLabel">
-                Tarih
-            </label>
-
-            <input
-                class="formInput"
-                id="eventDate"
-                type="date">
-        </div>
-
-        <button
-            class="action"
-            onclick="saveEvent()">
-            Kaydet
-        </button>
-    `;
-}
-
-function saveEvent(){
-
-    const title =
-        $("eventTitle").value.trim();
-
-    const date =
-        $("eventDate").value;
-
-    if(!title || !date){
-        toastMessage(
-            "Bilgileri doldur."
-        );
-        return;
-    }
-
-    state.events.push({
-        title,
-        date
-    });
-
-    saveState();
-    showEvents();
-}
-
-function deleteEvent(index){
-
-    state.events.splice(index,1);
-
-    saveState();
-    showEvents();
-}
-
-function daysUntil(date){
-
-    const target =
-        new Date(date+"T00:00:00");
-
-    const now =
-        new Date();
-
-    now.setHours(0,0,0,0);
-
-    return Math.ceil(
-        (
-            target-now
-        ) /
-        86400000
-    );
-}
-
-function formatDate(date){
-
-    return new Date(
-        date+"T00:00:00"
-    ).toLocaleDateString(
-        "tr-TR"
-    );
-}
-   function showCycle(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            Regl Takibi
-        </div>
-
-        <div class="formGroup">
-            <label class="formLabel">
-                Son başlangıç tarihi
-            </label>
-
-            <input
-                class="formInput"
-                id="cycleDate"
-                type="date">
-        </div>
-
-        <div class="formGroup">
-            <label class="formLabel">
-                Ortalama döngü süresi
-            </label>
-
-            <input
-                class="formInput"
-                id="cycleLength"
-                type="number"
-                min="15"
-                max="60"
-                value="28">
-        </div>
-
-        <button
-            class="action"
-            onclick="saveCycle()">
-            Kaydet
-        </button>
-
-        ${
-            state.cycles.length
-            ?
-            `<div
-                class="list"
-                style="margin-top:12px">
-
-                ${
-                    state.cycles.map(
-                        cycle=>`
-
-                        <div
-                            class="listItem">
-
-                            Son kayıt:
-                            ${formatDate(
-                                cycle.start
-                            )}
-
-                            <br>
-
-                            Tahmini sonraki dönem:
-                            ${formatDate(
-                                cycle.next
-                            )}
-
-                            <br>
-
-                            <small>
-                            Bu yalnızca
-                            tahmini takiptir.
-                            </small>
-
-                        </div>
-                        `
-                    ).join("")
-                }
-
-            </div>`
-            :
-            ""
-        }
-    `;
-
-    openModal();
-}
-
-function saveCycle(){
-
-    const start =
-        $("cycleDate").value;
-
-    const length =
-        Number(
-            $("cycleLength").value
-        ) || 28;
-
-    if(!start){
-        toastMessage(
-            "Tarih seç."
-        );
-        return;
-    }
-
-    const nextDate =
-        new Date(
-            start+"T00:00:00"
-        );
-
-    nextDate.setDate(
-        nextDate.getDate()+length
-    );
-
-    const next =
-        nextDate
-            .toISOString()
-            .slice(0,10);
-
-    state.cycles.push({
-        start,
-        length,
-        next
-    });
-
-    state.cycles =
-        state.cycles.slice(-12);
-
-    saveState();
-
-    showCycle();
-}
-
-function showMoods(){
-
-    const moods = [
-        "Mutlu",
-        "Normal",
-        "Üzgün",
-        "Stresli",
-        "Yorgun",
-        "Enerjik"
-    ];
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            Bugün nasıl hissediyorsun?
-        </div>
-
-        <div class="cardGrid">
-
-            ${
-                moods.map(
-                    mood=>`
-
-                    <div
-                        class="card"
-                        onclick="saveMood('${mood}')">
-
-                        <div class="cardTitle">
-                            ${mood}
-                        </div>
-
-                    </div>
-
-                    `
-                ).join("")
-            }
-
-        </div>
-
-        <div
-            class="list"
-            style="margin-top:12px">
-
-            ${
-                state.moods.slice(-7)
-                .reverse()
-                .map(
-                    x=>`
-
-                    <div class="listItem">
-                        ${x.mood}
-                        <br>
-                        <small>
-                        ${new Date(
-                            x.time
-                        ).toLocaleString(
-                            "tr-TR"
-                        )}
-                        </small>
-                    </div>
-
-                    `
-                ).join("")
-            }
-
-        </div>
-    `;
-
-    openModal();
-}
-
-function saveMood(mood){
-
-    state.moods.push({
-        mood,
-        time:Date.now()
-    });
-
-    state.moods =
-        state.moods.slice(-30);
-
-    saveState();
-
-    toastMessage(
-        "Ruh hali kaydedildi."
-    );
-
-    showMoods();
-        }
-    function showTasks(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            Günlük Plan
-        </div>
-
-        <button
-            class="action"
-            onclick="addTaskForm()">
-            Görev ekle
-        </button>
-
-        <div
-            class="list"
-            style="margin-top:10px">
-
-            ${
-                state.tasks.length
-                ?
-                state.tasks.map(
-                    (task,index)=>`
-
-                    <div class="listItem">
-
-                        <b>
-                            ${
-                                task.done
-                                ? "✓ "
-                                : ""
-                            }
-                            ${escapeHTML(
-                                task.text
-                            )}
-                        </b>
-
-                        <button
-                            class="action secondary"
-                            onclick="toggleTask(${index})">
-
-                            ${
-                                task.done
-                                ? "Tamamlanmadı"
-                                : "Tamamla"
-                            }
-
-                        </button>
-
-                        <button
-                            class="action secondary"
-                            onclick="deleteTask(${index})">
-
-                            Sil
-
-                        </button>
-
-                    </div>
-
-                    `
-                ).join("")
-                :
-                `<div class="empty">
-                    Bugün için görev yok.
-                </div>`
-            }
-
-        </div>
-    `;
-
-    openModal();
-}
-
-function addTaskForm(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showTasks()">×</button>
-
-        <div class="modalTitle">
-            Görev Ekle
-        </div>
-
-        <input
-            class="formInput"
-            id="taskInput"
-            placeholder="Yapılacak görev">
-
-        <button
-            class="action"
-            onclick="saveTask()">
-            Kaydet
-        </button>
-    `;
-}
-
-function saveTask(){
-
-    const text =
-        $("taskInput").value.trim();
-
-    if(!text) return;
-
-    state.tasks.push({
-        text,
-        done:false
-    });
-
-    saveState();
-    showTasks();
-}
-
-function toggleTask(index){
-
-    state.tasks[index].done =
-        !state.tasks[index].done;
-
-    saveState();
-    showTasks();
-}
-
-function deleteTask(index){
-
-    state.tasks.splice(index,1);
-
-    saveState();
-    showTasks();
-}
-
-function showMemoriesOfUs(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showFeatureMenu()">×</button>
-
-        <div class="modalTitle">
-            Anılarımız
-        </div>
-
-        <button
-            class="action"
-            onclick="addMemoryOfUsForm()">
-            Yeni anı
-        </button>
-
-        <div
-            class="list"
-            style="margin-top:10px">
-
-            ${
-                state.memoriesOfUs.length
-                ?
-                state.memoriesOfUs
-                .map(
-                    (x,i)=>`
-
-                    <div class="listItem">
-
-                        <b>
-                            ${escapeHTML(
-                                x.title
-                            )}
-                        </b>
-
-                        <br>
-
-                        ${escapeHTML(
-                            x.note || ""
-                        )}
-
-                        <br>
-
-                        <small>
-                            ${x.date || ""}
-                        </small>
-
-                        <button
-                            class="action secondary"
-                            onclick="deleteMemoryOfUs(${i})">
-                            Sil
-                        </button>
-
-                    </div>
-
-                    `
-                ).join("")
-                :
-                `<div class="empty">
-                    Henüz anı eklenmedi.
-                </div>`
-            }
-
-        </div>
-    `;
-
-    openModal();
-}
-    function addMemoryOfUsForm(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="showMemoriesOfUs()">×</button>
-
-        <div class="modalTitle">
-            Yeni Anı
-        </div>
-
-        <div class="formGroup">
-
-            <label class="formLabel">
-                Başlık
-            </label>
-
-            <input
-                class="formInput"
-                id="memoryUsTitle"
-                placeholder="İlk buluşmamız">
-
-        </div>
-
-        <div class="formGroup">
-
-            <label class="formLabel">
-                Not
-            </label>
-
-            <textarea
-                class="formInput"
-                id="memoryUsNote"
-                rows="4"
-                placeholder="Bu anıyla ilgili not...">
-            </textarea>
-
-        </div>
-
-        <button
-            class="action"
-            onclick="saveMemoryOfUs()">
-            Anıyı kaydet
-        </button>
-    `;
-}
-
-function saveMemoryOfUs(){
-
-    const title =
-        $("memoryUsTitle").value.trim();
-
-    const note =
-        $("memoryUsNote").value.trim();
-
-    if(!title){
-        toastMessage(
-            "Anıya başlık ver."
-        );
-        return;
-    }
-
-    state.memoriesOfUs.push({
-        title,
-        note,
-        date:new Date()
-            .toLocaleDateString(
-                "tr-TR"
-            )
-    });
-
-    saveState();
-
-    showMemoriesOfUs();
-}
-
-function deleteMemoryOfUs(index){
-
-    state.memoriesOfUs.splice(
-        index,
-        1
-    );
-
-    saveState();
-
-    showMemoriesOfUs();
-}
-
-function systemPrompt(){
-
-    return `
-Sen AURA'sın.
-
-Edanur için hazırlanmış kişisel
-bir yapay zeka asistanısın.
-
-Türkçe cevap ver.
-
-Kısa, doğal ve sıcak konuş.
-
-Kullanıcı hakkında sana verilen
-hafıza bilgilerini dikkate al.
-
-Uydurma bilgi üretme.
-
-Sağlık konularında kesin teşhis
-koyma.
-
-Regl takibi verilerinin yalnızca
-tahmin olduğunu belirt.
-
-AURA'nın mevcut özelliklerini
-gerektiğinde kullanıcının isteğine
-göre yönlendir.
-
-Kayıtlı hafıza:
-
-${memoryText()}
-
-Görevler:
-
-${
-    state.tasks
-    .map(x=>
-        "- "+
-        x.text+
-        (x.done?" (tamamlandı)":"")
-    )
-    .join("\n")
-}
-
-Özel günler:
-
-${
-    state.events
-    .map(x=>
-        "- "+
-        x.title+
-        ": "+
-        x.date
-    )
-    .join("\n")
-}
-`;
-}
-    function extractAIText(response){
-
-    if(!response){
-        return "";
-    }
-
-    if(
-        typeof response ===
-        "string"
-    ){
-        return response.trim();
-    }
-
-    if(
-        response.message &&
-        typeof response.message.content
-        === "string"
-    ){
-        return response.message
-            .content
-            .trim();
-    }
-
-    if(
-        response.message &&
-        Array.isArray(
-            response.message.content
-        )
-    ){
-
-        return response.message
-            .content
-            .map(
-                x=>
-                    typeof x === "string"
-                    ? x
-                    : x?.text || ""
-            )
-            .join("")
-            .trim();
-    }
-
-    if(
-        typeof response.text ===
-        "string"
-    ){
-        return response.text.trim();
-    }
-
-    return "";
-}
-
-async function askAI(text){
-
-    if(
-        typeof puter ===
-        "undefined"
-    ){
-        throw new Error(
-            "AI bağlantısı hazır değil."
-        );
-    }
-
-    const history =
-        state.chat
-        .slice(-14)
-        .map(item=>({
-
-            role:
-                item.type === "user"
-                ? "user"
-                : "assistant",
-
-            content:item.text
-        }));
-
-    const response =
-        await puter.ai.chat(
-            [
-                {
-                    role:"system",
-                    content:
-                        systemPrompt()
-                },
-
-                ...history,
-
-                {
-                    role:"user",
-                    content:text
-                }
-            ],
-            {
-                model:
-                    "gpt-5.6-luna",
-
-                temperature:.65,
-
-                max_tokens:1200,
-
-                compaction:true
-            }
-        );
-
-    return extractAIText(
-        response
-    );
+updateStatus();
 }
 
 async function sendMessage(){
 
-    const text =
-        input.value.trim();
+const input=$("#chatInput");
+const text=input.value.trim();
 
-    if(!text){
-        return;
-    }
-
-    input.value = "";
-    input.style.height = "auto";
-
-    addMessage(
-        text,
-        "user"
-    );
-
-    const command =
-        handleLocalCommand(text);
-
-    if(command){
-        addMessage(
-            command,
-            "aura"
-        );
-        return;
-    }
-
-    typing.classList.add("show");
-
-    core.classList.add(
-        "thinking"
-    );
-
-    try{
-
-        const reply =
-            await askAI(text);
-
-        typing.classList.remove(
-            "show"
-        );
-
-        core.classList.remove(
-            "thinking"
-        );
-
-        addMessage(
-            reply ||
-            "Şu anda cevap oluşturamadım.",
-            "aura"
-        );
-
-        if(
-            state.settings.voice
-        ){
-            speakText(reply);
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        typing.classList.remove(
-            "show"
-        );
-
-        core.classList.remove(
-            "thinking"
-        );
-
-        addMessage(
-            navigator.onLine
-            ?
-            "AI bağlantısında bir hata oluştu."
-            :
-            "İnternet bağlantısı yok. " +
-            "Offline özelliklerimi kullanabilirsin.",
-            "aura"
-        );
-    }
-    }
-    function handleLocalCommand(text){
-
-    const t =
-        text
-        .toLocaleLowerCase(
-            "tr-TR"
-        )
-        .trim();
-
-    if(
-        t.startsWith(
-            "bunu hatırla "
-        )
-    ){
-
-        const value =
-            text.substring(
-                13
-            ).trim();
-
-        if(value){
-            addMemory(value);
-            return "Tamam, bunu hafızama kaydettim.";
-        }
-    }
-
-    if(
-        t.startsWith(
-            "hafızaya kaydet "
-        )
-    ){
-
-        const value =
-            text.substring(
-                16
-            ).trim();
-
-        if(value){
-            addMemory(value);
-            return "Bilgiyi hafızaya kaydettim.";
-        }
-    }
-
-    if(
-        t ===
-        "hafızamda ne var"
-    ){
-        return memoryText();
-    }
-
-    if(
-        t ===
-        "hafızanı temizle"
-    ){
-
-        if(
-            confirm(
-                "Tüm hafıza silinsin mi?"
-            )
-        ){
-
-            state.memories = [];
-
-            saveState();
-
-            return "Hafızayı temizledim.";
-        }
-
-        return "İşlem iptal edildi.";
-    }
-
-    if(
-        t ===
-        "masalları aç"
-    ){
-        showStories();
-        return "Masal arşivini açtım.";
-    }
-
-    if(
-        t ===
-        "özel günleri aç"
-    ){
-        showEvents();
-        return "Özel günler bölümünü açtım.";
-    }
-
-    if(
-        t ===
-        "regl takibini aç"
-    ){
-        showCycle();
-        return "Regl takip bölümünü açtım.";
-    }
-
-    if(
-        t ===
-        "görevlerimi göster"
-    ){
-        showTasks();
-        return "Görevlerini açtım.";
-    }
-
-    if(
-        t ===
-        "ruh halimi kaydet"
-    ){
-        showMoods();
-        return "Ruh hali bölümünü açtım.";
-    }
-
-    if(
-        t ===
-        "anılarımızı aç"
-    ){
-        showMemoriesOfUs();
-        return "Anılarımız bölümünü açtım.";
-    }
-
-    if(
-        t ===
-        "ayarları aç"
-    ){
-        showSettings();
-        return "Ayarları açtım.";
-    }
-
-    if(
-        t ===
-        "şu an saat kaç"
-    ){
-        return (
-            "Saat "+
-            new Date()
-            .toLocaleTimeString(
-                "tr-TR",
-                {
-                    hour:"2-digit",
-                    minute:"2-digit"
-                }
-            )
-        );
-    }
-
-    if(
-        t ===
-        "bugün günlerden ne"
-    ){
-        return new Date()
-            .toLocaleDateString(
-                "tr-TR",
-                {
-                    weekday:"long",
-                    day:"numeric",
-                    month:"long"
-                }
-            );
-    }
-
-    return null;
-    }
-    function cleanSpeechText(text){
-
-    return String(text || "")
-        .replace(
-            /https?:\/\/\S+/gi,
-            " "
-        )
-        .replace(
-            /[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu,
-            " "
-        )
-        .replace(
-            /[*_#`~()[\]{}<>|@#$%^&+=]/g,
-            " "
-        )
-        .replace(
-            /\s+/g,
-            " "
-        )
-        .trim();
+if(!text){
+return;
 }
 
-function speakText(text){
+input.value="";
 
-    if(
-        !("speechSynthesis" in window)
-    ){
-        return;
-    }
+addMessage(text,"user");
 
-    const clean =
-        cleanSpeechText(text);
+setCore("thinking","DÜŞÜNÜYOR");
 
-    if(!clean){
-        return;
-    }
+try{
 
-    speechSynthesis.cancel();
+const response=await processCommand(text);
 
-    const utterance =
-        new SpeechSynthesisUtterance(
-            clean
-        );
+addMessage(response,"aura",true);
 
-    utterance.lang =
-        "tr-TR";
+}catch(error){
 
-    utterance.rate =
-        .92;
+console.error(error);
 
-    utterance.pitch =
-        1;
+setCore("error","HATA");
 
-    utterance.volume =
-        1;
+addMessage(
+"İşlem sırasında hata oluştu.",
+"aura",
+true
+);
 
-    speechSynthesis.speak(
-        utterance
-    );
+setTimeout(()=>{
+setCore("","HAZIR");
+},1000);
+
 }
 
-function setupSpeechRecognition(){
-
-    const SpeechRecognition =
-        window.SpeechRecognition ||
-        window.webkitSpeechRecognition;
-
-    if(!SpeechRecognition){
-
-        micBtn.disabled = true;
-
-        return;
-    }
-
-    recognition =
-        new SpeechRecognition();
-
-    recognition.lang =
-        "tr-TR";
-
-    recognition.continuous =
-        false;
-
-    recognition.interimResults =
-        false;
-
-    recognition.onstart = ()=>{
-
-        isListening = true;
-
-        micBtn.textContent =
-            "■";
-
-        toastMessage(
-            "Dinliyorum..."
-        );
-    };
-
-    recognition.onresult =
-        event=>{
-
-            const result =
-                event.results[0][0]
-                .transcript;
-
-            input.value =
-                result;
-
-            resizeInput();
-        };
-
-    recognition.onerror =
-        ()=>{
-
-            isListening = false;
-
-            micBtn.textContent =
-                "🎙";
-
-            toastMessage(
-                "Ses algılanamadı."
-            );
-        };
-
-    recognition.onend = ()=>{
-
-        isListening = false;
-
-        micBtn.textContent =
-            "🎙";
-    };
 }
+      async function processCommand(text){
 
-function toggleMic(){
+const original=text.trim();
+const low=original.toLowerCase();
 
-    if(!recognition){
-        toastMessage(
-            "Bu tarayıcı sesli girişi desteklemiyor."
-        );
-        return;
-    }
-
-    if(isListening){
-
-        recognition.stop();
-
-    }else{
-
-        try{
-            recognition.start();
-        }catch(e){
-            console.error(e);
-        }
-    }
+if(low==="/help" || low==="yardım"){
+return helpText();
 }
-
-function resizeInput(){
-
-    input.style.height =
-        "auto";
-
-    input.style.height =
-        Math.min(
-            input.scrollHeight,
-            92
-        )+"px";
-                }
-    async function handleFile(file){
-
-    if(!file){
-        return;
-    }
-
-    try{
-
-        const id =
-            "file_"+Date.now();
-
-        await dbPut(
-            "files",
-            {
-                id,
-                name:file.name,
-                type:file.type,
-                size:file.size,
-                blob:file,
-                created:Date.now()
-            }
-        );
-
-        addMessage(
-            "Dosya eklendi: "+
-            file.name,
-            "user"
-        );
-
-        if(
-            file.type.startsWith(
-                "image/"
-            )
-        ){
-
-            addMessage(
-                "Görsel AI analizi için hazır. " +
-                "İstersen bu görsel hakkında " +
-                "soru sorabilirsin.",
-                "aura"
-            );
-
-        }else if(
-            file.type.startsWith(
-                "audio/"
-            )
-        ){
-
-            addMessage(
-                "Ses dosyasını offline " +
-                "arşivinde sakladım.",
-                "aura"
-            );
-
-        }else{
-
-            addMessage(
-                "Dosyayı cihazdaki AURA " +
-                "arşivine kaydettim.",
-                "aura"
-            );
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        toastMessage(
-            "Dosya kaydedilemedi."
-        );
-    }
-}
-
-async function shareCurrentChat(){
-
-    const text =
-        state.chat
-        .map(
-            x=>
-                (
-                    x.type === "user"
-                    ? "Sen: "
-                    : "AURA: "
-                )+
-                x.text
-        )
-        .join("\n\n");
-
-    if(
-        navigator.share
-    ){
-
-        try{
-
-            await navigator.share({
-                title:"AURA sohbeti",
-                text
-            });
-
-        }catch(e){}
-
-    }else{
-
-        await navigator.clipboard
-            .writeText(text);
-
-        toastMessage(
-            "Sohbet panoya kopyalandı."
-        );
-    }
-}
-
-function updateNetworkStatus(){
-
-    if(
-        navigator.onLine
-    ){
-
-        networkStatus.textContent =
-            "ONLINE";
-
-    }else{
-
-        networkStatus.textContent =
-            "OFFLINE";
-    }
-}
-
-window.addEventListener(
-    "online",
-    updateNetworkStatus
-);
-
-window.addEventListener(
-    "offline",
-    updateNetworkStatus
-);
-
-function setupSwipe(){
-
-    const panel =
-        chatPanel;
-
-    panel.addEventListener(
-        "touchstart",
-        event=>{
-
-            touchStartY =
-                event.touches[0].clientY;
-
-            touchCurrentY =
-                touchStartY;
-
-            draggingChat = true;
-        },
-        {passive:true}
-    );
-
-    panel.addEventListener(
-        "touchmove",
-        event=>{
-
-            if(!draggingChat) return;
-
-            touchCurrentY =
-                event.touches[0].clientY;
-        },
-        {passive:true}
-    );
-
-    panel.addEventListener(
-        "touchend",
-        ()=>{
-
-            if(!draggingChat) return;
-
-            draggingChat = false;
-
-            const diff =
-                touchCurrentY -
-                touchStartY;
-
-            if(diff > 70){
-                closeChatPanel();
-            }
-
-            if(diff < -70){
-                openChat();
-            }
-        }
-    );
-}
-    core.addEventListener(
-    "click",
-    ()=>{
-        toggleChat();
-    }
-);
-
-closeChat.addEventListener(
-    "click",
-    event=>{
-        event.stopPropagation();
-        closeChatPanel();
-    }
-);
-
-sendBtn.addEventListener(
-    "click",
-    sendMessage
-);
-
-micBtn.addEventListener(
-    "click",
-    toggleMic
-);
-
-fileBtn.addEventListener(
-    "click",
-    ()=>{
-        fileInput.click();
-    }
-);
-
-fileInput.addEventListener(
-    "change",
-    async event=>{
-
-        const files =
-            [...event.target.files];
-
-        for(
-            const file of files
-        ){
-            await handleFile(file);
-        }
-
-        fileInput.value = "";
-    }
-);
-
-input.addEventListener(
-    "input",
-    resizeInput
-);
-
-input.addEventListener(
-    "keydown",
-    event=>{
-
-        if(
-            event.key === "Enter" &&
-            !event.shiftKey
-        ){
-
-            event.preventDefault();
-
-            sendMessage();
-        }
-    }
-);
-
-overlay.addEventListener(
-    "click",
-    event=>{
-
-        if(
-            event.target === overlay
-        ){
-            closeModal();
-        }
-    }
-);
-
-setupSpeechRecognition();
-setupSwipe();
-loadState();
-loadChat();
-updateNetworkStatus();
 
 if(
-    "serviceWorker" in navigator
+low.includes("saat kaç") ||
+low==="saat"
 ){
-
-    window.addEventListener(
-        "load",
-        ()=>{
-            navigator.serviceWorker
-                .register(
-                    "service-worker.js"
-                )
-                .catch(
-                    error=>{
-                        console.warn(
-                            "Service Worker:",
-                            error
-                        );
-                    }
-                );
-        }
-    );
+return "Şu an saat "+formatTime()+".";
 }
 
-setTimeout(
-    ()=>{
-        if(
-            !state.chat.length
-        ){
-            addMessage(
-                "Selam Bedirhan, sistem hazır.",
-                "aura"
-            );
-        }
-    },
-    250
-);
-    /*
-    AURA AGENT KOMUTLARI
-
-    AI doğrudan localStorage'a
-    erişemez. Bu nedenle kullanıcı
-    açık komut verdiğinde aşağıdaki
-    güvenli fonksiyonlar kullanılabilir.
-*/
-
-function addQuickEvent(
-    title,
-    date
+if(
+low.includes("bugün tarih") ||
+low==="tarih" ||
+low.includes("hangi gün")
 ){
-
-    if(!title || !date){
-        return false;
-    }
-
-    state.events.push({
-        title,
-        date
-    });
-
-    saveState();
-
-    return true;
+return "Bugün "+formatDate()+".";
 }
 
-function addQuickTask(text){
-
-    if(!text){
-        return false;
-    }
-
-    state.tasks.push({
-        text,
-        done:false
-    });
-
-    saveState();
-
-    return true;
+if(
+low.includes("sistem durumu") ||
+low==="status"
+){
+return systemSummary();
 }
 
-function addQuickMemory(text){
-
-    if(!text){
-        return false;
-    }
-
-    addMemory(text);
-
-    return true;
+if(
+low.includes("hafızam") ||
+low.includes("hafıza")
+){
+return memorySummary();
 }
 
-function getUpcomingEvents(){
-
-    return state.events
-        .map(event=>({
-
-            ...event,
-
-            remaining:
-                daysUntil(
-                    event.date
-                )
-
-        }))
-        .filter(
-            event=>
-                event.remaining >= 0
-        )
-        .sort(
-            (a,b)=>
-                a.remaining -
-                b.remaining
-        );
-}
-
-function getOpenTasks(){
-
-    return state.tasks
-        .filter(
-            task=>!task.done
-        );
-}
-
-function getLatestMood(){
-
-    if(!state.moods.length){
-        return null;
-    }
-
-    return state.moods[
-        state.moods.length-1
-    ];
-}
-
-function getLatestCycle(){
-
-    if(!state.cycles.length){
-        return null;
-    }
-
-    return state.cycles[
-        state.cycles.length-1
-    ];
-}
-
-function auraSummary(){
-
-    const events =
-        getUpcomingEvents();
-
-    const tasks =
-        getOpenTasks();
-
-    const mood =
-        getLatestMood();
-
-    return `
-AURA DURUMU
-
-Açık görev:
-${tasks.length}
-
-Yaklaşan özel gün:
-${
-    events.length
-    ? events[0].title+
-      " ("+
-      events[0].remaining+
-      " gün)"
-    : "Yok"
-}
-
-Son ruh hali:
-${
-    mood
-    ? mood.mood
-    : "Kayıt yok"
-}
-
-Hafıza:
-${state.memories.length}
-
-Anı:
-${state.memoriesOfUs.length}
-
-Masal favorisi:
-${state.favoriteStories.length}
-`.trim();
-}
-
-function showAuraSummary(){
-
-    modal.innerHTML = `
-        <button
-            class="modalClose"
-            onclick="closeModal()">×</button>
-
-        <div class="modalTitle">
-            AURA Durumu
-        </div>
-
-        <div class="listItem">
-            <pre style="
-                white-space:pre-wrap;
-                font-family:Arial;
-                font-size:11px;
-                color:#b9f7ff;
-            ">${escapeHTML(
-                auraSummary()
-            )}</pre>
-        </div>
-
-        <button
-            class="action"
-            onclick="showFeatureMenu()">
-            Özellikler
-        </button>
-    `;
-
-    openModal();
-    }
-    /*
-    SON BAĞLANTILAR
-
-    Bu bölüm dosyanın sonudur.
-*/
-
-core.addEventListener(
-    "dblclick",
-    ()=>{
-        showAuraSummary();
-    }
+const rememberMatch=
+original.match(
+/(?:bunu|şunu)?\s*hatırla\s*[:,-]?\s*(.+)$/i
 );
 
-document.addEventListener(
-    "visibilitychange",
-    ()=>{
-        if(
-            document.hidden &&
-            currentAudio
-        ){
-            // Ses devam edebilir.
-        }
-    }
+if(rememberMatch){
+addMemory(
+rememberMatch[1],
+"user"
+);
+
+return "Bunu hafızama kaydettim.";
+}
+
+const taskMatch=
+original.match(
+/(?:görev ekle|görev oluştur)\s*[:,-]?\s*(.+)$/i
+);
+
+if(taskMatch){
+addTask(taskMatch[1]);
+
+return "Görevi ekledim.";
+}
+
+if(
+low.includes("focus") ||
+low.includes("odak modu") ||
+low.includes("pomodoro")
+){
+setTab("focus");
+return "Focus panelini açtım.";
+}
+
+if(
+low.includes("ayarlar") ||
+low.includes("settings")
+){
+openSettings();
+return "Ayarlar panelini açtım.";
+}
+
+if(
+low.includes("kamera") ||
+low.includes("fotoğraf çek")
+){
+openCamera();
+return "Kamera panelini açtım.";
+}
+
+if(
+low.includes("hava durumu")
+){
+openWeather();
+return "Hava durumu panelini açtım.";
+}
+
+if(
+low.includes("web ara") ||
+low.includes("internette ara") ||
+low.includes("araştır")
+){
+const query=original
+.replace(/web ara/ig,"")
+.replace(/internette ara/ig,"")
+.replace(/araştır/ig,"")
+.trim();
+
+openSearch(query);
+
+return "Web araştırma panelini açtım.";
+}
+
+const calcMatch=
+original.match(
+/(?:hesapla|hesap)\s*[:,-]?\s*(.+)$/i
+);
+
+if(calcMatch){
+return "Sonuç: "+calculate(calcMatch[1]);
+}
+
+if(low.includes("not al")){
+const noteText=original
+.replace(/not al/ig,"")
+.trim();
+
+if(noteText){
+notes.unshift({
+id:uuid(),
+title:"AURA Notu",
+body:noteText,
+date:new Date().toISOString()
+});
+
+saveAll();
+
+return "Notu kaydettim.";
+}
+
+return "Not metnini de söyle.";
+}
+
+const aiResponse=await askAI(original);
+
+if(aiResponse){
+return aiResponse;
+}
+
+return localAnswer(original);
+      }
+      function helpText(){
+
+return [
+"AURA komutları:",
+"",
+"• Saat kaç?",
+"• Bugünün tarihi ne?",
+"• Bunu hatırla: ...",
+"• Hafızam",
+"• Görev ekle: ...",
+"• Focus modu",
+"• Web ara: ...",
+"• Hava durumu",
+"• Hesapla: 25*4",
+"• Not al: ...",
+"• Sistem durumu",
+"• Ayarlar",
+"",
+"Çekirdeğe dokunarak sesli komut verebilirsin."
+].join("\n");
+}
+
+function localAnswer(text){
+
+const low=text.toLowerCase();
+
+if(
+low.includes("merhaba") ||
+low.includes("selam") ||
+low.includes("hey aura")
+){
+return "Hazırım. Komutunu söyleyebilirsin.";
+}
+
+if(
+low.includes("nasılsın") ||
+low.includes("nasilsin")
+){
+return "AURA sistemleri hazır ve çalışıyor.";
+}
+
+if(
+low.includes("kaç görev") ||
+low.includes("görevlerim")
+){
+const open=
+tasks.filter(task=>!task.done).length;
+
+return "Şu anda "+open+" açık görevin var.";
+}
+
+if(
+low.includes("kaç hafıza") ||
+low.includes("kaç kayıt")
+){
+return "Hafızada "+memory.length+" kayıt bulunuyor.";
+}
+
+return "Bu isteği yerel AURA modunda anlayamadım. Daha net bir komut verebilir veya Ayarlar bölümünden AI bağlantısını etkinleştirebilirsin.";
+}
+
+function systemSummary(){
+
+const openTasks=
+tasks.filter(task=>!task.done).length;
+
+return [
+"AURA Sistem Durumu",
+"",
+"Bağlantı: "+(navigator.onLine?"ONLINE":"OFFLINE"),
+"Hafıza: "+memory.length+" kayıt",
+"Açık görev: "+openTasks,
+"Ses: "+(("speechSynthesis" in window)?"READY":"UNAVAILABLE"),
+"Mikrofon: "+(
+("SpeechRecognition" in window ||
+"webkitSpeechRecognition" in window)
+?"READY":"UNAVAILABLE"
+),
+"Mod: "+state.mode,
+"Mesaj: "+stats.messages
+].join("\n");
+}
+
+function calculate(expression){
+
+try{
+
+let clean=String(expression)
+.replace(/,/g,".")
+.replace(/[^0-9+\-*/().%\s]/g,"");
+
+if(!clean){
+return "Geçersiz matematik işlemi.";
+}
+
+if(clean.length>120){
+return "İfade çok uzun.";
+}
+
+const result=
+Function('"use strict";return ('+clean+')')();
+
+if(!Number.isFinite(result)){
+return "Sonuç geçerli değil.";
+}
+
+return String(result);
+
+}catch{
+return "Matematik işlemi geçersiz.";
+}
+}
+      async function askAI(text){
+
+const ai=state.ai||{};
+
+if(
+!ai.enabled ||
+!ai.endpoint ||
+!ai.key
+){
+return null;
+}
+
+try{
+
+const response=await fetch(
+ai.endpoint,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer "+ai.key
+},
+body:JSON.stringify({
+model:ai.model||"gpt-4o-mini",
+messages:[
+{
+role:"system",
+content:
+"Sen AURA adlı kişisel yapay zeka asistanısın. Türkçe, net ve doğal cevap ver."
+},
+{
+role:"user",
+content:text
+}
+],
+temperature:.7
+})
+}
+);
+
+if(!response.ok){
+return null;
+}
+
+const data=await response.json();
+
+return (
+data?.choices?.[0]?.message?.content||
+data?.output?.[0]?.content?.[0]?.text||
+null
+)?.trim()||null;
+
+}catch(error){
+
+console.warn("AI API:",error);
+
+return null;
+}
+
+}
+
+function openSearch(query=""){
+
+stats.searches++;
+saveAll();
+
+openModal(
+"Web Araştırma",
+`
+<div class="stack">
+
+<label class="label">Arama</label>
+
+<input
+class="input"
+id="searchInput"
+placeholder="Ne aramak istiyorsun?"
+>
+
+<div class="row">
+
+<button class="btn primary" id="googleSearch">
+Google
+</button>
+
+<button class="btn" id="youtubeSearch">
+YouTube
+</button>
+
+<button class="btn" id="bingSearch">
+Bing
+</button>
+
+</div>
+
+<div class="item">
+
+<div class="item-main">
+
+<div class="item-title">
+Araştırma
+</div>
+
+<div class="item-sub">
+AURA arama sorgusunu seçtiğin serviste açar.
+</div>
+
+</div>
+
+</div>
+
+</div>
+`,
+root=>{
+
+$("#searchInput",root).value=query;
+
+function search(base){
+
+const value=$("#searchInput",root)
+.value.trim();
+
+if(!value){
+return;
+}
+
+window.open(
+base+encodeURIComponent(value),
+"_blank",
+"noopener,noreferrer"
+);
+
+closeModal();
+
+}
+
+$("#googleSearch",root).onclick=
+()=>search("https://www.google.com/search?q=");
+
+$("#youtubeSearch",root).onclick=
+()=>search("https://www.youtube.com/results?search_query=");
+
+$("#bingSearch",root).onclick=
+()=>search("https://www.bing.com/search?q=");
+
+}
+);
+}
+      async function openWeather(){
+
+openModal(
+"Hava Durumu",
+`
+<div class="stack">
+
+<button class="btn primary" id="locationWeather">
+Konumumu Kullan
+</button>
+
+<input
+class="input"
+id="cityWeatherInput"
+placeholder="Şehir adı"
+>
+
+<button class="btn" id="cityWeatherButton">
+Şehri Ara
+</button>
+
+<div id="weatherResult"></div>
+
+</div>
+`,
+root=>{
+
+$("#locationWeather",root).onclick=()=>{
+
+if(!navigator.geolocation){
+toast("Konum desteği yok.");
+return;
+}
+
+navigator.geolocation.getCurrentPosition(
+position=>{
+getWeather(
+position.coords.latitude,
+position.coords.longitude,
+"Konum"
+);
+},
+()=>{
+toast("Konum izni verilmedi.");
+}
+);
+
+};
+
+$("#cityWeatherButton",root).onclick=async()=>{
+
+const city=
+$("#cityWeatherInput",root)
+.value.trim();
+
+if(!city){
+return;
+}
+
+try{
+
+const result=
+await fetch(
+"https://geocoding-api.open-meteo.com/v1/search?name="+
+encodeURIComponent(city)+
+"&count=1&language=tr&format=json"
+).then(response=>response.json());
+
+const location=result.results?.[0];
+
+if(!location){
+toast("Şehir bulunamadı.");
+return;
+}
+
+getWeather(
+location.latitude,
+location.longitude,
+location.name
+);
+
+}catch{
+toast("Şehir aranamadı.");
+}
+
+};
+
+}
+);
+
+}
+
+async function getWeather(latitude,longitude,name){
+
+try{
+
+const data=
+await fetch(
+"https://api.open-meteo.com/v1/forecast?latitude="+
+latitude+
+"&longitude="+
+longitude+
+"&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto"
+).then(response=>response.json());
+
+const current=data.current;
+
+const weatherCodes={
+0:"Açık",
+1:"Çoğunlukla açık",
+2:"Parçalı bulutlu",
+3:"Kapalı",
+45:"Sis",
+48:"Sis",
+51:"Çiseleme",
+53:"Çiseleme",
+55:"Çiseleme",
+61:"Yağmur",
+63:"Yağmur",
+65:"Kuvvetli yağmur",
+71:"Kar",
+73:"Kar",
+75:"Yoğun kar",
+80:"Sağanak",
+81:"Sağanak",
+82:"Kuvvetli sağanak",
+95:"Fırtına",
+96:"Fırtına",
+99:"Fırtına"
+};
+
+const text=
+name+
+" • "+
+(weatherCodes[current.weather_code]||"Bilinmiyor")+
+" • "+
+current.temperature_2m+
+"°C • Nem "+
+current.relative_humidity_2m+
+"% • Rüzgar "+
+current.wind_speed_10m+
+" km/s";
+
+const output=$("#weatherResult");
+
+if(output){
+output.innerHTML="";
+const box=document.createElement("div");
+box.className="item";
+box.textContent=text;
+output.appendChild(box);
+}
+
+}catch{
+toast("Hava durumu alınamadı.");
+}
+
+}async function openCamera(){
+
+openModal(
+"Kamera",
+`
+<div class="stack">
+
+<video
+id="cameraVideo"
+autoplay
+playsinline
+style="width:100%;border-radius:16px;background:#000;border:1px solid var(--line)"
+></video>
+
+<canvas
+id="cameraCanvas"
+style="display:none"
+></canvas>
+
+<div class="row">
+
+<button class="btn primary" id="startCamera">
+Kamerayı Aç
+</button>
+
+<button class="btn" id="takePhoto">
+Fotoğraf Çek
+</button>
+
+<button class="btn danger" id="stopCamera">
+Durdur
+</button>
+
+</div>
+
+<img
+id="cameraImage"
+style="width:100%;display:none;border-radius:16px"
+>
+
+</div>
+`,
+root=>{
+
+$("#startCamera",root).onclick=async()=>{
+
+try{
+
+cameraStream=
+await navigator.mediaDevices.getUserMedia({
+video:{
+facingMode:"environment"
+},
+audio:false
+});
+
+$("#cameraVideo",root)
+.srcObject=cameraStream;
+
+}catch{
+toast("Kamera izni verilmedi.");
+}
+
+};
+
+$("#takePhoto",root).onclick=()=>{
+
+const video=$("#cameraVideo",root);
+const canvas=$("#cameraCanvas",root);
+
+if(!video.videoWidth){
+toast("Önce kamerayı aç.");
+return;
+}
+
+canvas.width=video.videoWidth;
+canvas.height=video.videoHeight;
+
+canvas
+.getContext("2d")
+.drawImage(video,0,0);
+
+const image=$("#cameraImage",root);
+
+image.src=
+canvas.toDataURL("image/jpeg",.9);
+
+image.style.display="block";
+
+};
+
+$("#stopCamera",root).onclick=stopCamera;
+
+}
+);
+
+}
+
+function stopCamera(){
+
+if(cameraStream){
+
+cameraStream
+.getTracks()
+.forEach(track=>track.stop());
+
+cameraStream=null;
+}
+
+}
+      function openCalculator(){
+
+openModal(
+"Hesap Makinesi",
+`
+<div class="stack">
+
+<input
+class="input"
+id="calculatorInput"
+placeholder="25 * 4 + 12"
+>
+
+<button class="btn primary" id="calculatorButton">
+Hesapla
+</button>
+
+<div class="item" id="calculatorResult">
+Sonuç burada görünür.
+</div>
+
+</div>
+`,
+root=>{
+
+$("#calculatorButton",root).onclick=()=>{
+
+const value=
+$("#calculatorInput",root).value;
+
+$("#calculatorResult",root)
+.textContent=calculate(value);
+
+};
+
+}
+);
+
+}
+
+function openConverter(){
+
+openModal(
+"Dönüştürücü",
+`
+<div class="stack">
+
+<select class="select" id="convertType">
+
+<option value="km-mile">Kilometre → Mil</option>
+<option value="mile-km">Mil → Kilometre</option>
+<option value="cm-inch">Santimetre → İnç</option>
+<option value="inch-cm">İnç → Santimetre</option>
+<option value="c-f">Celsius → Fahrenheit</option>
+<option value="f-c">Fahrenheit → Celsius</option>
+<option value="percent">Yüzde</option>
+
+</select>
+
+<input
+class="input"
+id="convertA"
+type="number"
+placeholder="Değer"
+>
+
+<input
+class="input"
+id="convertB"
+type="number"
+placeholder="Yüzde işleminde ikinci değer"
+>
+
+<button class="btn primary" id="convertButton">
+Dönüştür
+</button>
+
+<div class="item" id="convertResult">
+Sonuç burada.
+</div>
+
+</div>
+`,
+root=>{
+
+$("#convertButton",root).onclick=()=>{
+
+const type=$("#convertType",root).value;
+const a=parseFloat($("#convertA",root).value);
+const b=parseFloat($("#convertB",root).value);
+
+if(!Number.isFinite(a)){
+$("#convertResult").textContent="Geçerli sayı gir.";
+return;
+}
+
+let result;
+
+if(type==="km-mile")result=a*.621371+" mil";
+if(type==="mile-km")result=a*1.609344+" km";
+if(type==="cm-inch")result=a*.393700787+" inç";
+if(type==="inch-cm")result=a*2.54+" cm";
+if(type==="c-f")result=a*9/5+32+" °F";
+if(type==="f-c")result=(a-32)*5/9+" °C";
+
+if(type==="percent"){
+
+if(!Number.isFinite(b)){
+result="İkinci değer gerekli.";
+}else{
+result=
+a*b/100+
+" • toplam "+
+(a+a*b/100);
+}
+
+}
+
+$("#convertResult",root)
+.textContent=result||"Geçersiz işlem.";
+
+};
+
+}
+);
+
+}
+      function openTimer(){
+
+openModal(
+"Zamanlayıcı",
+`
+<div class="stack">
+
+<input
+class="input"
+id="timerMinutes"
+type="number"
+min="1"
+max="1440"
+value="5"
+>
+
+<div class="clock" id="timerClock">
+05:00
+</div>
+
+<div class="row">
+
+<button class="btn primary" id="timerStart">
+Başlat
+</button>
+
+<button class="btn" id="timerPause">
+Duraklat
+</button>
+
+<button class="btn" id="timerReset">
+Sıfırla
+</button>
+
+</div>
+
+</div>
+`,
+root=>{
+
+const update=()=>{
+timerRemaining=
+(parseInt($("#timerMinutes",root).value)||5)*60;
+
+$("#timerClock",root)
+.textContent=clockText(timerRemaining);
+};
+
+update();
+
+$("#timerMinutes",root)
+.oninput=update;
+
+$("#timerStart",root).onclick=()=>{
+
+if(timerHandle){
+return;
+}
+
+timerHandle=setInterval(()=>{
+
+timerRemaining--;
+
+$("#timerClock",root)
+.textContent=clockText(timerRemaining);
+
+if(timerRemaining<=0){
+
+clearInterval(timerHandle);
+timerHandle=null;
+
+beep();
+
+toast("Zamanlayıcı tamamlandı.");
+
+}
+
+},1000);
+
+};
+
+$("#timerPause",root).onclick=()=>{
+
+clearInterval(timerHandle);
+timerHandle=null;
+
+};
+
+$("#timerReset",root).onclick=()=>{
+
+clearInterval(timerHandle);
+timerHandle=null;
+
+update();
+
+};
+
+}
+);
+
+}
+
+function beep(){
+
+if(!state.sound){
+return;
+}
+
+try{
+
+const audio=
+new AudioContext();
+
+const oscillator=
+audio.createOscillator();
+
+const gain=
+audio.createGain();
+
+oscillator.frequency.value=880;
+gain.gain.value=.05;
+
+oscillator.connect(gain);
+gain.connect(audio.destination);
+
+oscillator.start();
+
+oscillator.stop(
+audio.currentTime+.2
+);
+
+}catch{}
+
+}
+      function openNotes(){
+
+openModal(
+"Notlar",
+`
+<div class="stack">
+
+<input
+class="input"
+id="noteTitle"
+placeholder="Başlık"
+>
+
+<textarea
+class="input"
+id="noteBody"
+placeholder="Not..."
+></textarea>
+
+<button class="btn primary" id="saveNoteButton">
+Notu Kaydet
+</button>
+
+<div class="list" id="notesList"></div>
+
+</div>
+`,
+root=>{
+
+function render(){
+
+const list=$("#notesList",root);
+
+list.innerHTML="";
+
+if(!notes.length){
+
+const empty=document.createElement("div");
+
+empty.className="item";
+empty.textContent="Henüz not yok.";
+
+list.appendChild(empty);
+
+return;
+}
+
+notes.forEach(note=>{
+
+const row=document.createElement("div");
+row.className="item";
+
+const main=document.createElement("div");
+main.className="item-main";
+
+const title=document.createElement("div");
+title.className="item-title";
+title.textContent=
+note.title||"Not";
+
+const body=document.createElement("div");
+body.className="item-sub";
+body.textContent=note.body;
+
+main.appendChild(title);
+main.appendChild(body);
+
+const remove=document.createElement("button");
+remove.className="btn danger mini";
+remove.textContent="Sil";
+
+remove.onclick=()=>{
+
+notes=
+notes.filter(item=>item.id!==note.id);
+
+saveAll();
+render();
+
+};
+
+row.appendChild(main);
+row.appendChild(remove);
+
+list.appendChild(row);
+
+});
+
+}
+
+$("#saveNoteButton",root).onclick=()=>{
+
+const title=
+$("#noteTitle",root).value.trim();
+
+const body=
+$("#noteBody",root).value.trim();
+
+if(!body){
+toast("Not boş olamaz.");
+return;
+}
+
+notes.unshift({
+id:uuid(),
+title,
+body,
+date:new Date().toISOString()
+});
+
+saveAll();
+
+$("#noteTitle",root).value="";
+$("#noteBody",root).value="";
+
+render();
+
+toast("Not kaydedildi.");
+
+};
+
+render();
+
+}
+);
+
+      }
+      function openJSON(){
+
+openModal(
+"JSON Aracı",
+`
+<div class="stack">
+
+<textarea
+class="input"
+id="jsonInput"
+placeholder='{"a":1}'
+></textarea>
+
+<div class="row">
+
+<button class="btn primary" id="jsonFormat">
+Formatla
+</button>
+
+<button class="btn" id="jsonMinify">
+Küçült
+</button>
+
+<button class="btn" id="jsonValidate">
+Doğrula
+</button>
+
+</div>
+
+<textarea
+class="input"
+id="jsonOutput"
+readonly
+placeholder="Sonuç..."
+></textarea>
+
+</div>
+`,
+root=>{
+
+function parse(){
+
+return JSON.parse(
+$("#jsonInput",root).value
+);
+
+}
+
+$("#jsonFormat",root).onclick=()=>{
+
+try{
+
+$("#jsonOutput",root).value=
+JSON.stringify(parse(),null,2);
+
+}catch(error){
+
+$("#jsonOutput",root).value=
+"Hata: "+error.message;
+
+}
+
+};
+
+$("#jsonMinify",root).onclick=()=>{
+
+try{
+
+$("#jsonOutput",root).value=
+JSON.stringify(parse());
+
+}catch(error){
+
+$("#jsonOutput",root).value=
+"Hata: "+error.message;
+
+}
+
+};
+
+$("#jsonValidate",root).onclick=()=>{
+
+try{
+
+parse();
+
+$("#jsonOutput",root).value=
+"JSON geçerli.";
+
+}catch(error){
+
+$("#jsonOutput",root).value=
+"JSON geçersiz: "+error.message;
+
+}
+
+};
+
+}
+);
+
+}
+
+function openFileTool(){
+
+openModal(
+"Dosya İnceleme",
+`
+<div class="stack">
+
+<input
+class="input"
+type="file"
+id="fileInput"
+>
+
+<div id="fileResult"></div>
+
+</div>
+`,
+root=>{
+
+$("#fileInput",root).onchange=
+async event=>{
+
+const file=
+event.target.files?.[0];
+
+if(!file){
+return;
+}
+
+const result=$("#fileResult",root);
+
+result.innerHTML="";
+
+const info=document.createElement("div");
+
+info.className="item";
+
+info.textContent=
+"Dosya: "+file.name+
+" • "+Math.round(file.size/1024)+
+" KB • "+(file.type||"Bilinmeyen tür");
+
+result.appendChild(info);
+
+if(
+file.type.startsWith("text/") ||
+/\.(txt|json|js|html|css|md|xml)$/i.test(file.name)
+){
+
+try{
+
+const text=
+await file.text();
+
+const area=
+document.createElement("textarea");
+
+area.className="input";
+area.style.minHeight="220px";
+area.readOnly=true;
+area.value=text.slice(0,10000);
+
+result.appendChild(area);
+
+}catch{}
+
+}
+
+if(file.type.startsWith("image/")){
+
+const image=document.createElement("img");
+
+image.style.width="100%";
+image.style.borderRadius="16px";
+
+image.src=
+URL.createObjectURL(file);
+
+result.appendChild(image);
+
+}
+
+};
+
+}
+);
+
+}
+      function openNotificationTool(){
+
+openModal(
+"Bildirim Sistemi",
+`
+<div class="stack">
+
+<input
+class="input"
+id="notificationText"
+value="AURA bildirimi hazır."
+>
+
+<button
+class="btn primary"
+id="notificationButton"
+>
+Bildirim Gönder
+</button>
+
+<div class="item">
+<div class="item-sub">
+Tarayıcı bildirim izni gerekir.
+</div>
+</div>
+
+</div>
+`,
+root=>{
+
+$("#notificationButton",root).onclick=
+async()=>{
+
+if(!("Notification" in window)){
+toast("Bildirim desteği yok.");
+return;
+}
+
+try{
+
+if(Notification.permission==="default"){
+
+await Notification.requestPermission();
+
+}
+
+if(Notification.permission==="granted"){
+
+new Notification(
+"AURA",
+{
+body:
+$("#notificationText",root).value||
+"AURA bildirimi"
+}
+);
+
+}else{
+
+toast("Bildirim izni verilmedi.");
+
+}
+
+}catch{
+
+toast("Bildirim gönderilemedi.");
+
+}
+
+};
+
+}
+);
+
+}
+
+function openQR(){
+
+openModal(
+"QR Tarayıcı",
+`
+<div class="stack">
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">QR Tarama</div>
+<div class="item-sub">
+Cihaz ve tarayıcı BarcodeDetector destekliyorsa çalışır.
+</div>
+</div>
+</div>
+
+<button class="btn primary" id="qrButton">
+QR Tara
+</button>
+
+<div class="item" id="qrResult">
+Sonuç burada.
+</div>
+
+</div>
+`,
+root=>{
+
+$("#qrButton",root).onclick=async()=>{
+
+if(!("BarcodeDetector" in window)){
+toast("QR API desteklenmiyor.");
+return;
+}
+
+let stream=null;
+
+try{
+
+const detector=
+new BarcodeDetector({
+formats:["qr_code"]
+});
+
+stream=
+await navigator.mediaDevices
+.getUserMedia({
+video:true
+});
+
+const video=
+document.createElement("video");
+
+video.autoplay=true;
+video.playsInline=true;
+video.srcObject=stream;
+
+await video.play();
+
+let result=null;
+
+for(let i=0;i<80;i++){
+
+result=
+await detector.detect(video)
+.catch(()=>[]);
+
+if(result.length){
+break;
+}
+
+await new Promise(resolve=>
+requestAnimationFrame(resolve)
+);
+
+}
+
+if(result?.length){
+
+$("#qrResult",root)
+.textContent=result[0].rawValue;
+
+}else{
+
+$("#qrResult",root)
+.textContent="QR bulunamadı.";
+
+}
+
+}catch{
+
+$("#qrResult",root)
+.textContent="QR tarama başarısız.";
+
+}finally{
+
+stream?.getTracks()
+.forEach(track=>track.stop());
+
+}
+
+};
+
+}
+);
+
+}
+      function openStats(){
+
+openModal(
+"AURA İstatistikleri",
+`
+<div class="stack">
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Mesajlar</div>
+<div class="item-sub">${stats.messages}</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Sesli Komutlar</div>
+<div class="item-sub">${stats.voiceCommands}</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Focus Süresi</div>
+<div class="item-sub">${Math.floor(stats.focusSeconds/60)} dakika</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Web Aramaları</div>
+<div class="item-sub">${stats.searches}</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Hafıza</div>
+<div class="item-sub">${memory.length} kayıt</div>
+</div>
+</div>
+
+<div class="item">
+<div class="item-main">
+<div class="item-title">Görev</div>
+<div class="item-sub">${tasks.length} toplam</div>
+</div>
+</div>
+
+</div>
+`
+);
+
+}
+
+function startFocus(){
+
+if(focusRunning){
+return;
+}
+
+focusRunning=true;
+
+setCore(
+"thinking",
+"ODAKLANIYOR"
+);
+
+focusTimer=
+setInterval(()=>{
+
+focusRemaining--;
+
+stats.focusSeconds++;
+
+if(focusRemaining<=0){
+
+clearInterval(focusTimer);
+
+focusTimer=null;
+focusRunning=false;
+focusRemaining=0;
+
+beep();
+
+toast("Focus süresi tamamlandı.");
+
+setCore("","HAZIR");
+
+}
+
+updateFocus();
+
+},1000);
+
+updateFocus();
+
+}
+
+function pauseFocus(){
+
+clearInterval(focusTimer);
+
+focusTimer=null;
+focusRunning=false;
+
+setCore("","HAZIR");
+
+updateFocus();
+
+}
+
+function resetFocus(){
+
+pauseFocus();
+
+focusRemaining=
+(state.focusMinutes||25)*60;
+
+updateFocus();
+
+}
+
+function updateFocus(){
+
+$("#focusClock").textContent=
+clockText(focusRemaining);
+
+const total=
+(state.focusMinutes||25)*60;
+
+const progress=
+100*(1-focusRemaining/total);
+
+$("#focusProgress").style.width=
+Math.max(0,Math.min(100,progress))+"%";
+
+$("#homeFocus").textContent=
+clockText(focusRemaining)+
+" • "+
+(focusRunning?"ÇALIŞIYOR":"HAZIR");
+
+saveAll();
+
+}
+      function openSettings(){
+
+const ai=state.ai||{};
+
+openModal(
+"AURA Ayarları",
+`
+<div class="stack">
+
+<label class="label">
+Kullanıcı Adı
+</label>
+
+<input
+class="input"
+id="settingsName"
+>
+
+<label class="label">
+AURA Modu
+</label>
+
+<select
+class="select"
+id="settingsMode"
+>
+
+<option value="AUTO">AUTO</option>
+<option value="ASSISTANT">ASSISTANT</option>
+<option value="STUDY">STUDY</option>
+<option value="DEVELOPER">DEVELOPER</option>
+<option value="RESEARCH">RESEARCH</option>
+<option value="FOCUS">FOCUS</option>
+<option value="OFFLINE">OFFLINE</option>
+
+</select>
+
+<label class="label">
+Ses
+</label>
+
+<div class="row">
+
+<button
+class="btn"
+id="settingsVoice"
+>
+</button>
+
+<button
+class="btn"
+id="settingsAutoSpeak"
+>
+</button>
+
+<button
+class="btn"
+id="settingsTestVoice"
+>
+Ses Testi
+</button>
+
+</div>
+
+<label class="label">
+Kritik İşlem Güvenliği
+</label>
+
+<button
+class="btn"
+id="settingsSecurity"
+>
+</button>
+
+<label class="label">
+AI API
+</label>
+
+<label class="row">
+<input
+type="checkbox"
+id="aiEnabled"
+>
+AI bağlantısını kullan
+</label>
+
+<input
+class="input"
+id="aiEndpoint"
+placeholder="API Endpoint"
+>
+
+<input
+class="input"
+id="aiModel"
+placeholder="Model"
+>
+
+<input
+class="input"
+id="aiKey"
+type="password"
+placeholder="API Key"
+>
+
+<div class="row">
+
+<button
+class="btn primary"
+id="saveSettings"
+>
+Kaydet
+</button>
+
+<button
+class="btn danger"
+id="resetAURA"
+>
+Tüm Verileri Sil
+</button>
+
+</div>
+
+</div>
+`,
+root=>{
+
+$("#settingsName",root).value=
+state.userName||"Kullanıcı";
+
+$("#settingsMode",root).value=
+state.mode||"AUTO";
+
+$("#settingsVoice",root).textContent=
+"Ses: "+(state.voice?"Açık":"Kapalı");
+
+$("#settingsAutoSpeak",root).textContent=
+"Otomatik Ses: "+(state.autoSpeak?"Açık":"Kapalı");
+
+$("#settingsSecurity",root).textContent=
+"Kritik Onay: "+(state.security?"Açık":"Kapalı");
+
+$("#aiEnabled",root).checked=
+!!ai.enabled;
+
+$("#aiEndpoint",root).value=
+ai.endpoint||"";
+
+$("#aiModel",root).value=
+ai.model||"";
+
+$("#aiKey",root).value=
+ai.key||"";
+
+$("#settingsVoice",root).onclick=()=>{
+
+state.voice=!state.voice;
+
+$("#settingsVoice",root).textContent=
+"Ses: "+(state.voice?"Açık":"Kapalı");
+
+};
+
+$("#settingsAutoSpeak",root).onclick=()=>{
+
+state.autoSpeak=!state.autoSpeak;
+
+$("#settingsAutoSpeak",root).textContent=
+"Otomatik Ses: "+(state.autoSpeak?"Açık":"Kapalı");
+
+};
+
+$("#settingsSecurity",root).onclick=()=>{
+
+state.security=!state.security;
+
+$("#settingsSecurity",root).textContent=
+"Kritik Onay: "+(state.security?"Açık":"Kapalı");
+
+};
+
+$("#settingsTestVoice",root).onclick=()=>{
+speak("AURA ses sistemi çalışıyor.");
+};
+      $("#saveSettings",root).onclick=()=>{
+
+state.userName=
+$("#settingsName",root)
+.value.trim()||"Kullanıcı";
+
+state.mode=
+$("#settingsMode",root).value;
+
+state.ai={
+enabled:$("#aiEnabled",root).checked,
+endpoint:$("#aiEndpoint",root)
+.value.trim(),
+model:$("#aiModel",root)
+.value.trim(),
+key:$("#aiKey",root).value
+};
+
+saveAll();
+
+updateStatus();
+updateOverview();
+
+closeModal();
+
+toast("Ayarlar kaydedildi.");
+
+};
+
+$("#resetAURA",root).onclick=()=>{
+
+criticalAction(
+"Tüm AURA verileri silinsin mi?",
+()=>{
+
+Object.values(STORAGE)
+.forEach(key=>{
+localStorage.removeItem(key);
+});
+
+location.reload();
+
+}
+);
+
+};
+
+}
+);
+
+}
+
+function initBattery(){
+
+if(!navigator.getBattery){
+return;
+}
+
+navigator.getBattery()
+.then(battery=>{
+
+function update(){
+
+$("#statusBattery")
+.textContent=
+Math.round(battery.level*100)+
+"%"+
+(battery.charging?" ⚡":"");
+
+}
+
+update();
+
+battery.addEventListener(
+"levelchange",
+update
+);
+
+battery.addEventListener(
+"chargingchange",
+update
+);
+
+})
+.catch(()=>{});
+
+}
+
+function initChat(){
+
+try{
+
+const saved=
+JSON.parse(
+localStorage.getItem(STORAGE.chat)||"[]"
+);
+
+saved.slice(-40).forEach(message=>{
+addMessage(
+message.text,
+message.type,
+false
+);
+});
+
+}catch{}
+
+}
+
+function saveChatMessage(text,type){
+
+try{
+
+const messages=
+JSON.parse(
+localStorage.getItem(STORAGE.chat)||"[]"
+);
+
+messages.push({
+text,
+type,
+date:new Date().toISOString()
+});
+
+localStorage.setItem(
+STORAGE.chat,
+JSON.stringify(messages.slice(-100))
+);
+
+}catch{}
+
+}
+      function registerEvents(){
+
+$("#auraCore").onclick=()=>{
+
+if(listening){
+stopListening();
+}else{
+startListening();
+}
+
+};
+
+$("#auraCore").onkeydown=event=>{
+
+if(event.key==="Enter" || event.key===" "){
+event.preventDefault();
+startListening();
+}
+
+};
+
+$("#microphoneButton").onclick=
+startListening;
+
+$("#stopSpeechButton").onclick=
+stopSpeech;
+
+$("#sendButton").onclick=
+sendMessage;
+
+$("#clearChatButton").onclick=()=>{
+
+criticalAction(
+"Sohbet geçmişi temizlensin?",
+()=>{
+
+$("#messages").innerHTML="";
+
+localStorage.removeItem(
+STORAGE.chat
+);
+
+toast("Sohbet temizlendi.");
+
+}
+);
+
+};
+
+$("#chatInput").addEventListener(
+"keydown",
+event=>{
+
+if(
+event.key==="Enter" &&
+!event.shiftKey
+){
+
+event.preventDefault();
+
+sendMessage();
+
+}
+
+}
+);
+
+$("#webButton").onclick=
+()=>openSearch();
+
+$("#cameraButton").onclick=
+openCamera;
+
+$("#systemButton").onclick=
+()=>openModal(
+"Sistem Durumu",
+`
+<div class="item">
+<div class="item-main">
+<div class="item-title">
+${escapeHTML(systemSummary())}
+</div>
+</div>
+</div>
+`
+);
+
+$("#topFocus").onclick=()=>{
+setTab("focus");
+};
+
+$("#topMemory").onclick=()=>{
+setTab("memory");
+};
+
+$("#topSettings").onclick=
+openSettings;
+
+$("#homeMemory").onclick=()=>{
+setTab("memory");
+};
+
+$("#homeTasks").onclick=()=>{
+setTab("tasks");
+};
+
+$("#homeFocusButton").onclick=()=>{
+setTab("focus");
+};
+
+$("#securityButton").onclick=
+openSettings;
+
+$$(".tab").forEach(tab=>{
+
+tab.onclick=()=>{
+setTab(tab.dataset.tab);
+};
+
+});
+
+$$("[data-tool]").forEach(tool=>{
+
+tool.onclick=()=>{
+
+const action={
+calculator:openCalculator,
+converter:openConverter,
+timer:openTimer,
+notes:openNotes,
+json:openJSON,
+search:()=>openSearch(),
+weather:openWeather,
+camera:openCamera,
+file:openFileTool,
+notify:openNotificationTool,
+qr:openQR,
+stats:openStats
+}[tool.dataset.tool];
+
+if(action){
+action();
+}
+
+};
+
+});
+
+$("#addTaskButton").onclick=()=>{
+addTask($("#taskInput").value);
+};
+
+$("#taskInput").addEventListener(
+"keydown",
+event=>{
+if(event.key==="Enter"){
+addTask(event.target.value);
+}
+}
+);
+
+$("#memorySearch").addEventListener(
+"input",
+renderMemory
+);
+
+$("#clearMemoryButton").onclick=()=>{
+
+criticalAction(
+"Tüm hafıza kayıtları silinsin?",
+()=>{
+
+memory=[];
+
+saveAll();
+renderMemory();
+updateOverview();
+
+toast("Hafıza temizlendi.");
+
+}
+);
+
+};
+
+$$("[data-focus]").forEach(button=>{
+
+button.onclick=()=>{
+
+state.focusMinutes=
+parseInt(button.dataset.focus);
+
+focusRemaining=
+state.focusMinutes*60;
+
+$$("[data-focus]").forEach(item=>{
+item.classList.remove("active");
+});
+
+button.classList.add("active");
+
+saveAll();
+
+updateFocus();
+
+};
+
+});
+
+$("#focusStart").onclick=
+startFocus;
+
+$("#focusPause").onclick=
+pauseFocus;
+
+$("#focusReset").onclick=
+resetFocus;
+
+window.addEventListener(
+"online",
+updateStatus
 );
 
 window.addEventListener(
-    "beforeunload",
-    ()=>{
-        saveState();
-    }
+"offline",
+updateStatus
 );
 
-/*
-    İlk açılış kontrolü
-*/
+window.addEventListener(
+"beforeunload",
+()=>{
+saveAll();
+stopCamera();
+}
+);
 
-(async function boot(){
+}
 
-    try{
+function initialMessage(){
 
-        await openDB();
+if($("#messages").children.length){
+return;
+}
 
-    }catch(error){
+addMessage(
+"AURA hazır. Çekirdeğe dokunarak konuşabilir veya aşağıdaki alana mesaj yazabilirsin.",
+"aura",
+false
+);
 
-        console.warn(
-            "Offline veritabanı açılamadı:",
-            error
-        );
-    }
+}function boot(){
 
-    loadState();
+stats.sessions++;
 
-    updateNetworkStatus();
+updateStatus();
 
-    /*
-       Kullanıcı ilk kez giriyorsa
-       mesaj paneli kapalı kalır.
-       Çekirdek ortada görünür.
-    */
+renderMemory();
 
-    if(
-        !state.chat.length
-    ){
+renderTasks();
 
-        messages.innerHTML = "";
+updateOverview();
 
-    }else{
+updateFocus();
 
-        loadChat();
+initBattery();
 
-    }
+registerEvents();
 
-})();
+initialMessage();
+
+saveAll();
+
+}
+
+boot();
 
 </script>
-
 </body>
 </html>
+      
+      
